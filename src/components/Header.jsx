@@ -77,12 +77,23 @@ function Header() {
                         onClick={() => setMenuOpen(true)}
                         aria-label="Open menu"
                     >
-                        <span
-                            className={`material-symbols-outlined ${isTransparent ? "text-white" : "text-black"}`}
-                            style={{ fontSize: '32px' }}
+                        {/* Hamburger icon — inline SVG so it renders before font loads */}
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className={isTransparent ? "text-white" : "text-black"}
                         >
-                            menu
-                        </span>
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -113,7 +124,20 @@ function Header() {
                             aria-label="Close menu"
                             className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:bg-[#e8f0dc] hover:border-[#3a5a1c] hover:text-[#3a5a1c] transition-all duration-200"
                         >
-                            <span className="material-symbols-outlined text-[18px]">close</span>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
                         </button>                                                                                                                                                                                                                                                                   
                     </div>
 
