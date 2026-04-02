@@ -77,7 +77,7 @@ const RoomDetails = () => {
     const otherRooms = rooms.filter(r => r.id !== room.id);
 
     const renderRoomDetailsCard = () => (
-        <div className="bg-[#f2faeb] rounded-[2rem] p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
+        <div className="bg-[#f2faeb] rounded-4xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
             <h3 className="mb-6 text-4xl md:text-5xl font-serif text-gray-900">{room.name}</h3>
 
             {/* Basic Info (Rooms & Guests) */}
@@ -139,7 +139,7 @@ const RoomDetails = () => {
                 </div>
 
                 <div className="flex justify-center px-2">
-                    <Button variant="primary" className="px-10 py-3 rounded-full shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5 !bg-[#4A5D23] hover:!bg-[#3a4a1b] !text-white !font-medium" onClick={() => alert('Booking flow initiated')}>
+                    <Button variant="primary" >
                         Book Now
                     </Button>
                 </div>
@@ -159,7 +159,7 @@ const RoomDetails = () => {
                         {room.images && room.images.length > 0 ? (
                             <ImageCarousel images={room.images} options={{ loop: true }} />
                         ) : (
-                            <div className="aspect-[3/2] bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400">
+                            <div className="aspect-3/2 bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400">
                                 No images available
                             </div>
                         )}
@@ -171,7 +171,7 @@ const RoomDetails = () => {
                     </div>
 
                     {/* About Stay Card */}
-                    <div className="bg-[#f2faeb] rounded-[2rem] p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
+                    <div className="bg-[#f2faeb] rounded-4xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
                         <h3 className="text-2xl md:text-3xl font-serif text-gray-900 mb-4">About Stay</h3>
                         <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4">
                             {room.aboutStay.description}
@@ -185,7 +185,7 @@ const RoomDetails = () => {
                     </div>
 
                     {/* Amenities Card */}
-                    <div className="bg-[#f2faeb] rounded-[2rem] p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
+                    <div className="bg-[#f2faeb] rounded-4xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
                         <h3 className="text-2xl md:text-3xl font-serif text-gray-900 mb-6">Amenities</h3>
                         <div className="flex flex-wrap items-center justify-between gap-4">
                             <div className="flex flex-wrap gap-6 sm:gap-10">
@@ -238,7 +238,7 @@ const RoomDetails = () => {
 
                 <div className="mt-8 flex justify-center">
                     <Link to="/stays">
-                        <Button variant="primary" className="!bg-[#4A5D23] hover:!bg-[#3a4a1b] !text-white rounded-full px-8 py-3 font-medium shadow-md">
+                        <Button variant="primary" >
                             View All Stays
                         </Button>
                     </Link>
@@ -248,7 +248,7 @@ const RoomDetails = () => {
             {/* Highlight Modal */}
             {isHighlightsModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 transition-opacity duration-300">
-                    <div className="bg-[#fcfdfa] rounded-[2rem] w-full max-w-2xl p-6 md:p-10 shadow-2xl relative">
+                    <div className="bg-[#fcfdfa] rounded-4xl w-full max-w-2xl p-6 md:p-10 shadow-2xl relative">
                         <h2 className="text-4xl font-serif text-gray-900 mb-4">{room.name}</h2>
                         <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8">
                             {room.aboutStay.description}
@@ -265,7 +265,7 @@ const RoomDetails = () => {
                         </ul>
 
                         <div className="flex justify-end mt-4">
-                            <Button variant="primary" className="!bg-[#4A5D23] hover:!bg-[#3a4a1b] !text-white rounded-full px-8 py-2 font-medium" onClick={() => setIsHighlightsModalOpen(false)}>
+                            <Button variant="primary" onClick={() => setIsHighlightsModalOpen(false)}>
                                 Close
                             </Button>
                         </div>
@@ -276,7 +276,7 @@ const RoomDetails = () => {
             {/* Amenities Modal */}
             {isAmenitiesModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 transition-opacity duration-300">
-                    <div className="bg-[#fcfdfa] rounded-[2rem] w-full max-w-3xl p-6 md:p-10 shadow-2xl relative flex flex-col h-[80vh] md:h-auto max-h-[90vh]">
+                    <div className="bg-[#fcfdfa] rounded-4xl w-full max-w-3xl p-6 md:p-10 shadow-2xl relative flex flex-col h-[80vh] md:h-auto max-h-[90vh]">
                         {/* Modal Header */}
                         <div className="shrink-0 border-b border-gray-200 mb-6">
                             <h2 className="text-4xl font-serif text-gray-900 mb-6">Amenities</h2>
@@ -361,7 +361,7 @@ const RoomDetails = () => {
                         </div>
 
                         <div className="flex justify-end mt-8 pt-4 border-t border-gray-100 shrink-0">
-                            <Button variant="primary" className="!bg-[#4A5D23] hover:!bg-[#3a4a1b] !text-white rounded-full px-8 py-2 font-medium" onClick={() => setIsAmenitiesModalOpen(false)}>
+                            <Button variant="primary" onClick={() => setIsAmenitiesModalOpen(false)}>
                                 Close
                             </Button>
                         </div>

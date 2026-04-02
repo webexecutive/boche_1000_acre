@@ -13,26 +13,20 @@ export default function RoomCard({
     const [loaded, setLoaded] = useState(false);
 
     return (
-        <div
-            style={{ width: "300px" }}
-            className="bg-[#FDFFF8] rounded-2xl overflow-hidden shadow-md  hover:shadow-xl transition-shadow duration-300"
+        <Link
+            to={`/stays/${id}`}
+            className="flex flex-col w-full bg-[#FDFFF8] rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
         >
             {/* Image */}
-            <div
-                style={{ width: "300px", height: "200px" }}
-                className="relative overflow-hidden"
-            >
-                {/* Blur placeholder — visible until actual image loads */}
+            <div className="relative overflow-hidden w-full h-[200px] shrink-0">
                 {!loaded && blur && (
                     <img
                         src={blur}
                         alt=""
                         aria-hidden="true"
-                        className="absolute inset-0 w-full h-full object-cover "
+                        className="absolute inset-0 w-full h-full object-cover"
                     />
                 )}
-
-                {/* Actual image — always in DOM so it can download, invisible until loaded */}
                 {image && (
                     <img
                         src={image}
@@ -47,10 +41,10 @@ export default function RoomCard({
             </div>
 
             {/* Body */}
-            <div className="p-4 space-y-2">
+            <div className="flex flex-col flex-1 p-4 gap-2">
 
                 {/* Title */}
-                <h4 className="leading-snug line-clamp-1  ">
+                <h4 className="leading-snug line-clamp-1">
                     {title}
                 </h4>
 
@@ -65,29 +59,24 @@ export default function RoomCard({
                     <span>{guests} guests</span>
                 </div>
 
-                {/* Price */}
-                <div className="flex items-baseline gap-2 flex-wrap">
-                    <span className="text-lg font-semibold text-gray-900">
+                {/* Price — nowrap prevents line break */}
+                <div className="flex items-baseline gap-2">
+                    <span className="text-lg font-semibold text-gray-900 whitespace-nowrap">
                         ₹ {new Intl.NumberFormat("en-IN").format(price)}
                     </span>
-                    <span className="text-sm text-gray-500">
+                    <span className="text-sm text-gray-500 whitespace-nowrap">
                         + GST Per Night
                     </span>
                 </div>
 
-                {/* Buttons */}
-                <div className="space-y-2 pt-1">
+                {/* Book Now — pinned to bottom */}
+                <div className="mt-auto pt-1" onClick={(e) => e.preventDefault()}>
                     <Button variant="primary" size="sm" fullWidth>
                         Book Now
                     </Button>
-                    <Link to={`/stays/${id}`}>
-                        <Button variant="secondary" size="sm" fullWidth>
-                            Explore
-                        </Button>
-                    </Link>
                 </div>
 
             </div>
-        </div>
+        </Link>
     );
 }
