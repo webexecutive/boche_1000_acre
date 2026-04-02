@@ -1,0 +1,37 @@
+
+@import "tailwindcss";
+@import "./assets/styles/buttons.css";
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "IvyMode", serif;
+
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: #FEFFFB;
+}
+
+@layer base {
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+}
+
