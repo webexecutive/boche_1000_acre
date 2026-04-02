@@ -39,6 +39,7 @@ function Test() {
                                 title={room.name}
                                 guests={room.basicInfo.maxGuests}
                                 price={room.basicInfo.pricePerNight}
+                                id={room.id}
                             />
                         </div>
                     ))}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Button from "./Button";
 
 export default function RoomCard({
@@ -7,6 +8,7 @@ export default function RoomCard({
     title,
     guests,
     price,
+    id,
 }) {
     const [loaded, setLoaded] = useState(false);
 
@@ -78,9 +80,11 @@ export default function RoomCard({
                     <Button variant="primary" size="sm" fullWidth>
                         Book Now
                     </Button>
-                    <Button variant="secondary" size="sm" fullWidth>
-                        Explore
-                    </Button>
+                    <Link to={`/stays/${id}`}>
+                        <Button variant="secondary" size="sm" fullWidth>
+                            Explore
+                        </Button>
+                    </Link>
                 </div>
 
             </div>
