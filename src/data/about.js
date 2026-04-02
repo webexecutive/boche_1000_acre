@@ -11,7 +11,7 @@ export const aboutData = [
     content: `
 # boCHE 1000 Acre
 
-boCHE 1000 Acre is a spectacular 100-acre destination located in Meppadi, Wayanad, Kerala.  
+boCHE 1000 Acre is a spectacular 1000-acre destination located in Meppadi, Wayanad, Kerala.  
 Surrounded by the breathtaking greenery and mist-covered hills of Wayanad, this massive property is one of India’s most ambitious entertainment and leisure developments.
 
 Owned by the renowned Boby Chemmanur International Group, boCHE 1000 Acre is envisioned as India’s largest entertainment world, offering a unique blend of recreation, adventure, relaxation, and nature.
@@ -22,7 +22,7 @@ Situated in the scenic town of Meppadi within Wayanad district, the property enj
 
 ## What Makes boCHE 1000 Acre Special?
 
-- Expansive 100-acre property surrounded by natural beauty  
+- Expansive 1000-acre property surrounded by natural beauty  
 - Large-scale entertainment facilities designed for families and tourists  
 - A destination that combines nature, adventure, and leisure  
 - A landmark project under a trusted and established business group  

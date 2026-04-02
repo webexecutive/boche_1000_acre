@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { aboutData } from '../data/about.jsx';
+import { aboutData } from '../data/about.js';
 import ReactMarkdown from 'react-markdown';
 import LogoCarousel from "../components/LogoCarousel";
 import group from "../data/group";

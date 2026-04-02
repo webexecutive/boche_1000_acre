@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import heroanimationlg from "../assets/videos/heroanimationlg.mp4";
-import heroanimationmd from "../assets/videos/heroanimationmd.mp4";
-import heroanimationsm from "../assets/videos/heroanimationsm.mp4";
+
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
 import Button from "../components/Button";
@@ -30,9 +28,9 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 function Home() {
   const getVideoSrc = () => {
     const width = window.innerWidth;
-    if (width <= 640) return heroanimationsm;
-    if (width <= 1024) return heroanimationmd;
-    return heroanimationlg;
+    if (width <= 640) return "/videos/heroanimationsm.mp4";
+    if (width <= 1024) return "/videos/heroanimationmd.mp4";
+    return "/videos/heroanimationlg.mp4";
   };
 
   const [videoSrc, setVideoSrc] = useState(getVideoSrc);
