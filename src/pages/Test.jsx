@@ -2,7 +2,7 @@ import RoomCard from "../components/RoomCard";
 import rooms from "../data/rooms";
 import EmblaCarousel from "../components/EmblaCarousel";
 import ReelCard from "../components/ReelCard";
-import adventures from "../data/Adventures";
+import adventures from "../data/adventures";
 import GalleryThumbnail from "../components/GalleryThumbnail";
 import { gallery, categories } from "../data/gallery";
 import { Link } from "react-router-dom";

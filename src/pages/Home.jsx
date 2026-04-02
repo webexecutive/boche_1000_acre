@@ -19,7 +19,7 @@ import toddyLogo from "../assets/logos/boche-toddypub.png";
 import bhojanamLogo from "../assets/logos/boche-bhojanam.png";
 import bocheWithFood from "../assets/images/bohe-withfood.webp";
 import { Document, Page, pdfjs } from "react-pdf";
-import adventures from "../data/Adventures";
+import adventures from "../data/adventures";
 import ReelCard from "../components/ReelCard";
 import GalleryThumbnail from "../components/GalleryThumbnail";
 import { gallery, categories } from "../data/gallery";
