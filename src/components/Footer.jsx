@@ -135,11 +135,7 @@ export default function Footer() {
                                 aria-label={s.platform}
                                 className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/10 transition-all duration-200"
                             >
-                                <img
-                                    src={s.icon}
-                                    alt={s.platform}
-                                    className="w-6 h-6 object-contain brightness-0 invert opacity-60 hover:opacity-100 transition-opacity duration-200"
-                                />
+                                <s.icon className="w-5 h-5 text-white opacity-80 group-hover:opacity-100 transition-opacity duration-200" />
                             </a>
                         ))}
                     </div>

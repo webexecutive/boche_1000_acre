@@ -10,7 +10,7 @@ import ImageCarousel from "../components/ImageCarousel";
 import "../assets/styles/image-carousel.css";
 import LogoCarousel from "../components/LogoCarousel";
 import group from "../data/group";
-
+import { Slider } from "@chakra-ui/react"
 
 function Test() {
     const xPodRoom = rooms.find((r) => r.name.toLowerCase().includes("pod") || r.id === 5) || rooms[0];
@@ -98,6 +98,18 @@ function Test() {
                 </div>
             </div>
             <LogoCarousel items={group} />
+
+
+            <Slider.Root width="200px" defaultValue={[30, 60]}>
+                <Slider.Control>
+                    <Slider.Track bg="ash">
+                        <Slider.Range  bg="#6b8e23"/>
+                    </Slider.Track >
+                    <Slider.Thumbs bg="#6b8e23"/>
+                </Slider.Control>
+            </Slider.Root>
+
+
 
         </>
     );

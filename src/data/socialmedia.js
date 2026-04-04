@@ -1,5 +1,7 @@
+import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+
 const socialmedia = [
-    { platform: "Facebook",  icon: "/icons/facebook.png",  link: "https://www.facebook.com/boche1000acrewayanad/" },
-    { platform: "Instagram", icon: "/icons/instagram.png", link: "https://www.instagram.com/boche1000acrewayanad/?hl=en" }
+    { platform: "Facebook",  icon: FaFacebookF,  link: "https://www.facebook.com/boche1000acrewayanad/" },
+    { platform: "Instagram", icon: FaInstagram, link: "https://www.instagram.com/boche1000acrewayanad/?hl=en" }
 ];
 export default socialmedia;

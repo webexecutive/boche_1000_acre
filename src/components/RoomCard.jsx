@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { MdPerson } from "react-icons/md";
 import Button from "./Button";
 
 export default function RoomCard({
@@ -50,12 +51,7 @@ export default function RoomCard({
 
                 {/* Guests */}
                 <div className="flex items-center gap-1.5 text-gray-500 text-sm">
-                    <span
-                        className="material-symbols-outlined text-[14px]"
-                        style={{ fontVariationSettings: "'wght' 250" }}
-                    >
-                        person
-                    </span>
+                    <MdPerson className="text-[16px]" />
                     <span>{guests} guests</span>
                 </div>
 

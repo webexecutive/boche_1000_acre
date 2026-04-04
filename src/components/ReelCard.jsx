@@ -1,3 +1,5 @@
+import { FaPlay } from 'react-icons/fa';
+
 export default function reelCard({
     title,
     thumbnail,
@@ -28,7 +30,7 @@ export default function reelCard({
                         aria-label={`Play ${title} video`}
                         className="bg-white/70 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 absolute hover:bg-white rounded-full p-3 hover:cursor-pointer"
                     >
-                        <img src="/icons/play.png" alt="" className="h-6" />
+                        <FaPlay className="h-6 w-6 text-white ml-1 opacity-90 shadow-sm" />
                     </button>
                 )}
             </div>

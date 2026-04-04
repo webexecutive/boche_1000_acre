@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { MdOutlineRoomService, MdOutlineCleaningServices, MdOutlineElectricalServices, MdOutlineDesk, MdOutlineCheckroom, MdOutlineChair, MdOutlineLuggage, MdOutlineMedicalServices, MdOutlineMeetingRoom, MdOutlinePeople, MdOutlineCheck, MdOutlineLogin, MdOutlineLogout, MdOutlineCurrencyRupee, MdOutlineShower } from 'react-icons/md';
+import { LuCircleParking, LuGlassWater } from "react-icons/lu";
+import { FaWater } from "react-icons/fa";
+import { GiCoffeePot } from "react-icons/gi";
+import { PiHandSoap } from "react-icons/pi";
+import { BiCctv } from "react-icons/bi";
+import { BsPersonWorkspace } from "react-icons/bs";
+import { IoRestaurantOutline } from "react-icons/io5";
 import rooms from '../data/rooms';
 import ImageCarousel from '../components/ImageCarousel';
 import EmblaCarousel from '../components/EmblaCarousel';
@@ -7,23 +15,23 @@ import Button from '../components/Button';
 import RoomCard from '../components/RoomCard';
 
 const amenitiesIconsMap = {
-    roomService: { label: "Room Service", icon: "/icons/room_service.png" },
-    housekeeping: { label: "House Keeping", icon: "/icons/house_keeping.png" },
-    parking: { label: "Parking", icon: "/icons/parking.png" },
-    powerBackup: { label: "Power Backup", icon: "/icons/power_backup.png" },
-    bathroom: { label: "Bathroom", icon: "/icons/bathroom.png" },
-    workDesk: { label: "Work Desk", icon: "/icons/work_desk.png" },
-    closet: { label: "Closet", icon: "/icons/closet.png" },
-    chair: { label: "Chair", icon: "/icons/chair.png" },
-    hotColdWater: { label: "Hot & Cold Water", icon: "/icons/hot_and_cold_water.png" },
-    teaCoffee: { label: "Tea and Coffee", icon: "/icons/tea_and_coffee_maker.png" },
-    toiletries: { label: "Toiletries", icon: "/icons/toiletries.png" },
-    mineralWater: { label: "Mineral Water", icon: "/icons/mineral_water.png" },
-    luggage: { label: "Luggage", icon: "/icons/luggage.png" },
-    firstAid: { label: "First Aid", icon: "/icons/first_aid.png" },
-    cctv: { label: "CCTV", icon: "/icons/cctv.png" },
-    reception: { label: "Reception", icon: "/icons/reception.png" },
-    restaurant: { label: "Restaurant", icon: "/icons/restaurant.png" }
+    roomService: { label: "Room Service", icon: MdOutlineRoomService },
+    housekeeping: { label: "House Keeping", icon: MdOutlineCleaningServices },
+    parking: { label: "Parking", icon: LuCircleParking },
+    powerBackup: { label: "Power Backup", icon: MdOutlineElectricalServices },
+    bathroom: { label: "Bathroom", icon: MdOutlineShower },
+    workDesk: { label: "Work Desk", icon: MdOutlineDesk },
+    closet: { label: "Closet", icon: MdOutlineCheckroom },
+    chair: { label: "Chair", icon: MdOutlineChair },
+    hotColdWater: { label: "Hot & Cold Water", icon: FaWater },
+    teaCoffee: { label: "Tea and Coffee", icon: GiCoffeePot },
+    toiletries: { label: "Toiletries", icon: PiHandSoap },
+    mineralWater: { label: "Mineral Water", icon: LuGlassWater },
+    luggage: { label: "Luggage", icon: MdOutlineLuggage },
+    firstAid: { label: "First Aid", icon: MdOutlineMedicalServices },
+    cctv: { label: "CCTV", icon: BiCctv },
+    reception: { label: "Reception", icon: BsPersonWorkspace },
+    restaurant: { label: "Restaurant", icon: IoRestaurantOutline }
 };
 
 const amenityCategories = [
@@ -83,11 +91,11 @@ const RoomDetails = () => {
             {/* Basic Info (Rooms & Guests) */}
             <div className="flex flex-wrap items-center gap-8 mb-6 text-gray-800 font-medium">
                 <div className="flex items-center gap-3">
-                    <img src="/icons/room.png" alt="Rooms" className="w-5 h-5 object-contain" />
+                    <MdOutlineMeetingRoom className="w-5 h-5 text-gray-700" />
                     <span>{room.basicInfo.rooms} Rooms</span>
                 </div>
                 <div className="flex items-center gap-3">
-                    <img src="/icons/guests.png" alt="Guests" className="w-5 h-5 object-contain" />
+                    <MdOutlinePeople className="w-5 h-5 text-gray-700" />
                     <span>{room.basicInfo.maxGuests} Guests</span>
                 </div>
             </div>
@@ -98,7 +106,7 @@ const RoomDetails = () => {
                 <div className="space-y-3">
                     {room.inclusions.map((inclusion, idx) => (
                         <div key={idx} className="flex items-start gap-3">
-                            <img src="/icons/tick.png" alt="Included" className="w-5 h-5 mt-0.5 object-contain shrink-0" />
+                            <MdOutlineCheck className="w-5 h-5 mt-0.5 text-green-600 shrink-0" />
                             <span>{inclusion}</span>
                         </div>
                     ))}
@@ -107,11 +115,11 @@ const RoomDetails = () => {
                 {/* Check In / Check Out */}
                 <div className="space-y-3">
                     <div className="flex items-center gap-3">
-                        <img src="/icons/check-in.png" alt="Check in" className="w-5 h-5 object-contain shrink-0" />
+                        <MdOutlineLogin className="w-5 h-5 text-gray-700 shrink-0" />
                         <span>Check in : {room.checkTime.checkIn}</span>
                     </div>
                     <div className="flex items-center gap-3">
-                        <img src="/icons/check-out.png" alt="Check out" className="w-5 h-5 object-contain shrink-0" />
+                        <MdOutlineLogout className="w-5 h-5 text-gray-700 shrink-0" />
                         <span>Check Out : {room.checkTime.checkOut}</span>
                     </div>
                 </div>
@@ -121,7 +129,7 @@ const RoomDetails = () => {
             <div className="space-y-3 mb-8 text-sm sm:text-base text-gray-800">
                 {room.cancellationPolicy && room.cancellationPolicy.map((policy, idx) => (
                     <div key={idx} className="flex items-start gap-3">
-                        <img src="/icons/refund.png" alt="Refund Policy" className="w-5 h-5 mt-0.5 object-contain shrink-0" />
+                        <MdOutlineCurrencyRupee className="w-5 h-5 mt-0.5 text-gray-700 shrink-0" />
                         <span>{policy.label}</span>
                     </div>
                 ))}
@@ -194,7 +202,7 @@ const RoomDetails = () => {
                                     if (!am) return null;
                                     return (
                                         <div key={amKey} className="flex flex-col items-center gap-2">
-                                            <img src={am.icon} alt={am.label} className="w-8 h-8 object-contain opacity-80" />
+                                            <am.icon className="w-8 h-8 text-black" />
                                             <span className="text-xs sm:text-sm text-gray-700 font-medium text-center w-20 leading-tight">
                                                 {am.label}
                                             </span>
@@ -347,7 +355,7 @@ const RoomDetails = () => {
                                                 if (!am) return null;
                                                 return (
                                                     <div key={amKey} className="flex flex-col items-center gap-3">
-                                                        <img src={am.icon} alt={am.label} className="w-10 h-10 object-contain opacity-80" />
+                                                        <am.icon className="w-10 h-10 text-black" />
                                                         <span className="text-xs sm:text-sm text-gray-700 font-medium text-center w-20 leading-tight">
                                                             {am.label}
                                                         </span>
