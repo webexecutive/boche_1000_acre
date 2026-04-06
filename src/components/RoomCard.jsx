@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { MdPerson } from "react-icons/md";
 import Button from "./Button";
 
+import CImage from "./Cimage";
+
 export default function RoomCard({
     image,
     blur,
@@ -11,7 +13,6 @@ export default function RoomCard({
     price,
     id,
 }) {
-    const [loaded, setLoaded] = useState(false);
 
     return (
         <Link
@@ -19,27 +20,12 @@ export default function RoomCard({
             className="flex flex-col w-full bg-[#FDFFF8] rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
         >
             {/* Image */}
-            <div className="relative overflow-hidden w-full h-[200px] shrink-0">
-                {!loaded && blur && (
-                    <img
-                        src={blur}
-                        alt=""
-                        aria-hidden="true"
-                        className="absolute inset-0 w-full h-full object-cover"
-                    />
-                )}
-                {image && (
-                    <img
-                        src={image}
-                        alt={title}
-                        loading="lazy"
-                        onLoad={() => setLoaded(true)}
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                            loaded ? "opacity-100" : "opacity-0"
-                        }`}
-                    />
-                )}
-            </div>
+            <CImage
+                src={image}
+                blur={blur}
+                alt={title}
+                className="w-full h-[200px] shrink-0"
+            />
 
             {/* Body */}
             <div className="flex flex-col flex-1 p-4 gap-2">

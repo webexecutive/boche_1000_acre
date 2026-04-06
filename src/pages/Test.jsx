@@ -1,15 +1,15 @@
 import RoomCard from "../components/RoomCard";
-import rooms from "../data/rooms";
+import rooms from "../data/roomsData";
 import EmblaCarousel from "../components/EmblaCarousel";
 import ReelCard from "../components/ReelCard";
-import adventures from "../data/adventures";
+import adventures from "../data/adventuresData";
 import GalleryThumbnail from "../components/GalleryThumbnail";
-import { gallery, categories } from "../data/gallery";
+import { gallery, categories } from "../data/galleryData";
 import { Link } from "react-router-dom";
 import ImageCarousel from "../components/ImageCarousel";
 import "../assets/styles/image-carousel.css";
 import LogoCarousel from "../components/LogoCarousel";
-import group from "../data/group";
+import group from "../data/groupData";
 import { Slider } from "@chakra-ui/react"
 
 function Test() {

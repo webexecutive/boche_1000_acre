@@ -1,12 +1,6 @@
-import { useState } from "react";
+import CImage from "./Cimage";
 
 function GalleryThumbnail({ image, title, onClick, blur }) {
-    const [loaded, setLoaded] = useState(false);
-    const [imgSrc, setImgSrc] = useState(image);
-
-
-
-
 
     return (
         <div
@@ -15,32 +9,14 @@ function GalleryThumbnail({ image, title, onClick, blur }) {
         >
             {/* IMAGE WRAPPER */}
             <div className="relative w-full h-48 md:h-56 overflow-hidden">
+                <CImage
+                    src={image}
+                    blur={blur}
+                    alt={title}
+                    className="w-full h-full absolute inset-0 [&>img]:transition-transform [&>img]:duration-500 [&>img]:group-hover:scale-105"
+                />
 
-
-                <>
-
-                    {!loaded && (
-                        <img
-                            src={blur}
-                            alt=""
-                            aria-hidden="true"
-                            className="absolute inset-0 w-full h-full object-cover"
-                        />
-                    )}
-
-
-                    <img
-                        src={imgSrc}
-                        alt={title}
-                        loading="lazy"
-                        onLoad={() => setLoaded(true)}
-                        className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${loaded ? "opacity-100" : "opacity-0"
-                            } group-hover:scale-105`}
-                    />
-                </>
-
-
-                <div className="absolute left-0 bottom-0 w-full h-44  transition-all duration-500 group-hover:h-52 bg-linear-to-t from-black via-black/20 to-transparent"></div>
+                <div className="absolute left-0 bottom-0 w-full h-44  transition-all duration-500 group-hover:h-52 bg-linear-to-t from-black via-black/20 to-transparent pointer-events-none"></div>
             </div>
 
 

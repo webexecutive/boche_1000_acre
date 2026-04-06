@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Menu, Portal } from "@chakra-ui/react";
 import { HiSortAscending } from "react-icons/hi";
-import rooms from "../data/rooms";
+import rooms from "../data/roomsData";
 import RoomCard from "../components/RoomCard";
 
 const sortOptions = [

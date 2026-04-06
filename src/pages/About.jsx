@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { aboutData } from '../data/about.js';
+import { aboutData } from '../data/aboutData.js';
 import ReactMarkdown from 'react-markdown';
 import LogoCarousel from "../components/LogoCarousel";
-import group from "../data/group";
+import group from "../data/groupData";
 
 const About = () => {
   const [activeTab, setActiveTab] = useState(aboutData[0].id);

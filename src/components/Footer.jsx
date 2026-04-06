@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/logos/1000 acre logo black.svg";
 import GroupLogo from "../assets/logos/group-logo.png";
-import navLinks from "../data/navLinks";
-import address from "../data/address";
-import contacts from "../data/contacts";
-import mail from "../data/mailId";
-import socialmedia from "../data/socialmedia";
+import navLinks from "../data/navLinksData";
+import address from "../data/addressData";
+import contacts from "../data/contactsData";
+import mail from "../data/mailIdData";
+import socialmedia from "../data/socialmediaData";
 
 const half = Math.ceil(navLinks.length / 2);
 const quickLinksCol1 = navLinks.slice(0, half);

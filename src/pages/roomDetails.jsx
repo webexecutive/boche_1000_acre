@@ -8,7 +8,7 @@ import { PiHandSoap } from "react-icons/pi";
 import { BiCctv } from "react-icons/bi";
 import { BsPersonWorkspace } from "react-icons/bs";
 import { IoRestaurantOutline } from "react-icons/io5";
-import rooms from '../data/rooms';
+import rooms from '../data/roomsData';
 import ImageCarousel from '../components/ImageCarousel';
 import EmblaCarousel from '../components/EmblaCarousel';
 import Button from '../components/Button';

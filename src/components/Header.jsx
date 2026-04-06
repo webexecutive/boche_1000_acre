@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/logos/1000 acre logo black.svg";
-import navLinks from "../data/navLinks";
+import navLinks from "../data/navLinksData";
 import Button from "./Button";
 
 function Header() {

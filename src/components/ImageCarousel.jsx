@@ -1,27 +1,17 @@
 import { useState, useEffect, useCallback } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { Thumb } from './ImageCarouselThumbsButton'
+import '../assets/styles/image-carousel.css'
+import CImage from "./Cimage";
 
 const SlideImage = ({ src, blur, alt }) => {
-    const [loaded, setLoaded] = useState(false);
     return (
-        <div className="relative w-full h-full rounded-2xl overflow-hidden">
-            {!loaded && blur && (
-                <img
-                    src={blur}
-                    alt=""
-                    aria-hidden="true"
-                    className="absolute inset-0 w-full h-full object-cover"
-                />
-            )}
-            <img 
-                src={src} 
-                alt={alt} 
-                loading="lazy"
-                onLoad={() => setLoaded(true)}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
-            />
-        </div>
+        <CImage
+            src={src}
+            blur={blur}
+            alt={alt}
+            className="w-full h-full aspect-3/2 rounded-2xl"
+        />
     );
 };
 

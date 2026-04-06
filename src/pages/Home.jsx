@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
 import Button from "../components/Button";
 import RoomCard from "../components/RoomCard";
-import rooms from "../data/rooms";
+import rooms from "../data/roomsData";
 import EmblaCarousel from "../components/EmblaCarousel";
 import bhoomiputraLogo from "../assets/logos/bhoomiputra-logo.png";
 import toddy1 from "../assets/images/toddy-1.webp";
@@ -17,10 +17,10 @@ import toddyLogo from "../assets/logos/boche-toddypub.png";
 import bhojanamLogo from "../assets/logos/boche-bhojanam.png";
 import bocheWithFood from "../assets/images/bohe-withfood.webp";
 import { Document, Page, pdfjs } from "react-pdf";
-import adventures from "../data/adventures";
+import adventures from "../data/adventuresData";
 import ReelCard from "../components/ReelCard";
 import GalleryThumbnail from "../components/GalleryThumbnail";
-import { gallery, categories } from "../data/gallery";
+import { gallery, categories } from "../data/galleryData";
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
