@@ -165,7 +165,7 @@ const RoomDetails = () => {
                     {/* Images Carousel */}
                     <div className="w-full">
                         {room.images && room.images.length > 0 ? (
-                            <ImageCarousel images={room.images} options={{ loop: true }} />
+                            <ImageCarousel key={id} images={room.images} options={{ loop: true }} />
                         ) : (
                             <div className="aspect-3/2 bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400">
                                 No images available

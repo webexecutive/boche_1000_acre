@@ -2,11 +2,14 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './services/navServices/ScrollToTop.jsx';
 import MainLayout from "./layout/MainLayout.jsx";
+import { useParams } from 'react-router-dom';
+import useNetworkStatus from "./hooks/useNetworkStatus";
 
 import HomeSkeleton from './components/skeletons/HomeSkeleton.jsx';
 import DetailsSkeleton from './components/skeletons/DetailsSkeleton.jsx';
 import GridSkeleton from './components/skeletons/GridSkeleton.jsx';
 import ContentSkeleton from './components/skeletons/ContentSkeleton.jsx';
+import NotFound from './components/NotFound.jsx';
 
 const Home = lazy(() => import('./pages/Home.jsx'));
 const Test = lazy(() => import('./pages/Test.jsx'));
@@ -19,8 +22,15 @@ const Adventures = lazy(() => import('./pages/Adventures.jsx'));
 const Events = lazy(() => import('./pages/Events.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
 
+const RoomDetailsWithKey = () => {
+  const { id } = useParams();
+  return <RoomDetails key={id} />;
+};
+
 function App() {
+  const isOnline = useNetworkStatus();
   return (
+    
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
@@ -48,7 +58,7 @@ function App() {
             path="/stays/:id"
             element={
               <Suspense fallback={<DetailsSkeleton />}>
-                <RoomDetails />
+                <RoomDetailsWithKey />
               </Suspense>
             }
           />
@@ -124,6 +134,7 @@ function App() {
               </Suspense>
             }
           />
+          <Route path='*' element={<NotFound/>}/>
 
         </Route>
       </Routes>
