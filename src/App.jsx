@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './services/navServices/ScrollToTop.jsx';
 import MainLayout from "./layout/MainLayout.jsx";
 import { useParams } from 'react-router-dom';
-import useNetworkStatus from "./hooks/useNetworkStatus";
+
 
 import HomeSkeleton from './components/skeletons/HomeSkeleton.jsx';
 import DetailsSkeleton from './components/skeletons/DetailsSkeleton.jsx';
@@ -18,6 +18,7 @@ const RoomDetails = lazy(() => import('./pages/roomDetails.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
 const Stays = lazy(() => import('./pages/Stays.jsx'));
 const PackagesAndOffers = lazy(() => import('./pages/PackagesAndOffers.jsx'));
+const PackageDetails = lazy(() => import('./pages/PackageDetails.jsx'));
 const Adventures = lazy(() => import('./pages/Adventures.jsx'));
 const Events = lazy(() => import('./pages/Events.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
@@ -28,7 +29,7 @@ const RoomDetailsWithKey = () => {
 };
 
 function App() {
-  const isOnline = useNetworkStatus();
+ 
   return (
     
     <BrowserRouter>
@@ -68,6 +69,15 @@ function App() {
             element={
               <Suspense fallback={<GridSkeleton />}>
                 <PackagesAndOffers />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/packages-and-offers/:id"
+            element={
+              <Suspense fallback={<ContentSkeleton />}>
+                <PackageDetails />
               </Suspense>
             }
           />
