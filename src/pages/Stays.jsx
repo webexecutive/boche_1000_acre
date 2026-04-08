@@ -66,6 +66,7 @@ const Stays = () => {
                         guests={room.basicInfo.maxGuests}
                         price={room.basicInfo.pricePerNight}
                         id={room.id}
+                        className="bg-[#f2faeb]!"
                     />
                 ))}
             </div>

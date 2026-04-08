@@ -141,11 +141,11 @@ const PackageDetails = () => {
                                 return (
                                     <div key={key}>
                                         {/* Large serif heading — same scale as schedule title */}
-                                        <h4 className="font-serif text-gray-900 mb-3">{meal.label}</h4>
-                                        <ul className="space-y-1.5 text-sm text-gray-700">
+                                        <h4 className="mb-3">{meal.label}</h4>
+                                        <ul className="space-y-1.5 text-sm text-gray-800">
                                             {meal.items.map((item, idx) => (
                                                 <li key={idx} className="flex items-start gap-2">
-                                                    <span className="mt-[5px] shrink-0">•</span>
+                                                    <span>•</span>
                                                     <span>{item}</span>
                                                 </li>
                                             ))}

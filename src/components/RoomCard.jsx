@@ -12,12 +12,13 @@ export default function RoomCard({
     guests,
     price,
     id,
+    className = '',
 }) {
 
     return (
         <Link
             to={`/stays/${id}`}
-            className="flex flex-col w-full bg-[#FDFFF8] rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+            className={`flex flex-col w-full bg-[#FDFFF8] rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer ${className}`}
         >
             {/* Image */}
             <CImage
@@ -51,12 +52,12 @@ export default function RoomCard({
                     </span>
                 </div>
 
-                {/* Book Now — pinned to bottom */}
+                {/* Book Now — pinned to bottom
                 <div className="mt-auto pt-1" onClick={(e) => e.preventDefault()}>
                     <Button variant="primary" size="sm" fullWidth>
                         Book Now
                     </Button>
-                </div>
+                </div> */}
 
             </div>
         </Link>
