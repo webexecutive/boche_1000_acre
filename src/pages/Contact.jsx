@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 
 function Contact() {
     return (
-        <section className="py-20 md:py-24  ">
+        <section className="py-20 md:py-24">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
                 {/* Heading */}

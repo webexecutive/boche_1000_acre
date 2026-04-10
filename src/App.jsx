@@ -22,6 +22,7 @@ const PackageDetails = lazy(() => import('./pages/PackageDetails.jsx'));
 const Adventures = lazy(() => import('./pages/Adventures.jsx'));
 const Events = lazy(() => import('./pages/Events.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
+const Booking = lazy(() => import('./pages/Booking.jsx'));  
 
 const RoomDetailsWithKey = () => {
   const { id } = useParams();
@@ -132,6 +133,15 @@ function App() {
             element={
               <Suspense fallback={<ContentSkeleton />}>
                 <Contact />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/booking"
+            element={
+              <Suspense fallback={<ContentSkeleton />}>
+                <Booking />
               </Suspense>
             }
           />
