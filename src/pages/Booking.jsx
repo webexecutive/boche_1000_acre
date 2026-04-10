@@ -92,7 +92,7 @@ function Booking() {
                     </h2>
 
                     <form onSubmit={handleSubmit(onSubmit)} noValidate>
-                        <div className="border border-gray-400 p-6 md:p-10 grid md:grid-cols-2 gap-10">
+                        <div className="border border-gray-400 p-6 rounded-2xl md:p-10 grid md:grid-cols-2 gap-10">
 
                             {/* ── LEFT SIDE ── */}
                             <div className="space-y-5">
@@ -218,7 +218,7 @@ function Booking() {
                                 {/* ✅ Phone with react-phone-input-2 */}
                                 <div>
                                     <label className="text-sm">Phone Number</label>
-                                    import {isValidPhoneNumber} from "libphonenumber-js";
+                                    
 
                                     <Controller
                                         name="phone"
