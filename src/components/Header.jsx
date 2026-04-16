@@ -10,6 +10,7 @@ function Header() {
     const { pathname } = useLocation();
 
     const isHome = pathname === "/";
+    const isBookingPage = pathname === "/booking";
     const isTransparent = isHome && !scrolled;
 
     const isActive = (path) =>
@@ -66,10 +67,11 @@ function Header() {
                 </nav>
 
                 <div className="flex items-center space-x-10">
-                    {isTransparent
-                        ? <Button variant="glass" size="sm" className="hidden md:flex">Book Now</Button>
-                        : <Button size="sm" className="hidden md:flex">Book Now</Button>
-                    }
+                    {!isBookingPage && (
+                        isTransparent
+                            ? <Link to="/booking"><Button variant="glass" size="sm" className="hidden md:flex">Book Now</Button></Link>
+                            : <Link to="/booking"><Button size="sm" className="hidden md:flex">Book Now</Button></Link>
+                    )}
 
                     {/* Hamburger */}
                     <button
@@ -159,9 +161,13 @@ function Header() {
                     </nav>
 
                     {/* CTA buttons */}
-                    <div className="px-6 py-6 border-t border-gray-300 flex flex-col gap-3">
-                        <Button fullWidth onClick={() => setMenuOpen(false)}>Book Now</Button>
-                    </div>
+                    {!isBookingPage && (
+                        <div className="px-6 py-6 border-t border-gray-300 flex flex-col gap-3">
+                            <Link to="/booking" className="w-full flex" onClick={() => setMenuOpen(false)}>
+                                <Button fullWidth>Book Now</Button>
+                            </Link>
+                        </div>
+                    )}
 
                 </div>
             )}

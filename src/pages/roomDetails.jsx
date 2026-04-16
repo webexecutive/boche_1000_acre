@@ -147,9 +147,11 @@ const RoomDetails = () => {
                 </div>
 
                 <div className="flex justify-center px-2">
-                    <Button variant="primary" >
-                        Book Now
-                    </Button>
+                    <Link to="/booking">
+                        <Button variant="primary" >
+                            Book Now
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -100,7 +100,7 @@ function Contact() {
                             </label>
                             <input
                                 type="email"
-                                className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#3a5a1c]"
+                                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#3a5a1c]"
                             />
                         </div>
 
@@ -111,7 +111,7 @@ function Contact() {
                             </label>
                             <input
                                 type="text"
-                                className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#3a5a1c]"
+                                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#3a5a1c]"
                             />
                         </div>
 
@@ -119,7 +119,7 @@ function Contact() {
                         <div>
                             <textarea
                                 rows="6"
-                                className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#3a5a1c]"
+                                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#3a5a1c]"
                             ></textarea>
                         </div>
 

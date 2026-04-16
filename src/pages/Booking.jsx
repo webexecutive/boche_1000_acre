@@ -6,6 +6,7 @@ import { LuCalendar } from "react-icons/lu";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Button from "@/components/Button";
+import pincodes from "indian-pincodes";
 import { isValidPhoneNumber } from "libphonenumber-js";
 
 // ✅ Convert any date format → YYYY-MM-DD
@@ -34,8 +35,26 @@ function Booking() {
         register,
         handleSubmit,
         control,
+        watch,
+        setValue,
         formState: { errors },
     } = useForm({ defaultValues: { adults: 2, children: 0, phone: "" } });
+
+    const pincodeValue = watch("pincode");
+
+    React.useEffect(() => {
+        if (pincodeValue && pincodeValue.toString().length === 6) {
+            try {
+                const details = pincodes.getPincodeDetails(Number(pincodeValue));
+                if (details) {
+                    setValue("city", details.district || "", { shouldValidate: true });
+                    setValue("state", details.state || "", { shouldValidate: true });
+                }
+            } catch (err) {
+                console.error("Error fetching pincode details", err);
+            }
+        }
+    }, [pincodeValue, setValue]);
 
     const today = new Date().toISOString().split("T")[0];
     const [submitted, setSubmitted] = useState(false);
@@ -64,7 +83,7 @@ function Booking() {
                             <NumberInput.IncrementTrigger />
                             <NumberInput.DecrementTrigger />
                         </NumberInput.Control>
-                        <NumberInput.Input />
+                        <NumberInput.Input bg="white" borderRadius="7px" />
                     </NumberInput.Root>
                 )}
             />
@@ -104,6 +123,8 @@ function Booking() {
                                         <Input
                                             {...register("firstName", { required: "Required" })}
                                             placeholder="John"
+                                            bg="white"
+                                            borderRadius="7px"
                                         />
                                         {errors.firstName && (
                                             <p className="text-red-500 text-xs mt-1">
@@ -113,7 +134,7 @@ function Booking() {
                                     </div>
                                     <div>
                                         <label className="text-sm">Second Name</label>
-                                        <Input {...register("secondName")} placeholder="Doe" />
+                                        <Input {...register("secondName")} placeholder="Doe" bg="white" borderRadius="7px" />
                                     </div>
                                 </div>
 
@@ -123,6 +144,8 @@ function Booking() {
                                     <Input
                                         {...register("address1", { required: "Required" })}
                                         placeholder="123 Main Street"
+                                        bg="white"
+                                        borderRadius="7px"
                                     />
                                     {errors.address1 && (
                                         <p className="text-red-500 text-xs mt-1">
@@ -137,6 +160,8 @@ function Booking() {
                                     <Input
                                         {...register("address2")}
                                         placeholder="Apt, Suite (optional)"
+                                        bg="white"
+                                        borderRadius="7px"
                                     />
                                 </div>
 
@@ -147,6 +172,8 @@ function Booking() {
                                         <Input
                                             {...register("city", { required: "Required" })}
                                             placeholder="Mumbai"
+                                            bg="white"
+                                            borderRadius="7px"
                                         />
                                         {errors.city && (
                                             <p className="text-red-500 text-xs mt-1">
@@ -159,6 +186,8 @@ function Booking() {
                                         <Input
                                             {...register("state", { required: "Required" })}
                                             placeholder="Maharashtra"
+                                            bg="white"
+                                            borderRadius="7px"
                                         />
                                         {errors.state && (
                                             <p className="text-red-500 text-xs mt-1">
@@ -181,6 +210,8 @@ function Booking() {
                                         })}
                                         placeholder="400001"
                                         maxLength={6}
+                                        bg="white"
+                                        borderRadius="7px"
                                     />
                                     {errors.pincode && (
                                         <p className="text-red-500 text-xs mt-1">
@@ -207,6 +238,8 @@ function Booking() {
                                             },
                                         })}
                                         placeholder="john@example.com"
+                                        bg="white"
+                                        borderRadius="7px"
                                     />
                                     {errors.email && (
                                         <p className="text-red-500 text-xs mt-1">
@@ -237,15 +270,19 @@ function Booking() {
                                                     width: "100%",
                                                     height: "40px",
                                                     fontSize: "0.93rem",
-                                                    borderColor: errors.phone ? "#c0392b" : "#a8b898",
+                                                    borderWidth: "1px",
+                                                    borderStyle: "solid",
+                                                    borderColor: errors.phone ? "#c0392b" : "#e4e4e7",
                                                     borderRadius: "7px",
-                                                    backgroundColor: "rgba(255,255,255,0.65)",
+                                                    backgroundColor: "white",
                                                     paddingLeft: "48px",
                                                 }}
                                                 buttonStyle={{
-                                                    borderColor: errors.phone ? "#c0392b" : "#a8b898",
+                                                    borderWidth: "1px",
+                                                    borderStyle: "solid",
+                                                    borderColor: errors.phone ? "#c0392b" : "#e4e4e7",
                                                     borderRadius: "7px 0 0 7px",
-                                                    backgroundColor: "rgba(255,255,255,0.65)",
+                                                    backgroundColor: "white",
                                                 }}
                                                 enableSearch
                                                 placeholder="Enter phone number"
@@ -323,10 +360,10 @@ function Booking() {
                                                             gap: "8px",
                                                             border: errors.dateRange
                                                                 ? "1px solid #c0392b"
-                                                                : "1px solid #a8b898",
+                                                                : "1px solid #e4e4e7",
                                                             borderRadius: "7px",
                                                             padding: "4px 8px",
-                                                            background: "rgba(255,255,255,0.65)",
+                                                            background: "white",
                                                         }}
                                                     >
                                                         <DatePicker.Input
@@ -375,10 +412,8 @@ function Booking() {
                                                             <DatePicker.Content
                                                                 style={{
                                                                     background: "#fff",
-                                                                    borderRadius: 10,
+                                                                    borderRadius: "10px" ,
                                                                     boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
-                                                                    padding: 12,
-                                                                    zIndex: 9999,
                                                                 }}
                                                             >
                                                                 <DatePicker.View view="day">

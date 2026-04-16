@@ -104,7 +104,9 @@ const PackageDetails = () => {
                             </div>
                         )}
 
-                        <Button variant="primary" size="sm">Book Now</Button>
+                        <Link to="/booking">
+                            <Button variant="primary" size="sm">Book Now</Button>
+                        </Link>
                     </div>
                 </div>
             </div>

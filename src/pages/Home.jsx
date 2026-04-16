@@ -240,9 +240,9 @@ function Home() {
       <section
         className="
     py-20  text-center
-    bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/restaurantbg-sm.svg')]
-    md:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/restaurantbg-md.svg')]
-    lg:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/restaurantbg-lg.svg')]
+    bg-[linear-gradient(rgba(254,255,251,0.093),rgba(254,255,251,0.93)),url('/images/restaurantbg-sm.svg')]
+    md:bg-[linear-gradient(rgba(254,255,251,0.93),rgba(254,255,251,0.93)),url('/images/restaurantbg-md.svg')]
+    lg:bg-[linear-gradient(rgba(254,255,251,0.93),rgba(254,255,251,0.93)),url('/images/restaurantbg-lg.svg')]
     
     bg-cover bg-center bg-no-repeat
     
@@ -366,7 +366,9 @@ function Home() {
 
 
           </div>
-          <Button size="sm" className="border-white border" >Know More</Button>
+          <Link to="/boomiputhra">
+            <Button size="sm" className="border-white border" >Know More</Button>
+          </Link>
         </div>
 
       </section>
@@ -420,11 +422,11 @@ function Home() {
           </p>
 
           <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row justify-center items-center gap-3 w-full max-w-lg mx-auto">
-            <input 
-              type="email" 
-              placeholder="Enter your email address" 
-              required 
-              className="w-full flex-1 px-6 py-3.5 bg-gray-50/50 border border-gray-300 rounded-full focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition" 
+            <input
+              type="email"
+              placeholder="Enter your email address"
+              required
+              className="w-full flex-1 px-6 py-3.5 bg-gray-50/50 border border-gray-300 rounded-full focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition"
             />
             <Button size="md" className="w-full sm:w-auto px-8 py-3.5 rounded-full whitespace-nowrap">
               Subscribe
