@@ -28,9 +28,9 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 function Home() {
   const getVideoSrc = () => {
     const width = window.innerWidth;
-    if (width <= 640) return "/videos/heroanimationsm.mp4";
-    if (width <= 1024) return "/videos/heroanimationmd.mp4";
-    return "/videos/heroanimationlg.mp4";
+    if (width <= 640) return "/videos/heroanimationsm.webm";
+    if (width <= 1024) return "/videos/heroanimationmd.webm";
+    return "/videos/heroanimationlg.webm";
   };
 
   const [videoSrc, setVideoSrc] = useState(getVideoSrc);
@@ -107,7 +107,7 @@ function Home() {
           className="absolute inset-0 h-full w-full object-cover"
           style={{ zIndex: 0 }}
         >
-          <source src={videoSrc} type="video/mp4" />
+          <source src={videoSrc} type="video/webm" />
         </video>
 
         {!dismissed && (
