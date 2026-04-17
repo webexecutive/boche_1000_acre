@@ -22,7 +22,7 @@ const PackageDetails = lazy(() => import('./pages/PackageDetails.jsx'));
 const Adventures = lazy(() => import('./pages/Adventures.jsx'));
 const Events = lazy(() => import('./pages/Events.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
-const Booking = lazy(() => import('./pages/Booking.jsx'));  
+const Booking = lazy(() => import('./pages/Booking.jsx'));
 const Boomiputhra = lazy(() => import('./pages/Boomiputhra.jsx'));
 
 const RoomDetailsWithKey = () => {
@@ -31,9 +31,9 @@ const RoomDetailsWithKey = () => {
 };
 
 function App() {
- 
+
   return (
-    
+
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
@@ -164,7 +164,7 @@ function App() {
               </Suspense>
             }
           />
-          <Route path='*' element={<NotFound/>}/>
+          <Route path='*' element={<NotFound />} />
 
         </Route>
       </Routes>

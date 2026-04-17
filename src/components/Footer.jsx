@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/logos/1000 acre logo black.svg";
-import GroupLogo from "../assets/logos/group-logo.png";
+import GroupLogo from "../assets/logos/group-logo.webp";
 import navLinks from "../data/navLinksData";
 import address from "../data/addressData";
 import contacts from "../data/contactsData";

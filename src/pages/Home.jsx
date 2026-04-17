@@ -7,14 +7,14 @@ import Button from "../components/Button";
 import RoomCard from "../components/RoomCard";
 import rooms from "../data/roomsData";
 import EmblaCarousel from "../components/EmblaCarousel";
-import bhoomiputraLogo from "../assets/logos/bhoomiputra-logo.png";
+import bhoomiputraLogo from "../assets/logos/bhoomiputra-logo.webp";
 import toddy1 from "../assets/images/toddy-1.webp";
 import toddy2 from "../assets/images/toddy-2.webp";
 import toddy3 from "../assets/images/toddy-3.webp";
 import toddy4 from "../assets/images/toddy-4.webp";
 import toddy5 from "../assets/images/toddy-5.webp";
-import toddyLogo from "../assets/logos/boche-toddypub.png";
-import bhojanamLogo from "../assets/logos/boche-bhojanam.png";
+import toddyLogo from "../assets/logos/boche-toddypub.webp";
+import bhojanamLogo from "../assets/logos/boche-bhojanam.webp";
 import bocheWithFood from "../assets/images/bohe-withfood.webp";
 import { Document, Page, pdfjs } from "react-pdf";
 import adventures from "../data/adventuresData";
@@ -240,9 +240,9 @@ function Home() {
       <section
         className="
     py-20  text-center
-    bg-[linear-gradient(rgba(254,255,251,0.093),rgba(254,255,251,0.93)),url('/images/restaurantbg-sm.svg')]
-    md:bg-[linear-gradient(rgba(254,255,251,0.93),rgba(254,255,251,0.93)),url('/images/restaurantbg-md.svg')]
-    lg:bg-[linear-gradient(rgba(254,255,251,0.93),rgba(254,255,251,0.93)),url('/images/restaurantbg-lg.svg')]
+    bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/restaurantbg-sm.svg')]
+    md:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/restaurantbg-md.svg')]
+    lg:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/restaurantbg-lg.svg')]
     
     bg-cover bg-center bg-no-repeat
     
