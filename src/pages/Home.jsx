@@ -316,7 +316,9 @@ function Home() {
             ))}
           </EmblaCarousel>
           <div className="flex justify-center">
-            <Button size="sm">Know More</Button>
+            <Link to="/adventures">
+              <Button size="sm">Know More</Button>
+            </Link>
           </div>
 
         </div>

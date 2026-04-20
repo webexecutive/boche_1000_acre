@@ -29,7 +29,7 @@ const Boomiputhra = () => {
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-6 text-center z-10 pointer-events-none">
                     <div className="max-w-5xl opacity-0 animate-fade-in-up delay-200">
-                        <img src={bhoomiputhraLogo} alt="Bhoomiputhra Logo" className="mx-auto w-auto max-h-[14rem] md:max-h-[20rem] mb-6 drop-shadow-xl object-contain" />
+                        <img src={bhoomiputhraLogo} alt="Bhoomiputhra Logo" className="mx-auto w-auto max-h-56 md:max-h-80 mb-6 drop-shadow-xl object-contain" />
                         <p className="text-xl md:text-2xl text-white/95  max-w-3xl mx-auto drop-shadow-md tracking-wide">
                             A 600-Acre Legacy of Premium Plantations & Excellence in South India
                         </p>
