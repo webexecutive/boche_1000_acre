@@ -76,14 +76,7 @@ const rooms = [
 
 
         images: [
-            {
-                id: 1,
-                alt: "boche 1000 acre british-bungalow exterior",
-                blur: "/images/stays/british-bungalow/1-blur.webp",
-                small: "/images/stays/british-bungalow/1-small.webp",
-                medium: "/images/stays/british-bungalow/1-medium.webp",
-                large: "/images/stays/british-bungalow/1-large.webp"
-            },
+            { id: 1, alt: "boche 1000 acre british-bungalow exterior", galleryId: 6 },
         ],
     },
 
@@ -162,14 +155,9 @@ const rooms = [
         },
 
 
-        images: [{
-            id: 1,
-            alt: "boche 1000 acre mud-house exterior",
-            blur: "/images/stays/mud-house/1-blur.webp",
-            small: "/images/stays/mud-house/1-small.webp",
-            medium: "/images/stays/mud-house/1-medium.webp",
-            large: "/images/stays/mud-house/1-large.webp"
-        },]
+        images: [
+            { id: 1, alt: "boche 1000 acre mud-house exterior", galleryId: 8 },
+        ],
     },
 
     {
@@ -246,62 +234,13 @@ const rooms = [
         },
 
         images: [
-            {
-                id: 1,
-                alt: "boche 1000 acre x-pod exterior",
-                blur: "/images/stays/x-pod/1-blur.webp",
-                small: "/images/stays/x-pod/1-small.webp",
-                medium: "/images/stays/x-pod/1-medium.webp",
-                large: "/images/stays/x-pod/1-large.webp"
-            },
-            {
-                id: 2,
-                alt: "boche 1000 acre x-pod exterior",
-                blur: "/images/stays/x-pod/2-blur.webp",
-                small: "/images/stays/x-pod/2-small.webp",
-                medium: "/images/stays/x-pod/2-medium.webp",
-                large: "/images/stays/x-pod/2-large.webp"
-            },
-            {
-                id: 3,
-                alt: "boche 1000 acre x-pod exterior",
-                blur: "/images/stays/x-pod/3-blur.webp",
-                small: "/images/stays/x-pod/3-small.webp",
-                medium: "/images/stays/x-pod/3-medium.webp",
-                large: "/images/stays/x-pod/3-large.webp"
-            },
-            {
-                id: 4,
-                alt: "boche 1000 acre x-pod bedroom",
-                blur: "/images/stays/x-pod/4-blur.webp",
-                small: "/images/stays/x-pod/4-small.webp",
-                medium: "/images/stays/x-pod/4-medium.webp",
-                large: "/images/stays/x-pod/4-large.webp"
-            },
-            {
-                id: 5,
-                alt: "boche 1000 acre x-pod toilet",
-                blur: "/images/stays/x-pod/5-blur.webp",
-                small: "/images/stays/x-pod/5-small.webp",
-                medium: "/images/stays/x-pod/5-medium.webp",
-                large: "/images/stays/x-pod/5-large.webp"
-            },
-            {
-                id: 6,
-                alt: "boche 1000 acre x-pod amenities",
-                blur: "/images/stays/x-pod/6-blur.webp",
-                small: "/images/stays/x-pod/6-small.webp",
-                medium: "/images/stays/x-pod/6-medium.webp",
-                large: "/images/stays/x-pod/6-large.webp"
-            },
-            {
-                id: 7,
-                alt: "boche 1000 acre x-pod projector",
-                blur: "/images/stays/x-pod/7-blur.webp",
-                small: "/images/stays/x-pod/7-small.webp",
-                medium: "/images/stays/x-pod/7-medium.webp",
-                large: "/images/stays/x-pod/7-large.webp"
-            }
+            { id: 1, alt: "boche 1000 acre x-pod exterior",  galleryId: 11 },
+            { id: 2, alt: "boche 1000 acre x-pod exterior",  galleryId: 12 },
+            { id: 3, alt: "boche 1000 acre x-pod exterior",  galleryId: 13 },
+            { id: 4, alt: "boche 1000 acre x-pod bedroom",   galleryId: 14 },
+            { id: 5, alt: "boche 1000 acre x-pod toilet",    galleryId: 16 },
+            { id: 6, alt: "boche 1000 acre x-pod amenities", galleryId: 17 },
+            { id: 7, alt: "boche 1000 acre x-pod projector", galleryId: 18 },
         ],
     },
 
@@ -381,14 +320,7 @@ const rooms = [
 
 
         images: [
-            {
-                id: 1,
-                alt: "boche 1000 acre bubble-dome exterior",
-                blur: "/images/stays/bubble-dome/1-blur.webp",
-                small: "/images/stays/bubble-dome/1-small.webp",
-                medium: "/images/stays/bubble-dome/1-medium.webp",
-                large: "/images/stays/bubble-dome/1-large.webp"
-            },
+            { id: 1, alt: "boche 1000 acre bubble-dome exterior", galleryId: 7 },
         ],
     },
 
@@ -468,14 +400,7 @@ const rooms = [
 
 
         images: [
-            {
-                id: 1,
-                alt: "boche 1000 acre sexy-dome exterior",
-                blur: "/images/stays/sexy-dome/1-blur.webp",
-                small: "/images/stays/sexy-dome/1-small.webp",
-                medium: "/images/stays/sexy-dome/1-medium.webp",
-                large: "/images/stays/sexy-dome/1-large.webp"
-            },
+            { id: 1, alt: "boche 1000 acre sexy-dome exterior", galleryId: 10 },
         ],
     },
 
@@ -555,14 +480,7 @@ const rooms = [
 
 
         images: [
-            {
-                id: 1,
-                alt: "boche 1000 acre back-packers-room exterior",
-                blur: "/images/stays/back-packers-room/1-blur.webp",
-                small: "/images/stays/back-packers-room/1-small.webp",
-                medium: "/images/stays/back-packers-room/1-medium.webp",
-                large: "/images/stays/back-packers-room/1-large.webp"
-            },
+            { id: 1, alt: "boche 1000 acre back-packers-room exterior", galleryId: 4 },
         ],
     },
 
@@ -642,14 +560,7 @@ const rooms = [
 
 
         images: [
-            {
-                id: 1,
-                alt: "boche 1000 acre back-packers-full-property exterior",
-                blur: "/images/stays/back-packers-full-property/1-blur.webp",
-                small: "/images/stays/back-packers-full-property/1-small.webp",
-                medium: "/images/stays/back-packers-full-property/1-medium.webp",
-                large: "/images/stays/back-packers-full-property/1-large.webp"
-            },
+            { id: 1, alt: "boche 1000 acre back-packers-full-property exterior", galleryId: 5 },
         ],
     },
 
@@ -729,14 +640,9 @@ const rooms = [
         },
 
 
-        images: [{
-            id: 1,
-            alt: "boche 1000 acre agraharam exterior",
-            blur: "/images/stays/agraharam/1-blur.webp",
-            small: "/images/stays/agraharam/1-small.webp",
-            medium: "/images/stays/agraharam/1-medium.webp",
-            large: "/images/stays/agraharam/1-large.webp"
-        },],
+        images: [
+            { id: 1, alt: "boche 1000 acre agraharam exterior", galleryId: 3 },
+        ],
     },
 
     {
@@ -815,14 +721,9 @@ const rooms = [
         },
 
 
-        images: [{
-            id: 1,
-            alt: "boche 1000 acre natural-tent-stay exterior",
-            blur: "/images/stays/natural-tent-stay/1-blur.webp",
-            small: "/images/stays/natural-tent-stay/1-small.webp",
-            medium: "/images/stays/natural-tent-stay/1-medium.webp",
-            large: "/images/stays/natural-tent-stay/1-large.webp"
-        },],
+        images: [
+            { id: 1, alt: "boche 1000 acre natural-tent-stay exterior", galleryId: 9 },
+        ],
     }
 ];
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Menu, Portal } from "@chakra-ui/react";
 import { HiSortAscending } from "react-icons/hi";
 import rooms from "../data/roomsData";
+import { getImageById } from "../services/galleryService";
 import RoomCard from "../components/RoomCard";
 
 const sortOptions = [
@@ -28,7 +29,7 @@ const Stays = () => {
                 <Menu.Root>
                     <Menu.Trigger asChild>
                         <Button variant="outline" size="sm" className="gap-2 border-gray-200!">
-                            <HiSortAscending /> 
+                            <HiSortAscending />
                             {sortOptions.find((o) => o.value === sortOrder)?.label || "Sort"}
                         </Button>
                     </Menu.Trigger>
@@ -40,8 +41,8 @@ const Stays = () => {
                                     onValueChange={(e) => setSortOrder(e.value)}
                                 >
                                     {sortOptions.map((option) => (
-                                        <Menu.RadioItem 
-                                            key={option.value} 
+                                        <Menu.RadioItem
+                                            key={option.value}
                                             value={option.value}
                                             className="flex justify-between items-center px-4 py-2 text-sm font-medium text-gray-700 cursor-pointer hover:bg-gray-50 rounded-lg outline-none transition-colors"
                                         >
@@ -57,18 +58,22 @@ const Stays = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 py-10 md:py-16 lg:grid-cols-4 gap-10 justify-items-center">
-                {sortedRooms.map((room) => (
-                    <RoomCard
-                        key={room.id}
-                        image={room.images[0]?.small}
-                        blur={room.images[0]?.blur}
-                        title={room.name}
-                        guests={room.basicInfo.maxGuests}
-                        price={room.basicInfo.pricePerNight}
-                        id={room.id}
-                        className="bg-[#f2faeb]!"
-                    />
-                ))}
+                {sortedRooms.map((room) => {
+                    // CORRECTED: resolve gallery ID to get variants with actual URLs
+                    const cover = getImageById(room.images[0]?.galleryId);
+                    return (
+                        <RoomCard
+                            key={room.id}
+                            image={cover?.variants?.small ?? "/images/image-not-found-small.webp"}
+                            blur={cover?.variants?.blur ?? ""}
+                            title={room.name}
+                            guests={room.basicInfo.maxGuests}
+                            price={room.basicInfo.pricePerNight}
+                            id={room.id}
+                            className="bg-[#f2faeb]!"
+                        />
+                    );
+                })}
             </div>
         </div>
     );

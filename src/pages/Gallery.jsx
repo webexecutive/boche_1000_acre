@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
-import { categories, gallery } from '../data/galleryData';
+import { categories } from '../data/gallery';
+import { getImagesByCategory } from '../services/galleryService';
 
 /* Map category ids to display labels for the tab bar */
 const DISPLAY_LABELS = {
@@ -24,10 +25,7 @@ function Gallery() {
 
     const activeCategory = category || 'all';
 
-    const filteredImages =
-        activeCategory === 'all'
-            ? gallery
-            : gallery.filter((img) => img.category === activeCategory);
+    const filteredImages = getImagesByCategory(activeCategory);
 
     const totalCount = filteredImages.length;
     const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);
@@ -69,18 +67,20 @@ function Gallery() {
 
             {/* ── Category tabs ── */}
             <div className="flex gap-6 border-b border-gray-200 overflow-x-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
-                {categories.map((cat) => (
-                    <button
-                        key={cat.id}
-                        onClick={() => handleTab(cat.category)}
-                        className={`pb-3 text-sm whitespace-nowrap transition-colors duration-200 ${activeCategory === cat.category
-                            ? 'border-b-2 border-gray-900 text-gray-900 font-medium'
-                            : 'text-gray-400 hover:text-gray-700'
-                            }`}
-                    >
-                        {DISPLAY_LABELS[cat.category] ?? cat.title}
-                    </button>
-                ))}
+                {categories
+                    .filter(cat => cat.showInGallery !== false)
+                    .map((cat) => (
+                        <button
+                            key={cat.id}
+                            onClick={() => handleTab(cat.category)}
+                            className={`pb-3 text-sm whitespace-nowrap transition-colors duration-200 ${activeCategory === cat.category
+                                ? 'border-b-2 border-gray-900 text-gray-900 font-medium'
+                                : 'text-gray-400 hover:text-gray-700'
+                                }`}
+                        >
+                            {DISPLAY_LABELS[cat.category] ?? cat.title}
+                        </button>
+                    ))}
             </div>
 
             {/* ── Masonry grid ── */}
@@ -95,16 +95,16 @@ function Gallery() {
                     {pagedImages.map((item) => (
                         <a
                             key={item.id}
-                            data-pswp-src={item.images.large}
+                            data-pswp-src={item.variants.large}
                             data-pswp-width="1920"
                             data-pswp-height="1280"
-                            href={item.images.large}
+                            href={item.variants.large}
                             className="block mb-3 break-inside-avoid overflow-hidden rounded-xl group cursor-zoom-in"
                         >
                             <div className="relative w-full overflow-hidden">
                                 {/* Blur image */}
                                 <img
-                                    src={item.images.blur}
+                                    src={item.variants.blur}
                                     alt=""
                                     aria-hidden="true"
                                     className="w-full h-auto object-cover transition-opacity duration-500 opacity-100"
@@ -112,7 +112,7 @@ function Gallery() {
 
                                 {/* Real image */}
                                 <img
-                                    src={item.images.small}
+                                    src={item.variants.small}
                                     alt={item.alt}
                                     loading="lazy"
                                     onLoad={(e) => {
