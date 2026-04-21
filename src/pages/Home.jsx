@@ -271,20 +271,24 @@ function Home() {
             {categories
               .filter(cat => cat.showInGallery !== false)
               .map((cat) => {
-                const catImages = getImagesByCategory(cat.category);
+                const catImages = getImagesByCategory(cat.category)
+                  .sort((a, b) => b.id - a.id); // ✅ newest first
+
                 const repItem = cat.category === 'all'
-                    ? catImages.find(g => g.category === 'stays') ?? catImages[0]
-                    : catImages[0];
-                  const image = repItem ? repItem.variants.small : "/images/image-not-found-small.webp";
-                  const blur = repItem ? repItem.variants.blur : "";
-                  const title = cat.title === "All" ? "Recent" : cat.title;
-                  return (
-                    <Link to={`/gallery/${cat.category}`} key={cat.id}>
-                      <GalleryThumbnail image={image} blur={blur} title={title} />
-                    </Link>
-                  );
-                })
-              }
+                  ? catImages.find(g => g.category === 'stays') ?? catImages[0]
+                  : catImages[0];
+
+                const image = repItem ? repItem.variants.small : "/images/image-not-found-small.webp";
+                const blur = repItem ? repItem.variants.blur : "";
+                const title = cat.title === "All" ? "Recent" : cat.title;
+
+                return (
+                  <Link to={`/gallery/${cat.category}`} key={cat.id}>
+                    <GalleryThumbnail image={image} blur={blur} title={title} />
+                  </Link>
+                );
+              })
+            }
           </div>
         </div>
       </section>

@@ -15,7 +15,7 @@ const DISPLAY_LABELS = {
     estate: 'Estate',
 };
 
-const ITEMS_PER_PAGE = 24;
+const ITEMS_PER_PAGE = 50;
 
 function Gallery() {
     const { category } = useParams();
@@ -25,7 +25,8 @@ function Gallery() {
 
     const activeCategory = category || 'all';
 
-    const filteredImages = getImagesByCategory(activeCategory);
+    const filteredImages = getImagesByCategory(activeCategory)
+        .sort((a, b) => b.id - a.id);
 
     const totalCount = filteredImages.length;
     const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);

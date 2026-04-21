@@ -19,7 +19,7 @@ export function getImageById(id) {
 
   const base =
     img.category === "banner"
-      ? `/images/banners/${id}`
+      ? `/images/gallery/banner/${id}`
       : `/images/gallery/${img.category}/${id}`;
 
   return {

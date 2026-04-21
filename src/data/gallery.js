@@ -10,7 +10,7 @@ export const categories = [
 ];
 
 export const galleryMeta = {
-  lastId: 38
+  lastId: 41
 };
 
 export const gallery = [
@@ -50,6 +50,11 @@ export const gallery = [
   { id: 35, category: 'events', alt: 'Event 16', showInGallery: true },
   { id: 36, category: 'events', alt: 'Event 17', showInGallery: true },
   { id: 37, category: 'events', alt: 'Event 18', showInGallery: true },
-  { id: 38, category: 'events', alt: 'Yuouthful Wynad', showInGallery: false }
+  { id: 38, category: 'events', alt: 'Yuouthful Wynad', showInGallery: false },
+{ id: 39, category: 'banner', alt: 'Imgi 4 Bnnr2', showInGallery: false }
+,
+{ id: 40, category: 'banner', alt: 'Boche Carnival Banner', showInGallery: false }
+,
+{ id: 41, category: 'events', alt: 'Boche Carnival', showInGallery: false }
 
 ];
