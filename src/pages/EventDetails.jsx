@@ -260,7 +260,7 @@ const EventDetails = () => {
                         <h2 className="text-2xl font-serif font-light text-[#1a1a1a]">
                             Event Gallery
                         </h2>
-                        <div ref={galleryRef} className="columns-3 sm:columns-4 lg:columns-6 gap-2">
+                        <div ref={galleryRef} className="columns-2 sm:columns-3 lg:columns-4 gap-2">
 
                             {galleryImages.map((item) => (
                                 <a
