@@ -4,7 +4,7 @@ import { BsCalendar3, BsClock, BsGeoAlt, BsHourglass } from 'react-icons/bs';
 import events from '../data/events.js';
 import { getImageById } from '../services/galleryService.js';
 import Button from '../components/Button.jsx';
-import CImage from '../components/CImage.jsx';
+import CImage from '../components/Cimage.jsx';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 
