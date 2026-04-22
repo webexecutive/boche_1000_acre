@@ -13,28 +13,36 @@ const formatDate = (dateString) => {
     }).format(date);
 };
 
+import { Link } from 'react-router-dom';
+
 const EventCard = ({ event }) => {
     const imageItem = event?.thumbnailId ? getImageById(event.thumbnailId) : null;
     const imageSrc  = imageItem?.variants?.small || "/images/image-not-found-small.webp";
     const imageBlur = imageItem?.variants?.blur;
 
     return (
-        <div className="flex flex-col gap-3 w-full max-w-[320px]">
-            <CImage
-                src={imageSrc}
-                blur={imageBlur}
-                alt={event?.title || 'Event image'}
-                className="w-full aspect-4/5 rounded-[32px]"
-            />
+        <Link 
+            to={`/events/${event.id}`} 
+            className="flex flex-col gap-3 w-full max-w-[320px] group cursor-pointer"
+        >
+            <div className="overflow-hidden rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                <CImage
+                    src={imageSrc}
+                    blur={imageBlur}
+                    alt={event?.title || 'Event image'}
+                    className="w-full aspect-4/5 transition-transform duration-500 group-hover:scale-105"
+                />
+            </div>
             <div className="flex flex-col px-2 mt-2">
-                <span className="text-[#1a1a1a] text-sm font-medium mb-1 tracking-wide">
+               
+                <p className='font-medium md:text-lg lg:text-xl'>
+                    {event?.title}
+                </p>
+                 <span className="text-gray-600 text-sm font-medium mb-1 tracking-wide">
                     {formatDate(event?.startDate)}
                 </span>
-                <h3 className="text-[32px] font-serif text-[#1a1a1a] font-light leading-tight">
-                    {event?.title}
-                </h3>
             </div>
-        </div>
+        </Link>
     );
 };
 
