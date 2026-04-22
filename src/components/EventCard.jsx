@@ -1,5 +1,5 @@
 import React from 'react';
-import CImage from './CImage';
+import CImage from './Cimage';
 import { getImageById } from '../services/galleryService';
 
 const formatDate = (dateString) => {
