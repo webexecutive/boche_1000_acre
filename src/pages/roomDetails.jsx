@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { MdOutlineRoomService, MdOutlineCleaningServices, MdOutlineElectricalServices, MdOutlineDesk, MdOutlineCheckroom, MdOutlineChair, MdOutlineLuggage, MdOutlineMedicalServices, MdOutlineMeetingRoom, MdOutlinePeople, MdOutlineCheck, MdOutlineLogin, MdOutlineLogout, MdOutlineCurrencyRupee, MdOutlineShower } from 'react-icons/md';
+import { MdOutlineRoomService, MdOutlineCleaningServices, MdOutlineElectricalServices, MdOutlineDesk, MdOutlineCheckroom, MdOutlineChair, MdOutlineLuggage, MdOutlineMedicalServices, MdOutlineMeetingRoom, MdOutlinePeople, MdOutlineCheck, MdOutlineLogin, MdOutlineLogout, MdOutlineCurrencyRupee, MdOutlineShower, MdOutlineAcUnit, MdOutlineWc } from 'react-icons/md';
 import { LuCircleParking, LuGlassWater } from "react-icons/lu";
 import { FaWater } from "react-icons/fa";
 import { GiCoffeePot } from "react-icons/gi";
@@ -9,6 +9,7 @@ import { BiCctv } from "react-icons/bi";
 import { BsPersonWorkspace } from "react-icons/bs";
 import { IoRestaurantOutline } from "react-icons/io5";
 import rooms from '../data/roomsData';
+import amenitiesData from '../data/aminitiesData';
 import { getImageById } from '../services/galleryService';
 import ImageCarousel from '../components/ImageCarousel';
 import EmblaCarousel from '../components/EmblaCarousel';
@@ -21,6 +22,7 @@ const amenitiesIconsMap = {
     parking: { label: "Parking", icon: LuCircleParking },
     powerBackup: { label: "Power Backup", icon: MdOutlineElectricalServices },
     bathroom: { label: "Bathroom", icon: MdOutlineShower },
+    ac: { label: "Air Conditioned", icon: MdOutlineAcUnit },
     workDesk: { label: "Work Desk", icon: MdOutlineDesk },
     closet: { label: "Closet", icon: MdOutlineCheckroom },
     chair: { label: "Chair", icon: MdOutlineChair },
@@ -32,8 +34,16 @@ const amenitiesIconsMap = {
     firstAid: { label: "First Aid", icon: MdOutlineMedicalServices },
     cctv: { label: "CCTV", icon: BiCctv },
     reception: { label: "Reception", icon: BsPersonWorkspace },
-    restaurant: { label: "Restaurant", icon: IoRestaurantOutline }
+    restaurant: { label: "Restaurant", icon: IoRestaurantOutline },
+    commonBathroom: { label: "Common Toilet", icon: MdOutlineWc }
 };
+
+// Dynamically override hardcoded labels with the official labels from aminitiesData.js
+Object.values(amenitiesData).flat().forEach(item => {
+    if (amenitiesIconsMap[item.id]) {
+        amenitiesIconsMap[item.id].label = item.label;
+    }
+});
 
 const amenityCategories = [
     { key: 'basicFacilities', label: 'Basic Facilities' },
@@ -83,7 +93,7 @@ const RoomDetails = () => {
 
     // ── CORRECTED: resolve gallery IDs to full image objects with variants ──
     const resolvedImages = room.images
-        .map(img => getImageById(img.galleryId))
+        .map(img => getImageById(img))
         .filter(Boolean);
 
     const basicAmenitiesToPreview = room.amenities.basicFacilities
@@ -94,7 +104,7 @@ const RoomDetails = () => {
         .filter(r => r.id !== room.id)
         .map(r => ({
             ...r,
-            resolvedCover: getImageById(r.images?.[0]?.galleryId),
+            resolvedCover: getImageById(r.images?.[0]),
         }));
     // ────────────────────────────────────────────────────────────────────────
 

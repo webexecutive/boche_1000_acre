@@ -10,7 +10,7 @@ export const categories = [
 ];
 
 export const galleryMeta = {
-  lastId: 41
+  lastId: 77
 };
 
 export const gallery = [
@@ -51,10 +51,37 @@ export const gallery = [
   { id: 36, category: 'events', alt: 'Event 17', showInGallery: true },
   { id: 37, category: 'events', alt: 'Event 18', showInGallery: true },
   { id: 38, category: 'events', alt: 'Yuouthful Wynad', showInGallery: false },
-{ id: 39, category: 'banner', alt: 'Imgi 4 Bnnr2', showInGallery: false }
-,
-{ id: 40, category: 'banner', alt: 'Boche Carnival Banner', showInGallery: false }
-,
-{ id: 41, category: 'events', alt: 'Boche Carnival', showInGallery: false }
+  { id: 39, category: 'banner', alt: 'Imgi 4 Bnnr2', showInGallery: false }
+  ,
+  { id: 40, category: 'banner', alt: 'Boche Carnival Banner', showInGallery: false }
+  ,
+  { id: 41, category: 'events', alt: 'Boche Carnival', showInGallery: false }
+  ,
+  { id: 42, category: 'stays', alt: 'DSC00523', showInGallery: true },
+  { id: 43, category: 'stays', alt: 'DSC00556', showInGallery: true },
+  { id: 44, category: 'stays', alt: 'DSC00561', showInGallery: true },
+  { id: 45, category: 'stays', alt: 'DSC00571', showInGallery: true },
+  { id: 46, category: 'stays', alt: 'DSC00576', showInGallery: true },
+  { id: 47, category: 'stays', alt: 'DSC00581', showInGallery: true },
+  { id: 48, category: 'stays', alt: 'DSC00587', showInGallery: true },
+  { id: 49, category: 'stays', alt: 'DSC00589', showInGallery: true },
+  { id: 50, category: 'stays', alt: 'DSC00591', showInGallery: true },
+  { id: 51, category: 'stays', alt: 'DSC00373', showInGallery: true },
+  { id: 52, category: 'stays', alt: 'DSC00187', showInGallery: true },
+  { id: 53, category: 'stays', alt: 'DSC00192', showInGallery: true },
+  { id: 54, category: 'stays', alt: 'DSC00211', showInGallery: true },
+  { id: 55, category: 'stays', alt: 'DSC00270', showInGallery: true },
+  { id: 56, category: 'stays', alt: 'DSC00275', showInGallery: true },
+  { id: 57, category: 'stays', alt: 'DSC00279', showInGallery: true },
+  { id: 58, category: 'stays', alt: 'DSC00316', showInGallery: true },
+  { id: 59, category: 'stays', alt: 'DSC00363', showInGallery: true },
+  { id: 60, category: 'stays', alt: 'DSC00329', showInGallery: true },
+  { id: 61, category: 'stays', alt: 'DSC00395', showInGallery: true },
+  { id: 62, category: 'stays', alt: 'DSC00518', showInGallery: true },
+  { id: 73, category: 'toddy-pub', alt: 'Toddy 1', showInGallery: true },
+  { id: 74, category: 'toddy-pub', alt: 'Toddy 2', showInGallery: true },
+  { id: 75, category: 'toddy-pub', alt: 'Toddy 3', showInGallery: true },
+  { id: 76, category: 'toddy-pub', alt: 'Toddy 4', showInGallery: true },
+  { id: 77, category: 'toddy-pub', alt: 'Toddy 5', showInGallery: true }
 
 ];

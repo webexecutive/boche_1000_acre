@@ -8,12 +8,8 @@ import RoomCard from "../components/RoomCard";
 import rooms from "../data/roomsData";
 import EmblaCarousel from "../components/EmblaCarousel";
 import bhoomiputraLogo from "../assets/logos/bhoomiputra-logo.webp";
-import toddy1 from "../assets/images/toddy-1.webp";
-import toddy2 from "../assets/images/toddy-2.webp";
-import toddy3 from "../assets/images/toddy-3.webp";
-import toddy4 from "../assets/images/toddy-4.webp";
-import toddy5 from "../assets/images/toddy-5.webp";
 import toddyLogo from "../assets/logos/boche-toddypub.webp";
+import CImage from "../components/Cimage";
 import bhojanamLogo from "../assets/logos/boche-bhojanam.webp";
 import bocheWithFood from "../assets/images/bohe-withfood.webp";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -170,8 +166,7 @@ function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <EmblaCarousel sectionTitle="Our Stays" sectionSubtitle="Comfort Meets Nature">
             {rooms.map((room) => {
-              {/* CORRECTED: resolve gallery ID to get variants with actual URLs */ }
-              const cover = getImageById(room.images?.[0]?.galleryId);
+              const cover = getImageById(room.images?.[0]);
               return (
                 <div className="embla__slide" key={room.id}>
                   <RoomCard
@@ -197,11 +192,11 @@ function Home() {
         <div className="max-w-7xl relative mx-auto px-4">
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
             <div className="order-2 md:order-1 grid grid-cols-2 gap-2" style={{ gridTemplateRows: "repeat(3, 160px)" }}>
-              <div className="row-span-2 rounded-xl overflow-hidden bg-[#c8b89a]"><img src={toddy2} className="w-full h-full object-cover" /></div>
-              <div className="rounded-xl overflow-hidden bg-[#c8b89a]"><img src={toddy1} className="w-full h-full object-cover" /></div>
-              <div className="rounded-xl overflow-hidden bg-[#c8b89a]"><img src={toddy3} className="w-full h-full object-cover" /></div>
-              <div className="rounded-xl overflow-hidden bg-[#c8b89a]"><img src={toddy4} className="w-full h-full object-cover" /></div>
-              <div className="rounded-xl overflow-hidden bg-[#c8b89a]"><img src={toddy5} className="w-full h-full object-cover" /></div>
+              <CImage className="row-span-2 rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(74)?.variants?.large} blur={getImageById(74)?.variants?.blur} alt="Toddy 2" />
+              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(73)?.variants?.small} blur={getImageById(73)?.variants?.blur} alt="Toddy 1" />
+              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(75)?.variants?.small} blur={getImageById(75)?.variants?.blur} alt="Toddy 3" />
+              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(76)?.variants?.small} blur={getImageById(76)?.variants?.blur} alt="Toddy 4" />
+              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(77)?.variants?.small} blur={getImageById(77)?.variants?.blur} alt="Toddy 5" />
             </div>
             <div className="order-1 md:order-2 flex flex-col items-center text-center gap-6">
               <div>

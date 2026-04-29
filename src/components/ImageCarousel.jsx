@@ -10,7 +10,8 @@ const SlideImage = ({ src, blur, alt }) => {
             src={src}
             blur={blur}
             alt={alt}
-            className="w-full h-full aspect-3/2 rounded-2xl"
+            className="w-full aspect-3/2 rounded-2xl"
+            imgClassName="absolute inset-0 w-full h-full object-contain rounded-2xl"
         />
     );
 };

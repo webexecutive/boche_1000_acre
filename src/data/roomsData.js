@@ -58,6 +58,7 @@ const rooms = [
             ],
 
             roomAmenities: [
+                "ac",
                 "bathroom",
                 "workDesk",
                 "closet",
@@ -75,9 +76,7 @@ const rooms = [
         },
 
 
-        images: [
-            { id: 1, alt: "boche 1000 acre british-bungalow exterior", galleryId: 6 },
-        ],
+        images: [6,46,47,48,49,50],
     },
 
     {
@@ -155,16 +154,14 @@ const rooms = [
         },
 
 
-        images: [
-            { id: 1, alt: "boche 1000 acre mud-house exterior", galleryId: 8 },
-        ],
+        images: [8, 52, 53, 54, 55, 56, 57, 58, 59],
     },
 
     {
         id: "x-pod",
         name: "X Pod",
 
-        basicInfo: {
+        basicInfo: {                        
             rooms: 1,
             maxGuests: 2,
             pricePerNight: 10000,
@@ -217,6 +214,7 @@ const rooms = [
             ],
 
             roomAmenities: [
+                "ac",
                 "bathroom",
                 "workDesk",
                 "closet",
@@ -233,15 +231,7 @@ const rooms = [
             commonArea: ["reception", "restaurant"],
         },
 
-        images: [
-            { id: 1, alt: "boche 1000 acre x-pod exterior",  galleryId: 11 },
-            { id: 2, alt: "boche 1000 acre x-pod exterior",  galleryId: 12 },
-            { id: 3, alt: "boche 1000 acre x-pod exterior",  galleryId: 13 },
-            { id: 4, alt: "boche 1000 acre x-pod bedroom",   galleryId: 14 },
-            { id: 5, alt: "boche 1000 acre x-pod toilet",    galleryId: 16 },
-            { id: 6, alt: "boche 1000 acre x-pod amenities", galleryId: 17 },
-            { id: 7, alt: "boche 1000 acre x-pod projector", galleryId: 18 },
-        ],
+        images: [11, 12, 13, 14, 16, 17, 18],
     },
 
     {
@@ -302,6 +292,7 @@ const rooms = [
             ],
 
             roomAmenities: [
+                "ac",
                 "bathroom",
                 "workDesk",
                 "closet",
@@ -319,9 +310,7 @@ const rooms = [
         },
 
 
-        images: [
-            { id: 1, alt: "boche 1000 acre bubble-dome exterior", galleryId: 7 },
-        ],
+        images: [7],
     },
 
     {
@@ -382,6 +371,7 @@ const rooms = [
             ],
 
             roomAmenities: [
+                "ac",
                 "bathroom",
                 "workDesk",
                 "closet",
@@ -399,9 +389,7 @@ const rooms = [
         },
 
 
-        images: [
-            { id: 1, alt: "boche 1000 acre sexy-dome exterior", galleryId: 10 },
-        ],
+        images: [10,51],
     },
 
     {
@@ -479,9 +467,7 @@ const rooms = [
         },
 
 
-        images: [
-            { id: 1, alt: "boche 1000 acre back-packers-room exterior", galleryId: 4 },
-        ],
+        images: [4],
     },
 
     {
@@ -559,9 +545,7 @@ const rooms = [
         },
 
 
-        images: [
-            { id: 1, alt: "boche 1000 acre back-packers-full-property exterior", galleryId: 5 },
-        ],
+        images: [5],
     },
 
     {
@@ -640,9 +624,7 @@ const rooms = [
         },
 
 
-        images: [
-            { id: 1, alt: "boche 1000 acre agraharam exterior", galleryId: 3 },
-        ],
+        images: [3,42,43,44,45],
     },
 
     {
@@ -702,29 +684,15 @@ const rooms = [
                 "powerBackup",
             ],
 
-            roomAmenities: [
-
-                "bathroom",
-                "workDesk",
-                "closet",
-                "chair",
-                "hotColdWater",
-                "teaCoffee",
-                "toiletries",
-                "mineralWater",
-            ],
-
             staffAndKeyServices: ["luggage"],
             healthAndWellness: ["firstAid"],
             sftyAndSecurity: ["cctv"],
-            commonArea: ["reception", "restaurant"],
+            commonArea: ["reception", "restaurant", "commonBathroom"],
         },
 
 
-        images: [
-            { id: 1, alt: "boche 1000 acre natural-tent-stay exterior", galleryId: 9 },
-        ],
-    }
+        images: [9,60,61,62],
+    },
 ];
 
 export default rooms;

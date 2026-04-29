@@ -60,7 +60,7 @@ const Stays = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 py-10 md:py-16 lg:grid-cols-4 gap-10 justify-items-center">
                 {sortedRooms.map((room) => {
                     // CORRECTED: resolve gallery ID to get variants with actual URLs
-                    const cover = getImageById(room.images[0]?.galleryId);
+                    const cover = getImageById(room.images?.[0]);
                     return (
                         <RoomCard
                             key={room.id}
