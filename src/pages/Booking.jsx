@@ -6,8 +6,8 @@ import { LuCalendar } from "react-icons/lu";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Button from "@/components/Button";
-import pincodes from "indian-pincodes";
 import { isValidPhoneNumber } from "libphonenumber-js";
+import axios from "axios";
 
 // ✅ Convert any date format → YYYY-MM-DD
 const toISO = (dateStr) => {
@@ -44,25 +44,39 @@ function Booking() {
 
     React.useEffect(() => {
         if (pincodeValue && pincodeValue.toString().length === 6) {
-            try {
-                const details = pincodes.getPincodeDetails(Number(pincodeValue));
-                if (details) {
-                    setValue("city", details.district || "", { shouldValidate: true });
-                    setValue("state", details.state || "", { shouldValidate: true });
+            const fetchPincodeDetails = async () => {
+                try {
+                    const response = await axios.get(`https://api.postalpincode.in/pincode/${pincodeValue}`);
+                    const data = response.data;
+                    
+                    if (data && data[0] && data[0].Status === "Success" && data[0].PostOffice && data[0].PostOffice.length > 0) {
+                        const details = data[0].PostOffice[0];
+                        setValue("city", details.District || "", { shouldValidate: true });
+                        setValue("state", details.State || "", { shouldValidate: true });
+                    }
+                } catch (err) {
+                    console.error("Error fetching pincode details", err);
                 }
-            } catch (err) {
-                console.error("Error fetching pincode details", err);
-            }
+            };
+            fetchPincodeDetails();
         }
     }, [pincodeValue, setValue]);
 
     const today = new Date().toISOString().split("T")[0];
     const [submitted, setSubmitted] = useState(false);
 
-    const onSubmit = (data) => {
-        console.log(data);
-        setSubmitted(true);
-        setTimeout(() => setSubmitted(false), 3000);
+    const onSubmit = async (data) => {
+        try {
+            const response = await axios.post("http://localhost:3000/submit", data);
+            if (response.status === 200) {
+                setSubmitted(true);
+                setTimeout(() => setSubmitted(false), 3000);
+            } else {
+                console.error("Form submission failed.");
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+        }
     };
 
     // ✅ Chakra UI v3 NumberInput
