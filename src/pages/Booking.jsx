@@ -48,7 +48,7 @@ function Booking() {
                 try {
                     const response = await axios.get(`https://api.postalpincode.in/pincode/${pincodeValue}`);
                     const data = response.data;
-                    
+
                     if (data && data[0] && data[0].Status === "Success" && data[0].PostOffice && data[0].PostOffice.length > 0) {
                         const details = data[0].PostOffice[0];
                         setValue("city", details.District || "", { shouldValidate: true });
@@ -63,19 +63,25 @@ function Booking() {
     }, [pincodeValue, setValue]);
 
     const today = new Date().toISOString().split("T")[0];
-    const [submitted, setSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [submitError, setSubmitError] = useState("");
 
     const onSubmit = async (data) => {
+        setIsSubmitting(true);
+        setSubmitError("");
         try {
             const response = await axios.post("http://localhost:3000/submit", data);
             if (response.status === 200) {
-                setSubmitted(true);
-                setTimeout(() => setSubmitted(false), 3000);
+                setShowModal(true);
             } else {
-                console.error("Form submission failed.");
+                setSubmitError("Submission failed. Please try again.");
             }
         } catch (error) {
             console.error("Error submitting form:", error);
+            setSubmitError("Unable to reach server. Please try again later.");
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -106,6 +112,68 @@ function Booking() {
 
     return (
         <section className="py-24 px-4">
+            {/* ── Success Modal ── */}
+            {showModal && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center"
+                    style={{ backgroundColor: "rgba(0,0,0,0.45)" }}
+                >
+                    <div
+                        className="bg-white rounded-2xl shadow-2xl px-10 py-10 flex flex-col items-center gap-5 max-w-sm w-full mx-4"
+                        style={{ animation: "fadeScaleIn 0.22s ease" }}
+                    >
+                        {/* Checkmark icon */}
+                        <div
+                            className="flex items-center justify-center rounded-full"
+                            style={{
+                                width: 64,
+                                height: 64,
+                                background: "#dfe8cf",
+                            }}
+                        >
+                            <svg
+                                width="32"
+                                height="32"
+                                viewBox="0 0 32 32"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M6 16.5L12.5 23L26 9"
+                                    stroke="#4a7c59"
+                                    strokeWidth="2.8"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </svg>
+                        </div>
+
+                        <h3 className="text-xl font-semibold text-gray-800 text-center">
+                            Enquiry Submitted!
+                        </h3>
+                        <p className="text-gray-500 text-sm text-center leading-relaxed">
+                            Our executives will contact you shortly.
+                        </p>
+
+                        <a
+                            href="/"
+                            className="btn-primary"
+                            style={{ textDecoration: "none" }}
+                        >
+                            Go Back to Home
+                        </a>
+                    </div>
+
+                    {/* Fade + scale keyframe injected inline */}
+                    <style>{`
+                        @keyframes fadeScaleIn {
+                            from { opacity: 0; transform: scale(0.92); }
+                            to   { opacity: 1; transform: scale(1); }
+                        }
+                    `}</style>
+                </div>
+            )}
+
             <div className="max-w-6xl mx-auto space-y-10">
 
                 {/* Banner */}
@@ -120,7 +188,7 @@ function Booking() {
 
                 {/* Form Card */}
                 <div>
-                    <h2 className="text-center text-2xl md:text-3xl font-semibold mb-8">
+                    <h2 className="text-center text-2xl md:text-3xl mb-8">
                         Enquiry Form
                     </h2>
 
@@ -265,8 +333,6 @@ function Booking() {
                                 {/* ✅ Phone with react-phone-input-2 */}
                                 <div>
                                     <label className="text-sm">Phone Number</label>
-                                    
-
                                     <Controller
                                         name="phone"
                                         control={control}
@@ -358,12 +424,14 @@ function Booking() {
                                             return (
                                                 <DatePicker.Root
                                                     selectionMode="range"
+                                                    locale="en-GB"
                                                     min={parseDate(today)}
                                                     value={pickerValue}
-                                                    onValueChange={({ valueAsString }) => {
+                                                    onValueChange={({ value }) => {
+                                                        // .toString() always returns YYYY-MM-DD regardless of locale
                                                         onChange({
-                                                            checkin: toISO(valueAsString[0] ?? ""),
-                                                            checkout: toISO(valueAsString[1] ?? ""),
+                                                            checkin: value?.[0] ? value[0].toString() : "",
+                                                            checkout: value?.[1] ? value[1].toString() : "",
                                                         });
                                                     }}
                                                 >
@@ -426,7 +494,7 @@ function Booking() {
                                                             <DatePicker.Content
                                                                 style={{
                                                                     background: "#fff",
-                                                                    borderRadius: "10px" ,
+                                                                    borderRadius: "10px",
                                                                     boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
                                                                 }}
                                                             >
@@ -460,12 +528,15 @@ function Booking() {
 
                         {/* Submit */}
                         <div className="flex justify-end items-center gap-4 mt-6">
-                            {submitted && (
-                                <p className="text-green-700 text-sm font-medium">
-                                    ✓ Enquiry submitted successfully!
-                                </p>
+                            {submitError && (
+                                <p className="text-red-600 text-sm font-medium">{submitError}</p>
                             )}
-                            <Button colorScheme="green" type="submit">
+                            <Button
+                                type="submit"
+                                loading={isSubmitting}
+                                loadingText="Submitting..."
+                                disabled={isSubmitting}
+                            >
                                 Submit Enquiry
                             </Button>
                         </div>

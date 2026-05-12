@@ -8,6 +8,7 @@ export default function Button({
   loadingText = "Loading...",
   fullWidth = false,
   disabled = false,
+  type = "button",
   className,
   ...props
 }) {
@@ -25,7 +26,7 @@ export default function Button({
 
   return (
     <button
-      type="button"
+      type={type}
       aria-busy={loading}
       className={clsx(
         variantClass,

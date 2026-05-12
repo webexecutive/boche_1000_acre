@@ -9,7 +9,7 @@ function Contact() {
 
                 {/* Heading */}
                 <div className="text-center mb-12">
-                    <h1 className="text-3xl md:text-4xl font-semibold mb-4">
+                    <h1 className="text-3xl md:text-4xl  mb-4">
                         Get In Touch
                     </h1>
                     <p className="text-gray-500 max-w-2xl mx-auto text-sm">
@@ -33,7 +33,7 @@ function Contact() {
                             {/* Icon + Heading */}
                             <div className="flex items-center justify-center gap-2">
                                 <FaMapMarkerAlt className="text-gray-600 text-lg" />
-                                <h3 className="text-lg font-medium">Address</h3>
+                                <h3 className="text-lg ">Address</h3>
                             </div>
 
                             <p className="text-sm text-gray-500 leading-relaxed">
@@ -56,7 +56,7 @@ function Contact() {
 
                             <div className="flex items-center justify-center gap-2">
                                 <FaPhoneAlt className="text-gray-600 text-lg" />
-                                <h3 className="text-lg font-medium">Call Us</h3>
+                                <h3 className="text-lg">Call Us</h3>
                             </div>
 
                             <p className="text-sm text-gray-500">Reception</p>
@@ -75,7 +75,7 @@ function Contact() {
 
                             <div className="flex items-center justify-center gap-2">
                                 <FaEnvelope className="text-gray-600 text-lg" />
-                                <h3 className="text-lg font-medium">Mail Id</h3>
+                                <h3 className="text-lg">Mail Id</h3>
                             </div>
 
                             <p className="text-sm text-gray-700">
