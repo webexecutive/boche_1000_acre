@@ -71,7 +71,8 @@ function Booking() {
         setIsSubmitting(true);
         setSubmitError("");
         try {
-            const response = await axios.post("http://localhost:3000/submit", data);
+            const serverUrl = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
+            const response = await axios.post(`${serverUrl}/submit`, data);
             if (response.status === 200) {
                 setShowModal(true);
             } else {

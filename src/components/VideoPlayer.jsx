@@ -42,9 +42,9 @@ export default function VideoPlayer({
     <div className={`relative w-full h-full overflow-hidden ${className}`}>
       {/* Blurred Poster Background */}
       {blurPoster && (
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center scale-110"
-          style={{ 
+          style={{
             backgroundImage: `url(${blurPoster})`,
             filter: "blur(20px)",
             opacity: isLoaded ? 0 : 1,

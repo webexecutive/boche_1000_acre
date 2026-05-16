@@ -12,7 +12,6 @@ import ContentSkeleton from './components/skeletons/ContentSkeleton.jsx';
 import NotFound from './components/NotFound.jsx';
 
 const Home = lazy(() => import('./pages/Home.jsx'));
-const Test = lazy(() => import('./pages/Test.jsx'));
 const Gallery = lazy(() => import('./pages/Gallery.jsx'));
 const RoomDetails = lazy(() => import('./pages/roomDetails.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
@@ -166,14 +165,7 @@ function App() {
             }
           />
 
-          <Route
-            path="/test"
-            element={
-              <Suspense fallback={<ContentSkeleton />}>
-                <Test />
-              </Suspense>
-            }
-          />
+        
           <Route path='*' element={<NotFound />} />
 
         </Route>
