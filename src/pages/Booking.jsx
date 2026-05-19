@@ -10,6 +10,9 @@ import { isValidPhoneNumber } from "libphonenumber-js";
 import axios from "axios";
 
 // ✅ Convert any date format → YYYY-MM-DD
+
+// paste this in browser console
+
 const toISO = (dateStr) => {
     if (!dateStr) return "";
     if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return dateStr;
