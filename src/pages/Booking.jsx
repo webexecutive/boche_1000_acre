@@ -76,19 +76,18 @@ function Booking() {
         try {
             const serverUrl = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
             const response = await axios.post(`${serverUrl}/submit`, data);
+
+            // ✅ Log full response to see what server sends
+            console.log("Server response:", response.data);
+
             if (response.data.success) {
                 setShowModal(true);
             } else {
-                // ✅ Show actual error from server
-                setSubmitError(response.data.error || "Submission failed. Please try again.");
+                setSubmitError(JSON.stringify(response.data)); // ✅ shows everything
             }
         } catch (error) {
-            // ✅ Show actual error
-            setSubmitError(
-                error.response?.data?.error ||
-                error.message ||
-                "Unable to reach server. Please try again later."
-            );
+            console.log("Full error:", error.response?.data);
+            setSubmitError(JSON.stringify(error.response?.data || error.message));
         } finally {
             setIsSubmitting(false);
         }
