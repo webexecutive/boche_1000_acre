@@ -79,11 +79,16 @@ function Booking() {
             if (response.data.success) {
                 setShowModal(true);
             } else {
-                setSubmitError("Submission failed. Please try again.");
+                // ✅ Show actual error from server
+                setSubmitError(response.data.error || "Submission failed. Please try again.");
             }
         } catch (error) {
-            console.error("Error submitting form:", error);
-            setSubmitError("Unable to reach server. Please try again later.");
+            // ✅ Show actual error
+            setSubmitError(
+                error.response?.data?.error ||
+                error.message ||
+                "Unable to reach server. Please try again later."
+            );
         } finally {
             setIsSubmitting(false);
         }
