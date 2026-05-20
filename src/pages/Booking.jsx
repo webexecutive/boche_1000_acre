@@ -12,7 +12,7 @@ import axios from "axios";
 // ✅ Convert any date format → YYYY-MM-DD
 
 // paste this in browser console
-console.log(import.meta.env.VITE_SERVER_URL)
+
 const toISO = (dateStr) => {
     if (!dateStr) return "";
     if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return dateStr;
@@ -76,18 +76,14 @@ function Booking() {
         try {
             const serverUrl = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
             const response = await axios.post(`${serverUrl}/submit`, data);
-
-            // ✅ Log full response to see what server sends
-            console.log("Server response:", response.data);
-
             if (response.data.success) {
                 setShowModal(true);
             } else {
-                setSubmitError(JSON.stringify(response.data)); // ✅ shows everything
+                setSubmitError("Submission failed. Please try again.");
             }
         } catch (error) {
-            console.log("Full error:", error.response?.data);
-            setSubmitError(JSON.stringify(error.response?.data || error.message));
+            console.error("Error submitting form:", error);
+            setSubmitError("Unable to reach server. Please try again later.");
         } finally {
             setIsSubmitting(false);
         }
