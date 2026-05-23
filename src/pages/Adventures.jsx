@@ -11,6 +11,19 @@ function Adventures() {
         return () => { document.body.style.overflow = ''; };
     }, [reelModal]);
 
+    useEffect(() => {
+  if (reelModal) {
+    window.history.pushState({ modal: true }, "");
+
+    const handlePopState = () => {
+      setReelModal(null);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }
+}, [reelModal]);
+
     return (
         <div className="max-w-7xl mx-auto px-4 md:px-8 pt-20 lg:pt-24 pb-20 space-y-8">
             <h2>Adventures</h2>

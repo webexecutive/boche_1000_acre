@@ -71,6 +71,23 @@ const RoomDetails = () => {
         };
     }, [isAmenitiesModalOpen, isHighlightsModalOpen]);
 
+    useEffect(() => {
+        const isAnyModalOpen = isHighlightsModalOpen || isAmenitiesModalOpen;
+
+        if (isAnyModalOpen) {
+            window.history.pushState({ modal: true }, "");
+
+            const handlePopState = () => {
+                setIsHighlightsModalOpen(false);
+                setIsAmenitiesModalOpen(false);
+            };
+
+            window.addEventListener("popstate", handlePopState);
+            return () => window.removeEventListener("popstate", handlePopState);
+        }
+    }, [isHighlightsModalOpen, isAmenitiesModalOpen]);
+
+    
     const scrollToCategory = (key) => {
         setActiveTab(key);
         const element = document.getElementById(`amenity-category-${key}`);

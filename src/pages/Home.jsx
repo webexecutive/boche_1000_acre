@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
@@ -18,6 +19,8 @@ import ReelCard from "../components/ReelCard";
 import GalleryThumbnail from "../components/GalleryThumbnail";
 import { categories } from "../data/gallery";
 import { getImagesByCategory, getImageById } from "../services/galleryService";
+
+
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -39,6 +42,9 @@ function Home() {
   const [pageNumber, setPageNumber] = useState(1);
   const [pageLoading, setPageLoading] = useState(false);
   const [reelModal, setReelModal] = useState(null);
+  const [subEmail, setSubEmail] = useState("");
+  const [subStatus, setSubStatus] = useState("idle"); // idle | loading | success | error
+  const [subError, setSubError] = useState("");
 
   useEffect(() => {
     document.body.style.overflow = showMenu ? "hidden" : "auto";
@@ -72,9 +78,22 @@ function Home() {
     document.body.style.overflow = reelModal ? "hidden" : "auto";
   }, [reelModal]);
 
+  useEffect(() => {
+    if (reelModal) {
+      window.history.pushState({ modal: true }, "");
+
+      const handlePopState = () => {
+        setReelModal(null);
+      };
+
+      window.addEventListener("popstate", handlePopState);
+      return () => window.removeEventListener("popstate", handlePopState);
+    }
+  }, [reelModal]);
+
   const handleCall = () => {
     window.location.href = "tel:+919961008008";
-    setDismissed(true);
+    ;
   };
 
   const onDocumentLoadSuccess = ({ numPages }) => {
@@ -84,6 +103,25 @@ function Home() {
   const goToPage = (fn) => {
     setPageLoading(true);
     setPageNumber(fn);
+  };
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    setSubStatus("loading");
+    setSubError("");
+    try {
+      const serverUrl = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
+      await axios.post(`${serverUrl}/subscribe`, { email: subEmail });
+      setSubStatus("success");
+      setSubEmail("");
+    } catch (err) {
+      if (err.response?.status === 409) {
+        setSubStatus("already");
+      } else {
+        setSubStatus("error");
+        setSubError(err.response?.data?.message || "Something went wrong. Please try again.");
+      }
+    }
   };
 
   return (
@@ -140,21 +178,57 @@ function Home() {
       </section>
 
       {/* Welcome Section */}
-      <section className="relative overflow-hidden">
-        <picture>
-          <source media="(min-width: 1024px)" srcSet="https://placehold.co/1600x600" />
-          <source media="(min-width: 768px)" srcSet="https://placehold.co/1200x700" />
-          <img src="https://placehold.co/600x800" alt="Welcome" className="w-full object-cover" />
-        </picture>
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-black text-center px-6 md:px-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-balance">Welcome to boCHE 1000 Acre</h1>
-          <h4 className="mt-4 text-base sm:text-lg md:text-xl text-balance">Immerse yourself in a stay surrounded by a 1,000-acre tea plantation.</h4>
+      <section className="relative overflow-hidden h-[600px] md:h-[600px]">
+
+        {/* Blur placeholder */}
+        <img
+          src="/images/gallery/stays/78/blur.webp"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover blur-sm scale-105"
+          aria-hidden="true"
+        />
+
+        {/* Real image */}
+        <img
+          src="/images/gallery/stays/78/small.webp"
+          srcSet="/images/gallery/stays/78/small.webp 400w, /images/gallery/stays/78/large.webp 1200w"
+          sizes="100vw"
+          alt="Welcome to boCHE 1000 Acre"
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          onLoad={(e) => { e.target.previousSibling.style.opacity = 0; }}
+        />
+
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent md:bg-gradient-to-r md:from-black/70 md:via-black/10 md:to-transparent" />
+
+        {/* Text — bottom on mobile, center-left on desktop */}
+        <div className="relative h-full flex items-end md:items-center">
+          <div className="px-6 pb-10 md:pb-0 md:px-16 lg:px-24 max-w-xl text-left text-white">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-3">Wayanad, Kerala</p>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl text-balance mb-4 text-white">
+              Welcome to boCHE 1000 Acre
+            </h1>
+            <div className="w-12 h-px bg-white/50 mb-4"></div>
+            <p className="text-sm md:text-base text-white/80 leading-relaxed">
+              Immerse yourself in a stay surrounded by a 1,000-acre tea plantation.
+            </p>
+          </div>
         </div>
+
       </section>
 
       {/* Banner section */}
       <section>
-        <Carousel autoPlay infiniteLoop interval={3000} showThumbs={false} showStatus={false}>
+        <Carousel
+          autoPlay
+          infiniteLoop
+          interval={3000}
+          showThumbs={false}
+          showStatus={false}
+          onClickItem={() => window.location.href = "/packages-and-offers/day-out"}
+          className="cursor-pointer"
+        >
           <div>
             <img src="/images/banners/banner1.webp" alt="Slide 1" />
           </div>
@@ -182,7 +256,7 @@ function Home() {
             })}
           </EmblaCarousel>
           <div className="flex justify-center">
-            <Button size="sm">View All Stays</Button>
+            <Link to="/stays"><Button size="sm">View All Stays</Button></Link>
           </div>
         </div>
       </section>
@@ -288,6 +362,21 @@ function Home() {
         </div>
       </section>
 
+      {/* Map Section */}
+     {/* Map Section */}
+<section className="w-full h-[450px]">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8414.148655069192!2d76.12723070987565!3d11.530258170742771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba613ab91efa5ab%3A0x3f76852d27db0cc9!2sBoche%201000%20Acre!5e1!3m2!1sen!2sin!4v1779511842065!5m2!1sen!2sin"
+    width="100%"
+    height="100%"
+    style={{ border: 0, display: "block" }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    title="Boche 1000 Acre Location"
+  />
+</section>
+
       {/* Newsletter */}
       <section className="py-16 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -295,15 +384,48 @@ function Home() {
           <p className="text-gray-500 mb-8 max-w-md mx-auto">
             Stay updated with our latest offers, new experiences, and events happening around the 1000-acre estate.
           </p>
-          <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row justify-center items-center gap-3 w-full max-w-lg mx-auto">
+
+          {/* Already Subscribed */}
+          {subStatus === "already" && (
+            <p className="text-amber-600 text-sm mb-4">
+              You are already subscribed!
+            </p>
+          )}
+
+          {/* Success Message */}
+          {subStatus === "success" && (
+            <p className="text-green-600 text-sm mb-4">
+              You have successfully subscribed!
+            </p>
+          )}
+
+          {/* Error Message */}
+          {subStatus === "error" && (
+            <p className="text-red-500 text-sm mb-4">
+              {subError}
+            </p>
+          )}
+
+          <form
+            onSubmit={handleSubscribe}
+            className="flex flex-col sm:flex-row justify-center items-center gap-3 w-full max-w-lg mx-auto"
+          >
             <input
               type="email"
               placeholder="Enter your email address"
               required
-              className="w-full flex-1 px-6 py-3.5 bg-gray-50/50 border border-gray-300 rounded-full focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition"
+              value={subEmail}
+              onChange={(e) => setSubEmail(e.target.value)}
+              disabled={subStatus === "loading"}
+              className="w-full flex-1 px-6 py-3.5 bg-gray-50/50 border border-gray-300 rounded-full focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition disabled:opacity-50"
             />
-            <Button size="md" className="w-full sm:w-auto px-8 py-3.5 rounded-full whitespace-nowrap">
-              Subscribe
+            <Button
+              type="submit"
+              size="md"
+              disabled={subStatus === "loading"}
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full whitespace-nowrap disabled:opacity-50"
+            >
+              {subStatus === "loading" ? "Subscribing..." : "Subscribe"}
             </Button>
           </form>
         </div>

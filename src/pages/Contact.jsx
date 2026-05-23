@@ -61,7 +61,14 @@ function Contact() {
                                 Chulika Estate, Cottappadi P O,<br />
                                 Vythiri, Meppadi, Kerala 673577
                             </p>
-                            <Button size="sm">Get Direction</Button>
+                            <a
+                                href="https://maps.app.goo.gl/eL9urRpNbi4rnPyw5"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block"
+                            >
+                                <Button size="sm">Get Direction</Button>
+                            </a>
                             <div className="hidden md:block absolute top-0 right-0 h-full w-px bg-gray-300"></div>
                             <div className="md:hidden absolute bottom-0 left-0 w-full h-px bg-gray-300"></div>
                         </div>
@@ -73,8 +80,16 @@ function Contact() {
                                 <h3 className="text-lg">Call Us</h3>
                             </div>
                             <p className="text-sm text-gray-500">Reception</p>
-                            <p className="text-sm text-gray-700">+91 70340 48884</p>
-                            <p className="text-sm text-gray-700">+91 80860 04747</p>
+                            <p className="text-sm text-gray-700">
+                                <a href="tel:+917034048884" className="hover:underline hover:text-[#3a5a1c] transition-colors">
+                                    +91 70340 48884
+                                </a>
+                            </p>
+                            <p className="text-sm text-gray-700">
+                                <a href="tel:+918086004747" className="hover:underline hover:text-[#3a5a1c] transition-colors">
+                                    +91 80860 04747
+                                </a>
+                            </p>
                             <div className="hidden md:block absolute top-0 right-0 h-full w-px bg-gray-300"></div>
                             <div className="md:hidden absolute bottom-0 left-0 w-full h-px bg-gray-300"></div>
                         </div>
@@ -85,7 +100,11 @@ function Contact() {
                                 <FaEnvelope className="text-gray-600 text-lg" />
                                 <h3 className="text-lg">Mail Id</h3>
                             </div>
-                            <p className="text-sm text-gray-700">boche1000acre@gmail.com</p>
+                            <p className="text-sm text-gray-700">
+                                <a href="mailto:boche1000acre@gmail.com" className="hover:underline hover:text-[#3a5a1c] transition-colors">
+                                    boche1000acre@gmail.com
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>

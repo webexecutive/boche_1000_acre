@@ -49,13 +49,13 @@ const events = [
 
         description: `The Wayanad Tourism Carnival, held from December 23 to January 4 at boCHE 1000 Acres in Meppadi, was a spectacular celebration of culture and community. Organized by the Kerala Vyapari Vyavasayi Ekopana Samithi, Wayanad Tourism, and the boCHE 1000 Acres Labour Welfare Committee, the carnival featured a massive Shopping Festival alongside a daily lineup of cultural events and entertainment that drew visitors from across Kerala and neighboring states. The excitement reached its peak on New Year’s Eve, where a massive crowd gathered for a historic double celebration. The night was headlined by electrifying musical performances from renowned artists Vedan and Gowry Lakshmi, setting an energetic tone for the countdown. In a breathtaking finale, boCHE ceremonially ignited a 65-foot Papaanji effigy with an arrow—a record-breaking structure recognized by the Universal Forum as the largest of the year. This symbolic burning of the Papaanji, combined with the grand carnival atmosphere, made it a landmark event for Wayanad’s holiday season.`,
 
-        eventOver: false,
+        eventOver: true,
 
         debrief: `The Wayanad Tourism Carnival, held from December 23 to January 4 at boCHE 1000 Acres in Meppadi, was a spectacular celebration of culture and community. Organized by the Kerala Vyapari Vyavasayi Ekopana Samithi, Wayanad Tourism, and the boCHE 1000 Acres Labour Welfare Committee, the carnival featured a massive Shopping Festival alongside a daily lineup of cultural events and entertainment that drew visitors from across Kerala and neighboring states. The excitement reached its peak on New Year’s Eve, where a massive crowd gathered for a historic double celebration. The night was headlined by electrifying musical performances from renowned artists Vedan and Gowry Lakshmi, setting an energetic tone for the countdown. In a breathtaking finale, boCHE ceremonially ignited a 65-foot Papaanji effigy with an arrow—a record-breaking structure recognized by the Universal Forum as the largest of the year. This symbolic burning of the Papaanji, combined with the grand carnival atmosphere, made it a landmark event for Wayanad’s holiday season.`,
 
         thumbnailId: 41,
         bannerId: 40,
-        imageIds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+        imageIds: []
     }
 ];
 

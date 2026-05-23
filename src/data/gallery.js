@@ -10,7 +10,7 @@ export const categories = [
 ];
 
 export const galleryMeta = {
-  lastId: 77
+  lastId: 78
 };
 
 export const gallery = [
@@ -83,5 +83,8 @@ export const gallery = [
   { id: 75, category: 'toddy-pub', alt: 'Toddy 3', showInGallery: true },
   { id: 76, category: 'toddy-pub', alt: 'Toddy 4', showInGallery: true },
   { id: 77, category: 'toddy-pub', alt: 'Toddy 5', showInGallery: true }
+
+,
+{ id: 78, category: 'stays', alt: 'Gemini Generated Image 401k81401k81401k.Jpg', showInGallery: true }
 
 ];

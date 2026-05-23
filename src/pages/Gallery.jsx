@@ -5,6 +5,7 @@ import 'photoswipe/style.css';
 import { categories } from '../data/gallery';
 import { getImagesByCategory } from '../services/galleryService';
 
+
 /* Map category ids to display labels for the tab bar */
 const DISPLAY_LABELS = {
     all: 'Recent',
@@ -37,10 +38,15 @@ function Gallery() {
 
 
 
+
     /* Reset to page 1 when category changes */
     useEffect(() => {
         setPage(1);
     }, [activeCategory]);
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [page]);
 
     /* Initialise / reinitialise PhotoSwipe whenever the visible set changes */
     useEffect(() => {
@@ -50,6 +56,7 @@ function Gallery() {
             gallery: galleryRef.current,
             children: 'a[data-pswp-src]',
             pswpModule: () => import('photoswipe'),
+
         });
 
         lightbox.init();
@@ -148,7 +155,7 @@ function Gallery() {
 
                     {/* Prev */}
                     <button
-                        onClick={() => { setPage(p => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                        onClick={() => setPage(p => Math.max(1, p - 1))}
                         disabled={page === 1}
                         className="px-3 py-1.5 text-sm rounded-lg border border-gray-200 hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                     >
@@ -169,7 +176,7 @@ function Gallery() {
                             ) : (
                                 <button
                                     key={p}
-                                    onClick={() => { setPage(p); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                                    onClick={() => setPage(p)}
                                     className={`min-w-[36px] px-3 py-1.5 text-sm rounded-lg border transition-colors ${p === page
                                         ? 'bg-gray-900 text-white border-gray-900'
                                         : 'border-gray-200 hover:bg-gray-100 text-gray-700'
@@ -183,7 +190,7 @@ function Gallery() {
 
                     {/* Next */}
                     <button
-                        onClick={() => { setPage(p => Math.min(totalPages, p + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                        onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                         disabled={page === totalPages}
                         className="px-3 py-1.5 text-sm rounded-lg border border-gray-200 hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                     >
