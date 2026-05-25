@@ -186,9 +186,11 @@ function Booking() {
                     <p className="text-lg font-medium">
                         For booking call hello boCHE: +91 9961008008
                     </p>
-                    <Button size="sm" as="a" href="tel:+919961008008">
-                        Call Now
-                    </Button>
+                    <a href="tel:+919961008008">
+                        <Button size="sm">
+                            Call Now
+                        </Button>
+                    </a>
                 </div>
 
                 {/* Form Card */}
