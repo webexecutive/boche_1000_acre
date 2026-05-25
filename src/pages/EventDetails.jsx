@@ -162,7 +162,7 @@ const EventDetails = () => {
 
                 {/* GRID */}
                 <div
-                    className={`grid grid-cols-1 gap-8 ${!event.eventOver ? 'lg:grid-cols-[1fr_320px]' : 'lg:grid-cols-1'
+                    className={`grid pb-10 grid-cols-1 gap-8 ${!event.eventOver ? 'lg:grid-cols-[1fr_320px]' : 'lg:grid-cols-1'
                         }`}
                 >
 
@@ -257,9 +257,9 @@ const EventDetails = () => {
                 {/* GALLERY SECTION */}
                 {galleryImages.length > 0 && (
                     <div >
-                        <h2 className="text-2xl font-serif font-light text-[#1a1a1a]">
+                        <h3 className="pb-10">
                             Event Gallery
-                        </h2>
+                        </h3>
                         <div ref={galleryRef} className="columns-2 sm:columns-3 lg:columns-4 gap-2">
 
                             {galleryImages.map((item) => (
