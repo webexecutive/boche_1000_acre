@@ -42,11 +42,15 @@ const About = () => {
           <div className="max-w-7xl mx-auto w-full">
 
             {/* Hero Section */}
-            <div className="w-full  overflow-hidden">
+            <div className="w-full aspect-video md:aspect-[21/9] max-h-120 bg-[#C8D4AA]/30 overflow-hidden relative">
               <img
+                key={activeContent.id}
                 src={activeContent.heroImage}
                 alt={activeContent.navTitle}
-                className="w-full max-h-120 object-cover object-top"
+                onLoad={(e) => {
+                  e.currentTarget.style.opacity = 1;
+                }}
+                className="w-full h-full object-cover object-top opacity-0 transition-opacity duration-500"
               />
             </div>
 
