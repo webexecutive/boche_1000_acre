@@ -76,7 +76,7 @@ const rooms = [
         },
 
 
-        images: [78,6,46,47,48,49,50],
+        images: [79, 90, 95, 96, 97, 98, 99, 100, 101, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94,],
     },
 
     {
@@ -154,14 +154,14 @@ const rooms = [
         },
 
 
-        images: [8, 52, 53, 54, 55, 56, 57, 58, 59],
+        images: [102, 105, 106, 107, 108, 109, 110, 111, 112, 104, 103,],
     },
 
     {
         id: "x-pod",
         name: "X Pod",
 
-        basicInfo: {                        
+        basicInfo: {
             rooms: 1,
             maxGuests: 2,
             pricePerNight: 10000,
@@ -231,7 +231,19 @@ const rooms = [
             commonArea: ["reception", "restaurant"],
         },
 
-        images: [11, 12, 13, 14, 16, 17, 18],
+        images: [
+            113,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            114,
+            115
+        ],
     },
 
     {
@@ -310,7 +322,16 @@ const rooms = [
         },
 
 
-        images: [7],
+        images: [
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131
+        ],
     },
 
     {
@@ -389,7 +410,17 @@ const rooms = [
         },
 
 
-        images: [10,51],
+        images: [
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140
+        ],
     },
 
     {
@@ -467,7 +498,11 @@ const rooms = [
         },
 
 
-        images: [4],
+        images: [
+            146,
+            147,
+            148,
+            149],
     },
 
     {
@@ -545,87 +580,98 @@ const rooms = [
         },
 
 
-        images: [5],
+        images: [
+            141,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            142
+        ],
     },
 
-    {
+    // {
 
-        id: "agraharam",
-        name: "Agraharam",
+    //     id: "agraharam",
+    //     name: "Agraharam",
 
-        basicInfo: {
-            rooms: 1,
-            maxGuests: 3,
-            pricePerNight: 4000,
-            currency: "INR",
-        },
+    //     basicInfo: {
+    //         rooms: 1,
+    //         maxGuests: 3,
+    //         pricePerNight: 4000,
+    //         currency: "INR",
+    //     },
 
-        checkTime: {
-            checkIn: "02:00 PM",
-            checkOut: "10:00 AM",
-        },
+    //     checkTime: {
+    //         checkIn: "02:00 PM",
+    //         checkOut: "10:00 AM",
+    //     },
 
-        inclusions: [
-            "Includes Free Breakfast",
-            "Includes Camp Fire with Music (for 5 pax and above)",
-            "Includes Property Trekking",
-        ],
+    //     inclusions: [
+    //         "Includes Free Breakfast",
+    //         "Includes Camp Fire with Music (for 5 pax and above)",
+    //         "Includes Property Trekking",
+    //     ],
 
-        cancellationPolicy: [
-            {
-                refundPercent: 100,
-                daysBeforeCheckIn: 7,
-                label: "100% refund if cancelled 7 days before check-in.",
-            },
-            {
-                refundPercent: 50,
-                daysBeforeCheckIn: 2,
-                label: "50% refund if cancelled 2 days before check-in.",
-            },
-        ],
+    //     cancellationPolicy: [
+    //         {
+    //             refundPercent: 100,
+    //             daysBeforeCheckIn: 7,
+    //             label: "100% refund if cancelled 7 days before check-in.",
+    //         },
+    //         {
+    //             refundPercent: 50,
+    //             daysBeforeCheckIn: 2,
+    //             label: "50% refund if cancelled 2 days before check-in.",
+    //         },
+    //     ],
 
-        aboutStay: {
-            description:
-                "Inspired by traditional South Indian heritage homes, Agraharam offers a culturally rich and peaceful stay experience.",
+    //     aboutStay: {
+    //         description:
+    //             "Inspired by traditional South Indian heritage homes, Agraharam offers a culturally rich and peaceful stay experience.",
 
-            highlights: [
-                "Traditional architectural style",
-                "Spacious courtyards",
-                "Wooden accents and heritage design",
-                "Modern bathroom facilities",
-                "Ideal for cultural and family retreats"
-            ],
-        },
+    //         highlights: [
+    //             "Traditional architectural style",
+    //             "Spacious courtyards",
+    //             "Wooden accents and heritage design",
+    //             "Modern bathroom facilities",
+    //             "Ideal for cultural and family retreats"
+    //         ],
+    //     },
 
-        amenities: {
-            basicFacilities: [
-                "roomService",
-                "housekeeping",
-                "parking",
-                "powerBackup",
-            ],
+    //     amenities: {
+    //         basicFacilities: [
+    //             "roomService",
+    //             "housekeeping",
+    //             "parking",
+    //             "powerBackup",
+    //         ],
 
-            roomAmenities: [
+    //         roomAmenities: [
 
-                "bathroom",
-                "workDesk",
-                "closet",
-                "chair",
-                "hotColdWater",
-                "teaCoffee",
-                "toiletries",
-                "mineralWater",
-            ],
+    //             "bathroom",
+    //             "workDesk",
+    //             "closet",
+    //             "chair",
+    //             "hotColdWater",
+    //             "teaCoffee",
+    //             "toiletries",
+    //             "mineralWater",
+    //         ],
 
-            staffAndKeyServices: ["luggage"],
-            healthAndWellness: ["firstAid"],
-            sftyAndSecurity: ["cctv"],
-            commonArea: ["reception", "restaurant"],
-        },
+    //         staffAndKeyServices: ["luggage"],
+    //         healthAndWellness: ["firstAid"],
+    //         sftyAndSecurity: ["cctv"],
+    //         commonArea: ["reception", "restaurant"],
+    //     },
 
 
-        images: [3,42,43,44,45],
-    },
+    //     images: [3, 42, 43, 44, 45],
+    // },
 
     {
 
@@ -691,7 +737,7 @@ const rooms = [
         },
 
 
-        images: [9,60,61,62],
+        images: [151, 152, 153],
     },
 ];
 

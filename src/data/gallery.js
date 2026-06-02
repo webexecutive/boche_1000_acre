@@ -10,7 +10,7 @@ export const categories = [
 ];
 
 export const galleryMeta = {
-  lastId: 78
+  lastId: 153
 };
 
 export const gallery = [
@@ -86,5 +86,87 @@ export const gallery = [
 
 ,
 { id: 78, category: 'stays', alt: 'Gemini Generated Image 401k81401k81401k.Jpg', showInGallery: true }
+,
+{ id: 79, category: 'stays', alt: '1', showInGallery: true },
+{ id: 80, category: 'stays', alt: '10', showInGallery: true },
+{ id: 81, category: 'stays', alt: '11', showInGallery: true },
+{ id: 82, category: 'stays', alt: '12', showInGallery: true },
+{ id: 83, category: 'stays', alt: '13', showInGallery: true },
+{ id: 84, category: 'stays', alt: '14', showInGallery: true },
+{ id: 85, category: 'stays', alt: '15', showInGallery: true },
+{ id: 86, category: 'stays', alt: '16', showInGallery: true },
+{ id: 87, category: 'stays', alt: '17', showInGallery: true },
+{ id: 88, category: 'stays', alt: '18', showInGallery: true },
+{ id: 89, category: 'stays', alt: '19', showInGallery: true },
+{ id: 90, category: 'stays', alt: '2', showInGallery: true },
+{ id: 91, category: 'stays', alt: '20', showInGallery: true },
+{ id: 92, category: 'stays', alt: '21', showInGallery: true },
+{ id: 93, category: 'stays', alt: '22', showInGallery: true },
+{ id: 94, category: 'stays', alt: '23', showInGallery: true },
+{ id: 95, category: 'stays', alt: '3', showInGallery: true },
+{ id: 96, category: 'stays', alt: '4', showInGallery: true },
+{ id: 97, category: 'stays', alt: '5', showInGallery: true },
+{ id: 98, category: 'stays', alt: '6', showInGallery: true },
+{ id: 99, category: 'stays', alt: '7', showInGallery: true },
+{ id: 100, category: 'stays', alt: '8', showInGallery: true },
+{ id: 101, category: 'stays', alt: '9', showInGallery: true }
+,
+{ id: 102, category: 'stays', alt: '1', showInGallery: true },
+{ id: 103, category: 'stays', alt: '10', showInGallery: true },
+{ id: 104, category: 'stays', alt: '11', showInGallery: true },
+{ id: 105, category: 'stays', alt: '2', showInGallery: true },
+{ id: 106, category: 'stays', alt: '3', showInGallery: true },
+{ id: 107, category: 'stays', alt: '4', showInGallery: true },
+{ id: 108, category: 'stays', alt: '5', showInGallery: true },
+{ id: 109, category: 'stays', alt: '6', showInGallery: true },
+{ id: 110, category: 'stays', alt: '7', showInGallery: true },
+{ id: 111, category: 'stays', alt: '8', showInGallery: true },
+{ id: 112, category: 'stays', alt: '9', showInGallery: true }
+,
+{ id: 113, category: 'stays', alt: '1', showInGallery: true },
+{ id: 114, category: 'stays', alt: '10', showInGallery: true },
+{ id: 115, category: 'stays', alt: '11', showInGallery: true },
+{ id: 116, category: 'stays', alt: '2', showInGallery: true },
+{ id: 117, category: 'stays', alt: '3', showInGallery: true },
+{ id: 118, category: 'stays', alt: '4', showInGallery: true },
+{ id: 119, category: 'stays', alt: '5', showInGallery: true },
+{ id: 120, category: 'stays', alt: '6', showInGallery: true },
+{ id: 121, category: 'stays', alt: '7', showInGallery: true },
+{ id: 122, category: 'stays', alt: '8', showInGallery: true },
+{ id: 123, category: 'stays', alt: '9', showInGallery: true }
+,
+{ id: 124, category: 'stays', alt: '1', showInGallery: true },
+{ id: 125, category: 'stays', alt: '2', showInGallery: true },
+{ id: 126, category: 'stays', alt: '3', showInGallery: true },
+{ id: 127, category: 'stays', alt: '4', showInGallery: true },
+{ id: 128, category: 'stays', alt: '5', showInGallery: true },
+{ id: 129, category: 'stays', alt: '6', showInGallery: true },
+{ id: 130, category: 'stays', alt: '7', showInGallery: true },
+{ id: 131, category: 'stays', alt: '8', showInGallery: true }
+,
+{ id: 132, category: 'stays', alt: '1', showInGallery: true },
+{ id: 133, category: 'stays', alt: '2', showInGallery: true },
+{ id: 134, category: 'stays', alt: '3', showInGallery: true },
+{ id: 135, category: 'stays', alt: '4', showInGallery: true },
+{ id: 136, category: 'stays', alt: '5', showInGallery: true },
+{ id: 137, category: 'stays', alt: '6', showInGallery: true },
+{ id: 138, category: 'stays', alt: '7', showInGallery: true },
+{ id: 139, category: 'stays', alt: '8', showInGallery: true },
+{ id: 140, category: 'stays', alt: '9', showInGallery: true }
+,
+{ id: 141, category: 'stays', alt: '1', showInGallery: true },
+{ id: 142, category: 'stays', alt: '10', showInGallery: true },
+{ id: 143, category: 'stays', alt: '2', showInGallery: true },
+{ id: 144, category: 'stays', alt: '3', showInGallery: true },
+{ id: 145, category: 'stays', alt: '4', showInGallery: true },
+{ id: 146, category: 'stays', alt: '5', showInGallery: true },
+{ id: 147, category: 'stays', alt: '6', showInGallery: true },
+{ id: 148, category: 'stays', alt: '7', showInGallery: true },
+{ id: 149, category: 'stays', alt: '8', showInGallery: true },
+{ id: 150, category: 'stays', alt: '9', showInGallery: true }
+,
+{ id: 151, category: 'stays', alt: '1', showInGallery: true },
+{ id: 152, category: 'stays', alt: '2', showInGallery: true },
+{ id: 153, category: 'stays', alt: '3', showInGallery: true }
 
 ];

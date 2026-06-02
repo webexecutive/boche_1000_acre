@@ -24,6 +24,7 @@ const Contact = lazy(() => import('./pages/Contact.jsx'));
 const Booking = lazy(() => import('./pages/Booking.jsx'));
 const Boomiputhra = lazy(() => import('./pages/Boomiputhra.jsx'));
 const EventDetails =lazy(()=>import('./pages/EventDetails.jsx'))
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyAndPolicy.jsx'));
 
 const RoomDetailsWithKey = () => {
   const { id } = useParams();
@@ -161,6 +162,15 @@ function App() {
             element={
               <Suspense fallback={<ContentSkeleton />}>
                 <EventDetails />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/privacy"
+            element={
+              <Suspense fallback={<ContentSkeleton />}>
+                <PrivacyPolicy />
               </Suspense>
             }
           />
