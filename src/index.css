@@ -1,4 +1,3 @@
-
 @import "tailwindcss";
 @import "./assets/styles/buttons.css";
 
@@ -18,20 +17,30 @@ body {
 }
 
 @layer base {
+  /* ── Headings ───────────────────────────────────────────────────────────── */
+  /* h1 — Hero / page titles                                                   */
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+    @apply text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight;
   }
 
+  /* h2 — Section headings                                                     */
   h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
+    @apply text-3xl md:text-4xl leading-snug;
   }
 
+  /* h3 — Sub-section / card headings                                          */
   h3 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
+    @apply text-2xl md:text-3xl leading-snug;
   }
 
+  /* h4 — Label / small headings                                               */
   h4 {
-    @apply text-xl md:text-2xl lg:text-3xl;
+    @apply text-xl md:text-2xl leading-snug;
+  }
+
+  /* ── Body text ─────────────────────────────────────────────────────────── */
+  /* p — Default body paragraph                                                */
+  p {
+    @apply text-sm md:text-base leading-relaxed;
   }
 }
-

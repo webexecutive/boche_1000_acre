@@ -10,7 +10,7 @@ export const categories = [
 ];
 
 export const galleryMeta = {
-  lastId: 153
+  lastId: 170
 };
 
 export const gallery = [
@@ -168,5 +168,31 @@ export const gallery = [
 { id: 151, category: 'stays', alt: '1', showInGallery: true },
 { id: 152, category: 'stays', alt: '2', showInGallery: true },
 { id: 153, category: 'stays', alt: '3', showInGallery: true }
+,
+{ id: 154, category: 'toddy-pub', alt: 'DSC05953', showInGallery: true },
+{ id: 155, category: 'toddy-pub', alt: 'DSC05963', showInGallery: true },
+{ id: 156, category: 'toddy-pub', alt: 'DSC05995', showInGallery: true }
+,
+{ id: 157, category: 'adventures', alt: '1', showInGallery: false },
+{ id: 158, category: 'adventures', alt: '2', showInGallery: false },
+{ id: 159, category: 'adventures', alt: '3', showInGallery: false },
+{ id: 160, category: 'adventures', alt: '4', showInGallery: false }
+,
+{ id: 161, category: 'adventures', alt: 'DSC06341', showInGallery: true },
+{ id: 162, category: 'adventures', alt: 'DSC06347', showInGallery: true },
+{ id: 163, category: 'adventures', alt: 'DSC06422', showInGallery: true },
+{ id: 164, category: 'adventures', alt: 'DSC06460', showInGallery: true },
+{ id: 165, category: 'adventures', alt: 'DSC06477', showInGallery: true }
+,
+{ id: 166, category: 'estate', alt: 'Boche Bhoomiputhra', showInGallery: true }
+,
+{ id: 167, category: 'events', alt: 'Camp Fire', showInGallery: true }
+,
+
+
+{ id: 168, category: 'events', alt: 'Camp Fire', showInGallery: false }
+,
+{ id: 169, category: 'event', alt: 'Camp Fire .Jpg', showInGallery: false },
+{ id: 170, category: 'event', alt: 'Camp Fire.Jpg', showInGallery: false }
 
 ];

@@ -19,11 +19,22 @@ import ReelCard from "../components/ReelCard";
 import GalleryThumbnail from "../components/GalleryThumbnail";
 import { categories } from "../data/gallery";
 import { getImagesByCategory, getImageById } from "../services/galleryService";
-
-
-
+import videoReviews from "../data/videoReviewData";
+import reviewData from "../data/googleReviewData";
+import ReviewCard from "../components/ReviewCard";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+
+const combinedReviews = [];
+const maxLength = Math.max(videoReviews.length, reviewData.length);
+for (let i = 0; i < maxLength; i++) {
+  if (i < videoReviews.length) {
+    combinedReviews.push({ ...videoReviews[i], type: "video" });
+  }
+  if (i < reviewData.length) {
+    combinedReviews.push({ ...reviewData[i], type: "google" });
+  }
+}
 
 function Home() {
   const getVideoSrc = () => {
@@ -178,7 +189,7 @@ function Home() {
       </section>
 
       {/* Welcome Section */}
-      <section className="relative overflow-hidden h-[600px] md:h-[600px]">
+      <section className="relative overflow-hidden h-150 md:h-180">
 
         {/* Blur placeholder */}
         <img
@@ -200,7 +211,7 @@ function Home() {
         />
 
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent md:bg-gradient-to-r md:from-black/70 md:via-black/10 md:to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent md:bg-linear-to-r md:from-black/90 md:via-black/20 md:to-transparent" />
 
         {/* Text — bottom on mobile, center-left on desktop */}
         <div className="relative h-full flex items-end md:items-center">
@@ -267,9 +278,9 @@ function Home() {
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
             <div className="order-2 md:order-1 grid grid-cols-2 gap-2" style={{ gridTemplateRows: "repeat(3, 160px)" }}>
               <CImage className="row-span-2 rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(74)?.variants?.large} blur={getImageById(74)?.variants?.blur} alt="Toddy 2" />
-              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(73)?.variants?.small} blur={getImageById(73)?.variants?.blur} alt="Toddy 1" />
-              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(75)?.variants?.small} blur={getImageById(75)?.variants?.blur} alt="Toddy 3" />
-              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(76)?.variants?.small} blur={getImageById(76)?.variants?.blur} alt="Toddy 4" />
+              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(154)?.variants?.small} blur={getImageById(154)?.variants?.blur} alt="Toddy 1" />
+              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(155)?.variants?.small} blur={getImageById(155)?.variants?.blur} alt="Toddy 3" />
+              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(156)?.variants?.small} blur={getImageById(156)?.variants?.blur} alt="Toddy 4" />
               <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(77)?.variants?.small} blur={getImageById(77)?.variants?.blur} alt="Toddy 5" />
             </div>
             <div className="order-1 md:order-2 flex flex-col items-center text-center gap-6">
@@ -307,6 +318,41 @@ function Home() {
         </div>
       </section>
 
+      <section className="relative overflow-hidden  h-120 md:h-180">
+
+        <img
+          src="/images/gallery/events/168/large.webp"
+          alt="Campfire evenings at boCHE 1000 Acre"
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover lg:block hidden"
+        />
+
+        {/* Mobile image */}
+        <img
+          src="/images/gallery/events/170/large.webp"
+          alt="Campfire evenings at boCHE 1000 Acre"
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover lg:hidden"
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent lg:bg-linear-to-l lg:from-black/80 lg:via-black/30 lg:to-transparent" />
+
+        {/* Text */}
+        <div className="relative h-full flex items-end lg:items-center justify-start lg:justify-end ">
+          <div className="px-6 pb-10 lg:pb-0 md:px-16 lg:px-24 max-w-xl text-left text-white">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl text-balance mb-4 text-white">
+              Gather around the fire
+            </h1>
+            <div className="w-12 h-px bg-white/50 mb-4" />
+            <p className="text-sm md:text-base text-white/80 leading-relaxed">
+              Evenings under string lights, crackling flames, and the quiet of the estate
+            </p>
+          </div>
+        </div>
+
+      </section>
+
       {/* Bhoomiputra section */}
       <section className="bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/bhoomiputhrabg-sm.webp')] md:bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/bhoomiputhrabg-md.webp')] lg:bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/bhoomiputhrabg-lg.webp')] bg-cover bg-center bg-no-repeat">
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 text-white flex flex-col items-center space-y-10">
@@ -323,7 +369,7 @@ function Home() {
               </p>
             </div>
             <div>
-              <img src="/images/teaFactory.webp" className="w-full rounded-xl object-cover" alt="Tea Factory" />
+              <img src="/images/gallery/estate/166/large.webp" className="w-full rounded-xl object-cover" alt="Tea Factory" />
             </div>
           </div>
           <Link to="/boomiputhra">
@@ -331,6 +377,8 @@ function Home() {
           </Link>
         </div>
       </section>
+
+
 
       {/* Gallery Section */}
       <section className="py-20 bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-sm.svg')] md:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-md.svg')] lg:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-lg.svg')] bg-cover bg-center bg-no-repeat">
@@ -343,9 +391,7 @@ function Home() {
                 const catImages = getImagesByCategory(cat.category)
                   .sort((a, b) => b.id - a.id); // ✅ newest first
 
-                const repItem = cat.category === 'all'
-                  ? catImages.find(g => g.category === 'stays') ?? catImages[0]
-                  : catImages[0];
+                const repItem = catImages[0];
 
                 const image = repItem ? repItem.variants.small : "/images/image-not-found-small.webp";
                 const blur = repItem ? repItem.variants.blur : "";
@@ -362,9 +408,22 @@ function Home() {
         </div>
       </section>
 
+      {/* Testimonials section */}
+      <section className="bg-[#F7FDE9] py-20">
+        <div className="max-w-7xl relative mx-auto px-4">
+          <EmblaCarousel sectionTitle="Experiences Worth Sharing" sectionSubtitle="Hear from our guests">
+            {combinedReviews.map((review) => (
+              <div className="embla__slide" key={review.type === "video" ? `video-${review.id}` : `google-${review.id}`}>
+                <ReviewCard review={review} onPlay={setReelModal} />
+              </div>
+            ))}
+          </EmblaCarousel>
+        </div>
+      </section>
+
       {/* Map Section */}
       {/* Map Section */}
-      <section className="w-full h-[450px]">
+      <section className="w-full h-112.5">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8414.148655069192!2d76.12723070987565!3d11.530258170742771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba613ab91efa5ab%3A0x3f76852d27db0cc9!2sBoche%201000%20Acre!5e1!3m2!1sen!2sin!4v1779511842065!5m2!1sen!2sin"
           width="100%"
@@ -473,7 +532,7 @@ function Home() {
           <div className="w-[90vw] sm:w-80 md:w-96 aspect-9/16 rounded-2xl overflow-hidden" onClick={(e) => e.stopPropagation()}>
             <iframe
               key={reelModal.id}
-              src={`${reelModal.videoLink}?autoplay=1&mute=1&controls=1`}
+              src={`${reelModal.videoLink}${reelModal.videoLink.includes('?') ? '&' : '?'}autoplay=1&controls=0`}
               className="w-full h-full"
               allow="autoplay; fullscreen"
               allowFullScreen
