@@ -23,6 +23,7 @@ function Gallery() {
     const navigate = useNavigate();
     const galleryRef = useRef(null);
     const [page, setPage] = useState(1);
+    const [blursReady, setBlursReady] = useState(false);
 
     const activeCategory = category || 'all';
 
@@ -36,9 +37,6 @@ function Gallery() {
         page * ITEMS_PER_PAGE,
     );
 
-
-
-
     /* Reset to page 1 when category changes */
     useEffect(() => {
         setPage(1);
@@ -48,6 +46,22 @@ function Gallery() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [page]);
 
+    /* Preload all blur images before revealing the grid */
+    useEffect(() => {
+        setBlursReady(false);
+        if (pagedImages.length === 0) { setBlursReady(true); return; }
+
+        let loaded = 0;
+        pagedImages.forEach((item) => {
+            const img = new Image();
+            img.onload = img.onerror = () => {
+                loaded += 1;
+                if (loaded === pagedImages.length) setBlursReady(true);
+            };
+            img.src = item.variants.blur;
+        });
+    }, [activeCategory, page]);
+
     /* Initialise / reinitialise PhotoSwipe whenever the visible set changes */
     useEffect(() => {
         if (!galleryRef.current) return;
@@ -56,12 +70,11 @@ function Gallery() {
             gallery: galleryRef.current,
             children: 'a[data-pswp-src]',
             pswpModule: () => import('photoswipe'),
-
         });
 
         lightbox.init();
         return () => lightbox.destroy();
-    }, [activeCategory, page]);
+    }, [activeCategory, page, blursReady]);
 
     const handleTab = (cat) => {
         cat === 'all' ? navigate('/gallery') : navigate(`/gallery/${cat}`);
@@ -94,6 +107,10 @@ function Gallery() {
             {/* ── Masonry grid ── */}
             {pagedImages.length === 0 ? (
                 <p className="text-gray-400 text-center py-20">No images in this category yet.</p>
+            ) : !blursReady ? (
+                <div className="flex items-center justify-center py-32">
+                    <div className="w-8 h-8 rounded-full border-2 border-gray-200 border-t-gray-800 animate-spin" />
+                </div>
             ) : (
                 <div
                     id="gallery-section"
@@ -131,14 +148,26 @@ function Gallery() {
                                         img.style.opacity = 1;
 
                                         if (a && img.naturalWidth > 0) {
-                                            const scale = 1920 / Math.max(img.naturalWidth, img.naturalHeight);
-                                            a.dataset.pswpWidth = Math.round(img.naturalWidth * scale);
-                                            a.dataset.pswpHeight = Math.round(img.naturalHeight * scale);
+                                            const scale =
+                                                1920 /
+                                                Math.max(
+                                                    img.naturalWidth,
+                                                    img.naturalHeight
+                                                );
+
+                                            a.dataset.pswpWidth = Math.round(
+                                                img.naturalWidth * scale
+                                            );
+
+                                            a.dataset.pswpHeight = Math.round(
+                                                img.naturalHeight * scale
+                                            );
                                         }
                                     }}
                                     onError={(e) => {
                                         e.currentTarget.onerror = null;
-                                        e.currentTarget.src = '/images/image-not-found-small.webp';
+                                        e.currentTarget.src =
+                                            '/images/image-not-found-small.webp';
                                         e.currentTarget.style.opacity = 1;
                                     }}
                                     className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-500 group-hover:scale-105"
