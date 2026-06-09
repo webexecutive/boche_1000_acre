@@ -10,28 +10,20 @@ const adventures = [
         condition: "2 pax",
         price: 1200,
 
-    }, {
+    },
+    {
         id: 2,
         title: "ATV Ride  (570cc)",
         thumbnail: "/images/gallery/adventures/157/small.webp",
         videoLink: "https://www.youtube.com/embed/ROx3H15qtzI",
-        description: "Gear up for an adrenaline-filled ride across rugged trails and natural terrain. The 200cc ATV Ride offers speed, excitement, and an unforgettable off-road adventure.",
-        condition: "2laps, 1pax",
-        price: 300,
+        description: "Gear up for an adrenaline-filled ride across rugged trails and natural terrain. The 570cc ATV Ride offers speed, excitement, and an unforgettable off-road adventure.",
+        condition: "2 laps, 1pax",
+        price: 500,
 
-    },
-    // {
-    //     id: 3,
-    //     title: "ATV Ride  (570cc)",
-    //     thumbnail: "/images/adventures/atvride.webp",
-    //     videoLink: "video.mp4",
-    //     description: "Gear up for an adrenaline-filled ride across rugged trails and natural terrain. The 570cc ATV Ride offers speed, excitement, and an unforgettable off-road adventure.",
-    //     condition: "2 laps, 1pax",
-    //     price: 500,
-
-    // },
+    }
+    ,
     {
-        id: 4,
+        id: 3,
         title: "Sky Cycling",
         thumbnail: "/images/gallery/adventures/159/small.webp",
         videoLink: "https://www.youtube.com/embed/U6ocl0fsIRs",
@@ -41,7 +33,7 @@ const adventures = [
 
     },
     {
-        id: 5,
+        id: 4,
         title: "Zipline",
         thumbnail: "/images/gallery/adventures/158/small.webp",
         videoLink: "https://www.youtube.com/embed/CqYkTlafVK0",
@@ -51,15 +43,27 @@ const adventures = [
 
     },
     {
-        id: 6,
+        id: 5,
         title: "Jungle Safari",
-        thumbnail: "images/adventures/junglesafari.webp",
+        thumbnail: "images/gallery/adventures/172/small.webp",
         videoLink: "",
         description: "Explore the beauty of nature on a guided Jungle Safari. Discover scenic trails, lush greenery, and the serene charm of the wilderness.",
         condition: "6 pax",
         price: 2500,
 
     },
+    {
+        id: 6,
+        title: "ATV Ride  (200cc)",
+        thumbnail: "/images/gallery/adventures/173/small.webp",
+        videoLink: "",
+        description: "Gear up for an adrenaline-filled ride across rugged trails and natural terrain. The 200cc ATV Ride offers speed, excitement, and an unforgettable off-road adventure.",
+        condition: "2laps, 1pax",
+        price: 300,
+
+    },
+
+
     // {
     //     id: 7,
     //     title: "Glass Bridge",

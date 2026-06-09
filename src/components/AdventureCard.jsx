@@ -5,18 +5,19 @@ export default function AdventureCard({ adventure, onPlay }) {
     const hasVideo = Boolean(adventure.videoLink);
 
     return (
-        <div className="bg-[#f2faeb] border border-[#dde8cc] rounded-2xl overflow-hidden flex flex-row shadow-sm hover:shadow-md transition-shadow duration-300">
+        <div className="bg-[#f2faeb] border border-[#dde8cc] rounded-2xl overflow-hidden flex flex-col sm:flex-row shadow-sm hover:shadow-md transition-shadow duration-300">
 
             {/* ── Left: Image with play button ── */}
             <div
-                className={`relative shrink-0 w-[42%] sm:w-[38%] ${hasVideo ? 'cursor-pointer group' : ''}`}
+                className={`relative shrink-0 w-full sm:w-[38%] ${hasVideo ? 'cursor-pointer group' : ''
+                    }`}
                 onClick={hasVideo ? onPlay : undefined}
                 aria-label={hasVideo ? `Play ${adventure.title} video` : undefined}
             >
                 <CImage
                     src={adventure.thumbnail}
                     alt={adventure.title}
-                    className="w-full h-full"
+                    className="w-full h-56 sm:h-full object-cover"
                 />
 
                 {/* Play button overlay */}
@@ -46,7 +47,7 @@ export default function AdventureCard({ adventure, onPlay }) {
                     <span className="text-gray-500">{adventure.condition}</span>
                     {adventure.price && (
                         <span className="text-lg text-gray-900">
-                            ₹{adventure.price.toLocaleString('en-IN')} 
+                            ₹{adventure.price.toLocaleString('en-IN')}
                         </span>
                     )}
                 </div>

@@ -5,6 +5,7 @@ const amenities = {
         { id: "housekeeping", label: "House Keeping", icon: "house_keeping" },
         { id: "parking", label: "Parking", icon: "local_parking" },
         { id: "powerBackup", label: "Power Backup", icon: "power_backup" },
+        {id: "kitchen", label: "Kitchen", icon: "kitchen"},
     ],
 
     roomAmenities: [

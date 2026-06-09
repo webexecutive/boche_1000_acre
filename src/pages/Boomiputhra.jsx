@@ -240,7 +240,7 @@ const Boomiputhra = () => {
                 </div>
 
                 {/* Bento Grid Gallery */}
-                <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[700px]">
+                <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-175">
 
                     <div className="md:col-span-2 md:row-span-2 rounded-4xl overflow-hidden relative group shadow-sm bg-gray-100">
                         <div className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" style={{ backgroundImage: "url('/images/bhoomiputhrabg-lg.webp')" }}></div>
@@ -251,7 +251,7 @@ const Boomiputhra = () => {
                         </div>
                     </div>
 
-                    <div className="md:col-span-1 md:row-span-1 rounded-4xl overflow-hidden relative group shadow-sm bg-gray-200 min-h-[300px] md:min-h-0">
+                    <div className="md:col-span-1 md:row-span-1 rounded-4xl overflow-hidden relative group shadow-sm bg-gray-200 min-h-75 md:min-h-0">
                         <div className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" style={{ backgroundImage: "url('/images/skilled plucking.webp')" }}></div>
                         <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.8),rgba(0,0,0,0.3),rgba(0,0,0,0.1))]" />
                         <div className="absolute bottom-8 left-8 right-8">
@@ -259,7 +259,7 @@ const Boomiputhra = () => {
                         </div>
                     </div>
 
-                    <div className="md:col-span-1 md:row-span-1 rounded-4xl overflow-hidden relative group shadow-sm bg-gray-200 min-h-[300px] md:min-h-0">
+                    <div className="md:col-span-1 md:row-span-1 rounded-4xl overflow-hidden relative group shadow-sm bg-gray-200 min-h-75 md:min-h-0">
                         <div className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" style={{ backgroundImage: "url('/images/modern machinery.webp')" }}></div>
                         <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.8),rgba(0,0,0,0.3),rgba(0,0,0,0.1))]" />
                         <div className="absolute bottom-8 left-8 right-8">
@@ -267,7 +267,7 @@ const Boomiputhra = () => {
                         </div>
                     </div>
 
-                    <div className="md:col-span-2 md:row-span-1 rounded-4xl overflow-hidden relative group shadow-sm bg-gray-200 min-h-[300px] md:min-h-0">
+                    <div className="md:col-span-2 md:row-span-1 rounded-4xl overflow-hidden relative group shadow-sm bg-gray-200 min-h-75 md:min-h-0">
                         <div className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" style={{ backgroundImage: "url('/images/sustainable farmig.webp')" }}></div>
                         <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.8),rgba(0,0,0,0.3),rgba(0,0,0,0.1))]" />
                         <div className="absolute bottom-8 left-8 right-8">

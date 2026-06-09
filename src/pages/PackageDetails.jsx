@@ -35,7 +35,7 @@ const PackageDetails = () => {
             <div className="flex flex-col md:flex-row gap-6 items-stretch">
 
                 {/* Poster Image */}
-                <div className="w-full md:w-[46%] shrink-0 aspect-4/3 md:min-h-[300px] relative overflow-hidden rounded-2xl">
+                <div className="w-full md:w-[46%] shrink-0 aspect-4/3 md:min-h-75 relative overflow-hidden rounded-2xl">
                     <CImage
                         src={pkg.posterImg}
                         blur={pkg.posterBlurImg}
@@ -117,7 +117,7 @@ const PackageDetails = () => {
                     <h3 className="mb-6">Guest Activities</h3>
                     <div className="flex gap-4 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
                         {pkg.activities.map((activity) => (
-                            <div key={activity.id} className="flex flex-col items-center gap-2 shrink-0 w-[120px] sm:w-[200px]">
+                            <div key={activity.id} className="flex flex-col items-center gap-2 shrink-0 w-30 sm:w-50">
                                 <CImage
                                     src={activity.image}
                                     blur={activity.blurImage}

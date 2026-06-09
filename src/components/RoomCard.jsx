@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MdPerson } from "react-icons/md";
-import Button from "./Button";
 
 import CImage from "./Cimage";
 
@@ -25,7 +23,7 @@ export default function RoomCard({
                 src={image}
                 blur={blur}
                 alt={title}
-                className="w-full h-[200px] shrink-0"
+                className="w-full h-56 shrink-0"
             />
 
             {/* Body */}

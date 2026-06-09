@@ -22,6 +22,8 @@ import { getImagesByCategory, getImageById } from "../services/galleryService";
 import videoReviews from "../data/videoReviewData";
 import reviewData from "../data/googleReviewData";
 import ReviewCard from "../components/ReviewCard";
+import StayCard from "../components/StayCard";
+import SEO from "../components/SEO";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
@@ -137,6 +139,13 @@ function Home() {
 
   return (
     <>
+      <SEO
+        title="Best Resorts in Wayanad Kerala | Unique Stay & Adventure Experience | boCHE 1000 Acre"
+        description="Looking for one of the best resorts in Wayanad? Discover boCHE 1000 Acre, a unique destination set within a breathtaking 1000-acre tea plantation. Stay in a British Bungalow, Bubble Dome, Mud House or XPod, enjoy zipline, giant swing, ATV rides, sky cycling, authentic cuisine, and unforgettable plantation views."
+        keywords="best resorts in wayanad, resorts in wayanad kerala, resort in wayanad, top resorts in wayanad, best stay in wayanad, rooms at wayanad, wayanad resort booking, tea plantation resort wayanad, adventure resort wayanad, adventure activities wayanad, bubble dome wayanad, british bungalow wayanad, mud house wayanad, xpod wayanad, zipline wayanad, ATV ride wayanad, sky cycling wayanad"
+        url="https://www.boche1000acre.in"
+      />
+
       {/* Hero Section with Video Background */}
       <section className="relative h-dvh overflow-hidden">
         <video
@@ -221,11 +230,11 @@ function Home() {
               Welcome to boCHE 1000 Acre
             </h1>
             <div className="w-12 h-px bg-white/50 mb-4"></div>
-            <p className="text-sm md:text-base text-white/80 leading-relaxed">
-              Immerse yourself in a stay surrounded by a 1,000-acre tea plantation.
+            <p className="text-sm md:text-base text-white/80 text-justify leading-relaxed">
+              Nestled in the heart of a sprawling tea plantation, boCHE 1000 Acres offers an unforgettable stay in Wayanad — with thrilling activities, breathtaking views, and the warmth of Kerala all in one place.
             </p>
           </div>
-        </div>
+        </div>  
 
       </section>
 
@@ -241,7 +250,11 @@ function Home() {
           className="cursor-pointer"
         >
           <div>
-            <img src="/images/banners/banner1.webp" alt="Slide 1" />
+            <picture>
+              <source media="(max-width: 768px)" srcSet="/images/gallery/banner/171/large.webp" />
+              <source media="(min-width: 769px)" srcSet="/images/banners/banner1.webp" />
+              <img src="/images/banners/banner1.webp" alt="Slide 1" />
+            </picture>
           </div>
         </Carousel>
       </section>
@@ -249,23 +262,37 @@ function Home() {
       {/* Stay cards */}
       <section className="bg-[#F7FDE9] py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <EmblaCarousel sectionTitle="Our Stays" sectionSubtitle="Comfort Meets Nature">
+
+          {/* Section intro */}
+          <div className=" max-w-5xl mx-auto px-3">
+            <h2 className="text-[#1e3209] text-center mb-4">A Sanctuary Above the Clouds</h2>
+            <div className="w-12 h-px bg-[#c8dba0] mx-auto mb-6" />
+            <p className="text-[15px] font-light text-[#4a5c35] leading-relaxed text-justify">
+              Nestled amidst the pristine mountains of Kerala, boCHE 1000 Acres is a luxury experiential retreat where nature, wellness, adventure, and heritage come together to create unforgettable journeys. Surrounded by panoramic mountain vistas, lush forests, and refreshing highland air, the resort offers an extraordinary escape from the ordinary.
+            </p>
+            <p className="text-[15px] font-light text-[#4a5c35] leading-relaxed mt-4 text-justify">
+              Every accommodation has been thoughtfully designed to immerse guests in the beauty of the landscape while delivering exceptional comfort, privacy, and personalized hospitality. Whether seeking a romantic retreat, a family holiday, or a unique group getaway, guests will discover experiences crafted to inspire, rejuvenate, and connect.
+            </p>
+          </div>
+
+          <EmblaCarousel className="stays-carousel" >
             {rooms.map((room) => {
               const cover = getImageById(room.images?.[0]);
               return (
                 <div className="embla__slide" key={room.id}>
-                  <RoomCard
+                  <StayCard
                     image={cover?.variants?.small ?? "/images/image-not-found-small.webp"}
                     blur={cover?.variants?.blur ?? ""}
                     title={room.name}
-                    guests={room.basicInfo?.maxGuests}
-                    price={room.basicInfo?.pricePerNight}
+                    tagline={room.aboutStay.tagline}
+                    description={room.aboutStay.description}
                     id={room.id}
                   />
                 </div>
               );
             })}
           </EmblaCarousel>
+
           <div className="flex justify-center">
             <Link to="/stays"><Button size="sm">View All Stays</Button></Link>
           </div>
@@ -305,7 +332,7 @@ function Home() {
       {/* Adventure section */}
       <section className="bg-[#F7FDE9] py-20">
         <div className="max-w-7xl relative mx-auto px-4">
-          <EmblaCarousel sectionTitle="Adventure Experiences" sectionSubtitle="More ways to feel alive">
+          <EmblaCarousel sectionTitle="Adventure Experiences" sectionSubtitle="Thrilling Activities in Wayanad">
             {adventures.map((adventure) => (
               <div className="embla__slide" key={adventure.id}>
                 <ReelCard {...adventure} onPlay={() => setReelModal(adventure)} />
@@ -353,13 +380,88 @@ function Home() {
 
       </section>
 
+      {/* boChe Experience */}
+      <section className="bg-[#F7FDE9] py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4">
+
+          {/* Text block */}
+          <div className="max-w-4xl mx-auto text-center mb-12 md:mb-20">
+            <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-[#6a8f3a] mb-4">
+              The boCHE Way
+            </p>
+            <h2 className="text-[#1e3209] mb-4">boCHE Experience</h2>
+            <div className="w-12 h-px bg-[#c8dba0] mx-auto mb-6" />
+            <p className="text-[14px] md:text-[15px] font-light text-justify text-[#4a5c35] leading-relaxed">
+              More than just accommodations, every stay at boCHE 1000 Acres is complemented by panoramic mountain views, immersive nature experiences, adventure activities, local culinary journeys, wellness offerings, and the warm hospitality that defines Kerala. Here, every sunrise, every view, and every moment becomes part of an unforgettable story.
+            </p>
+          </div>
+
+          {/* Feature rows */}
+          <div className="max-w-5xl mx-auto divide-y divide-[#c8dba0]">
+            {[
+              {
+                num: "01",
+                label: "Adventure in the Hills",
+                tag: "Adventure",
+                desc: "Zip through the treetops, pedal across the sky on a sky cycle, feel the rush of the giant swing, or tear through the tea plantation trails on an ATV. If you are looking for adventure activities in Wayanad that go beyond the ordinary, boCHE 1000 acre delivers — all within 1000 acres of rolling highland terrain.",
+              },
+              {
+                num: "02",
+                label: "A Sea of Green",
+                tag: "Scenery",
+                desc: "Wake up surrounded by acres of lush green tea plantation stretching as far as the eye can see. A stay in Wayanad rarely gets more immersive than this — boCHE 1000 acre sits right in the middle of this living landscape, where every walk, every breath, and every view is something you carry home.",
+              },
+              {
+                num: "03",
+                label: "Tastes of Kerala",
+                tag: "Cuisine",
+                desc: "Known for some of the best food in Wayanad, our restaurant is a celebration of authentic Kerala taste — honest, hearty, and made with the kind of care that turns a meal into a memory.",
+              },
+              {
+                num: "04",
+                label: "A Place to Slow Down",
+                tag: "Wellness",
+                desc: "No itinerary, no rush. Our resort in Wayanad is built for the kind of rest that actually restores you — just highland air, birdsong, and the rare luxury of having nowhere you need to be.",
+              },
+            ].map(({ num, label, tag, desc }) => (
+              <div key={num} className="flex items-start gap-4 md:gap-10 py-7 md:py-10 group">
+
+                {/* Number */}
+                <span className="text-[36px] md:text-[64px] font-light leading-none text-[#c8dba0] select-none shrink-0 w-10 md:w-20 group-hover:text-[#6a8f3a] transition-colors duration-300">
+                  {num}
+                </span>
+
+                {/* Content */}
+                <div className="flex flex-col md:flex-row md:items-start gap-2 md:gap-10 flex-1">
+
+                  <div className="shrink-0 md:w-56 flex flex-col gap-2 md:pt-3">
+                    <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#6a8f3a] bg-[#e4f5c8] px-2 py-1 rounded-full w-fit">
+                      {tag}
+                    </span>
+                    <h3 className="text-[#1e3209] text-[16px] md:text-[20px] font-medium leading-tight">
+                      {label}
+                    </h3>
+                  </div>
+
+                  <p className="text-[13px] md:text-[14px] font-light text-[#4a5c35] leading-relaxed md:pt-3 flex-1">
+                    {desc}
+                  </p>
+
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
       {/* Bhoomiputra section */}
       <section className="bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/bhoomiputhrabg-sm.webp')] md:bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/bhoomiputhrabg-md.webp')] lg:bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/bhoomiputhrabg-lg.webp')] bg-cover bg-center bg-no-repeat">
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 text-white flex flex-col items-center space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div className="flex flex-col items-center md:items-start text-center md:text-left gap-6">
               <img className="lg:w-md object-contain" src={bhoomiputraLogo} alt="bhoomiputralogo" />
-              <p className="leading-relaxed text-justify md:text-left">
+              <p className="leading-relaxed text-justify ">
                 Located in the misty highlands of South India at 3,280–3,850 feet, our
                 600-acre plantation grows premium tea, coffee, cardamom, vanilla,
                 pepper, and select minor crops using sustainable practices. Our modern
@@ -383,7 +485,13 @@ function Home() {
       {/* Gallery Section */}
       <section className="py-20 bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-sm.svg')] md:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-md.svg')] lg:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-lg.svg')] bg-cover bg-center bg-no-repeat">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="pb-8 md:pb-10 text-center md:text-left">Gallery</h2>
+          <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+      <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-[#6a8f3a] mb-4">
+        A Visual Journey
+      </p>
+      <h2 className="text-[#1e3209] mb-4">Our Gallery</h2>
+      <div className="w-12 h-px bg-[#c8dba0] mx-auto" />
+    </div>
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {categories
               .filter(cat => cat.showInGallery !== false)
@@ -421,7 +529,7 @@ function Home() {
         </div>
       </section>
 
-      {/* Map Section */}
+
       {/* Map Section */}
       <section className="w-full h-112.5">
         <iframe

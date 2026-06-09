@@ -8,7 +8,7 @@ const rooms = [
         basicInfo: {
             rooms: 4,
             maxGuests: 8,
-            pricePerNight: 12000,
+            pricePerNight: 15000,
             currency: "INR",
         },
 
@@ -37,14 +37,16 @@ const rooms = [
         ],
 
         aboutStay: {
+
+            tagline: "Timeless Elegance for Families",
+
             description:
-                "Experience colonial-era charm blended with modern luxury in our elegant British Bungalow. Perfect for families and travellers seeking comfort, privacy, and timeless architecture.",
+                "Inspired by classic colonial architecture, the British Bungalow is a spacious luxury residence ideal for families and multigenerational travellers. Featuring expansive living spaces, elegant interiors, two master suites, dedicated children's rooms, and stunning mountain views, it offers the perfect setting for meaningful family moments and private celebrations.",
 
             highlights: [
                 "Contemporary heritage-style architecture with spacious interiors",
                 "Private sit-out/verandah with scenic views",
                 "Premium bedrooms with attached bathrooms",
-                "Air-conditioning and modern amenities",
                 "Ideal for families and group stays"
             ],
         },
@@ -55,10 +57,10 @@ const rooms = [
                 "housekeeping",
                 "parking",
                 "powerBackup",
+                "kitchen",
             ],
 
             roomAmenities: [
-                "ac",
                 "bathroom",
                 "workDesk",
                 "closet",
@@ -85,8 +87,8 @@ const rooms = [
         name: "Mud House",
 
         basicInfo: {
-            rooms: 4,
-            maxGuests: 8,
+            rooms: 2,
+            maxGuests: 4,
             pricePerNight: 12000,
             currency: "INR",
         },
@@ -116,8 +118,9 @@ const rooms = [
         ],
 
         aboutStay: {
+            tagline: "A Rustic Retreat Rooted in Nature",
             description:
-                "Reconnect with nature in our eco-friendly Mud House, crafted using traditional materials to offer a cool, earthy, and authentic village-style living experience.",
+                "Experience the charm of traditional living in our handcrafted Mud Villa, built using natural materials and timeless architectural techniques. Surrounded by peaceful greenery, it offers naturally cool interiors, rustic elegance, and modern comforts. Unwind in a serene setting and reconnect with nature through an authentic countryside experience.",
 
             highlights: [
                 "Naturally temperature-regulated interiors",
@@ -158,8 +161,8 @@ const rooms = [
     },
 
     {
-        id: "x-pod",
-        name: "X Pod",
+        id: "hill-pod",
+        name: "Hill Pod",
 
         basicInfo: {
             rooms: 1,
@@ -193,8 +196,11 @@ const rooms = [
         ],
 
         aboutStay: {
+
+            tagline: "Luxury Among the Peaks",
+
             description:
-                "A futuristic compact stay designed for modern travellers. X Pod offers a unique, stylish, and comfortable retreat with panoramic outdoor views.",
+                "Set against a backdrop of rolling mountains and endless greenery, the Hill Pod offers a sophisticated retreat for couples seeking peace, privacy, and spectacular scenery. Floor-to-ceiling views and carefully curated interiors create a truly immersive mountain experience.",
 
             highlights: [
                 "Contemporary pod-style architecture",
@@ -283,8 +289,11 @@ const rooms = [
         ],
 
         aboutStay: {
+
+            tagline: "A Celestial Retreat",
+
             description:
-                "Sleep beneath the stars in our transparent Bubble Dome. A magical experience that combines comfort with breathtaking night-sky views.",
+                "Experience the wonder of sleeping beneath the stars while surrounded by nature's beauty. The Bubble Dome combines innovative design with luxury comforts, offering guests an enchanting stay where mountain landscapes, moonlit skies, and unforgettable memories come together.",
 
             highlights: [
                 "Transparent dome structure",
@@ -371,8 +380,11 @@ const rooms = [
         ],
 
         aboutStay: {
+
+            tagline: "An Exclusive Romantic Escape",
+
             description:
-                "A romantic dome-shaped retreat designed for couples seeking privacy and a memorable getaway under the stars.",
+                "A private sanctuary designed for couples, the Sexy Dome offers breathtaking mountain views, luxurious interiors, and an intimate atmosphere where every moment feels special. Perfect for honeymoons, anniversaries, and romantic getaways, this unique retreat blends contemporary luxury with the serenity of nature.",
 
             highlights: [
                 "Unique dome architecture",
@@ -425,8 +437,8 @@ const rooms = [
 
     {
 
-        id: "back-packers-room",
-        name: "Back Packers Room",
+        id: "the-mountain-residence-room",
+        name: "The Mountain Residence Room",
 
         basicInfo: {
             rooms: 1,
@@ -460,16 +472,18 @@ const rooms = [
         ],
 
         aboutStay: {
+
+            tagline: "Contemporary Comfort for Couples",
             description:
-                "Designed for groups and adventure travellers, this budget friendly stay offers a vibrant and community-driven atmosphere.",
+                "A cozy private room within The Mountain Residence, designed for couples or two guests seeking a comfortable stay amidst nature. The room offers modern comforts, and easy access to the resort's experiences make it an ideal choice for travellers looking to explore, connect, and create lasting memories.",
 
             highlights: [
-                "Dormitory-style accommodation",
-                "Affordable group stay option",
-                "Shared common spaces",
-                "Comfortable bedding",
-                "Ideal for backpackers and student groups"
-            ],
+                "Private room for 2 guests",
+                "Attached bathroom",
+                "Located withinThe Mountain Residence Villa",
+                "Comfortable and budget-friendly stay",
+                "Surrounded by scenic tea plantation views"
+            ]
         },
 
         amenities: {
@@ -507,13 +521,13 @@ const rooms = [
 
     {
 
-        id: "back-packers-full-property",
-        name: "Back Packers Full Property",
+        id: "the-mountain-residence-full-property",
+        name: "The Mountain Residence Full Property",
 
         basicInfo: {
             rooms: 4,
             maxGuests: 8,
-            pricePerNight: 18000,
+            pricePerNight: 20000,
             currency: "INR",
         },
 
@@ -542,15 +556,17 @@ const rooms = [
         ],
 
         aboutStay: {
+            tagline: "Contemporary Comfort for Groups",
             description:
-                "Designed for groups and adventure travellers, this budget friendly stay offers a vibrant and community-driven atmosphere.",
+                "Designed for friends, adventure seekers, and small groups, the The Mountain Residence combines privacy with social living. Spacious 4 bed room accommodations, modern comforts, and easy access to the resort's experiences make it an ideal choice for travellers looking to explore, connect, and create lasting memories together.",
 
             highlights: [
-                "Dormitory-style accommodation",
-                "Affordable group stay option",
-                "Shared common spaces",
-                "Comfortable bedding",
-                "Ideal for backpackers and student groups"
+                "4-bedroom private villa",
+                "Each room accommodates 2 guests",
+                "Attached bathroom in every room",
+                "Fully equipped shared kitchen",
+                "Spacious common living areas",
+                "Ideal for families and group stays"
             ],
         },
 
@@ -631,8 +647,9 @@ const rooms = [
     //     ],
 
     //     aboutStay: {
+    //         tagline:"Forest Hideaway for Friends & Social Gatherings",
     //         description:
-    //             "Inspired by traditional South Indian heritage homes, Agraharam offers a culturally rich and peaceful stay experience.",
+    //             "Tucked away amidst lush greenery and serene forest surroundings, Agraharam is the perfect hideaway for friends and bachelor groups seeking a relaxed escape in nature. Featuring a comfortable bedroom,  living area, dining space, and modern amenities, it offers the ideal setting to unwind, reconnect, and create unforgettable memories amidst the tranquillity of the mountains.",
 
     //         highlights: [
     //             "Traditional architectural style",
@@ -710,8 +727,9 @@ const rooms = [
         ],
 
         aboutStay: {
+            tagline: "Where Nature Becomes Your Home",
             description:
-                "Immerse yourself in the outdoors with our Natural Tent Stay a perfect blend of camping adventure and basic comfort.",
+                "Escape the rush of everyday life and reconnect with nature in our Natural Tent Stay. Surrounded by lush greenery and fresh mountain air, it offers a peaceful outdoor retreat with the perfect balance of comfort, relaxation, and adventure.",
 
             highlights: [
                 "Comfortable tent accommodation",

@@ -65,23 +65,22 @@ export default function Footer() {
                     <div className="flex flex-col gap-4">
 
                         {/* Email */}
-                        {mail.map((m) => (
-                            <a
-                                key={m.label}
-                                href={`mailto:${m.mailId}`}
-                                className="text-gray-300 hover:text-white text-sm transition-colors duration-200"
-                            >
-                                Mail us: {m.mailId}
-                            </a>
-                        ))}
+                       {mail.length > 0 && (
+  <a
+    href={`mailto:${mail[mail.length - 1].mailId}`}
+    className="text-gray-300 hover:text-white text-sm transition-colors duration-200"
+  >
+    Mail us: {mail[mail.length - 1].mailId}
+  </a>
+)}
 
                         {/* Address */}
-                        <div className="text-gray-400 text-sm leading-relaxed">
+                        <address className="text-gray-400 text-sm leading-relaxed">
                             <p className="text-gray-300 font-medium mb-1">Address:</p>
                             {address.line1},<br />
                             {address.line2},<br />
                             {address.city}, {address.state} {address.pin}
-                        </div>
+                        </address>
 
                         {/* Phone */}
                         {contacts.slice(0, 1).map((c) => (

@@ -102,7 +102,7 @@ function Contact() {
                             </div>
                             <p className="text-sm text-gray-700">
                                 <a href="mailto:boche1000acre@gmail.com" className="hover:underline hover:text-[#3a5a1c] transition-colors">
-                                    boche1000acre@gmail.com
+                                    booking@bochehg.com
                                 </a>
                             </p>
                         </div>

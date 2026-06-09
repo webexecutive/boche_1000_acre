@@ -312,7 +312,7 @@ function Booking() {
 
                             {/* ── RIGHT SIDE ── */}
                             <div className="space-y-5 relative">
-                                <div className="hidden md:block absolute left-[-20px] top-0 h-full w-px bg-gray-400" />
+                                <div className="hidden md:block absolute -left-5 top-0 h-full w-px bg-gray-400" />
 
                                 {/* Email */}
                                 <div>

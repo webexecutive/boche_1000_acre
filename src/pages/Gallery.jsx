@@ -206,7 +206,7 @@ function Gallery() {
                                 <button
                                     key={p}
                                     onClick={() => setPage(p)}
-                                    className={`min-w-[36px] px-3 py-1.5 text-sm rounded-lg border transition-colors ${p === page
+                                    className={`min-w-9 px-3 py-1.5 text-sm rounded-lg border transition-colors ${p === page
                                         ? 'bg-gray-900 text-white border-gray-900'
                                         : 'border-gray-200 hover:bg-gray-100 text-gray-700'
                                         }`}

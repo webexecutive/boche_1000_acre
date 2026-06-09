@@ -3,7 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import '../assets/styles/embla-carousel.css';
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
-function EmblaCarousel({ children, sectionTitle, sectionSubtitle }) {
+function EmblaCarousel({ children, sectionTitle, sectionSubtitle, className = '' }) {
     const [emblaRef, emblaApi] = useEmblaCarousel(
         { align: "start" },
         [WheelGesturesPlugin({ forceWheelAxis: "x" })]
@@ -33,24 +33,28 @@ function EmblaCarousel({ children, sectionTitle, sectionSubtitle }) {
     }, [emblaApi, onInit, onSelect]);
 
     return (
-        <div className="flex flex-col items-center justify-center  ">
+        <div className={`flex flex-col items-center justify-center ${className}`} >
             <div className="embla">
                 <div className="flex flex-row justify-between pb-3  pl-4 ">
-                    <div className="text-center flex flex-col gap-2">
+                    <div className="text-left flex flex-col gap-2">
+                        <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-[#6a8f3a] ">
+                            {sectionSubtitle}
+                        </p>
                         <h2>{sectionTitle}</h2>
-                        <p className="text-sm">{sectionSubtitle}</p>
+                        {sectionTitle && <div className="w-18 h-px mt-3 bg-[#c8dba0]  mb-6" />}
                     </div>
+
 
                     <div className="embla__buttons flex items-center justify-end gap-3 mb-1 mr-4">
                         <button
                             onClick={scrollPrev}
-                            className="w-12 h-12 rounded-full hover:cursor-pointer text-3xl border-2  border-gray-300 flex items-center justify-center font-light hover:bg-[#e8f0dc] hover:border-[#3a5a1c] hover:text-[#3a5a1c] transition-all duration-200"
+                            className="w-12 h-12 rounded-full hover:cursor-pointer text-3xl border-2  border-text-[#4a5c35] flex items-center justify-center font-light hover:bg-[#e8f0dc] hover:border-[#3a5a1c] hover:text-[#3a5a1c] transition-all duration-200"
                         >
                             ‹
                         </button>
                         <button
                             onClick={scrollNext}
-                            className="w-12 h-12 rounded-full hover:cursor-pointer text-3xl border-2 border-gray-300 flex items-center justify-center font-light hover:bg-[#e8f0dc] hover:border-[#3a5a1c] hover:text-[#3a5a1c] transition-all duration-200"
+                            className="w-12 h-12 rounded-full hover:cursor-pointer text-3xl border-2 border-text-[#4a5c35] flex items-center justify-center font-light hover:bg-[#e8f0dc] hover:border-[#3a5a1c] hover:text-[#3a5a1c] transition-all duration-200"
                         >
                             ›
                         </button>

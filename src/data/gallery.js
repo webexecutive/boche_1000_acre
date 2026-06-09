@@ -10,7 +10,7 @@ export const categories = [
 ];
 
 export const galleryMeta = {
-  lastId: 170
+  lastId: 173
 };
 
 export const gallery = [
@@ -186,13 +186,19 @@ export const gallery = [
 ,
 { id: 166, category: 'estate', alt: 'Boche Bhoomiputhra', showInGallery: true }
 ,
-{ id: 167, category: 'events', alt: 'Camp Fire', showInGallery: true }
+{ id: 167, category: 'events', alt: 'Two couples enjoying camp fire at boche 1000 acre wayanad kerala', showInGallery: true }
 ,
 
 
-{ id: 168, category: 'events', alt: 'Camp Fire', showInGallery: false }
+{ id: 168, category: 'events', alt: 'Two couples enjoying camp fire at boche 1000 acre wayanad kerala', showInGallery: false }
 ,
-{ id: 169, category: 'event', alt: 'Camp Fire .Jpg', showInGallery: false },
-{ id: 170, category: 'event', alt: 'Camp Fire.Jpg', showInGallery: false }
+{ id: 169, category: 'event', alt: 'Two couples enjoying camp fire at boche 1000 acre wayanad kerala', showInGallery: false },
+{ id: 170, category: 'event', alt: 'Two couples enjoying camp fire at boche 1000 acre wayanad kerala', showInGallery: false }
+,
+{ id: 171, category: 'banner', alt: 'A day out package available at boche 1000 acre wayanad, kerala', showInGallery: false }
+,
+{ id: 172, category: 'adventures', alt: 'Jeep Safari At Boche 1000 Acre The Best Resort In Wayanad', showInGallery: true }
+,
+{ id: 173, category: 'adventures', alt: 'Atv At Boche 1000 Acre Resort Wyanad', showInGallery: true }
 
 ];

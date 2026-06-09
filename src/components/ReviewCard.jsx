@@ -12,7 +12,7 @@ export default function ReviewCard({ review, onPlay }) {
   if (review.type === "video") {
     const thumbnail = getYoutubeThumbnail(review.videoLink);
     return (
-      <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden relative shadow-md hover:shadow-xl transition-shadow duration-300 group">
+      <div className="w-full aspect-4/3 rounded-2xl overflow-hidden relative shadow-md hover:shadow-xl transition-shadow duration-300 group">
         <img
           src={thumbnail}
           alt={review.title}
@@ -29,7 +29,7 @@ export default function ReviewCard({ review, onPlay }) {
     );
   } else {
     return (
-      <div className="w-full aspect-[4/3] rounded-2xl bg-white border border-gray-150 shadow-md hover:shadow-xl transition-shadow duration-300 p-5 flex flex-col select-none overflow-hidden">
+      <div className="w-full aspect-4/3 rounded-2xl bg-white border border-gray-150 shadow-md hover:shadow-xl transition-shadow duration-300 p-5 flex flex-col select-none overflow-hidden">
         <div className="flex items-center gap-3 shrink-0 mb-3">
           <FaUserCircle className="h-10 w-10 text-gray-400 shrink-0" />
           <div>

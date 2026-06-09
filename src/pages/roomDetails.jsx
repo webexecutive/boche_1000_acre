@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MdOutlineRoomService, MdOutlineCleaningServices, MdOutlineElectricalServices, MdOutlineDesk, MdOutlineCheckroom, MdOutlineChair, MdOutlineLuggage, MdOutlineMedicalServices, MdOutlineMeetingRoom, MdOutlinePeople, MdOutlineCheck, MdOutlineLogin, MdOutlineLogout, MdOutlineCurrencyRupee, MdOutlineShower, MdOutlineAcUnit, MdOutlineWc } from 'react-icons/md';
-import { LuCircleParking, LuGlassWater } from "react-icons/lu";
+import { LuCircleParking, LuGlassWater, LuCookingPot } from "react-icons/lu";
 import { FaWater } from "react-icons/fa";
 import { GiCoffeePot } from "react-icons/gi";
 import { PiHandSoap } from "react-icons/pi";
@@ -35,7 +35,8 @@ const amenitiesIconsMap = {
     cctv: { label: "CCTV", icon: BiCctv },
     reception: { label: "Reception", icon: BsPersonWorkspace },
     restaurant: { label: "Restaurant", icon: IoRestaurantOutline },
-    commonBathroom: { label: "Common Toilet", icon: MdOutlineWc }
+    commonBathroom: { label: "Common Toilet", icon: MdOutlineWc },
+    kitchen: { label: "Kitchen", icon: LuCookingPot },
 };
 
 // Dynamically override hardcoded labels with the official labels from aminitiesData.js
@@ -127,7 +128,7 @@ const RoomDetails = () => {
 
     const renderRoomDetailsCard = () => (
         <div className="bg-[#f2faeb] rounded-4xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
-            <h3 className="mb-6 text-4xl md:text-5xl font-serif text-gray-900">{room.name}</h3>
+            <h3 className="mb-6 text-3xl md:text-4xl font-serif text-gray-900">{room.name}</h3>
             <div className="flex flex-wrap items-center gap-8 mb-6 text-gray-800 font-medium">
                 <div className="flex items-center gap-3">
                     <MdOutlineMeetingRoom className="w-5 h-5 text-gray-700" />
