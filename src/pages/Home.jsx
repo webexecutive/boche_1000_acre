@@ -58,6 +58,7 @@ function Home() {
   const [subEmail, setSubEmail] = useState("");
   const [subStatus, setSubStatus] = useState("idle"); // idle | loading | success | error
   const [subError, setSubError] = useState("");
+  const [activePreview, setActivePreview] = useState(null);
 
   useEffect(() => {
     document.body.style.overflow = showMenu ? "hidden" : "auto";
@@ -104,6 +105,14 @@ function Home() {
     }
   }, [reelModal]);
 
+  useEffect(() => {
+    const setVh = () => {
+      document.documentElement.style.setProperty('--welcome-h', `${window.innerHeight}px`);
+    };
+    setVh();
+
+  }, []);
+
   const handleCall = () => {
     window.location.href = "tel:+919961008008";
     ;
@@ -140,14 +149,15 @@ function Home() {
   return (
     <>
       <SEO
-        title="Best Resorts in Wayanad Kerala | Unique Stay & Adventure Experience | boCHE 1000 Acre"
-        description="Looking for one of the best resorts in Wayanad? Discover boCHE 1000 Acre, a unique destination set within a breathtaking 1000-acre tea plantation. Stay in a British Bungalow, Bubble Dome, Mud House or XPod, enjoy zipline, giant swing, ATV rides, sky cycling, authentic cuisine, and unforgettable plantation views."
-        keywords="best resorts in wayanad, resorts in wayanad kerala, resort in wayanad, top resorts in wayanad, best stay in wayanad, rooms at wayanad, wayanad resort booking, tea plantation resort wayanad, adventure resort wayanad, adventure activities wayanad, bubble dome wayanad, british bungalow wayanad, mud house wayanad, xpod wayanad, zipline wayanad, ATV ride wayanad, sky cycling wayanad"
+        title="boCHE 1000 Acres|Resorts in Wayanad Kerala | Luxury Stay & Adventure |"
+        description="boCHE 1000 Acres is one of the best resorts in Wayanad Kerala — a luxury experiential retreat set within a sprawling 1000-acre tea plantation. Stay in a British Bungalow, Bubble Dome, Mud House, or XPod. Enjoy zipline, giant swing, ATV rides, sky cycling, authentic Kerala cuisine, and breathtaking plantation views. Book your Wayanad resort stay today."
+        keywords="resorts in wayanad, resorts in wayanad kerala, best resorts in wayanad, luxury resorts in wayanad, best resort in wayanad kerala, stay in wayanad, rooms at wayanad, wayanad resort booking, wayanad resort packages, adventure activities in wayanad, wayanad adventure activities, zipline wayanad, wayanad zipline, bubble dome wayanad, british bungalow wayanad, mud house wayanad, xpod wayanad, ATV ride wayanad, sky cycling wayanad, tea plantation resort wayanad"
         url="https://www.boche1000acre.in"
       />
 
       {/* Hero Section with Video Background */}
-      <section className="relative h-dvh overflow-hidden">
+      <section className="relative overflow-hidden"
+        style={{ height: 'var(--welcome-h, 100dvh)' }}>
         <video
           ref={videoRef}
           autoPlay
@@ -177,12 +187,12 @@ function Home() {
               >
                 ×
               </button>
-              <h2 className="text-white text-xs font-semibold sm:text-lg uppercase tracking-widest mb-1">
+              <h3 className="text-white text-xs font-semibold sm:text-lg uppercase tracking-widest mb-1">
                 For Booking Call
-              </h2>
-              <h2 className="text-white font-semibold text-base sm:text-lg leading-snug mb-1">
+              </h3>
+              <h3 className="text-white font-semibold text-base sm:text-lg leading-snug mb-1">
                 Hello Boche
-              </h2>
+              </h3>
               <a
                 href="tel:+919961008008"
                 className="text-white/80 text-sm sm:text-base hover:text-white transition-colors"
@@ -198,43 +208,84 @@ function Home() {
       </section>
 
       {/* Welcome Section */}
-      <section className="relative overflow-hidden h-150 md:h-180">
+      <section className="relative overflow-hidden md:h-180"
+        style={{ height: 'var(--welcome-h, 100dvh)' }}>
 
-        {/* Blur placeholder */}
-        <img
-          src="/images/gallery/stays/78/blur.webp"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover blur-sm scale-105"
-          aria-hidden="true"
-        />
+        {/* ── MOBILE LAYOUT: stacked (image top / dark panel bottom) ── */}
+        <div className="flex flex-col h-full md:hidden">
 
-        {/* Real image */}
-        <img
-          src="/images/gallery/stays/78/small.webp"
-          srcSet="/images/gallery/stays/78/small.webp 400w, /images/gallery/stays/78/large.webp 1200w"
-          sizes="100vw"
-          alt="Welcome to boCHE 1000 Acre"
-          loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          onLoad={(e) => { e.target.previousSibling.style.opacity = 0; }}
-        />
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent md:bg-linear-to-r md:from-black/90 md:via-black/20 md:to-transparent" />
+          {/* Top: photo */}
+          <div className="relative flex-1 overflow-hidden">
+            <img
+              src="/images/gallery/stays/174/blur.webp"
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover blur-sm scale-105"
+              aria-hidden="true"
+            />
+            <img
+              src="/images/gallery/stays/174/small.webp"
+              srcSet="/images/gallery/stays/174/small.webp 400w, /images/gallery/stays/174/large.webp 1200w"
+              sizes="100vw"
+              alt="boCHE 1000 Acres resort in Wayanad Kerala"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              onLoad={(e) => { e.target.previousSibling.style.opacity = 0; }}
+            />
+            {/* Gradient fade into black panel below */}
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-b from-transparent to-black" />
+          </div>
 
-        {/* Text — bottom on mobile, center-left on desktop */}
-        <div className="relative h-full flex items-end md:items-center">
-          <div className="px-6 pb-10 md:pb-0 md:px-16 lg:px-24 max-w-xl text-left text-white">
-            <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-3">Wayanad, Kerala</p>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl text-balance mb-4 text-white">
+          {/* Bottom: dark text panel */}
+          <div className="bg-black px-6 py-8 flex flex-col justify-center">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-white/50 mb-1">
               Welcome to boCHE 1000 Acre
+            </p>
+            <p className="text-[10px] uppercase tracking-[0.25em] text-white/50 mb-5">
+              Wayanad, Kerala
+            </p>
+            <h1 className="text-4xl leading-tight text-white mb-4">
+              A Resort in Wayanad Like No Other
             </h1>
-            <div className="w-12 h-px bg-white/50 mb-4"></div>
-            <p className="text-sm md:text-base text-white/80 text-justify leading-relaxed">
-              Nestled in the heart of a sprawling tea plantation, boCHE 1000 Acres offers an unforgettable stay in Wayanad — with thrilling activities, breathtaking views, and the warmth of Kerala all in one place.
+            <div className="w-8 h-px bg-white/40 mb-4" />
+            <p className="text-sm text-white/70 leading-relaxed text-justify">
+              Nestled in the heart of a sprawling tea plantation, boCHE 1000 Acres is a one-of-a-kind resort in Wayanad Kerala — where thrilling adventures, breathtaking plantation views, and the warmth of Kerala come together in one unforgettable stay.
             </p>
           </div>
-        </div>  
+
+        </div>
+
+        {/* ── DESKTOP LAYOUT: original overlaid style ── */}
+        <div className="hidden md:block absolute inset-0">
+          <img
+            src="/images/gallery/stays/78/blur.webp"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover blur-sm scale-105"
+            aria-hidden="true"
+          />
+          <img
+            src="/images/gallery/stays/78/large.webp"
+            alt="boCHE 1000 Acres resort in Wayanad Kerala"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            onLoad={(e) => { e.target.previousSibling.style.opacity = 0; }}
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/20 to-transparent" />
+          <div className="relative h-full flex items-center">
+            <div className="px-16 lg:px-24 max-w-xl text-left text-white">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-3">
+                Welcome to boCHE 1000 Acre — Wayanad, Kerala
+              </p>
+              <h1 className="text-4xl lg:text-5xl text-balance mb-4 text-white">
+                A Resort in Wayanad Like No Other
+              </h1>
+              <div className="w-12 h-px bg-white/50 mb-4" />
+              <p className="text-base text-white/80 leading-relaxed">
+                Nestled in the heart of a sprawling tea plantation, boCHE 1000 Acres is a one-of-a-kind resort in Wayanad Kerala — where thrilling adventures, breathtaking plantation views, and the warmth of Kerala come together in one unforgettable stay.
+              </p>
+            </div>
+          </div>
+        </div>
 
       </section>
 
@@ -265,13 +316,18 @@ function Home() {
 
           {/* Section intro */}
           <div className=" max-w-5xl mx-auto px-3">
-            <h2 className="text-[#1e3209] text-center mb-4">A Sanctuary Above the Clouds</h2>
+            <h2 className="text-[#1e3209] text-center mb-4">
+              A Sanctuary Above the Clouds
+            </h2>
+
             <div className="w-12 h-px bg-[#c8dba0] mx-auto mb-6" />
+
             <p className="text-[15px] font-light text-[#4a5c35] leading-relaxed text-justify">
-              Nestled amidst the pristine mountains of Kerala, boCHE 1000 Acres is a luxury experiential retreat where nature, wellness, adventure, and heritage come together to create unforgettable journeys. Surrounded by panoramic mountain vistas, lush forests, and refreshing highland air, the resort offers an extraordinary escape from the ordinary.
+              Nestled amidst the pristine mountains of Kerala, boCHE 1000 Acres is one of the best resorts in Wayanad, offering a unique blend of luxury, nature, wellness, and adventure. Surrounded by panoramic mountain views, lush forests, and sprawling tea plantations, this luxury resort in Wayanad creates an unforgettable escape for travellers seeking both relaxation and discovery.
             </p>
+
             <p className="text-[15px] font-light text-[#4a5c35] leading-relaxed mt-4 text-justify">
-              Every accommodation has been thoughtfully designed to immerse guests in the beauty of the landscape while delivering exceptional comfort, privacy, and personalized hospitality. Whether seeking a romantic retreat, a family holiday, or a unique group getaway, guests will discover experiences crafted to inspire, rejuvenate, and connect.
+              From the iconic Bubble Dome and heritage-inspired British Bungalow to the eco-friendly Mud House and futuristic XPod, every stay in Wayanad at boCHE 1000 Acres is designed to immerse guests in comfort and natural beauty. Whether planning a romantic getaway, family holiday, or group retreat, guests can enjoy exceptional hospitality, adventure activities in Wayanad, and experiences that inspire lasting memories.
             </p>
           </div>
 
@@ -312,9 +368,11 @@ function Home() {
             </div>
             <div className="order-1 md:order-2 flex flex-col items-center text-center gap-6">
               <div>
-                <h2 className="text-black">The Resto Toddy Pub</h2>
+                <h2 className="text-black">
+                  The Resto Toddy Pub
+                </h2>
                 <p className="text-gray-500 max-w-lg">
-                  Experience authentic toddy shop flavors and the finest toddy, served in the refreshing climate of Wayanad with an exceptional ambiance.
+                  Savor authentic Kerala toddy shop flavors and traditional cuisine at our Wayanad resort, where great food, refreshing toddy, and the serene climate of Wayanad come together for a memorable dining experience.
                 </p>
               </div>
               <div className="flex items-center justify-center gap-6 flex-wrap">
@@ -332,10 +390,13 @@ function Home() {
       {/* Adventure section */}
       <section className="bg-[#F7FDE9] py-20">
         <div className="max-w-7xl relative mx-auto px-4">
-          <EmblaCarousel sectionTitle="Adventure Experiences" sectionSubtitle="Thrilling Activities in Wayanad">
+          <EmblaCarousel sectionTitle="Discover the Best Adventure Activities in Wayanad" sectionSubtitle="Adventure woven into nature's beauty">
             {adventures.map((adventure) => (
-              <div className="embla__slide" key={adventure.id}>
-                <ReelCard {...adventure} onPlay={() => setReelModal(adventure)} />
+              <div className="embla__slide flex-[0_0_220px]!" key={adventure.id}>
+                <ReelCard {...adventure} onPlay={() => setReelModal(adventure)}
+                  isPreviewActive={activePreview === adventure.id}
+                  onPreviewStart={() => setActivePreview(adventure.id)}
+                  onPreviewStop={() => setActivePreview(null)} />
               </div>
             ))}
           </EmblaCarousel>
@@ -345,36 +406,55 @@ function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden  h-120 md:h-180">
+      <section className="relative overflow-hidden h-auto md:h-180">
 
-        <img
-          src="/images/gallery/events/168/large.webp"
-          alt="Campfire evenings at boCHE 1000 Acre"
-          loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover lg:block hidden"
-        />
 
-        {/* Mobile image */}
-        <img
-          src="/images/gallery/events/170/large.webp"
-          alt="Campfire evenings at boCHE 1000 Acre"
-          loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover lg:hidden"
-        />
+        {/* ── MOBILE LAYOUT ── */}
+        <div className="flex flex-col h-full lg:hidden">
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent lg:bg-linear-to-l lg:from-black/80 lg:via-black/30 lg:to-transparent" />
+          {/* Top: photo */}
+          <div className="relative h-[65%] overflow-hidden">
+            <img
+              src="/images/gallery/events/170/large.webp"
+              alt="Campfire evenings at boCHE 1000 Acre"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-b from-transparent to-black" />
+          </div>
 
-        {/* Text */}
-        <div className="relative h-full flex items-end lg:items-center justify-start lg:justify-end ">
-          <div className="px-6 pb-10 lg:pb-0 md:px-16 lg:px-24 max-w-xl text-left text-white">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl text-balance mb-4 text-white">
-              Gather around the fire
-            </h1>
-            <div className="w-12 h-px bg-white/50 mb-4" />
-            <p className="text-sm md:text-base text-white/80 leading-relaxed">
-              Evenings under string lights, crackling flames, and the quiet of the estate
+          {/* Bottom: dark text panel */}
+          <div className="bg-black px-6 py-8 flex-1 flex flex-col justify-center">
+            <h2 className="text-3xl text-white mb-4">
+              Unwind at One of the Best Resorts in Wayanad
+            </h2>
+            <div className="w-8 h-px bg-white/40 mb-4" />
+            <p className="text-sm text-white/70 leading-relaxed">
+              Gather around the fire and enjoy peaceful evenings amidst tea plantations, luxury stays, and unforgettable experiences in Wayanad.
             </p>
+          </div>
+
+        </div>
+
+        {/* ── DESKTOP LAYOUT: original ── */}
+        <div className="hidden lg:block absolute inset-0">
+          <img
+            src="/images/gallery/events/168/large.webp"
+            alt="Campfire evenings at boCHE 1000 Acre"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-linear-to-l from-black/80 via-black/25 to-transparent" />
+          <div className="relative h-full flex items-center justify-end">
+            <div className="px-16 lg:px-24 max-w-xl text-left text-white">
+              <h2 className="text-4xl lg:text-5xl text-balance mb-4 text-white">
+                Unwind at One of the Best Resorts in Wayanad
+              </h2>
+              <div className="w-12 h-px bg-white/50 mb-4" />
+              <p className="text-base text-white/80 leading-relaxed">
+                Gather around the fire and enjoy peaceful evenings amidst tea plantations, luxury stays, and unforgettable experiences in Wayanad.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -387,41 +467,46 @@ function Home() {
           {/* Text block */}
           <div className="max-w-4xl mx-auto text-center mb-12 md:mb-20">
             <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-[#6a8f3a] mb-4">
-              The boCHE Way
+              The boCHE Experience
             </p>
-            <h2 className="text-[#1e3209] mb-4">boCHE Experience</h2>
+
+            <h2 className="text-[#1e3209] mb-4">
+              Experience the Best Resort Stay in Wayanad
+            </h2>
+
             <div className="w-12 h-px bg-[#c8dba0] mx-auto mb-6" />
+
             <p className="text-[14px] md:text-[15px] font-light text-justify text-[#4a5c35] leading-relaxed">
-              More than just accommodations, every stay at boCHE 1000 Acres is complemented by panoramic mountain views, immersive nature experiences, adventure activities, local culinary journeys, wellness offerings, and the warm hospitality that defines Kerala. Here, every sunrise, every view, and every moment becomes part of an unforgettable story.
+              At boCHE 1000 Acres, one of the best resorts in Wayanad, every stay is enriched by panoramic mountain views, tea plantation landscapes, luxury accommodations, adventure activities in Wayanad, wellness experiences, and authentic Kerala hospitality. From thrilling zipline rides and ATV adventures to unique stays in our Bubble Dome, British Bungalow, Mud House, and XPod, every moment becomes part of an unforgettable Wayanad experience.
             </p>
           </div>
 
           {/* Feature rows */}
-          <div className="max-w-5xl mx-auto divide-y divide-[#c8dba0]">
+          <div className="max-w-5xl mx-auto text-justify divide-y divide-[#c8dba0]">
             {[
               {
                 num: "01",
                 label: "Adventure in the Hills",
                 tag: "Adventure",
-                desc: "Zip through the treetops, pedal across the sky on a sky cycle, feel the rush of the giant swing, or tear through the tea plantation trails on an ATV. If you are looking for adventure activities in Wayanad that go beyond the ordinary, boCHE 1000 acre delivers — all within 1000 acres of rolling highland terrain.",
+                desc: "Experience some of the most exciting adventure activities in Wayanad, including zipline rides, sky cycling, giant swings, and ATV rides through scenic tea plantation trails. For travellers seeking unforgettable Wayanad adventure activities, boCHE 1000 Acres offers thrills surrounded by breathtaking highland landscapes.",
               },
               {
                 num: "02",
                 label: "A Sea of Green",
                 tag: "Scenery",
-                desc: "Wake up surrounded by acres of lush green tea plantation stretching as far as the eye can see. A stay in Wayanad rarely gets more immersive than this — boCHE 1000 acre sits right in the middle of this living landscape, where every walk, every breath, and every view is something you carry home.",
+                desc: "Nestled within sprawling tea plantations, our tea plantation resort in Wayanad offers spectacular views at every turn. Wake up to rolling hills, mist-covered valleys, and the serenity that makes a stay in Wayanad truly unforgettable.",
               },
               {
                 num: "03",
                 label: "Tastes of Kerala",
                 tag: "Cuisine",
-                desc: "Known for some of the best food in Wayanad, our restaurant is a celebration of authentic Kerala taste — honest, hearty, and made with the kind of care that turns a meal into a memory.",
+                desc: "From authentic Kerala delicacies to local Wayanad specialties, every meal celebrates the region's rich culinary heritage. Enjoy memorable dining experiences at one of the best resorts in Wayanad, where great food is part of every stay.",
               },
               {
                 num: "04",
                 label: "A Place to Slow Down",
                 tag: "Wellness",
-                desc: "No itinerary, no rush. Our resort in Wayanad is built for the kind of rest that actually restores you — just highland air, birdsong, and the rare luxury of having nowhere you need to be.",
+                desc: "Whether you choose a Bubble Dome, British Bungalow, Mud House, or XPod stay, our luxury resort in Wayanad is designed for rest, renewal, and reconnecting with nature amidst the tranquil hills of Kerala.",
               },
             ].map(({ num, label, tag, desc }) => (
               <div key={num} className="flex items-start gap-4 md:gap-10 py-7 md:py-10 group">
@@ -456,22 +541,25 @@ function Home() {
       </section>
 
       {/* Bhoomiputra section */}
-      <section className="bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/bhoomiputhrabg-sm.webp')] md:bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/bhoomiputhrabg-md.webp')] lg:bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/bhoomiputhrabg-lg.webp')] bg-cover bg-center bg-no-repeat">
+      <section className="bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/gallery/estate/177/large.webp')] md:bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/gallery/estate/176/large.webp')] lg:bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/gallery/estate/175/large.webp')] bg-cover bg-center bg-no-repeat">
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 text-white flex flex-col items-center space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div className="flex flex-col items-center md:items-start text-center md:text-left gap-6">
-              <img className="lg:w-md object-contain" src={bhoomiputraLogo} alt="bhoomiputralogo" />
-              <p className="leading-relaxed text-justify ">
-                Located in the misty highlands of South India at 3,280–3,850 feet, our
-                600-acre plantation grows premium tea, coffee, cardamom, vanilla,
-                pepper, and select minor crops using sustainable practices. Our modern
-                tea factory processes up to 12,000 kg of green leaf daily, combining
-                traditional craftsmanship with advanced technology to ensure consistent
-                quality, rich aroma, and superior flavor from estate to dispatch.
+              <img
+                className="lg:w-md object-contain"
+                src={bhoomiputraLogo}
+                alt="Bhoomiputhra Plantation Wayanad"
+              />
+              <p className="leading-relaxed text-justify">
+                Nestled in the mist-covered hills of Wayanad, Kerala, Bhoomiputhra Plantation spans over 600 acres of thriving tea, coffee, cardamom, vanilla, and pepper estates. As the heart of boCHE 1000 Acres, our tea plantation resort in Wayanad offers guests an immersive connection to nature, where scenic landscapes, sustainable farming practices, and authentic plantation experiences come together. Our modern tea factory processes up to 12,000 kg of green leaf daily, blending traditional craftsmanship with advanced technology to create premium teas renowned for their rich aroma and exceptional quality.
               </p>
             </div>
             <div>
-              <img src="/images/gallery/estate/166/large.webp" className="w-full rounded-xl object-cover" alt="Tea Factory" />
+              <img
+                src="/images/gallery/estate/166/large.webp"
+                className="w-full rounded-xl object-cover"
+                alt="Bhoomiputhra Tea Plantation and Tea Factory in Wayanad Kerala"
+              />
             </div>
           </div>
           <Link to="/boomiputhra">
@@ -486,12 +574,12 @@ function Home() {
       <section className="py-20 bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-sm.svg')] md:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-md.svg')] lg:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-lg.svg')] bg-cover bg-center bg-no-repeat">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-      <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-[#6a8f3a] mb-4">
-        A Visual Journey
-      </p>
-      <h2 className="text-[#1e3209] mb-4">Our Gallery</h2>
-      <div className="w-12 h-px bg-[#c8dba0] mx-auto" />
-    </div>
+            <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-[#6a8f3a] mb-4">
+              A Visual Journey
+            </p>
+            <h2 className="text-[#1e3209] mb-4">Our Gallery</h2>
+            <div className="w-12 h-px bg-[#c8dba0] mx-auto" />
+          </div>
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {categories
               .filter(cat => cat.showInGallery !== false)
@@ -546,12 +634,14 @@ function Home() {
 
       {/* Newsletter */}
       <section className="py-16 bg-white border-t border-gray-100">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif mb-4">Subscribe To Our Newsletter</h2>
-          <p className="text-gray-500 mb-8 max-w-md mx-auto">
-            Stay updated with our latest offers, new experiences, and events happening around the 1000-acre estate.
-          </p>
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+            Stay Connected with boCHE 1000 Acres
+          </h2>
 
+          <p className="text-gray-500 mb-8 max-w-3xl mx-auto">
+            Be the first to receive exclusive offers, Wayanad resort packages, luxury stay updates, adventure activity launches, and special experiences from one of the best resorts in Wayanad.
+          </p>
           {/* Already Subscribed */}
           {subStatus === "already" && (
             <p className="text-amber-600 text-sm mb-4">
