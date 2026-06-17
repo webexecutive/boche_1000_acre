@@ -10,7 +10,7 @@ export const categories = [
 ];
 
 export const galleryMeta = {
-  lastId: 177
+  lastId: 180
 };
 
 export const gallery = [
@@ -130,5 +130,12 @@ export const gallery = [
   { id: 174, category: 'stays', alt: 'British Bungalow wayanad stay at boCHE 1000 Acres, the best resort in wayanad kerala', showInGallery: false },
   { id: 175, category: 'estate', alt: 'Mist-covered tea gardens and mountain scenery at the premier tea plantation resort wayanad', showInGallery: false },
   { id: 176, category: 'estate', alt: 'Scenic view of tea plantation hills, highlighting the beauty of resorts in wayanad', showInGallery: false },
-  { id: 177, category: 'estate', alt: 'Landscape of tea estates in Meppadi, making it the best resort in wayanad kerala', showInGallery: false }
+  { id: 177, category: 'estate', alt: 'Landscape of tea estates in Meppadi, making it the best resort in wayanad kerala', showInGallery: false },
+{ id: 178, category: 'estate', alt: 'Tea Tasteing At Boche 1000 Resort In Wayanad', showInGallery: false }
+
+,
+{ id: 179, category: 'estate', alt: 'Waterfall inside boche 1000 acre resort in kerala wayanad', showInGallery: true }
+,
+{ id: 180, category: 'stays', alt: 'Couples watching stars from bubble dom stay at boche 1000 acre resort in wayanad kerala', showInGallery: true }
+
 ];

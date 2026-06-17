@@ -413,7 +413,7 @@ function Home() {
         <div className="flex flex-col h-full lg:hidden">
 
           {/* Top: photo */}
-          <div className="relative h-[65%] overflow-hidden">
+          <div className="relative h-75 md:h-96 overflow-hidden">
             <img
               src="/images/gallery/events/170/large.webp"
               alt="Campfire evenings at boCHE 1000 Acre"

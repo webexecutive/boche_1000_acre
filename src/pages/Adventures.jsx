@@ -34,24 +34,41 @@ function Adventures() {
                 url="https://www.boche1000acre.in/adventures"
             />
 
-            <div className="max-w-7xl mx-auto px-4 md:px-8 pt-20 lg:pt-24 pb-20 space-y-8">
+            <div className="min-h-screen bg-[#F7FDE9]">
 
+                {/* Header */}
+                <div className="max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-10">
+                    <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-[#6a8f3a] mb-3">
+                        boCHE Adventures
+                    </p>
 
+                    <h1 className="text-[#1e3209]  mb-4">
+                        Adventures in the Heart of Wayanad
+                    </h1>
 
-                <h2>Adventures</h2>
+                    <div className="w-12 h-px bg-[#c8dba0] mb-5" />
 
-                {/* ── Cards Grid ── */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {adventures.map((adventure) => (
-                        <AdventureCard
-                            key={adventure.id}
-                            adventure={adventure}
-                            onPlay={() => setReelModal(adventure)}
-                        />
-                    ))}
+                    <p className="text-[15px] font-light text-[#4a5c35] leading-relaxed max-w-6xl">
+                        Experience thrilling outdoor adventures amidst our 1000-acre tea plantation.
+                        From sky cycling and giant swings to ATV rides and ziplines, every activity
+                        is designed to create unforgettable memories.
+                    </p>
                 </div>
 
-                {/* ── Reel Modal ── */}
+                {/* Adventure Cards */}
+                <div className="max-w-7xl mx-auto px-6 md:px-12 pb-24">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {adventures.map((adventure) => (
+                            <AdventureCard
+                                key={adventure.id}
+                                adventure={adventure}
+                                onPlay={() => setReelModal(adventure)}
+                            />
+                        ))}
+                    </div>
+                </div>
+
+                {/* Reel Modal */}
                 {reelModal && (
                     <div
                         className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
@@ -63,6 +80,7 @@ function Adventures() {
                         >
                             ✕
                         </button>
+
                         <div
                             className="w-[90vw] sm:w-80 md:w-96 aspect-9/16 rounded-2xl overflow-hidden"
                             onClick={(e) => e.stopPropagation()}
@@ -77,6 +95,7 @@ function Adventures() {
                         </div>
                     </div>
                 )}
+
             </div>
 
         </>

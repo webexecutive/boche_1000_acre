@@ -45,6 +45,14 @@ export default function Footer() {
                                         </Link>
                                     </li>
                                 ))}
+                                <li>
+                                    <Link
+                                        to="/blog"
+                                        className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                                    >
+                                        Blog
+                                    </Link>
+                                </li>
                             </ul>
                             <ul className="flex flex-col gap-4">
                                 {quickLinksCol2.map((link) => (
@@ -65,14 +73,14 @@ export default function Footer() {
                     <div className="flex flex-col gap-4">
 
                         {/* Email */}
-                       {mail.length > 0 && (
-  <a
-    href={`mailto:${mail[mail.length - 1].mailId}`}
-    className="text-gray-300 hover:text-white text-sm transition-colors duration-200"
-  >
-    Mail us: {mail[mail.length - 1].mailId}
-  </a>
-)}
+                        {mail.length > 0 && (
+                            <a
+                                href={`mailto:${mail[mail.length - 1].mailId}`}
+                                className="text-gray-300 hover:text-white text-sm transition-colors duration-200"
+                            >
+                                Mail us: {mail[mail.length - 1].mailId}
+                            </a>
+                        )}
 
                         {/* Address */}
                         <address className="text-gray-400 text-sm leading-relaxed">
@@ -112,17 +120,26 @@ export default function Footer() {
 
                     {/* Copyright + legal */}
                     <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-gray-500 text-xs text-center sm:text-left">
-                        <span>Copyright © 2026 Boche 1000 Acre. All Rights Reserved</span>
+                        <span>
+                            Copyright © {new Date().getFullYear()} Boche 1000 Acre. All Rights Reserved
+                        </span>
+
                         <div className="flex gap-4">
-                            <Link to="/terms" className="hover:text-white transition-colors duration-200">
+                            <Link
+                                to="/terms"
+                                className="hover:text-white transition-colors duration-200"
+                            >
                                 Terms and Conditions
                             </Link>
-                            <Link to="/privacy" className="hover:text-white transition-colors duration-200">
+
+                            <Link
+                                to="/privacy"
+                                className="hover:text-white transition-colors duration-200"
+                            >
                                 Privacy and Policy
                             </Link>
                         </div>
                     </div>
-
                     {/* Social icons */}
                     <div className="flex items-center gap-3">
                         {socialmedia.map((s) => (

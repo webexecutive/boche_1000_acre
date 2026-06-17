@@ -23,8 +23,10 @@ const Events = lazy(() => import('./pages/Events.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
 const Booking = lazy(() => import('./pages/Booking.jsx'));
 const Boomiputhra = lazy(() => import('./pages/Boomiputhra.jsx'));
-const EventDetails =lazy(()=>import('./pages/EventDetails.jsx'))
+const EventDetails = lazy(() => import('./pages/EventDetails.jsx'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyAndPolicy.jsx'));
+const Blog = lazy(() => import('./pages/Blog.jsx'));
+const BlogArticle = lazy(() => import('./pages/BlogArticle.jsx'))
 
 const RoomDetailsWithKey = () => {
   const { id } = useParams();
@@ -175,7 +177,25 @@ function App() {
             }
           />
 
-        
+          <Route
+            path="/blog"
+            element={
+              <Suspense fallback={<GridSkeleton />}>
+                <Blog />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/blog/:slug"
+            element={
+              <Suspense fallback={<ContentSkeleton />}>
+                <BlogArticle />
+              </Suspense>
+            }
+          />
+
+
           <Route path='*' element={<NotFound />} />
 
         </Route>

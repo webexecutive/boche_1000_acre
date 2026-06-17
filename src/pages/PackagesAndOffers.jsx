@@ -1,6 +1,7 @@
 import { packages } from '../data/packagesData';
 import PackageCard from '../components/PackageCard';
 import SEO from '../components/SEO';
+
 function PackagesAndOffers() {
     return (
         <>
@@ -11,18 +12,43 @@ function PackagesAndOffers() {
                 url="https://www.boche1000acre.in/packages-and-offers"
             />
 
-            <div className="max-w-7xl mx-auto px-4 md:px-8 pt-20 lg:pt-24 pb-20 space-y-10">
-                <h2>Packages &amp; Offers</h2>
+            <div className="min-h-screen bg-[#F7FDE9] font-['DM_Sans']">
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {packages.map((pkg) => (
-                        <PackageCard key={pkg.id} pkg={pkg} />
-                    ))}
+                {/* Header */}
+                <div className="max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-10">
+                    <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-[#6a8f3a] mb-3">
+                        boCHE Packages
+                    </p>
+
+                    <h1 className="text-[#1e3209] l mb-4">
+                        Packages & Offers
+                    </h1>
+
+                    <div className="w-12 h-px bg-[#c8dba0] mb-5" />
+
+                    <p className="text-[15px] font-light text-[#4a5c35] leading-relaxed max-w-6xl">
+                        Discover curated experiences designed for couples,
+                        families, groups, and adventure seekers. Enjoy the
+                        best of boCHE 1000 Acres with exclusive packages,
+                        activities, and unforgettable moments in the heart
+                        of Wayanad.
+                    </p>
                 </div>
+
+                {/* Packages Grid */}
+                <div className="max-w-7xl mx-auto px-6 md:px-12 pb-24">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {packages.map((pkg) => (
+                            <PackageCard
+                                key={pkg.id}
+                                pkg={pkg}
+                            />
+                        ))}
+                    </div>
+                </div>
+
             </div>
-
         </>
-
     );
 }
 
