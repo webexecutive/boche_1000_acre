@@ -8,13 +8,23 @@ export const aboutData = [
     navTitle: "boCHE 1000 Acre",
     heroImage: about1000acre,
     heroTitle: "About\nboCHE 1000 Acre",
+
+    seo: {
+      title: "About boCHE 1000 Acres | Luxury Resort in Wayanad Kerala",
+      description:
+        "Learn about boCHE 1000 Acres — a spectacular 1000-acre luxury resort in Wayanad Kerala owned by Boby Chemmanur International Group. One of the best resorts in Wayanad offering adventure, nature, and authentic Kerala hospitality in Meppadi.",
+      keywords:
+        "about boCHE 1000 acres, resorts in wayanad kerala, best resorts in wayanad, luxury resorts in wayanad, tea plantation resort wayanad, best resort in wayanad kerala, stay in wayanad, wayanad resort packages, adventure activities in wayanad, resorts in wayanad with activities",
+      url: "https://www.boche1000acre.in/about",
+    },
+
     content: `
 # boCHE 1000 Acre
 
 boCHE 1000 Acre is a spectacular 1000-acre destination located in Meppadi, Wayanad, Kerala.  
-Surrounded by the breathtaking greenery and mist-covered hills of Wayanad, this massive property is one of India’s most ambitious entertainment and leisure developments.
+Surrounded by the breathtaking greenery and mist-covered hills of Wayanad, this massive property is one of India's most ambitious entertainment and leisure developments.
 
-Owned by the renowned Boby Chemmanur International Group, boCHE 1000 Acre is envisioned as India’s largest entertainment world, offering a unique blend of recreation, adventure, relaxation, and nature.
+Owned by the renowned Boby Chemmanur International Group, boCHE 1000 Acre is envisioned as India's largest entertainment world, offering a unique blend of recreation, adventure, relaxation, and nature.
 
 ## A Grand Vision in the Heart of Wayanad
 
@@ -27,14 +37,25 @@ Situated in the scenic town of Meppadi within Wayanad district, the property enj
 - A destination that combines nature, adventure, and leisure  
 - A landmark project under a trusted and established business group  
 
-boCHE 1000 Acre represents innovation, scale, and ambition, setting a new benchmark for entertainment destinations in India. With its grand vision and scenic setting, it is poised to become a must-visit attraction in Kerala and a significant highlight on India’s tourism map.
-`
+boCHE 1000 Acre represents innovation, scale, and ambition, setting a new benchmark for entertainment destinations in India. With its grand vision and scenic setting, it is poised to become a must-visit attraction in Kerala and a significant highlight on India's tourism map.
+`,
   },
+
   {
     id: "boby-chemmanur-group",
     navTitle: "Boby Chemmanur International Group",
     heroImage: aboutGroup,
     heroTitle: "About\nBoby Chemmanur International Group",
+
+    seo: {
+      title: "Boby Chemmanur International Group | About boCHE 1000 Acres",
+      description:
+        "Discover the Boby Chemmanur International Group — the conglomerate behind boCHE 1000 Acres, one of the best resorts in Wayanad Kerala. From jewellery to tea plantations, NBFC, resorts, and entertainment, the group spans 56 countries and 19 crore customers.",
+      keywords:
+        "boby chemmanur international group, boCHE group companies, resorts in wayanad kerala, best resorts in wayanad, boCHE 1000 acres wayanad, tea plantation resort wayanad, boby chemmanur resort, boCHE toddy pub, boCHE tours travels",
+      url: "https://www.boche1000acre.in/about",
+    },
+
     content: `
 # Boby Chemmanur International Group
 
@@ -68,13 +89,24 @@ Under the brand name "boCHE," the ventures continue to soar on the wings of trus
 - boCHE Island  
 
 We are preparing to list our company on the stock exchange in the coming years, marking an exciting new chapter in our growth.
-`
+`,
   },
+
   {
     id: "our-promoter",
     navTitle: "Our Promoter",
     heroImage: aboutBoche,
     heroTitle: "About\nDr. Boby Chemmanur\n(boCHE)",
+
+    seo: {
+      title: "Dr. Boby Chemmanur (boCHE) | Founder of boCHE 1000 Acres Wayanad",
+      description:
+        "Learn about Dr. Boby Chemmanur — founder of the Boby Chemmanur International Group and the visionary behind boCHE 1000 Acres, one of the best resorts in Wayanad Kerala. Philanthropist, record-breaker, and business leader.",
+      keywords:
+        "boby chemmanur, dr boby chemmanur, boCHE founder, resorts in wayanad kerala, best resorts in wayanad, boCHE 1000 acres wayanad, boby chemmanur international, chemmanur jewellers, boCHE philanthropist",
+      url: "https://www.boche1000acre.in/about",
+    },
+
     content: `
 # Dr. Boby Chemmanur (boCHE)
 
@@ -90,6 +122,6 @@ The contribution of Dr. Boby Chemmanur to the social services sector assumes imm
 He undertook a record-breaking 812 km marathon in April 2014 from Kasaragod to Thiruvananthapuram to create awareness for the world's largest blood bank. This initiative led to around 14 lakh blood donations and earned recognition in multiple record books including Kerala, India, Asia, and the UK.
 
 To conclude, it is impossible to fully capture the dynamic personality of boCHE in a short profile. From being a kung fu fighter and sharp shooter to a fitness enthusiast who runs 10 km daily, he continues to inspire with his motto: "Conquer the world with Love."
-`
-  }
+`,
+  },
 ];

@@ -1,9 +1,14 @@
 const rooms = [
 
     {
-
         id: "british-bungalow",
         name: "British Bungalow",
+
+        seo: {
+            title: "British Bungalow Stay in Wayanad | Heritage Family Villa | boCHE 1000 Acres",
+            description: "Stay in a restored colonial British Bungalow at boCHE 1000 Acres — one of the best resorts in Wayanad Kerala. A spacious 4-bedroom heritage villa with mountain views, private verandah, and luxury amenities, ideal for families and group stays in Wayanad.",
+            keywords: "british bungalow wayanad, family stay in wayanad, resorts in wayanad kerala, best resorts in wayanad, luxury resorts in wayanad, heritage stay wayanad, best resort in wayanad kerala, rooms at wayanad, wayanad resort packages, stay in wayanad",
+        },
 
         basicInfo: {
             rooms: 4,
@@ -37,54 +42,38 @@ const rooms = [
         ],
 
         aboutStay: {
-
             tagline: "Timeless Elegance for Families",
-
             description:
                 "Inspired by classic colonial architecture, the British Bungalow is a spacious luxury residence ideal for families and multigenerational travellers. Featuring expansive living spaces, elegant interiors, two master suites, dedicated children's rooms, and stunning mountain views, it offers the perfect setting for meaningful family moments and private celebrations.",
-
             highlights: [
                 "Contemporary heritage-style architecture with spacious interiors",
                 "Private sit-out/verandah with scenic views",
                 "Premium bedrooms with attached bathrooms",
-                "Ideal for families and group stays"
+                "Ideal for families and group stays",
             ],
         },
 
         amenities: {
-            basicFacilities: [
-                "roomService",
-                "housekeeping",
-                "parking",
-                "powerBackup",
-                "kitchen",
-            ],
-
-            roomAmenities: [
-                "bathroom",
-                "workDesk",
-                "closet",
-                "chair",
-                "hotColdWater",
-                "teaCoffee",
-                "toiletries",
-                "mineralWater",
-            ],
-
+            basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup", "kitchen"],
+            roomAmenities: ["bathroom", "workDesk", "closet", "chair", "hotColdWater", "teaCoffee", "toiletries", "mineralWater"],
             staffAndKeyServices: ["luggage"],
             healthAndWellness: ["firstAid"],
             sftyAndSecurity: ["cctv"],
             commonArea: ["reception", "restaurant"],
         },
 
-
-        images: [79, 90, 95, 96, 97, 98, 99, 100, 101, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94,],
+        images: [79, 90, 95, 96, 97, 98, 99, 100, 101, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94],
     },
 
     {
-
         id: "mud-house",
         name: "Mud House",
+
+        seo: {
+            title: "Mud House Stay in Wayanad | Eco-Friendly Resort | boCHE 1000 Acres",
+            description: "Stay in a traditional handcrafted Mud House at boCHE 1000 Acres — one of the most unique stays in Wayanad Kerala. Naturally cool, rustically elegant, and set inside a 1000-acre tea plantation resort in Wayanad.",
+            keywords: "mud house wayanad, unique stays in wayanad, eco resort wayanad, resorts in wayanad kerala, best resorts in wayanad, stay in wayanad, rooms in wayanad kerala, wayanad resort packages, best resort in wayanad kerala, luxury resorts in wayanad",
+        },
 
         basicInfo: {
             rooms: 2,
@@ -120,49 +109,37 @@ const rooms = [
         aboutStay: {
             tagline: "A Rustic Retreat Rooted in Nature",
             description:
-                "Experience the charm of traditional living in our handcrafted Mud Villa, built using natural materials and timeless architectural techniques. Surrounded by peaceful greenery, it offers naturally cool interiors, rustic elegance, and modern comforts. Unwind in a serene setting and reconnect with nature through an authentic countryside experience.",
-
+                "Experience the charm of traditional living in our handcrafted Mud House, built using natural clay and timeless architectural techniques with zero cement. Surrounded by peaceful greenery inside a 1000-acre tea plantation, it offers naturally cool interiors, rustic elegance, and modern comforts — one of the most unique stays in Wayanad for guests seeking genuine connection with the land.",
             highlights: [
-                "Naturally temperature-regulated interiors",
-                "Traditional rustic design with modern comforts",
-                "Eco-conscious construction",
+                "Naturally temperature-regulated interiors — no AC needed",
+                "Traditional clay construction with zero cement usage",
+                "Eco-conscious design set inside the tea plantation",
                 "Cozy bedrooms with essential amenities",
-                "Peaceful surroundings close to nature"
+                "Peaceful surroundings close to nature",
             ],
         },
 
         amenities: {
-            basicFacilities: [
-                "roomService",
-                "housekeeping",
-                "parking",
-                "powerBackup",
-            ],
-
-            roomAmenities: [
-                "bathroom",
-                "workDesk",
-                "closet",
-                "chair",
-                "hotColdWater",
-                "teaCoffee",
-                "toiletries",
-                "mineralWater",
-            ],
-
+            basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup"],
+            roomAmenities: ["bathroom", "workDesk", "closet", "chair", "hotColdWater", "teaCoffee", "toiletries", "mineralWater"],
             staffAndKeyServices: ["luggage"],
             healthAndWellness: ["firstAid"],
             sftyAndSecurity: ["cctv"],
             commonArea: ["reception", "restaurant"],
         },
 
-
-        images: [102, 105, 106, 107, 108, 109, 110, 111, 112, 104, 103,],
+        images: [102, 105, 106, 107, 108, 109, 110, 111, 112, 104, 103],
     },
 
     {
         id: "hill-pod",
         name: "Hill Pod",
+
+        seo: {
+            title: "Hill Pod Stay in Wayanad | Mountain View Luxury Pod | boCHE 1000 Acres",
+            description: "Stay in the Hill Pod at boCHE 1000 Acres — a luxury mountain view pod inside a tea plantation resort in Wayanad Kerala. Floor-to-ceiling glass panels, panoramic plantation views, and modern comfort make it one of the best stays in Wayanad for couples.",
+            keywords: "hill pod wayanad, unique stays in wayanad, luxury resorts in wayanad, resorts in wayanad kerala, best resorts in wayanad, couple stay wayanad, rooms in wayanad kerala, stay in wayanad, wayanad resort packages, best resort in wayanad kerala",
+        },
 
         basicInfo: {
             rooms: 1,
@@ -196,66 +173,39 @@ const rooms = [
         ],
 
         aboutStay: {
-
             tagline: "Luxury Among the Peaks",
-
             description:
-                "Set against a backdrop of rolling mountains and endless greenery, the Hill Pod offers a sophisticated retreat for couples seeking peace, privacy, and spectacular scenery. Floor-to-ceiling views and carefully curated interiors create a truly immersive mountain experience.",
-
+                "Set against a backdrop of rolling mountains and endless tea gardens inside boCHE 1000 Acres, the Hill Pod offers a sophisticated retreat for couples seeking peace, privacy, and spectacular scenery. Floor-to-ceiling glass panels frame the plantation landscape in every direction, making it one of the most visually striking stays in Wayanad.",
             highlights: [
-                "Contemporary pod-style architecture",
-                "Large glass panels for scenic views",
-                "Compact yet luxurious interiors",
-                "Air-conditioned comfort",
-                "Ideal for couples and solo travellers"
+                "Contemporary pod-style architecture with large glass panels",
+                "Panoramic tea plantation and mountain views",
+                "Compact yet luxurious air-conditioned interiors",
+                "Complete privacy inside the estate",
+                "Ideal for couples and solo travellers",
             ],
         },
 
         amenities: {
-            basicFacilities: [
-                "roomService",
-                "housekeeping",
-                "parking",
-                "powerBackup",
-            ],
-
-            roomAmenities: [
-                "ac",
-                "bathroom",
-                "workDesk",
-                "closet",
-                "chair",
-                "hotColdWater",
-                "teaCoffee",
-                "toiletries",
-                "mineralWater",
-            ],
-
+            basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup"],
+            roomAmenities: ["ac", "bathroom", "workDesk", "closet", "chair", "hotColdWater", "teaCoffee", "toiletries", "mineralWater"],
             staffAndKeyServices: ["luggage"],
             healthAndWellness: ["firstAid"],
             sftyAndSecurity: ["cctv"],
             commonArea: ["reception", "restaurant"],
         },
 
-        images: [
-            113,
-            116,
-            117,
-            118,
-            119,
-            120,
-            121,
-            122,
-            123,
-            114,
-            115
-        ],
+        images: [113, 116, 117, 118, 119, 120, 121, 122, 123, 114, 115],
     },
 
     {
-
-        id: "bubble-domee",
+        id: "bubble-dome",
         name: "Bubble Dome",
+
+        seo: {
+            title: "Bubble Dome Stay in Wayanad | Sleep Under the Stars | boCHE 1000 Acres",
+            description: "Stay in a transparent Bubble Dome at boCHE 1000 Acres — one of the most unique stays in Wayanad Kerala. A climate-controlled luxury suite with 360-degree views of the night sky and tea plantation, set inside a 1000-acre resort in Wayanad.",
+            keywords: "bubble dome wayanad, unique stays in wayanad, best resorts in wayanad, luxury resorts in wayanad, resorts in wayanad kerala, romantic resorts in wayanad, stay in wayanad, wayanad resort booking, rooms in wayanad kerala, best resort in wayanad kerala",
+        },
 
         basicInfo: {
             rooms: 1,
@@ -289,64 +239,39 @@ const rooms = [
         ],
 
         aboutStay: {
-
             tagline: "A Celestial Retreat",
-
             description:
-                "Experience the wonder of sleeping beneath the stars while surrounded by nature's beauty. The Bubble Dome combines innovative design with luxury comforts, offering guests an enchanting stay where mountain landscapes, moonlit skies, and unforgettable memories come together.",
-
+                "Experience the wonder of sleeping beneath the stars while surrounded by a working tea plantation. The Bubble Dome at boCHE 1000 Acres is a fully climate-controlled, transparent accommodation unit — a clear polymer shell with unobstructed views of the night sky, the Western Ghats, and the estate in every direction. One of the most unique stays in Wayanad, and the most requested room on the estate.",
             highlights: [
-                "Transparent dome structure",
-                "Stargazing experience from bed",
-                "Climate-controlled interiors",
-                "Private and secluded setting",
-                "Ideal for couples and special occasions"
+                "Fully transparent dome with 360-degree sky views",
+                "Stargazing from your bed with zero light pollution",
+                "Climate-controlled interiors with luxury bedding",
+                "Private and secluded setting inside the tea plantation",
+                "Most booked stay type at boCHE 1000 Acres",
             ],
         },
 
         amenities: {
-            basicFacilities: [
-                "roomService",
-                "housekeeping",
-                "parking",
-                "powerBackup",
-            ],
-
-            roomAmenities: [
-                "ac",
-                "bathroom",
-                "workDesk",
-                "closet",
-                "chair",
-                "hotColdWater",
-                "teaCoffee",
-                "toiletries",
-                "mineralWater",
-            ],
-
+            basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup"],
+            roomAmenities: ["ac", "bathroom", "workDesk", "closet", "chair", "hotColdWater", "teaCoffee", "toiletries", "mineralWater"],
             staffAndKeyServices: ["luggage"],
             healthAndWellness: ["firstAid"],
             sftyAndSecurity: ["cctv"],
             commonArea: ["reception", "restaurant"],
         },
 
-
-        images: [
-            124,
-            125,
-            126,
-            127,
-            128,
-            129,
-            130,
-            131
-        ],
+        images: [124, 125, 126, 127, 128, 129, 130, 131],
     },
 
     {
-
         id: "sexy-dome",
         name: "SexyDome",
+
+        seo: {
+            title: "SexyDome Romantic Stay in Wayanad | Couple Dome Resort | boCHE 1000 Acres",
+            description: "Book the SexyDome at boCHE 1000 Acres — a private romantic dome stay in Wayanad Kerala with panoramic sky views, luxury interiors, and a secluded sit-out. One of the best romantic resorts in Wayanad for honeymoons and anniversaries.",
+            keywords: "romantic resorts in wayanad, couple stay wayanad, unique stays in wayanad, resorts in wayanad kerala, best resorts in wayanad, luxury resorts in wayanad, honeymoon resort wayanad, stay in wayanad, wayanad resort booking, best resort in wayanad kerala",
+        },
 
         basicInfo: {
             rooms: 1,
@@ -380,65 +305,39 @@ const rooms = [
         ],
 
         aboutStay: {
-
             tagline: "An Exclusive Romantic Escape",
-
             description:
-                "A private sanctuary designed for couples, the Sexy Dome offers breathtaking mountain views, luxurious interiors, and an intimate atmosphere where every moment feels special. Perfect for honeymoons, anniversaries, and romantic getaways, this unique retreat blends contemporary luxury with the serenity of nature.",
-
+                "A private sanctuary designed for couples, the SexyDome at boCHE 1000 Acres offers breathtaking mountain views, luxurious interiors, and an intimate atmosphere where every moment feels earned. With panoramic sky views, a private sit-out, and complete seclusion inside the tea plantation, it is one of the most romantic stays in Wayanad for honeymoons, anniversaries, and private getaways.",
             highlights: [
-                "Unique dome architecture",
-                "Panoramic sky views",
-                "Elegant and cozy interiors",
-                "Perfect for romantic stays",
-                "Private sit-out area "
+                "Unique dome architecture with panoramic sky views",
+                "Private outdoor sit-out area inside the plantation",
+                "Elegant and cozy climate-controlled interiors",
+                "Complete privacy — ideal for couples and honeymooners",
+                "Walking distance to all estate activities",
             ],
         },
 
         amenities: {
-            basicFacilities: [
-                "roomService",
-                "housekeeping",
-                "parking",
-                "powerBackup",
-            ],
-
-            roomAmenities: [
-                "ac",
-                "bathroom",
-                "workDesk",
-                "closet",
-                "chair",
-                "hotColdWater",
-                "teaCoffee",
-                "toiletries",
-                "mineralWater",
-            ],
-
+            basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup"],
+            roomAmenities: ["ac", "bathroom", "workDesk", "closet", "chair", "hotColdWater", "teaCoffee", "toiletries", "mineralWater"],
             staffAndKeyServices: ["luggage"],
             healthAndWellness: ["firstAid"],
             sftyAndSecurity: ["cctv"],
             commonArea: ["reception", "restaurant"],
         },
 
-
-        images: [
-            132,
-            133,
-            134,
-            135,
-            136,
-            137,
-            138,
-            139,
-            140
-        ],
+        images: [132, 133, 134, 135, 136, 137, 138, 139, 140],
     },
 
     {
-
         id: "the-mountain-residence-room",
         name: "The Mountain Residence Room",
+
+        seo: {
+            title: "Mountain Residence Room in Wayanad | Couple Room at Tea Plantation Resort | boCHE 1000 Acres",
+            description: "Book a private room at The Mountain Residence, boCHE 1000 Acres — a comfortable couple stay in Wayanad Kerala inside a 1000-acre tea plantation resort. Modern amenities, scenic plantation views, and easy access to all estate adventure activities in Wayanad.",
+            keywords: "rooms in wayanad kerala, rooms at wayanad, resorts in wayanad kerala, best resorts in wayanad, stay in wayanad, couple stay wayanad, wayanad resort packages, resort stay in wayanad, wayanad resort booking, best resort in wayanad kerala",
+        },
 
         basicInfo: {
             rooms: 1,
@@ -472,57 +371,39 @@ const rooms = [
         ],
 
         aboutStay: {
-
             tagline: "Contemporary Comfort for Couples",
             description:
-                "A cozy private room within The Mountain Residence, designed for couples or two guests seeking a comfortable stay amidst nature. The room offers modern comforts, and easy access to the resort's experiences make it an ideal choice for travellers looking to explore, connect, and create lasting memories.",
-
+                "A cozy private room within The Mountain Residence at boCHE 1000 Acres, designed for couples or two guests seeking a comfortable stay amidst the tea plantation landscape of Wayanad. Modern comforts, scenic views, and direct access to all of the estate's adventure activities make it a smart choice for guests who want the full boCHE experience at an accessible price point.",
             highlights: [
-                "Private room for 2 guests",
-                "Attached bathroom",
-                "Located withinThe Mountain Residence Villa",
-                "Comfortable and budget-friendly stay",
-                "Surrounded by scenic tea plantation views"
-            ]
+                "Private room for 2 guests with attached bathroom",
+                "Scenic tea plantation views from the room",
+                "Located within The Mountain Residence Villa",
+                "Full access to all estate adventure activities",
+                "Comfortable and accessible stay option",
+            ],
         },
 
         amenities: {
-            basicFacilities: [
-                "roomService",
-                "housekeeping",
-                "parking",
-                "powerBackup",
-            ],
-
-            roomAmenities: [
-                "bathroom",
-                "workDesk",
-                "closet",
-                "chair",
-                "hotColdWater",
-                "teaCoffee",
-                "toiletries",
-                "mineralWater",
-            ],
-
+            basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup"],
+            roomAmenities: ["bathroom", "workDesk", "closet", "chair", "hotColdWater", "teaCoffee", "toiletries", "mineralWater"],
             staffAndKeyServices: ["luggage"],
             healthAndWellness: ["firstAid"],
             sftyAndSecurity: ["cctv"],
             commonArea: ["reception", "restaurant"],
         },
 
-
-        images: [
-            146,
-            147,
-            148,
-            149],
+        images: [146, 147, 148, 149],
     },
 
     {
-
         id: "the-mountain-residence-full-property",
         name: "The Mountain Residence Full Property",
+
+        seo: {
+            title: "Mountain Residence Full Villa in Wayanad | Group & Family Resort | boCHE 1000 Acres",
+            description: "Book the full Mountain Residence villa at boCHE 1000 Acres — a 4-bedroom group stay in Wayanad Kerala with shared kitchen, living areas, and scenic tea plantation views. One of the best resorts in Wayanad for families, friends, and group travel.",
+            keywords: "best resorts in wayanad for friends, family stay in wayanad, resorts in wayanad kerala, best resorts in wayanad, rooms at wayanad, group stay wayanad, wayanad resort packages, resorts in wayanad with activities, stay in wayanad, best resort in wayanad kerala",
+        },
 
         basicInfo: {
             rooms: 4,
@@ -558,142 +439,103 @@ const rooms = [
         aboutStay: {
             tagline: "Contemporary Comfort for Groups",
             description:
-                "Designed for friends, adventure seekers, and small groups, the The Mountain Residence combines privacy with social living. Spacious 4 bed room accommodations, modern comforts, and easy access to the resort's experiences make it an ideal choice for travellers looking to explore, connect, and create lasting memories together.",
-
+                "Designed for families, friend groups, and group travellers, The Mountain Residence Full Property at boCHE 1000 Acres gives you an entire 4-bedroom villa inside the tea plantation estate. Four private rooms each with attached bathrooms, a fully equipped shared kitchen, spacious living areas, and direct access to all estate adventure activities in Wayanad make this one of the best group stays in Wayanad.",
             highlights: [
-                "4-bedroom private villa",
-                "Each room accommodates 2 guests",
+                "Entire 4-bedroom private villa — up to 8 guests",
+                "Fully equipped shared kitchen and living areas",
                 "Attached bathroom in every room",
-                "Fully equipped shared kitchen",
-                "Spacious common living areas",
-                "Ideal for families and group stays"
+                "Scenic tea plantation views across the property",
+                "Ideal for families, friends, and group retreats",
             ],
         },
 
         amenities: {
-            basicFacilities: [
-                "roomService",
-                "housekeeping",
-                "parking",
-                "powerBackup",
-            ],
-
-            roomAmenities: [
-                "bathroom",
-                "workDesk",
-                "closet",
-                "chair",
-                "hotColdWater",
-                "teaCoffee",
-                "toiletries",
-                "mineralWater",
-            ],
-
+            basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup"],
+            roomAmenities: ["bathroom", "workDesk", "closet", "chair", "hotColdWater", "teaCoffee", "toiletries", "mineralWater"],
             staffAndKeyServices: ["luggage"],
             healthAndWellness: ["firstAid"],
             sftyAndSecurity: ["cctv"],
             commonArea: ["reception", "restaurant"],
         },
 
-
-        images: [
-            141,
-            143,
-            144,
-            145,
-            146,
-            147,
-            148,
-            149,
-            150,
-            142
-        ],
+        images: [141, 143, 144, 145, 146, 147, 148, 149, 150, 142],
     },
 
-    // {
+    {
+        id: "agraharam",
+        name: "Agraharam",
 
-    //     id: "agraharam",
-    //     name: "Agraharam",
+        seo: {
+            title: "Agraharam Stay in Wayanad | Forest Hideaway for Friends | boCHE 1000 Acres",
+            description: "Stay in Agraharam at boCHE 1000 Acres — a private forest hideaway in Wayanad Kerala for friends and small groups. Traditional architecture, spacious courtyard, modern amenities, and full access to adventure activities in Wayanad inside a 1000-acre tea plantation resort.",
+            keywords: "resorts in wayanad kerala, best resorts in wayanad for friends, unique stays in wayanad, stay in wayanad, resorts in wayanad with activities, wayanad resort packages, adventure activities in wayanad, rooms in wayanad kerala, resort stay in wayanad, best resort in wayanad kerala",
+        },
 
-    //     basicInfo: {
-    //         rooms: 1,
-    //         maxGuests: 3,
-    //         pricePerNight: 4000,
-    //         currency: "INR",
-    //     },
+        basicInfo: {
+            rooms: 1,
+            maxGuests: 3,
+            pricePerNight: 4000,
+            currency: "INR",
+        },
 
-    //     checkTime: {
-    //         checkIn: "02:00 PM",
-    //         checkOut: "10:00 AM",
-    //     },
+        checkTime: {
+            checkIn: "02:00 PM",
+            checkOut: "10:00 AM",
+        },
 
-    //     inclusions: [
-    //         "Includes Free Breakfast",
-    //         "Includes Camp Fire with Music (for 5 pax and above)",
-    //         "Includes Property Trekking",
-    //     ],
+        inclusions: [
+            "Includes Free Breakfast",
+            "Includes Camp Fire with Music (for 5 pax and above)",
+            "Includes Property Trekking",
+        ],
 
-    //     cancellationPolicy: [
-    //         {
-    //             refundPercent: 100,
-    //             daysBeforeCheckIn: 7,
-    //             label: "100% refund if cancelled 7 days before check-in.",
-    //         },
-    //         {
-    //             refundPercent: 50,
-    //             daysBeforeCheckIn: 2,
-    //             label: "50% refund if cancelled 2 days before check-in.",
-    //         },
-    //     ],
+        cancellationPolicy: [
+            {
+                refundPercent: 100,
+                daysBeforeCheckIn: 7,
+                label: "100% refund if cancelled 7 days before check-in.",
+            },
+            {
+                refundPercent: 50,
+                daysBeforeCheckIn: 2,
+                label: "50% refund if cancelled 2 days before check-in.",
+            },
+        ],
 
-    //     aboutStay: {
-    //         tagline:"Forest Hideaway for Friends & Social Gatherings",
-    //         description:
-    //             "Tucked away amidst lush greenery and serene forest surroundings, Agraharam is the perfect hideaway for friends and bachelor groups seeking a relaxed escape in nature. Featuring a comfortable bedroom,  living area, dining space, and modern amenities, it offers the ideal setting to unwind, reconnect, and create unforgettable memories amidst the tranquillity of the mountains.",
+        aboutStay: {
+            tagline: "Forest Hideaway for Friends and Social Gatherings",
+            description:
+                "Tucked away amidst the forest cover of boCHE 1000 Acres, Agraharam is a traditional-style hideaway designed for friends, bachelor groups, and small gatherings who want a relaxed escape in nature. Spacious courtyard, wooden accents, heritage architectural details, and modern amenities create a setting that is comfortable without being formal — the right kind of place to unwind with people you like.",
+            highlights: [
+                "Traditional heritage architecture with wooden accents",
+                "Spacious courtyard and living areas",
+                "Modern bathroom facilities",
+                "Secluded forest setting inside the estate",
+                "Ideal for friends, bachelor groups, and small gatherings",
+            ],
+        },
 
-    //         highlights: [
-    //             "Traditional architectural style",
-    //             "Spacious courtyards",
-    //             "Wooden accents and heritage design",
-    //             "Modern bathroom facilities",
-    //             "Ideal for cultural and family retreats"
-    //         ],
-    //     },
+        amenities: {
+            basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup"],
+            roomAmenities: ["bathroom", "workDesk", "closet", "chair", "hotColdWater", "teaCoffee", "toiletries", "mineralWater"],
+            staffAndKeyServices: ["luggage"],
+            healthAndWellness: ["firstAid"],
+            sftyAndSecurity: ["cctv"],
+            commonArea: ["reception", "restaurant"],
+        },
 
-    //     amenities: {
-    //         basicFacilities: [
-    //             "roomService",
-    //             "housekeeping",
-    //             "parking",
-    //             "powerBackup",
-    //         ],
-
-    //         roomAmenities: [
-
-    //             "bathroom",
-    //             "workDesk",
-    //             "closet",
-    //             "chair",
-    //             "hotColdWater",
-    //             "teaCoffee",
-    //             "toiletries",
-    //             "mineralWater",
-    //         ],
-
-    //         staffAndKeyServices: ["luggage"],
-    //         healthAndWellness: ["firstAid"],
-    //         sftyAndSecurity: ["cctv"],
-    //         commonArea: ["reception", "restaurant"],
-    //     },
-
-
-    //     images: [3, 42, 43, 44, 45],
-    // },
+        images: [184, 185, 186, 187, 181, 183, 182],
+    },
 
     {
-
         id: "natural-tent-stay",
         name: "Natural Tent Stay",
+
+        seo: {
+            title: "Tent Stay in Wayanad | Camping Resort | boCHE 1000 Acres",
+            description: "Experience a natural tent stay at boCHE 1000 Acres — one of the best camping resorts in Wayanad Kerala. Sleep under the stars inside a 1000-acre tea plantation with campfire nights, property trekking, and full access to adventure activities in Wayanad.",
+            keywords: "tent stay in wayanad, wayanad camp stay, best tent stay in wayanad, resorts in wayanad kerala, adventure activities in wayanad, stay in wayanad, wayanad resort packages, resorts in wayanad with activities, tent stay wayanad, best resort in wayanad kerala",
+        },
 
         basicInfo: {
             rooms: 1,
@@ -729,31 +571,23 @@ const rooms = [
         aboutStay: {
             tagline: "Where Nature Becomes Your Home",
             description:
-                "Escape the rush of everyday life and reconnect with nature in our Natural Tent Stay. Surrounded by lush greenery and fresh mountain air, it offers a peaceful outdoor retreat with the perfect balance of comfort, relaxation, and adventure.",
-
+                "The most direct way to sleep inside the estate at boCHE 1000 Acres. The Natural Tent Stay puts you in the middle of the plantation with nothing between you and the surrounding landscape. Fresh mountain air, campfire evenings, property trekking at dawn, and the full range of adventure activities in Wayanad available on the estate make this the right choice for adventure seekers who want the experience without the overhead.",
             highlights: [
-                "Comfortable tent accommodation",
-                "Close-to-nature setting",
-                "Campfire experience ",
+                "Tent accommodation inside the tea plantation estate",
+                "Campfire evenings with music included",
+                "Property trekking from your doorstep",
                 "Shared restroom facilities",
-                "Ideal for adventure seekers"
+                "Most accessible entry point into the boCHE estate experience",
             ],
         },
 
         amenities: {
-            basicFacilities: [
-                "roomService",
-                "housekeeping",
-                "parking",
-                "powerBackup",
-            ],
-
+            basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup"],
             staffAndKeyServices: ["luggage"],
             healthAndWellness: ["firstAid"],
             sftyAndSecurity: ["cctv"],
             commonArea: ["reception", "restaurant", "commonBathroom"],
         },
-
 
         images: [151, 152, 153],
     },

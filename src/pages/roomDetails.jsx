@@ -15,6 +15,7 @@ import ImageCarousel from '../components/ImageCarousel';
 import EmblaCarousel from '../components/EmblaCarousel';
 import Button from '../components/Button';
 import RoomCard from '../components/RoomCard';
+import SEO from '../components/SEO';
 
 const amenitiesIconsMap = {
     roomService: { label: "Room Service", icon: MdOutlineRoomService },
@@ -88,7 +89,7 @@ const RoomDetails = () => {
         }
     }, [isHighlightsModalOpen, isAmenitiesModalOpen]);
 
-    
+
     const scrollToCategory = (key) => {
         setActiveTab(key);
         const element = document.getElementById(`amenity-category-${key}`);
@@ -184,202 +185,215 @@ const RoomDetails = () => {
     );
 
     return (
-        <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-4 pt-20 lg:pt-24 pb-16">
-            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
-                <div className="flex-1 w-full space-y-8">
-
-                    {/* CORRECTED: pass resolvedImages to ImageCarousel */}
-                    <div className="w-full">
-                        {resolvedImages.length > 0 ? (
-                            <ImageCarousel key={id} images={resolvedImages} options={{ loop: true }} />
-                        ) : (
-                            <div className="aspect-3/2 bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400">
-                                No images available
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="block lg:hidden w-full">
-                        {renderRoomDetailsCard()}
-                    </div>
-
-                    <div className="bg-[#f2faeb] rounded-4xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
-                        <h3 className="text-2xl md:text-3xl font-serif text-gray-900 mb-4">About Stay</h3>
-                        <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4">
-                            {room.aboutStay.description}
-                        </p>
-                        <button
-                            onClick={() => setIsHighlightsModalOpen(true)}
-                            className="text-[#3b5998] font-medium text-sm hover:underline"
-                        >
-                            Know More
-                        </button>
-                    </div>
-
-                    <div className="bg-[#f2faeb] rounded-4xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
-                        <h3 className="text-2xl md:text-3xl font-serif text-gray-900 mb-6">Amenities</h3>
-                        <div className="flex flex-wrap items-center justify-between gap-4">
-                            <div className="flex flex-wrap gap-6 sm:gap-10">
-                                {basicAmenitiesToPreview.map(amKey => {
-                                    const am = amenitiesIconsMap[amKey];
-                                    if (!am) return null;
-                                    return (
-                                        <div key={amKey} className="flex flex-col items-center gap-2">
-                                            <am.icon className="w-8 h-8 text-black" />
-                                            <span className="text-xs sm:text-sm text-gray-700 font-medium text-center w-20 leading-tight">
-                                                {am.label}
-                                            </span>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                            <button
-                                onClick={() => setIsAmenitiesModalOpen(true)}
-                                className="text-[#3b5998] font-medium text-sm hover:underline self-end pb-2"
-                            >
-                                See all
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div className="hidden lg:block top-24 sticky flex-1 w-full">
-                    {renderRoomDetailsCard()}
-                </div>
-            </div>
-
-            <div className="mt-20">
-                <EmblaCarousel sectionTitle="Also Check Out">
-                    {/* CORRECTED: use resolvedCover.variants.small for RoomCard image */}
-                    {otherRooms.map(r => (
-                        <div className="embla__slide" key={r.id}>
-                            <RoomCard
-                                id={r.id}
-                                title={r.name}
-                                image={r.resolvedCover?.variants?.small ?? "/images/image-not-found-small.webp"}
-                                blur={r.resolvedCover?.variants?.blur ?? ""}
-                                guests={r.basicInfo.maxGuests}
-                                price={r.basicInfo.pricePerNight}
-                            />
-                        </div>
-                    ))}
-                </EmblaCarousel>
-
-                <div className="mt-8 flex justify-center">
-                    <Link to="/stays">
-                        <Button variant="primary">View All Stays</Button>
-                    </Link>
-                </div>
-            </div>
-
-            {isHighlightsModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 transition-opacity duration-300">
-                    <div className="bg-[#fcfdfa] rounded-4xl w-full max-w-2xl p-6 md:p-10 shadow-2xl relative">
-                        <h2 className="text-4xl font-serif text-gray-900 mb-4">{room.name}</h2>
-                        <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8">
-                            {room.aboutStay.description}
-                        </p>
-                        <h3 className="text-2xl font-serif text-gray-900 mb-4">Stay Highlights</h3>
-                        <ul className="space-y-3 mb-10 text-gray-700 text-sm md:text-base">
-                            {room.aboutStay.highlights.map((hlt, idx) => (
-                                <li key={idx} className="flex gap-3">
-                                    <span className="text-[#4A5D23]">•</span>
-                                    <span>{hlt}</span>
-                                </li>
-                            ))}
-                        </ul>
-                        <div className="flex justify-end mt-4">
-                            <Button variant="primary" onClick={() => setIsHighlightsModalOpen(false)}>
-                                Close
-                            </Button>
-                        </div>
-                    </div>
-                </div>
+        <>
+            {room.seo && (
+                <SEO
+                    title={room.seo.title}
+                    description={room.seo.description}
+                    keywords={room.seo.keywords}
+                    url={`https://www.boche1000acre.in/stays/${room.id}`}
+                />
             )}
 
-            {isAmenitiesModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 transition-opacity duration-300">
-                    <div className="bg-[#fcfdfa] rounded-4xl w-full max-w-3xl p-6 md:p-10 shadow-2xl relative flex flex-col h-[80vh] md:h-auto max-h-[90vh]">
-                        <div className="shrink-0 border-b border-gray-200 mb-6">
-                            <h2 className="text-4xl font-serif text-gray-900 mb-6">Amenities</h2>
-                            <div className="flex gap-6 overflow-x-auto whitespace-nowrap [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]">
+            <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-4 pt-20 lg:pt-24 pb-16">
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                    <div className="flex-1 w-full space-y-8">
+
+                        {/* CORRECTED: pass resolvedImages to ImageCarousel */}
+                        <div className="w-full">
+                            {resolvedImages.length > 0 ? (
+                                <ImageCarousel key={id} images={resolvedImages} options={{ loop: true }} />
+                            ) : (
+                                <div className="aspect-3/2 bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400">
+                                    No images available
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="block lg:hidden w-full">
+                            {renderRoomDetailsCard()}
+                        </div>
+
+                        <div className="bg-[#f2faeb] rounded-4xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
+                            <h3 className="text-2xl md:text-3xl font-serif text-gray-900 mb-4">About Stay</h3>
+                            <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4">
+                                {room.aboutStay.description}
+                            </p>
+                            <button
+                                onClick={() => setIsHighlightsModalOpen(true)}
+                                className="text-[#3b5998] font-medium text-sm hover:underline"
+                            >
+                                Know More
+                            </button>
+                        </div>
+
+                        <div className="bg-[#f2faeb] rounded-4xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
+                            <h3 className="text-2xl md:text-3xl font-serif text-gray-900 mb-6">Amenities</h3>
+                            <div className="flex flex-wrap items-center justify-between gap-4">
+                                <div className="flex flex-wrap gap-6 sm:gap-10">
+                                    {basicAmenitiesToPreview.map(amKey => {
+                                        const am = amenitiesIconsMap[amKey];
+                                        if (!am) return null;
+                                        return (
+                                            <div key={amKey} className="flex flex-col items-center gap-2">
+                                                <am.icon className="w-8 h-8 text-black" />
+                                                <span className="text-xs sm:text-sm text-gray-700 font-medium text-center w-20 leading-tight">
+                                                    {am.label}
+                                                </span>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                                <button
+                                    onClick={() => setIsAmenitiesModalOpen(true)}
+                                    className="text-[#3b5998] font-medium text-sm hover:underline self-end pb-2"
+                                >
+                                    See all
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div className="hidden lg:block top-24 sticky flex-1 w-full">
+                        {renderRoomDetailsCard()}
+                    </div>
+                </div>
+
+                <div className="mt-20">
+                    <EmblaCarousel sectionTitle="Also Check Out">
+                        {/* CORRECTED: use resolvedCover.variants.small for RoomCard image */}
+                        {otherRooms.map(r => (
+                            <div className="embla__slide" key={r.id}>
+                                <RoomCard
+                                    id={r.id}
+                                    title={r.name}
+                                    image={r.resolvedCover?.variants?.small ?? "/images/image-not-found-small.webp"}
+                                    blur={r.resolvedCover?.variants?.blur ?? ""}
+                                    guests={r.basicInfo.maxGuests}
+                                    price={r.basicInfo.pricePerNight}
+                                />
+                            </div>
+                        ))}
+                    </EmblaCarousel>
+
+                    <div className="mt-8 flex justify-center">
+                        <Link to="/stays">
+                            <Button variant="primary">View All Stays</Button>
+                        </Link>
+                    </div>
+                </div>
+
+                {isHighlightsModalOpen && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 transition-opacity duration-300">
+                        <div className="bg-[#fcfdfa] rounded-4xl w-full max-w-2xl p-6 md:p-10 shadow-2xl relative">
+                            <h2 className="text-4xl font-serif text-gray-900 mb-4">{room.name}</h2>
+                            <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8">
+                                {room.aboutStay.description}
+                            </p>
+                            <h3 className="text-2xl font-serif text-gray-900 mb-4">Stay Highlights</h3>
+                            <ul className="space-y-3 mb-10 text-gray-700 text-sm md:text-base">
+                                {room.aboutStay.highlights.map((hlt, idx) => (
+                                    <li key={idx} className="flex gap-3">
+                                        <span className="text-[#4A5D23]">•</span>
+                                        <span>{hlt}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <div className="flex justify-end mt-4">
+                                <Button variant="primary" onClick={() => setIsHighlightsModalOpen(false)}>
+                                    Close
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {isAmenitiesModalOpen && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 transition-opacity duration-300">
+                        <div className="bg-[#fcfdfa] rounded-4xl w-full max-w-3xl p-6 md:p-10 shadow-2xl relative flex flex-col h-[80vh] md:h-auto max-h-[90vh]">
+                            <div className="shrink-0 border-b border-gray-200 mb-6">
+                                <h2 className="text-4xl font-serif text-gray-900 mb-6">Amenities</h2>
+                                <div className="flex gap-6 overflow-x-auto whitespace-nowrap [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]">
+                                    {amenityCategories.map(cat => {
+                                        if (!room.amenities[cat.key] || room.amenities[cat.key].length === 0) return null;
+                                        return (
+                                            <button
+                                                key={cat.key}
+                                                id={`amenity-tab-btn-${cat.key}`}
+                                                onClick={() => scrollToCategory(cat.key)}
+                                                className={`pb-3 text-sm sm:text-base font-medium transition-colors ${activeTab === cat.key ? 'text-[#4A5D23] border-b-2 border-[#4A5D23]' : 'text-gray-400 hover:text-gray-700'}`}
+                                            >
+                                                {cat.label}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                            <div
+                                className="overflow-y-auto pr-2 space-y-12 grow hide-scroll-bar scroll-smooth"
+                                onScroll={(e) => {
+                                    const containerTop = e.target.getBoundingClientRect().top;
+                                    const categories = amenityCategories.filter(cat => room.amenities[cat.key] && room.amenities[cat.key].length > 0);
+                                    let newActive = categories[0]?.key;
+                                    for (let i = categories.length - 1; i >= 0; i--) {
+                                        const cat = categories[i];
+                                        const el = document.getElementById(`amenity-category-${cat.key}`);
+                                        if (el) {
+                                            const rect = el.getBoundingClientRect();
+                                            if (rect.top <= containerTop + 150) {
+                                                newActive = cat.key;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    setActiveTab(prev => {
+                                        if (newActive && prev !== newActive) {
+                                            const tabBtn = document.getElementById(`amenity-tab-btn-${newActive}`);
+                                            if (tabBtn) {
+                                                tabBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                                            }
+                                            return newActive;
+                                        }
+                                        return prev;
+                                    });
+                                }}
+                            >
                                 {amenityCategories.map(cat => {
                                     if (!room.amenities[cat.key] || room.amenities[cat.key].length === 0) return null;
                                     return (
-                                        <button
-                                            key={cat.key}
-                                            id={`amenity-tab-btn-${cat.key}`}
-                                            onClick={() => scrollToCategory(cat.key)}
-                                            className={`pb-3 text-sm sm:text-base font-medium transition-colors ${activeTab === cat.key ? 'text-[#4A5D23] border-b-2 border-[#4A5D23]' : 'text-gray-400 hover:text-gray-700'}`}
-                                        >
-                                            {cat.label}
-                                        </button>
+                                        <div key={cat.key} id={`amenity-category-${cat.key}`} className="space-y-6">
+                                            <h3 className="text-2xl font-serif text-gray-900">{cat.label}</h3>
+                                            <div className="flex flex-wrap gap-8 sm:gap-10">
+                                                {room.amenities[cat.key].map(amKey => {
+                                                    const am = amenitiesIconsMap[amKey];
+                                                    if (!am) return null;
+                                                    return (
+                                                        <div key={amKey} className="flex flex-col items-center gap-3">
+                                                            <am.icon className="w-10 h-10 text-black" />
+                                                            <span className="text-xs sm:text-sm text-gray-700 font-medium text-center w-20 leading-tight">
+                                                                {am.label}
+                                                            </span>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
                                     );
                                 })}
                             </div>
-                        </div>
-                        <div
-                            className="overflow-y-auto pr-2 space-y-12 grow hide-scroll-bar scroll-smooth"
-                            onScroll={(e) => {
-                                const containerTop = e.target.getBoundingClientRect().top;
-                                const categories = amenityCategories.filter(cat => room.amenities[cat.key] && room.amenities[cat.key].length > 0);
-                                let newActive = categories[0]?.key;
-                                for (let i = categories.length - 1; i >= 0; i--) {
-                                    const cat = categories[i];
-                                    const el = document.getElementById(`amenity-category-${cat.key}`);
-                                    if (el) {
-                                        const rect = el.getBoundingClientRect();
-                                        if (rect.top <= containerTop + 150) {
-                                            newActive = cat.key;
-                                            break;
-                                        }
-                                    }
-                                }
-                                setActiveTab(prev => {
-                                    if (newActive && prev !== newActive) {
-                                        const tabBtn = document.getElementById(`amenity-tab-btn-${newActive}`);
-                                        if (tabBtn) {
-                                            tabBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                                        }
-                                        return newActive;
-                                    }
-                                    return prev;
-                                });
-                            }}
-                        >
-                            {amenityCategories.map(cat => {
-                                if (!room.amenities[cat.key] || room.amenities[cat.key].length === 0) return null;
-                                return (
-                                    <div key={cat.key} id={`amenity-category-${cat.key}`} className="space-y-6">
-                                        <h3 className="text-2xl font-serif text-gray-900">{cat.label}</h3>
-                                        <div className="flex flex-wrap gap-8 sm:gap-10">
-                                            {room.amenities[cat.key].map(amKey => {
-                                                const am = amenitiesIconsMap[amKey];
-                                                if (!am) return null;
-                                                return (
-                                                    <div key={amKey} className="flex flex-col items-center gap-3">
-                                                        <am.icon className="w-10 h-10 text-black" />
-                                                        <span className="text-xs sm:text-sm text-gray-700 font-medium text-center w-20 leading-tight">
-                                                            {am.label}
-                                                        </span>
-                                                    </div>
-                                                );
-                                            })}
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                        <div className="flex justify-end mt-8 pt-4 border-t border-gray-100 shrink-0">
-                            <Button variant="primary" onClick={() => setIsAmenitiesModalOpen(false)}>
-                                Close
-                            </Button>
+                            <div className="flex justify-end mt-8 pt-4 border-t border-gray-100 shrink-0">
+                                <Button variant="primary" onClick={() => setIsAmenitiesModalOpen(false)}>
+                                    Close
+                                </Button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )}
+            </div>
+
+        </>
+
     );
 };
 

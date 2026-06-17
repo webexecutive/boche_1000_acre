@@ -10,7 +10,7 @@ export const categories = [
 ];
 
 export const galleryMeta = {
-  lastId: 180
+  lastId: 187
 };
 
 export const gallery = [
@@ -137,5 +137,13 @@ export const gallery = [
 { id: 179, category: 'estate', alt: 'Waterfall inside boche 1000 acre resort in kerala wayanad', showInGallery: true }
 ,
 { id: 180, category: 'stays', alt: 'Couples watching stars from bubble dom stay at boche 1000 acre resort in wayanad kerala', showInGallery: true }
+,
+{ id: 181, category: 'stays', alt: 'Img12', showInGallery: true },
+{ id: 182, category: 'stays', alt: 'Img15', showInGallery: true },
+{ id: 183, category: 'stays', alt: 'Img18', showInGallery: true },
+{ id: 184, category: 'stays', alt: 'Img3', showInGallery: true },
+{ id: 185, category: 'stays', alt: 'Img4', showInGallery: true },
+{ id: 186, category: 'stays', alt: 'Img6', showInGallery: true },
+{ id: 187, category: 'stays', alt: 'Img9', showInGallery: true }
 
 ];

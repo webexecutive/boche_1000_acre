@@ -3,7 +3,7 @@ import { aboutData } from '../data/aboutData.js';
 import ReactMarkdown from 'react-markdown';
 import LogoCarousel from "../components/LogoCarousel";
 import group from "../data/groupData";
-import Breadcrumbs from "../components/Breadcrumbs";
+import SEO from "../components/SEO";
 
 const About = () => {
   const [activeTab, setActiveTab] = useState(aboutData[0].id);
@@ -16,7 +16,13 @@ const About = () => {
 
   return (
     <>
-    
+      <SEO
+        title={activeContent.seo.title}
+        description={activeContent.seo.description}
+        keywords={activeContent.seo.keywords}
+        url={activeContent.seo.url}
+      />
+      
       <div className="min-h-[calc(100vh-80px)] max-w-7xl mx-auto bg-[#F7FFE6] flex flex-col md:flex-row w-full font-['DM_Sans']">
 
         {/* Desktop Sidebar Navigation */}
@@ -41,7 +47,7 @@ const About = () => {
         <div className="flex-1 w-full bg-[#F7FFE6] min-h-screen pt-16">
           <div className="max-w-7xl mx-auto w-full">
 
-           
+
 
             {/* Hero Section */}
             <div className="w-full aspect-video md:aspect-21/9 max-h-120 bg-[#C8D4AA]/30 overflow-hidden relative">
