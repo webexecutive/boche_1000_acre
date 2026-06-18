@@ -271,7 +271,9 @@ const RoomDetails = () => {
                                     image={r.resolvedCover?.variants?.small ?? "/images/image-not-found-small.webp"}
                                     blur={r.resolvedCover?.variants?.blur ?? ""}
                                     guests={r.basicInfo.maxGuests}
+                                    alt={r.resolvedCover?.alt ?? r.name}
                                     price={r.basicInfo.pricePerNight}
+
                                 />
                             </div>
                         ))}

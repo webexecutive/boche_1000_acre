@@ -7,6 +7,7 @@ export default function RoomCard({
     image,
     blur,
     title,
+    alt,
     guests,
     price,
     id,
@@ -22,7 +23,7 @@ export default function RoomCard({
             <CImage
                 src={image}
                 blur={blur}
-                alt={title}
+               alt={alt}
                 className="w-full h-56 shrink-0"
             />
 

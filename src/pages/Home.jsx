@@ -339,6 +339,7 @@ function Home() {
                   <StayCard
                     image={cover?.variants?.small ?? "/images/image-not-found-small.webp"}
                     blur={cover?.variants?.blur ?? ""}
+                    alt={cover?.alt ?? room.name}
                     title={room.name}
                     tagline={room.aboutStay.tagline}
                     description={room.aboutStay.description}

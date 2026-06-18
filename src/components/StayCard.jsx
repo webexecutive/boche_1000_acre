@@ -4,6 +4,7 @@ import CImage from "./Cimage";
 export default function StayCard({
     image,
     blur,
+    alt,
     title,
     tagline,
     description,
@@ -18,10 +19,10 @@ export default function StayCard({
             <CImage
                 src={image}
                 blur={blur}
-                alt={title}
+                alt={alt}
                 className="w-full h-52 shrink-0 object-cover"
             />
-
+            
             <div className="flex flex-col flex-1 p-5">
 
                 <h4 className="font-medium text-[#1e3209] leading-snug line-clamp-1 mb-1">
