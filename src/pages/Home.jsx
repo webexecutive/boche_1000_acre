@@ -24,6 +24,8 @@ import reviewData from "../data/googleReviewData";
 import ReviewCard from "../components/ReviewCard";
 import StayCard from "../components/StayCard";
 import SEO from "../components/SEO";
+import blogData from "../data/blogData";
+import BlogCard from "../components/BlogCard";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
@@ -569,7 +571,21 @@ function Home() {
         </div>
       </section>
 
-
+      {/* Blog Section */}
+      <section className="bg-[#F7FDE9] py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <EmblaCarousel className="blogs-carousel" sectionTitle="Insights from 1000 Acres" sectionSubtitle="Our Stories & Updates">
+            {blogData.map((blog) => (
+              <div className="embla__slide" key={blog.id}>
+                <BlogCard {...blog} />
+              </div>
+            ))}
+          </EmblaCarousel>
+          <div className="flex justify-center mt-8">
+            <Link to="/blog"><Button size="sm">Read All Stories</Button></Link>
+          </div>
+        </div>
+      </section>
 
       {/* Gallery Section */}
       <section className="py-20 bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-sm.svg')] md:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-md.svg')] lg:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-lg.svg')] bg-cover bg-center bg-no-repeat">

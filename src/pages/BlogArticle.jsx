@@ -72,7 +72,7 @@ export default function BlogArticle() {
                                 return (
                                     <p
                                         key={index}
-                                        className="text-gray-700 leading-8 mb-6"
+                                        className="text-gray-700 leading-8 mb-6 text-justify"
                                     >
                                         {section.content}
                                     </p>
