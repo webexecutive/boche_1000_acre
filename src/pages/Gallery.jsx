@@ -92,10 +92,8 @@ function Gallery() {
 
             <div className="max-w-7xl mx-auto px-4 md:px-8 pt-20 lg:pt-24 pb-20 space-y-8">
 
-                {/* ── Heading ── */}
                 <h1>Gallery</h1>
 
-                {/* ── Category tabs ── */}
                 <div className="flex gap-6 border-b border-gray-200 overflow-x-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
                     {categories
                         .filter(cat => cat.showInGallery !== false)
@@ -113,7 +111,6 @@ function Gallery() {
                         ))}
                 </div>
 
-                {/* ── Masonry grid ── */}
                 {pagedImages.length === 0 ? (
                     <p className="text-gray-400 text-center py-20">No images in this category yet.</p>
                 ) : !blursReady ? (
@@ -187,7 +184,6 @@ function Gallery() {
                     </div>
                 )}
 
-                {/* ── Pagination ── */}
                 {totalPages > 1 && (
                     <div className="flex items-center justify-center gap-1 pt-4">
 

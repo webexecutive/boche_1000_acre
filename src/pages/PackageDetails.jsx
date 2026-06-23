@@ -31,7 +31,6 @@ const PackageDetails = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 md:px-8 pt-24 lg:pt-24 pb-20 space-y-6">
 
-            {/* ── Hero Section ── */}
             <div className="flex flex-col md:flex-row gap-6 items-stretch">
 
                 {/* Poster Image */}
@@ -111,7 +110,6 @@ const PackageDetails = () => {
                 </div>
             </div>
 
-            {/* ── Guest Activities ── */}
             {pkg.activities && pkg.activities.length > 0 && (
                 <div className="bg-[#f2faeb] rounded-2xl p-6 sm:p-8 shadow-sm border border-[#e5efdb]">
                     <h3 className="mb-6">Guest Activities</h3>
@@ -131,7 +129,6 @@ const PackageDetails = () => {
                 </div>
             )}
 
-            {/* ── Meals + Schedule ── */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                 {/* Meals */}

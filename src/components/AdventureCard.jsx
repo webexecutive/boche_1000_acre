@@ -7,7 +7,6 @@ export default function AdventureCard({ adventure, onPlay }) {
     return (
         <div className="bg-[#FDFFF8] rounded-2xl overflow-hidden flex flex-col sm:flex-row shadow-[0_2px_12px_rgba(46,71,21,0.08)] hover:shadow-[0_8px_32px_rgba(46,71,21,0.16)] hover:-translate-y-1 transition-all duration-300">
 
-            {/* ── Left: Image with play button ── */}
             <div
                 className={`relative shrink-0 w-full sm:w-[38%] ${
                     hasVideo ? 'cursor-pointer group' : ''
@@ -31,7 +30,6 @@ export default function AdventureCard({ adventure, onPlay }) {
                 )}
             </div>
 
-            {/* ── Right: Info ── */}
             <div className="flex flex-col justify-center gap-2 p-5 sm:p-6 flex-1 min-w-0">
 
                 {/* Title */}

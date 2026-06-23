@@ -39,7 +39,6 @@ const events = [
 
         isTicketed: true,
 
-        // ✅ Variable pricing (starting from)
         pricing: {
             type: "starting",   // base price / onwards
             amount: 500

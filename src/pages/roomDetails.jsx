@@ -110,7 +110,6 @@ const RoomDetails = () => {
         );
     }
 
-    // ── CORRECTED: resolve gallery IDs to full image objects with variants ──
     const resolvedImages = room.images
         .map(img => getImageById(img))
         .filter(Boolean);
@@ -125,7 +124,6 @@ const RoomDetails = () => {
             ...r,
             resolvedCover: getImageById(r.images?.[0]),
         }));
-    // ────────────────────────────────────────────────────────────────────────
 
     const renderRoomDetailsCard = () => (
         <div className="bg-[#f2faeb] rounded-4xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">

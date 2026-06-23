@@ -43,8 +43,6 @@ const getDuration = (startTime, endTime) => {
     return mins > 0 ? `${hrs}h ${mins}m` : `${hrs} Hours`;
 };
 
-// ─── Info Card ────────────────────────────────────────────────────────────────
-
 const InfoContent = ({ event, dateRange, duration }) => {
     const price = event.pricing?.amount;
     const pricingType = event.pricing?.type;
@@ -82,7 +80,6 @@ const InfoContent = ({ event, dateRange, duration }) => {
 
             <hr className="border-neutral-300" />
 
-            {/* ✅ Pricing */}
             {event.isTicketed && price && (
                 <div className="flex items-end justify-between">
                     <div>
@@ -104,8 +101,6 @@ const InfoContent = ({ event, dateRange, duration }) => {
         </>
     );
 };
-
-// ─── Page ─────────────────────────────────────────────────────────────────────
 
 const EventDetails = () => {
     const { id } = useParams();

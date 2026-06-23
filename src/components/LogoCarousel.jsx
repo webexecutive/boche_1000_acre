@@ -3,8 +3,6 @@ import useEmblaCarousel from 'embla-carousel-react'
 import AutoScroll from 'embla-carousel-auto-scroll'
 import '../assets/styles/logo-carousel.css'
 
-// ─── useAutoScroll hook ───────────────────────────────────────────────────────
-
 const useAutoScroll = (emblaApi) => {
   const [autoScrollIsPlaying, setAutoScrollIsPlaying] = useState(false)
 
@@ -38,8 +36,6 @@ const useAutoScroll = (emblaApi) => {
   return { autoScrollIsPlaying, toggleAutoScroll, onAutoScrollButtonClick }
 }
 
-// ─── usePrevNextButtons hook ──────────────────────────────────────────────────
-
 const usePrevNextButtons = (emblaApi) => {
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true)
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true)
@@ -67,8 +63,6 @@ const usePrevNextButtons = (emblaApi) => {
 
   return { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick }
 }
-
-// ─── Arrow Button Components ──────────────────────────────────────────────────
 
 const PrevButton = (props) => {
   const { children, disabled, ...restProps } = props
@@ -111,8 +105,6 @@ const NextButton = (props) => {
     </button>
   )
 }
-
-// ─── Main LogoCarousel Component ──────────────────────────────────────────────
 
 const LogoCarousel = ({ items = [], options }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(

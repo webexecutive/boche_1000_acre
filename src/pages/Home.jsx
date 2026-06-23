@@ -213,7 +213,6 @@ function Home() {
       <section className="relative overflow-hidden md:h-180"
         style={{ height: 'var(--welcome-h, 100dvh)' }}>
 
-        {/* ── MOBILE LAYOUT: stacked (image top / dark panel bottom) ── */}
         <div className="flex flex-col h-full md:hidden">
 
 
@@ -257,7 +256,6 @@ function Home() {
 
         </div>
 
-        {/* ── DESKTOP LAYOUT: original overlaid style ── */}
         <div className="hidden md:block absolute inset-0">
           <img
             src="/images/gallery/stays/78/blur.webp"
@@ -412,7 +410,6 @@ function Home() {
       <section className="relative overflow-hidden h-auto md:h-180">
 
 
-        {/* ── MOBILE LAYOUT ── */}
         <div className="flex flex-col h-full lg:hidden">
 
           {/* Top: photo */}
@@ -439,7 +436,6 @@ function Home() {
 
         </div>
 
-        {/* ── DESKTOP LAYOUT: original ── */}
         <div className="hidden lg:block absolute inset-0">
           <img
             src="/images/gallery/events/168/large.webp"
@@ -602,7 +598,7 @@ function Home() {
               .filter(cat => cat.showInGallery !== false)
               .map((cat) => {
                 const catImages = getImagesByCategory(cat.category)
-                  .sort((a, b) => b.id - a.id); // ✅ newest first
+                  .sort((a, b) => b.id - a.id);
 
                 const repItem = catImages[0];
 

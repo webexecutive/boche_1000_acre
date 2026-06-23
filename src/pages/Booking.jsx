@@ -9,10 +9,6 @@ import Button from "@/components/Button";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import axios from "axios";
 
-// ✅ Convert any date format → YYYY-MM-DD
-
-// paste this in browser console
-
 
 const toISO = (dateStr) => {
     if (!dateStr) return "";
@@ -24,7 +20,7 @@ const toISO = (dateStr) => {
     return dateStr;
 };
 
-// ✅ Safe parseDate — won't crash on bad format
+// Safe parseDate — returns null on invalid input
 const safeParse = (dateStr) => {
     try {
         const iso = toISO(dateStr);
@@ -41,8 +37,9 @@ function Booking() {
         control,
         watch,
         setValue,
+        trigger,
         formState: { errors },
-    } = useForm({ defaultValues: { adults: 2, children: 0, phone: "" } });
+    } = useForm({ mode: "onChange", defaultValues: { adults: 2, children: 0, phone: "", checkin: "", checkout: "" } });
 
     const pincodeValue = watch("pincode");
 
@@ -76,7 +73,17 @@ function Booking() {
         setSubmitError("");
         try {
             const serverUrl = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
-            const response = await axios.post(`${serverUrl}/submit`, data);
+            const payload = {
+                ...data,
+                dateRange: {
+                    checkin: data.checkin,
+                    checkout: data.checkout,
+                }
+            };
+            delete payload.checkin;
+            delete payload.checkout;
+
+            const response = await axios.post(`${serverUrl}/submit`, payload);
             if (response.data.success) {
                 setShowModal(true);
             } else {
@@ -90,7 +97,7 @@ function Booking() {
         }
     };
 
-    // ✅ Chakra UI v3 NumberInput
+
     const NumberStepper = ({ name, label, min, max }) => (
         <div>
             <label className="text-sm">{label}</label>
@@ -117,7 +124,7 @@ function Booking() {
 
     return (
         <section className="py-24 px-4">
-            {/* ── Success Modal ── */}
+
             {showModal && (
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center"
@@ -202,7 +209,7 @@ function Booking() {
                     <form onSubmit={handleSubmit(onSubmit)} noValidate>
                         <div className="border border-gray-400 p-6 rounded-2xl md:p-10 grid md:grid-cols-2 gap-10">
 
-                            {/* ── LEFT SIDE ── */}
+
                             <div className="space-y-5">
 
                                 {/* First / Second Name */}
@@ -310,7 +317,7 @@ function Booking() {
                                 </div>
                             </div>
 
-                            {/* ── RIGHT SIDE ── */}
+
                             <div className="space-y-5 relative">
                                 <div className="hidden md:block absolute -left-5 top-0 h-full w-px bg-gray-400" />
 
@@ -337,7 +344,7 @@ function Booking() {
                                     )}
                                 </div>
 
-                                {/* ✅ Phone with react-phone-input-2 */}
+
                                 <div>
                                     <label className="text-sm">Phone Number</label>
                                     <Controller
@@ -383,7 +390,7 @@ function Booking() {
                                     )}
                                 </div>
 
-                                {/* ✅ Chakra UI v3 NumberInput */}
+
                                 <div className="grid grid-cols-2 gap-4">
                                     <NumberStepper
                                         name="adults"
@@ -399,136 +406,217 @@ function Booking() {
                                     />
                                 </div>
 
-                                {/* ✅ Range DatePicker for Check In → Check Out */}
-                                <div>
-                                    <label className="text-sm block mb-1">
-                                        Check In — Check Out
-                                    </label>
-                                    <Controller
-                                        name="dateRange"
-                                        control={control}
-                                        rules={{
-                                            validate: (val) => {
-                                                if (!val?.checkin) return "Check-in date is required";
-                                                if (!val?.checkout) return "Check-out date is required";
-                                                if (val.checkout <= val.checkin)
-                                                    return "Check-out must be after check-in";
-                                                return true;
-                                            },
-                                        }}
-                                        render={({ field: { onChange, value } }) => {
-                                            const checkinParsed = value?.checkin
-                                                ? safeParse(value.checkin)
-                                                : null;
-                                            const checkoutParsed = value?.checkout
-                                                ? safeParse(value.checkout)
-                                                : null;
-                                            const pickerValue = [
-                                                checkinParsed,
-                                                checkoutParsed,
-                                            ].filter(Boolean);
 
-                                            return (
-                                                <DatePicker.Root
-                                                    selectionMode="range"
-                                                    locale="en-GB"
-                                                    min={parseDate(today)}
-                                                    value={pickerValue}
-                                                    onValueChange={({ value }) => {
-                                                        // .toString() always returns YYYY-MM-DD regardless of locale
-                                                        onChange({
-                                                            checkin: value?.[0] ? value[0].toString() : "",
-                                                            checkout: value?.[1] ? value[1].toString() : "",
-                                                        });
-                                                    }}
-                                                >
-                                                    <DatePicker.Control
-                                                        style={{
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            gap: "8px",
-                                                            border: errors.dateRange
-                                                                ? "1px solid #c0392b"
-                                                                : "1px solid #e4e4e7",
-                                                            borderRadius: "7px",
-                                                            padding: "4px 8px",
-                                                            background: "white",
+                                <div className="grid grid-cols-2 gap-4">
+                                    {/* Check-In */}
+                                    <div>
+                                        <label className="text-sm block mb-1">Check In</label>
+                                        <Controller
+                                            name="checkin"
+                                            control={control}
+                                            rules={{ required: "Check-in date is required" }}
+                                            render={({ field: { onChange, value } }) => {
+                                                const parsedVal = value ? safeParse(value) : null;
+                                                const pickerValue = parsedVal ? [parsedVal] : [];
+                                                return (
+                                                    <DatePicker.Root
+                                                        selectionMode="single"
+                                                        locale="en-GB"
+                                                        min={parseDate(today)}
+                                                        value={pickerValue}
+                                                        onValueChange={({ value }) => {
+                                                            const newCheckin = value?.[0] ? value[0].toString() : "";
+                                                            onChange(newCheckin);
+                                                            trigger("checkout");
                                                         }}
                                                     >
-                                                        <DatePicker.Input
-                                                            index={0}
+                                                        <DatePicker.Control
                                                             style={{
-                                                                border: "none",
-                                                                background: "transparent",
-                                                                outline: "none",
-                                                                fontSize: "0.9rem",
-                                                                width: "100px",
+                                                                display: "flex",
+                                                                alignItems: "center",
+                                                                gap: "8px",
+                                                                border: errors.checkin
+                                                                    ? "1px solid #c0392b"
+                                                                    : "1px solid #e4e4e7",
+                                                                borderRadius: "7px",
+                                                                padding: "4px 8px",
+                                                                background: "white",
+                                                                height: "40px",
                                                             }}
-                                                            placeholder="Check in"
-                                                        />
-                                                        <span style={{ color: "#6b7a5e" }}>→</span>
-                                                        <DatePicker.Input
-                                                            index={1}
-                                                            style={{
-                                                                border: "none",
-                                                                background: "transparent",
-                                                                outline: "none",
-                                                                fontSize: "0.9rem",
-                                                                width: "100px",
-                                                            }}
-                                                            placeholder="Check out"
-                                                        />
-                                                        <DatePicker.IndicatorGroup
-                                                            style={{ marginLeft: "auto" }}
                                                         >
-                                                            <DatePicker.Trigger
+                                                            <DatePicker.Input
+                                                                index={0}
                                                                 style={{
-                                                                    background: "transparent",
                                                                     border: "none",
-                                                                    cursor: "pointer",
-                                                                    color: "#6b7a5e",
-                                                                    display: "flex",
-                                                                    alignItems: "center",
+                                                                    background: "transparent",
+                                                                    outline: "none",
+                                                                    fontSize: "0.9rem",
+                                                                    width: "100%",
                                                                 }}
+                                                                placeholder="Select date"
+                                                            />
+                                                            <DatePicker.IndicatorGroup
+                                                                style={{ marginLeft: "auto" }}
                                                             >
-                                                                <LuCalendar size={18} />
-                                                            </DatePicker.Trigger>
-                                                        </DatePicker.IndicatorGroup>
-                                                    </DatePicker.Control>
+                                                                <DatePicker.Trigger
+                                                                    style={{
+                                                                        background: "transparent",
+                                                                        border: "none",
+                                                                        cursor: "pointer",
+                                                                        color: "#6b7a5e",
+                                                                        display: "flex",
+                                                                        alignItems: "center",
+                                                                    }}
+                                                                >
+                                                                    <LuCalendar size={18} />
+                                                                </DatePicker.Trigger>
+                                                            </DatePicker.IndicatorGroup>
+                                                        </DatePicker.Control>
+                                                        <Portal>
+                                                            <DatePicker.Positioner>
+                                                                <DatePicker.Content
+                                                                    style={{
+                                                                        background: "#fff",
+                                                                        borderRadius: "10px",
+                                                                        boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
+                                                                        zIndex: 1000,
+                                                                    }}
+                                                                >
+                                                                    <DatePicker.View view="day">
+                                                                        <DatePicker.Header />
+                                                                        <DatePicker.DayTable />
+                                                                    </DatePicker.View>
+                                                                    <DatePicker.View view="month">
+                                                                        <DatePicker.Header />
+                                                                        <DatePicker.MonthTable />
+                                                                    </DatePicker.View>
+                                                                    <DatePicker.View view="year">
+                                                                        <DatePicker.Header />
+                                                                        <DatePicker.YearTable />
+                                                                    </DatePicker.View>
+                                                                </DatePicker.Content>
+                                                            </DatePicker.Positioner>
+                                                        </Portal>
+                                                    </DatePicker.Root>
+                                                );
+                                            }}
+                                        />
+                                        {errors.checkin && (
+                                            <p className="text-red-500 text-xs mt-1">
+                                                {errors.checkin.message}
+                                            </p>
+                                        )}
+                                    </div>
 
-                                                    <Portal>
-                                                        <DatePicker.Positioner>
-                                                            <DatePicker.Content
+                                    {/* Check-Out */}
+                                    <div>
+                                        <label className="text-sm block mb-1">Check Out</label>
+                                        <Controller
+                                            name="checkout"
+                                            control={control}
+                                            rules={{
+                                                required: "Check-out date is required",
+                                                validate: (value) => {
+                                                    const checkinVal = watch("checkin");
+                                                    if (checkinVal && value && value <= checkinVal) {
+                                                        return "Check-out must be after check-in";
+                                                    }
+                                                    return true;
+                                                }
+                                            }}
+                                            render={({ field: { onChange, value } }) => {
+                                                const parsedVal = value ? safeParse(value) : null;
+                                                const pickerValue = parsedVal ? [parsedVal] : [];
+                                                const checkinVal = watch("checkin");
+                                                const minSelectableDate = checkinVal ? safeParse(checkinVal) : parseDate(today);
+
+                                                return (
+                                                    <DatePicker.Root
+                                                        selectionMode="single"
+                                                        locale="en-GB"
+                                                        min={minSelectableDate || parseDate(today)}
+                                                        value={pickerValue}
+                                                        onValueChange={({ value }) => {
+                                                            onChange(value?.[0] ? value[0].toString() : "");
+                                                        }}
+                                                    >
+                                                        <DatePicker.Control
+                                                            style={{
+                                                                display: "flex",
+                                                                alignItems: "center",
+                                                                gap: "8px",
+                                                                border: errors.checkout
+                                                                    ? "1px solid #c0392b"
+                                                                    : "1px solid #e4e4e7",
+                                                                borderRadius: "7px",
+                                                                padding: "4px 8px",
+                                                                background: "white",
+                                                                height: "40px",
+                                                            }}
+                                                        >
+                                                            <DatePicker.Input
+                                                                index={0}
                                                                 style={{
-                                                                    background: "#fff",
-                                                                    borderRadius: "10px",
-                                                                    boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
+                                                                    border: "none",
+                                                                    background: "transparent",
+                                                                    outline: "none",
+                                                                    fontSize: "0.9rem",
+                                                                    width: "100%",
                                                                 }}
+                                                                placeholder="Select date"
+                                                            />
+                                                            <DatePicker.IndicatorGroup
+                                                                style={{ marginLeft: "auto" }}
                                                             >
-                                                                <DatePicker.View view="day">
-                                                                    <DatePicker.Header />
-                                                                    <DatePicker.DayTable />
-                                                                </DatePicker.View>
-                                                                <DatePicker.View view="month">
-                                                                    <DatePicker.Header />
-                                                                    <DatePicker.MonthTable />
-                                                                </DatePicker.View>
-                                                                <DatePicker.View view="year">
-                                                                    <DatePicker.Header />
-                                                                    <DatePicker.YearTable />
-                                                                </DatePicker.View>
-                                                            </DatePicker.Content>
-                                                        </DatePicker.Positioner>
-                                                    </Portal>
-                                                </DatePicker.Root>
-                                            );
-                                        }}
-                                    />
-                                    {errors.dateRange && (
-                                        <p className="text-red-500 text-xs mt-1">
-                                            {errors.dateRange.message}
-                                        </p>
-                                    )}
+                                                                <DatePicker.Trigger
+                                                                    style={{
+                                                                        background: "transparent",
+                                                                        border: "none",
+                                                                        cursor: "pointer",
+                                                                        color: "#6b7a5e",
+                                                                        display: "flex",
+                                                                        alignItems: "center",
+                                                                    }}
+                                                                >
+                                                                    <LuCalendar size={18} />
+                                                                </DatePicker.Trigger>
+                                                            </DatePicker.IndicatorGroup>
+                                                        </DatePicker.Control>
+                                                        <Portal>
+                                                            <DatePicker.Positioner>
+                                                                <DatePicker.Content
+                                                                    style={{
+                                                                        background: "#fff",
+                                                                        borderRadius: "10px",
+                                                                        boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
+                                                                        zIndex: 1000,
+                                                                    }}
+                                                                >
+                                                                    <DatePicker.View view="day">
+                                                                        <DatePicker.Header />
+                                                                        <DatePicker.DayTable />
+                                                                    </DatePicker.View>
+                                                                    <DatePicker.View view="month">
+                                                                        <DatePicker.Header />
+                                                                        <DatePicker.MonthTable />
+                                                                    </DatePicker.View>
+                                                                    <DatePicker.View view="year">
+                                                                        <DatePicker.Header />
+                                                                        <DatePicker.YearTable />
+                                                                    </DatePicker.View>
+                                                                </DatePicker.Content>
+                                                            </DatePicker.Positioner>
+                                                        </Portal>
+                                                    </DatePicker.Root>
+                                                );
+                                            }}
+                                        />
+                                        {errors.checkout && (
+                                            <p className="text-red-500 text-xs mt-1">
+                                                {errors.checkout.message}
+                                            </p>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
