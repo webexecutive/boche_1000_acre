@@ -3,20 +3,20 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://www.boche1000acre.in/</loc>
+    <loc>https://boche1000acre.in/</loc>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
 
   <!-- Main Pages -->
   <url>
-    <loc>https://www.boche1000acre.in/blog</loc>
+    <loc>https://boche1000acre.in/blog</loc>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/stays</loc>
+    <loc>https://boche1000acre.in/stays</loc>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
@@ -24,149 +24,149 @@
   <!-- Stay Detail Pages -->
 
   <url>
-    <loc>https://www.boche1000acre.in/stays/british-bungalow</loc>
+    <loc>https://boche1000acre.in/stays/british-bungalow</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/stays/mud-house</loc>
+    <loc>https://boche1000acre.in/stays/mud-house</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/stays/hill-pod</loc>
+    <loc>https://boche1000acre.in/stays/hill-pod</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/stays/bubble-domee</loc>
+    <loc>https://boche1000acre.in/stays/bubble-domee</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/stays/sexy-dome</loc>
+    <loc>https://boche1000acre.in/stays/sexy-dome</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/stays/the-mountain-residence-room</loc>
+    <loc>https://boche1000acre.in/stays/the-mountain-residence-room</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/stays/the-mountain-residence-full-property</loc>
+    <loc>https://boche1000acre.in/stays/the-mountain-residence-full-property</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/stays/agraharam</loc>
+    <loc>https://boche1000acre.in/stays/agraharam</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/stays/natural-tent-stay</loc>
+    <loc>https://boche1000acre.in/stays/natural-tent-stay</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
 
   <url>
-    <loc>https://www.boche1000acre.in/packages-and-offers</loc>
+    <loc>https://boche1000acre.in/packages-and-offers</loc>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/adventures</loc>
+    <loc>https://boche1000acre.in/adventures</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/events</loc>
+    <loc>https://boche1000acre.in/events</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/gallery</loc>
+    <loc>https://boche1000acre.in/gallery</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
 
   <!-- Blog Posts -->
   <url>
-    <loc>https://www.boche1000acre.in/blog/art-of-tea-tasting</loc>
+    <loc>https://boche1000acre.in/blog/art-of-tea-tasting</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/blog/sustainable-luxury</loc>
+    <loc>https://boche1000acre.in/blog/sustainable-luxury</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/blog/hidden-waterfalls-wayanad</loc>
+    <loc>https://boche1000acre.in/blog/hidden-waterfalls-wayanad</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/blog/bubble-dome-experience</loc>
+    <loc>https://boche1000acre.in/blog/bubble-dome-experience</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/blog/kerala-culinary-heritage</loc>
+    <loc>https://boche1000acre.in/blog/kerala-culinary-heritage</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/blog/adventure-activities-wayanad</loc>
+    <loc>https://boche1000acre.in/blog/adventure-activities-wayanad</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <!-- Secondary Pages -->
   <url>
-    <loc>https://www.boche1000acre.in/booking</loc>
+    <loc>https://boche1000acre.in/booking</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/about</loc>
+    <loc>https://boche1000acre.in/about</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/contact</loc>
+    <loc>https://boche1000acre.in/contact</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://www.boche1000acre.in/boomiputhra</loc>
+    <loc>https://boche1000acre.in/boomiputhra</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <!-- Legal -->
   <url>
-    <loc>https://www.boche1000acre.in/privacy</loc>
+    <loc>https://boche1000acre.in/privacy</loc>
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
   </url>
