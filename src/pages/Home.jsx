@@ -26,6 +26,7 @@ import StayCard from "../components/StayCard";
 import SEO from "../components/SEO";
 import blogData from "../data/blogData";
 import BlogCard from "../components/BlogCard";
+import ReactGA from 'react-ga4';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
@@ -118,6 +119,11 @@ function Home() {
   const handleCall = () => {
     window.location.href = "tel:+919961008008";
     ;
+    ReactGA.event({
+      category: 'Lead',
+      action: 'call_click',
+      label: 'Phone Number Click',
+    });
   };
 
   const onDocumentLoadSuccess = ({ numPages }) => {

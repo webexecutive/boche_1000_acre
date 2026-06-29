@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './services/navServices/ScrollToTop.jsx';
 import MainLayout from "./layout/MainLayout.jsx";
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
 
 import HomeSkeleton from './components/skeletons/HomeSkeleton.jsx';
@@ -10,6 +10,7 @@ import DetailsSkeleton from './components/skeletons/DetailsSkeleton.jsx';
 import GridSkeleton from './components/skeletons/GridSkeleton.jsx';
 import ContentSkeleton from './components/skeletons/ContentSkeleton.jsx';
 import NotFound from './components/NotFound.jsx';
+import ReactGA from 'react-ga4';
 
 const Home = lazy(() => import('./pages/Home.jsx'));
 const Gallery = lazy(() => import('./pages/Gallery.jsx'));
@@ -28,15 +29,25 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyAndPolicy.jsx'));
 const Blog = lazy(() => import('./pages/Blog.jsx'));
 const BlogArticle = lazy(() => import('./pages/BlogArticle.jsx'))
 
+
+
 const RoomDetailsWithKey = () => {
   const { id } = useParams();
   return <RoomDetails key={id} />;
 };
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({
+      hitType: 'pageview',
+      page: location.pathname + location.search,
+      title: document.title,
+    });
+  }, [location]);
 
   return (
-
     <BrowserRouter>
       <ScrollToTop />
       <Routes>

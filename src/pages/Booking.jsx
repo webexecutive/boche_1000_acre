@@ -8,6 +8,7 @@ import "react-phone-input-2/lib/style.css";
 import Button from "@/components/Button";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import axios from "axios";
+import ReactGA from 'react-ga4';
 
 
 const toISO = (dateStr) => {
@@ -18,6 +19,14 @@ const toISO = (dateStr) => {
         return `${yyyy}-${mm}-${dd}`;
     }
     return dateStr;
+};
+
+const handleCallClick = () => {
+    ReactGA.event({
+        category: 'Lead',
+        action: 'call_click',
+        label: 'Phone Number Click',
+    });
 };
 
 // Safe parseDate — returns null on invalid input
@@ -86,6 +95,11 @@ function Booking() {
             const response = await axios.post(`${serverUrl}/submit`, payload);
             if (response.data.success) {
                 setShowModal(true);
+                ReactGA.event({
+                    category: 'Lead',
+                    action: 'enquiry_form_submit',
+                    label: 'Booking Enquiry Form',
+                });
             } else {
                 setSubmitError("Submission failed. Please try again.");
             }
@@ -193,7 +207,7 @@ function Booking() {
                     <p className="text-lg font-medium">
                         For booking call hello boCHE: +91 9961008008
                     </p>
-                    <a href="tel:+919961008008">
+                    <a href="tel:+919961008008" onClick={handleCallClick}>
                         <Button size="sm">
                             Call Now
                         </Button>
