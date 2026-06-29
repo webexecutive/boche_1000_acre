@@ -1,9 +1,7 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useParams, useLocation } from 'react-router-dom';
 import ScrollToTop from './services/navServices/ScrollToTop.jsx';
 import MainLayout from "./layout/MainLayout.jsx";
-import { useParams, useLocation } from 'react-router-dom';
-
 
 import HomeSkeleton from './components/skeletons/HomeSkeleton.jsx';
 import DetailsSkeleton from './components/skeletons/DetailsSkeleton.jsx';
@@ -24,21 +22,18 @@ const Events = lazy(() => import('./pages/Events.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
 const Booking = lazy(() => import('./pages/Booking.jsx'));
 const Boomiputhra = lazy(() => import('./pages/Boomiputhra.jsx'));
-const EventDetails = lazy(() => import('./pages/EventDetails.jsx'))
+const EventDetails = lazy(() => import('./pages/EventDetails.jsx'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyAndPolicy.jsx'));
 const Blog = lazy(() => import('./pages/Blog.jsx'));
-const BlogArticle = lazy(() => import('./pages/BlogArticle.jsx'))
-
-
+const BlogArticle = lazy(() => import('./pages/BlogArticle.jsx'));
 
 const RoomDetailsWithKey = () => {
   const { id } = useParams();
   return <RoomDetails key={id} />;
 };
 
-function App() {
+function PageTracker() {
   const location = useLocation();
-
   useEffect(() => {
     ReactGA.send({
       hitType: 'pageview',
@@ -46,9 +41,13 @@ function App() {
       title: document.title,
     });
   }, [location]);
+  return null;
+}
 
+function App() {
   return (
     <BrowserRouter>
+      <PageTracker />
       <ScrollToTop />
       <Routes>
         <Route element={<MainLayout />}>
@@ -205,7 +204,6 @@ function App() {
               </Suspense>
             }
           />
-
 
           <Route path='*' element={<NotFound />} />
 
