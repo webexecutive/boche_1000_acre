@@ -147,12 +147,12 @@ export const gallery = [
   ,
   { id: 180, category: 'stays', alt: 'Couples watching stars from bubble dom stay at boche 1000 acre resort in wayanad kerala', showInGallery: true }
   ,
-  { id: 181, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: true },
-  { id: 182, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: true },
-  { id: 183, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: true },
-  { id: 184, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: true },
-  { id: 185, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: true },
-  { id: 186, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: true },
-  { id: 187, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: true }
+  { id: 181, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: false },
+  { id: 182, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: false },
+  { id: 183, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: false },
+  { id: 184, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: false },
+  { id: 185, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: false },
+  { id: 186, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: false },
+  { id: 187, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: false }
 
 ];
