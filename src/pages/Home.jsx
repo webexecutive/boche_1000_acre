@@ -1,11 +1,12 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Hls from "hls.js";
+import { FiChevronsDown } from "react-icons/fi";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
 import Button from "../components/Button";
-import RoomCard from "../components/RoomCard";
 import rooms from "../data/roomsData";
 import EmblaCarousel from "../components/EmblaCarousel";
 import bhoomiputraLogo from "../assets/logos/bhoomiputra-logo.webp";
@@ -42,17 +43,33 @@ for (let i = 0; i < maxLength; i++) {
 }
 
 function Home() {
-  const getVideoSrc = () => {
+  const getAnimationSrc = () => {
     const width = window.innerWidth;
     if (width <= 640) return "/videos/heroanimationsm.webm";
     if (width <= 1024) return "/videos/heroanimationmd.webm";
     return "/videos/heroanimationlg.webm";
   };
 
-  const [videoSrc, setVideoSrc] = useState(getVideoSrc);
+  const getLoopSrc = () => {
+    const width = window.innerWidth;
+    if (width <= 640) return "/videos/hero9x16/index.m3u8";
+    if (width <= 1024) return "/videos/hero3x4/index.m3u8";
+    return "/videos/hero16x9/index.m3u8";
+  };
+
+  const [videoSrc] = useState(getAnimationSrc);
+  // animFading: true when animation is dissolving out
+  const [animFading, setAnimFading] = useState(false);
+  // animGone: true after dissolve completes (animation video hidden)
+  const [animGone, setAnimGone] = useState(false);
+  // loopVisible: true when loop video should fade IN (after animGone)
+  const [loopVisible, setLoopVisible] = useState(false);
   const [showCard, setShowCard] = useState(false);
   const [dismissed, setDismissed] = useState(false);
-  const videoRef = useRef(null);
+  const [showScrollHint, setShowScrollHint] = useState(false);
+  const animVideoRef = useRef(null);  // top layer — animation
+  const loopVideoRef = useRef(null);  // bottom layer — HLS loop
+  const hlsRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
@@ -62,6 +79,44 @@ function Home() {
   const [subStatus, setSubStatus] = useState("idle"); // idle | loading | success | error
   const [subError, setSubError] = useState("");
   const [activePreview, setActivePreview] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const isCardVisible = isMobile ? (showCard && loopVisible) : showCard;
+
+  // Attach HLS to the loop video element (plays silently underneath from the start)
+  const attachHls = useCallback((src) => {
+    const video = loopVideoRef.current;
+    if (!video) return;
+
+    if (hlsRef.current) {
+      hlsRef.current.destroy();
+      hlsRef.current = null;
+    }
+
+    if (Hls.isSupported()) {
+      const hls = new Hls({ enableWorker: true });
+      hlsRef.current = hls;
+      hls.loadSource(src);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        video.play().catch(() => {});
+      });
+    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      // Native HLS (Safari)
+      video.src = src;
+      video.load();
+      video.play().catch(() => {});
+    }
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = showMenu ? "hidden" : "auto";
@@ -73,23 +128,70 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    const handleResize = () => {
-      const newSrc = getVideoSrc();
-      setVideoSrc(prev => (prev !== newSrc ? newSrc : prev));
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const timer = setTimeout(() => setShowScrollHint(true), 1500);
+    return () => clearTimeout(timer);
   }, []);
 
+  // Play animation video on mount
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.load();
-      const playPromise = videoRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => { });
-      }
-    }
+    const video = animVideoRef.current;
+    if (!video) return;
+    video.src = videoSrc;
+    video.load();
+    video.playbackRate = 1.5;
+    const handlePlay = () => {
+      video.playbackRate = 1.5;
+    };
+    video.addEventListener("play", handlePlay);
+    video.play().catch(() => {});
+    return () => {
+      video.removeEventListener("play", handlePlay);
+    };
   }, [videoSrc]);
+
+  // When animation ends, fade it out to black, then load loop video
+  useEffect(() => {
+    const video = animVideoRef.current;
+    if (!video) return;
+
+    const handleEnded = () => {
+      // Step 1: fade animation out over 1.2s → goes to black
+      setAnimFading(true);
+      const t1 = setTimeout(() => {
+        // Step 2: screen is now fully black — remove animation element
+        setAnimGone(true);
+      }, 1250);
+      return () => clearTimeout(t1);
+    };
+
+    video.addEventListener("ended", handleEnded);
+    return () => video.removeEventListener("ended", handleEnded);
+  }, []);
+
+  // Only AFTER animGone: load the HLS loop video fresh from segment 0,
+  // then fade it in once the first frame is decoded and ready
+  useEffect(() => {
+    if (!animGone) return;
+    const loopVideo = loopVideoRef.current;
+    if (!loopVideo) return;
+
+    // When first frame is ready, fade the video in
+    const handleCanPlay = () => {
+      setLoopVisible(true);
+    };
+    loopVideo.addEventListener("canplay", handleCanPlay, { once: true });
+
+    // Load HLS from scratch — video starts at segment 0
+    attachHls(getLoopSrc());
+
+    return () => {
+      loopVideo.removeEventListener("canplay", handleCanPlay);
+      if (hlsRef.current) {
+        hlsRef.current.destroy();
+        hlsRef.current = null;
+      }
+    };
+  }, [animGone, attachHls]);
 
   useEffect(() => {
     document.body.style.overflow = reelModal ? "hidden" : "auto";
@@ -164,26 +266,46 @@ function Home() {
       />
 
       {/* Hero Section with Video Background */}
-      <section className="relative overflow-hidden"
-        style={{ height: 'var(--welcome-h, 100dvh)' }}>
+      <section
+        className="relative overflow-hidden"
+        style={{ height: 'var(--welcome-h, 100dvh)', background: '#000' }}
+      >
+        {/* Loop video — bottom layer, invisible until animation fully dissolves */}
         <video
-          ref={videoRef}
-          autoPlay
+          ref={loopVideoRef}
           muted
           playsInline
-          loop={false}
+          loop
           className="absolute inset-0 h-full w-full object-cover"
-          style={{ zIndex: 0 }}
-        >
-          <source src={videoSrc} type="video/webm" />
-        </video>
+          style={{
+            zIndex: 0,
+            opacity: loopVisible ? 1 : 0,
+            transition: loopVisible ? "opacity 1.2s ease-in-out" : "none",
+          }}
+        />
+
+        {/* Animation video — top layer, fades to black after playing */}
+        {!animGone && (
+          <video
+            ref={animVideoRef}
+            muted
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              zIndex: 1,
+              opacity: animFading ? 0 : 1,
+              transition: animFading ? "opacity 1.2s ease-in-out" : "none",
+              pointerEvents: "none",
+            }}
+          />
+        )}
 
         {!dismissed && (
           <div
-            className="absolute bottom-6 right-4 z-10 sm:bottom-10 sm:right-10"
+            className="absolute bottom-24 right-4 z-10 sm:bottom-10 sm:right-10"
             style={{
-              transform: showCard ? "translateX(0)" : "translateX(120%)",
-              opacity: showCard ? 1 : 0,
+              transform: isCardVisible ? "translateX(0)" : "translateX(120%)",
+              opacity: isCardVisible ? 1 : 0,
               transition: "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease",
             }}
           >
@@ -213,6 +335,22 @@ function Home() {
             </div>
           </div>
         )}
+
+        {/* Scroll hint — bottom center */}
+        <div
+          className="absolute bottom-8 left-1/2 z-10 flex flex-col items-center gap-1 pointer-events-none"
+          style={{
+            transform: "translateX(-50%)",
+            opacity: showScrollHint && (!animFading || loopVisible) ? 1 : 0,
+            transition: "opacity 1s ease",
+          }}
+        >
+          <span className="text-white/60 text-[10px] uppercase tracking-[0.25em] font-medium">
+            Scroll
+          </span>
+          <FiChevronsDown className="text-white/60 animate-bounce" size={22} />
+        </div>
+
       </section>
 
       {/* Welcome Section */}
