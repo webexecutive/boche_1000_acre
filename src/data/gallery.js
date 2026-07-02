@@ -10,7 +10,7 @@ export const categories = [
 ];
 
 export const galleryMeta = {
-  lastId: 187
+  lastId: 190
 };
 
 export const gallery = [
@@ -156,6 +156,8 @@ export const gallery = [
   { id: 187, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: false }
 ,
 
-
+{ id: 188, category: 'banner', alt: 'Heroposterlg', showInGallery: false },
+{ id: 189, category: 'banner', alt: 'Heropostermd', showInGallery: false },
+{ id: 190, category: 'banner', alt: 'Heropostersm', showInGallery: false }
 
 ];

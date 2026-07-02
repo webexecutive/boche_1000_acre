@@ -41,6 +41,22 @@ for (let i = 0; i < maxLength; i++) {
 }
 
 function Home() {
+
+  const getPosterId = () => {
+    const width = window.innerWidth;
+    if (width <= 640) return 190;   // sm
+    if (width <= 1024) return 189;  // md
+    return 188;                     // large
+  };
+
+  const getPosterSrc = () => {
+    const width = window.innerWidth;
+    if (width <= 640) return "/images/heropostersm.webp";
+    if (width <= 1024) return "/images/heropostermd.webp";
+    return "/images/heroposterlg.webp";
+  };
+
+
   const getAnimationSrc = () => {
     const width = window.innerWidth;
     if (width <= 640) return "/videos/heroanimationsm.webm";
@@ -80,6 +96,9 @@ function Home() {
   const [subError, setSubError] = useState("");
   const [activePreview, setActivePreview] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [posterId] = useState(getPosterId);
+  const posterImage = getImageById(posterId);
+  const [animationVideoReady, setAnimationVideoReady] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -89,6 +108,8 @@ function Home() {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+
 
   const isCardVisible = isMobile ? (showCard && loopVisible) : showCard;
 
@@ -126,12 +147,6 @@ function Home() {
     };
   }, []);
 
-  const getPosterSrc = () => {
-    const width = window.innerWidth;
-    if (width <= 640) return "/images/heropostersm.webp";
-    if (width <= 1024) return "/images/heropostermd.webp";
-    return "/images/heroposterlg.webp";
-  };
 
   useEffect(() => {
     document.body.style.overflow = showMenu ? "hidden" : "auto";
@@ -158,7 +173,7 @@ function Home() {
       video.playbackRate = 1.5;
     };
     video.addEventListener("play", handlePlay);
-    video.play().catch(() => {});
+    video.play().catch(() => { });
     return () => {
       video.removeEventListener("play", handlePlay);
     };
@@ -193,7 +208,7 @@ function Home() {
     if (animEnded && hlsLoaded) {
       const loopVideo = loopVideoRef.current;
       if (loopVideo) {
-        loopVideo.play().catch(() => {});
+        loopVideo.play().catch(() => { });
       }
 
       // Step 1: fade animation out over 1.2s → goes to black
@@ -301,21 +316,32 @@ function Home() {
           }}
         />
 
-        {/* Animation video — top layer, fades to black after playing */}
         {!animGone && (
-          <video
-            ref={animVideoRef}
-            muted
-            playsInline
-            poster={getPosterSrc()}
-            className="absolute inset-0 h-full w-full object-cover"
-            style={{
-              zIndex: 1,
-              opacity: animFading ? 0 : 1,
-              transition: animFading ? "opacity 1.2s ease-in-out" : "none",
-              pointerEvents: "none",
-            }}
-          />
+          <>
+            {!animationVideoReady && (
+              <CImage
+                src={posterImage?.variants?.large}
+                blur={posterImage?.variants?.blur}
+                alt=""
+                className="absolute inset-0 h-full w-full"
+                imgClassName="absolute inset-0 h-full w-full object-cover object-center"
+              />
+            )}
+
+            <video
+              ref={animVideoRef}
+              muted
+              playsInline
+              className="absolute inset-0 h-full w-full object-cover object-center"
+              style={{
+                zIndex: 1,
+                opacity: animFading ? 0 : 1,
+                transition: animFading ? "opacity 1.2s ease-in-out" : "none",
+                pointerEvents: "none",
+              }}
+              onCanPlay={() => setAnimationVideoReady(true)}
+            />
+          </>
         )}
 
         {!dismissed && (
