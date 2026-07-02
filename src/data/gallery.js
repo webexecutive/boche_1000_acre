@@ -154,5 +154,8 @@ export const gallery = [
   { id: 185, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: false },
   { id: 186, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: false },
   { id: 187, category: 'stays', alt: 'Agraharam a treditional stya at boche 1000 acres reosrt wayanad', showInGallery: false }
+,
+
+
 
 ];

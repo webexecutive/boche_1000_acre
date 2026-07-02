@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Hls from "hls.js";
 import { FiChevronsDown } from "react-icons/fi";
-
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
 import Button from "../components/Button";
@@ -28,7 +27,6 @@ import SEO from "../components/SEO";
 import blogData from "../data/blogData";
 import BlogCard from "../components/BlogCard";
 import ReactGA from 'react-ga4';
-
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const combinedReviews = [];
@@ -64,6 +62,8 @@ function Home() {
   const [animGone, setAnimGone] = useState(false);
   // loopVisible: true when loop video should fade IN (after animGone)
   const [loopVisible, setLoopVisible] = useState(false);
+  const [hlsLoaded, setHlsLoaded] = useState(false);
+  const [animEnded, setAnimEnded] = useState(false);
   const [showCard, setShowCard] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const [showScrollHint, setShowScrollHint] = useState(false);
@@ -92,7 +92,7 @@ function Home() {
 
   const isCardVisible = isMobile ? (showCard && loopVisible) : showCard;
 
-  // Attach HLS to the loop video element (plays silently underneath from the start)
+  // Attach HLS to the loop video element (pre-fetches underneath from the start)
   const attachHls = useCallback((src) => {
     const video = loopVideoRef.current;
     if (!video) return;
@@ -102,21 +102,36 @@ function Home() {
       hlsRef.current = null;
     }
 
+    const onCanPlay = () => {
+      setHlsLoaded(true);
+    };
+
+    video.addEventListener("canplay", onCanPlay, { once: true });
+    video.addEventListener("loadeddata", onCanPlay, { once: true });
+
     if (Hls.isSupported()) {
       const hls = new Hls({ enableWorker: true });
       hlsRef.current = hls;
       hls.loadSource(src);
       hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        video.play().catch(() => {});
-      });
     } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
       // Native HLS (Safari)
       video.src = src;
       video.load();
-      video.play().catch(() => {});
     }
+
+    return () => {
+      video.removeEventListener("canplay", onCanPlay);
+      video.removeEventListener("loadeddata", onCanPlay);
+    };
   }, []);
+
+  const getPosterSrc = () => {
+    const width = window.innerWidth;
+    if (width <= 640) return "/images/heropostersm.webp";
+    if (width <= 1024) return "/images/heropostermd.webp";
+    return "/images/heroposterlg.webp";
+  };
 
   useEffect(() => {
     document.body.style.overflow = showMenu ? "hidden" : "auto";
@@ -149,49 +164,51 @@ function Home() {
     };
   }, [videoSrc]);
 
-  // When animation ends, fade it out to black, then load loop video
+  // Pre-load HLS loop video underneath on mount
+  useEffect(() => {
+    attachHls(getLoopSrc());
+    return () => {
+      if (hlsRef.current) {
+        hlsRef.current.destroy();
+        hlsRef.current = null;
+      }
+    };
+  }, [attachHls]);
+
+  // Listen to animation ended
   useEffect(() => {
     const video = animVideoRef.current;
     if (!video) return;
 
     const handleEnded = () => {
-      // Step 1: fade animation out over 1.2s → goes to black
-      setAnimFading(true);
-      const t1 = setTimeout(() => {
-        // Step 2: screen is now fully black — remove animation element
-        setAnimGone(true);
-      }, 1250);
-      return () => clearTimeout(t1);
+      setAnimEnded(true);
     };
 
     video.addEventListener("ended", handleEnded);
     return () => video.removeEventListener("ended", handleEnded);
   }, []);
 
-  // Only AFTER animGone: load the HLS loop video fresh from segment 0,
-  // then fade it in once the first frame is decoded and ready
+  // Coordinate the transition: only fade and transform when anim ends AND HLS has loaded
   useEffect(() => {
-    if (!animGone) return;
-    const loopVideo = loopVideoRef.current;
-    if (!loopVideo) return;
-
-    // When first frame is ready, fade the video in
-    const handleCanPlay = () => {
-      setLoopVisible(true);
-    };
-    loopVideo.addEventListener("canplay", handleCanPlay, { once: true });
-
-    // Load HLS from scratch — video starts at segment 0
-    attachHls(getLoopSrc());
-
-    return () => {
-      loopVideo.removeEventListener("canplay", handleCanPlay);
-      if (hlsRef.current) {
-        hlsRef.current.destroy();
-        hlsRef.current = null;
+    if (animEnded && hlsLoaded) {
+      const loopVideo = loopVideoRef.current;
+      if (loopVideo) {
+        loopVideo.play().catch(() => {});
       }
-    };
-  }, [animGone, attachHls]);
+
+      // Step 1: fade animation out over 1.2s → goes to black
+      setAnimFading(true);
+
+      const t1 = setTimeout(() => {
+        // Step 2: screen is now fully black — remove animation element
+        setAnimGone(true);
+        // Step 3: fade loop HLS video in
+        setLoopVisible(true);
+      }, 1250);
+
+      return () => clearTimeout(t1);
+    }
+  }, [animEnded, hlsLoaded]);
 
   useEffect(() => {
     document.body.style.overflow = reelModal ? "hidden" : "auto";
@@ -290,6 +307,7 @@ function Home() {
             ref={animVideoRef}
             muted
             playsInline
+            poster={getPosterSrc()}
             className="absolute inset-0 h-full w-full object-cover"
             style={{
               zIndex: 1,
