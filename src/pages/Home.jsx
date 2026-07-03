@@ -1,10 +1,7 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, lazy, Suspense } from "react";
+import LazyMount from "../components/LazyMount";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import Hls from "hls.js";
 import { FiChevronsDown } from "react-icons/fi";
-import "react-responsive-carousel/lib/styles/carousel.min.css"
-import { Carousel } from 'react-responsive-carousel';
 import Button from "../components/Button";
 import rooms from "../data/roomsData";
 import EmblaCarousel from "../components/EmblaCarousel";
@@ -13,7 +10,6 @@ import toddyLogo from "../assets/logos/boche-toddypub.webp";
 import CImage from "../components/Cimage";
 import bhojanamLogo from "../assets/logos/boche-bhojanam.webp";
 import bocheWithFood from "../assets/images/bohe-withfood.webp";
-import { Document, Page, pdfjs } from "react-pdf";
 import adventures from "../data/adventuresData";
 import ReelCard from "../components/ReelCard";
 import GalleryThumbnail from "../components/GalleryThumbnail";
@@ -26,9 +22,10 @@ import StayCard from "../components/StayCard";
 import SEO from "../components/SEO";
 import blogData from "../data/blogData";
 import BlogCard from "../components/BlogCard";
-import ReactGA from 'react-ga4';
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
+const loadGA = () => import('react-ga4').then(m => m.default);
+const MenuModal = lazy(() => import("../components/MenuModal"));
+const BannerCarousel = lazy(() => import("../components/BannerCarousel"));
 const combinedReviews = [];
 const maxLength = Math.max(videoReviews.length, reviewData.length);
 for (let i = 0; i < maxLength; i++) {
@@ -49,13 +46,12 @@ function Home() {
     return 188;                     // large
   };
 
-  const getPosterSrc = () => {
+  const getEstateBgId = () => {
     const width = window.innerWidth;
-    if (width <= 640) return "/images/heropostersm.webp";
-    if (width <= 1024) return "/images/heropostermd.webp";
-    return "/images/heroposterlg.webp";
+    if (width <= 640) return 193;   // sm
+    if (width <= 1024) return 192;  // md
+    return 191;                     // lg
   };
-
 
   const getAnimationSrc = () => {
     const width = window.innerWidth;
@@ -87,9 +83,6 @@ function Home() {
   const loopVideoRef = useRef(null);  // bottom layer — HLS loop
   const hlsRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [pageLoading, setPageLoading] = useState(false);
   const [reelModal, setReelModal] = useState(null);
   const [subEmail, setSubEmail] = useState("");
   const [subStatus, setSubStatus] = useState("idle"); // idle | loading | success | error
@@ -99,6 +92,8 @@ function Home() {
   const [posterId] = useState(getPosterId);
   const posterImage = getImageById(posterId);
   const [animationVideoReady, setAnimationVideoReady] = useState(false);
+  const [estateBgId] = useState(getEstateBgId);
+  const estateBgImage = getImageById(estateBgId);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -114,7 +109,7 @@ function Home() {
   const isCardVisible = isMobile ? (showCard && loopVisible) : showCard;
 
   // Attach HLS to the loop video element (pre-fetches underneath from the start)
-  const attachHls = useCallback((src) => {
+  const attachHls = useCallback((src, Hls) => {
     const video = loopVideoRef.current;
     if (!video) return;
 
@@ -179,10 +174,20 @@ function Home() {
     };
   }, [videoSrc]);
 
-  // Pre-load HLS loop video underneath on mount
+  // Pre-load HLS loop video underneath on mount (hls.js is code-split and
+  // only downloaded once this effect actually runs)
   useEffect(() => {
-    attachHls(getLoopSrc());
+    let cancelled = false;
+    let cleanupAttach = null;
+
+    import("hls.js").then(({ default: Hls }) => {
+      if (cancelled) return;
+      cleanupAttach = attachHls(getLoopSrc(), Hls);
+    });
+
     return () => {
+      cancelled = true;
+      if (cleanupAttach) cleanupAttach();
       if (hlsRef.current) {
         hlsRef.current.destroy();
         hlsRef.current = null;
@@ -250,41 +255,44 @@ function Home() {
 
   }, []);
 
-  const handleCall = () => {
+  const handleCall = async () => {
     window.location.href = "tel:+919961008008";
-    ;
-    ReactGA.event({
-      category: 'Lead',
-      action: 'call_click',
-      label: 'Phone Number Click',
-    });
+    const ReactGA = await loadGA();
+    ReactGA.event({ category: 'Lead', action: 'call_click', label: 'Phone Number Click' });
   };
 
-  const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
-  };
-
-  const goToPage = (fn) => {
-    setPageLoading(true);
-    setPageNumber(fn);
-  };
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
     setSubStatus("loading");
     setSubError("");
+
     try {
-      const serverUrl = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
-      await axios.post(`${serverUrl}/subscribe`, { email: subEmail });
-      setSubStatus("success");
-      setSubEmail("");
-    } catch (err) {
-      if (err.response?.status === 409) {
+      const serverUrl =
+        import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
+
+      const response = await fetch(`${serverUrl}/subscribe`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: subEmail }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubStatus("success");
+        setSubEmail("");
+      } else if (response.status === 409) {
         setSubStatus("already");
       } else {
         setSubStatus("error");
-        setSubError(err.response?.data?.message || "Something went wrong. Please try again.");
+        setSubError(data.message || "Something went wrong. Please try again.");
       }
+    } catch (err) {
+      setSubStatus("error");
+      setSubError("Network error. Please try again.");
     }
   };
 
@@ -406,25 +414,16 @@ function Home() {
 
           {/* Top: photo */}
           <div className="relative flex-1 overflow-hidden">
-            <img
-              src="/images/gallery/stays/174/blur.webp"
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover blur-sm scale-105"
-              aria-hidden="true"
-            />
-            <img
-              src="/images/gallery/stays/174/small.webp"
-              srcSet="/images/gallery/stays/174/small.webp 400w, /images/gallery/stays/174/large.webp 1200w"
-              sizes="100vw"
+            <CImage
+              src="/images/gallery/stays/174/large.webp"
+              blur="/images/gallery/stays/174/blur.webp"
               alt="boCHE 1000 Acres resort in Wayanad Kerala"
-              loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover object-center"
-              onLoad={(e) => { e.target.previousSibling.style.opacity = 0; }}
+              className="absolute inset-0 w-full h-full"
+              imgClassName="absolute inset-0 w-full h-full object-cover object-center"
             />
             {/* Gradient fade into black panel below */}
             <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-b from-transparent to-black" />
           </div>
-
           {/* Bottom: dark text panel */}
           <div className="bg-black px-6 py-8 flex flex-col justify-center">
             <p className="text-[10px] uppercase tracking-[0.25em] text-white/50 mb-1">
@@ -479,25 +478,10 @@ function Home() {
 
       {/* Banner section */}
       <section>
-        <Carousel
-          autoPlay
-          infiniteLoop
-          interval={3000}
-          showThumbs={false}
-          showStatus={false}
-          onClickItem={() => window.location.href = "/packages-and-offers/day-out"}
-          className="cursor-pointer"
-        >
-          <div>
-            <picture>
-              <source media="(max-width: 768px)" srcSet="/images/gallery/banner/171/large.webp" />
-              <source media="(min-width: 769px)" srcSet="/images/banners/banner1.webp" />
-              <img src="/images/banners/banner1.webp" alt="Slide 1" />
-            </picture>
-          </div>
-        </Carousel>
+        <Suspense fallback={<div className="w-full aspect-16/6 bg-gray-100 animate-pulse" />}>
+          <BannerCarousel />
+        </Suspense>
       </section>
-
       {/* Stay cards */}
       <section className="bg-[#F7FDE9] py-20">
         <div className="max-w-7xl mx-auto px-4">
@@ -568,7 +552,7 @@ function Home() {
                 <img src={toddyLogo} className="h-40 object-contain" />
                 <img src={bhojanamLogo} className="h-28 object-contain" />
               </div>
-              <Button size="sm" onClick={() => { setPageNumber(1); setPageLoading(true); setShowMenu(true); }}>Explore the Menu</Button>
+              <Button size="sm" onClick={() => setShowMenu(true)}>Explore the Menu</Button>
             </div>
           </div>
           <img src={bocheWithFood} className="hidden xl:block absolute -bottom-20 -right-16 h-96" />
@@ -595,18 +579,19 @@ function Home() {
         </div>
       </section>
 
+      {/* Campfire Section */}
       <section className="relative overflow-hidden h-auto md:h-180">
-
 
         <div className="flex flex-col h-full lg:hidden">
 
           {/* Top: photo */}
           <div className="relative h-75 md:h-96 overflow-hidden">
-            <img
+            <CImage
               src="/images/gallery/events/170/large.webp"
+              blur="/images/gallery/events/170/blur.webp"
               alt="Campfire evenings at boCHE 1000 Acre"
-              loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="w-full h-full"
+              imgClassName="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-b from-transparent to-black" />
           </div>
@@ -625,14 +610,15 @@ function Home() {
         </div>
 
         <div className="hidden lg:block absolute inset-0">
-          <img
+          <CImage
             src="/images/gallery/events/168/large.webp"
+            blur="/images/gallery/events/168/blur.webp"
             alt="Campfire evenings at boCHE 1000 Acre"
-            loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="w-full h-full"
+            imgClassName="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-linear-to-l from-black/80 via-black/25 to-transparent" />
-          <div className="relative h-full flex items-center justify-end">
+          <div className="absolute inset-0 flex items-center justify-end">
             <div className="px-16 lg:px-24 max-w-xl text-left text-white">
               <h2 className="text-4xl lg:text-5xl text-balance mb-4 text-white">
                 Unwind at One of the Best Resorts in Wayanad
@@ -728,8 +714,19 @@ function Home() {
       </section>
 
       {/* Bhoomiputra section */}
-      <section className="bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/gallery/estate/177/large.webp')] md:bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/gallery/estate/176/large.webp')] lg:bg-[linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/images/gallery/estate/175/large.webp')] bg-cover bg-center bg-no-repeat">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 text-white flex flex-col items-center space-y-10">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
+          <CImage
+            src={estateBgImage?.variants?.large}
+            blur={estateBgImage?.variants?.blur}
+            alt=""
+            className="w-full h-full"
+            imgClassName="absolute inset-0 w-full h-full object-cover object-center"
+          />
+        </div>
+        <div className="absolute inset-0 bg-black/40" />
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-8 py-20 text-white flex flex-col items-center space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div className="flex flex-col items-center md:items-start text-center md:text-left gap-6">
               <img
@@ -742,10 +739,12 @@ function Home() {
               </p>
             </div>
             <div>
-              <img
-                src="/images/gallery/estate/166/large.webp"
-                className="w-full rounded-xl object-cover"
+              <CImage
+                src={getImageById(166)?.variants?.large}
+                blur={getImageById(166)?.variants?.blur}
                 alt="Bhoomiputhra Tea Plantation and Tea Factory in Wayanad Kerala"
+                className="w-full aspect-4/3 rounded-xl"
+                imgClassName="absolute inset-0 w-full h-full object-cover rounded-xl"
               />
             </div>
           </div>
@@ -756,20 +755,22 @@ function Home() {
       </section>
 
       {/* Blog Section */}
-      <section className="bg-[#F7FDE9] py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <EmblaCarousel className="blogs-carousel" sectionTitle="Insights from 1000 Acres" sectionSubtitle="Our Stories & Updates">
-            {blogData.map((blog) => (
-              <div className="embla__slide" key={blog.id}>
-                <BlogCard {...blog} />
-              </div>
-            ))}
-          </EmblaCarousel>
-          <div className="flex justify-center mt-8">
-            <Link to="/blog"><Button size="sm">Read All Stories</Button></Link>
+<section className="bg-[#F7FDE9] py-20">
+  <div className="max-w-7xl mx-auto px-4">
+    <LazyMount minHeight="500px">
+      <EmblaCarousel className="blogs-carousel" sectionTitle="Insights from 1000 Acres" sectionSubtitle="Our Stories & Updates">
+        {blogData.map((blog) => (
+          <div className="embla__slide" key={blog.id}>
+            <BlogCard {...blog} />
           </div>
-        </div>
-      </section>
+        ))}
+      </EmblaCarousel>
+    </LazyMount>
+    <div className="flex justify-center mt-8">
+      <Link to="/blog"><Button size="sm">Read All Stories</Button></Link>
+    </div>
+  </div>
+</section>
 
       {/* Gallery Section */}
       <section className="py-20 bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-sm.svg')] md:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-md.svg')] lg:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-lg.svg')] bg-cover bg-center bg-no-repeat">
@@ -805,18 +806,20 @@ function Home() {
         </div>
       </section>
 
-      {/* Testimonials section */}
-      <section className="bg-[#F7FDE9] py-20">
-        <div className="max-w-7xl relative mx-auto px-4">
-          <EmblaCarousel sectionTitle="Experiences Worth Sharing" sectionSubtitle="Hear from our guests">
-            {combinedReviews.map((review) => (
-              <div className="embla__slide" key={review.type === "video" ? `video-${review.id}` : `google-${review.id}`}>
-                <ReviewCard review={review} onPlay={setReelModal} />
-              </div>
-            ))}
-          </EmblaCarousel>
-        </div>
-      </section>
+     {/* Testimonials section */}
+<section className="bg-[#F7FDE9] py-20">
+  <div className="max-w-7xl relative mx-auto px-4">
+    <LazyMount minHeight="450px">
+      <EmblaCarousel sectionTitle="Experiences Worth Sharing" sectionSubtitle="Hear from our guests">
+        {combinedReviews.map((review) => (
+          <div className="embla__slide" key={review.type === "video" ? `video-${review.id}` : `google-${review.id}`}>
+            <ReviewCard review={review} onPlay={setReelModal} />
+          </div>
+        ))}
+      </EmblaCarousel>
+    </LazyMount>
+  </div>
+</section>
 
 
       {/* Map Section */}
@@ -891,40 +894,14 @@ function Home() {
 
       {/* Menu modal */}
       {showMenu && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-2 sm:p-4" onClick={() => setShowMenu(false)}>
-          <div className="relative bg-white rounded-xl w-full max-w-4xl flex flex-col overflow-hidden" style={{ maxHeight: "95dvh" }} onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 shrink-0">
-              <span className="text-sm font-semibold text-gray-700 tracking-wide uppercase">Our Menu</span>
-              <button onClick={() => { setShowMenu(false); setPageNumber(1); }} className="bg-gray-100 text-black w-9 h-9 rounded-full flex items-center justify-center text-lg leading-none hover:bg-gray-200 transition">✕</button>
-            </div>
-            <div className="overflow-auto flex justify-center p-2 sm:p-4" style={{ maxHeight: "calc(95dvh - 110px)" }}>
-              <div className="relative">
-                {pageLoading && (
-                  <div className="absolute inset-0 bg-white flex items-center justify-center z-10 rounded">
-                    <div className="w-10 h-10 border-4 border-gray-300 border-t-black rounded-full animate-spin" />
-                  </div>
-                )}
-                <Document file="/menu.pdf" onLoadSuccess={onDocumentLoadSuccess}>
-                  <Page
-                    key={pageNumber}
-                    pageNumber={pageNumber}
-                    width={Math.min(window.innerWidth - 32, 750)}
-                    renderTextLayer={false}
-                    renderAnnotationLayer={false}
-                    onRenderSuccess={() => { setTimeout(() => setPageLoading(false), 150); }}
-                  />
-                </Document>
-              </div>
-            </div>
-            <div className="flex items-center justify-center gap-3 py-3 px-4 border-t border-gray-200 bg-white shrink-0">
-              <button onClick={() => goToPage((prev) => Math.max(prev - 1, 1))} disabled={pageLoading || pageNumber === 1} className="px-4 py-2 text-sm bg-gray-200 rounded-lg disabled:opacity-40 hover:bg-gray-300 transition active:scale-95">← Prev</button>
-              <span className="text-sm text-gray-600 min-w-15 text-center">{pageNumber} / {numPages ?? "..."}</span>
-              <button onClick={() => goToPage((prev) => Math.min(prev + 1, numPages))} disabled={pageLoading || !numPages || pageNumber === numPages} className="px-4 py-2 text-sm bg-gray-200 rounded-lg disabled:opacity-40 hover:bg-gray-300 transition active:scale-95">Next →</button>
-            </div>
+        <Suspense fallback={
+          <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center">
+            <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin" />
           </div>
-        </div>
+        }>
+          <MenuModal onClose={() => setShowMenu(false)} />
+        </Suspense>
       )}
-
       {reelModal && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center" onClick={() => setReelModal(null)}>
           <button onClick={() => setReelModal(null)} className="absolute top-4 right-4 z-10 bg-black/60 text-white w-9 h-9 rounded-full flex items-center justify-center text-lg hover:bg-black transition">✕</button>

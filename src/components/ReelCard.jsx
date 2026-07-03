@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import CImage from './Cimage';
 
 const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
@@ -17,13 +18,27 @@ function getAutoplayUrl(embedUrl) {
         disablekb: '1',
         fs: '0',
         iv_load_policy: '3',
+         playsinline: '1',
     });
     return `${base}?${params.toString()}`;
+}
+
+function getBlurSrc(thumbnail) {
+    if (!thumbnail) return '';
+    return thumbnail.replace(/small\.webp$/, 'blur.webp');
 }
 
 export default function ReelCard({ title, thumbnail, videoLink, onPlay, isPreviewActive, onPreviewStart, onPreviewStop }) {
     const hasVideo = Boolean(videoLink);
     const showIframe = isPreviewActive;
+    const [videoReady, setVideoReady] = useState(false);
+
+    // Reset readiness whenever the preview turns off (so next hover starts fresh)
+    useEffect(() => {
+        if (!showIframe) {
+            setVideoReady(false);
+        }
+    }, [showIframe]);
 
     const handleTap = () => {
         if (!hasVideo) return;
@@ -34,6 +49,14 @@ export default function ReelCard({ title, thumbnail, videoLink, onPlay, isPrevie
         }
     };
 
+    const handleIframeLoad = () => {
+        setTimeout(() => setVideoReady(true), 300);
+    };
+
+    // Only animate the fade when a video is transitioning IN.
+    // Returning to the thumbnail happens instantly, matching the iframe's instant unmount.
+    const thumbnailHidden = showIframe && videoReady;
+
     return (
         <div
             className="w-full aspect-9/16 rounded-2xl overflow-hidden relative shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
@@ -41,16 +64,25 @@ export default function ReelCard({ title, thumbnail, videoLink, onPlay, isPrevie
             onMouseLeave={() => { if (hasVideo && !isMobile) onPreviewStop(); }}
             onClick={isMobile ? handleTap : (hasVideo ? onPlay : undefined)}
         >
-            {/* Thumbnail — stays in DOM, fades out when iframe is active */}
-            <img
-                src={thumbnail}
-                alt={title}
-                className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-500 ${showIframe ? 'opacity-0' : 'opacity-100'}`}
-            />
+            {/* Thumbnail — fades out smoothly, but snaps back instantly */}
+            <div
+                className={`absolute inset-0 ${thumbnailHidden ? 'opacity-0 transition-opacity duration-500' : 'opacity-100'}`}
+            >
+                <CImage
+                    src={thumbnail}
+                    blur={getBlurSrc(thumbnail)}
+                    alt={title}
+                    className="w-full h-full"
+                    imgClassName="absolute inset-0 w-full h-full object-cover"
+                />
+            </div>
 
             {/* iframe with full overlay to hide all YouTube UI */}
             {showIframe && (
-                <div className="absolute inset-0" style={{ isolation: 'isolate' }}>
+                <div
+                    className={`absolute inset-0 transition-opacity duration-500 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
+                    style={{ isolation: 'isolate' }}
+                >
                     <iframe
                         src={getAutoplayUrl(videoLink)}
                         className="absolute w-full pointer-events-none"
@@ -62,6 +94,7 @@ export default function ReelCard({ title, thumbnail, videoLink, onPlay, isPrevie
                         }}
                         allow="autoplay; encrypted-media"
                         title={title}
+                        onLoad={handleIframeLoad}
                     />
                     {/* Full cover — hides all YouTube controls */}
                     <div

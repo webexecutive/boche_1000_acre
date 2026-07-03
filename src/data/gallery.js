@@ -10,7 +10,7 @@ export const categories = [
 ];
 
 export const galleryMeta = {
-  lastId: 190
+  lastId: 196
 };
 
 export const gallery = [
@@ -159,5 +159,13 @@ export const gallery = [
 { id: 188, category: 'banner', alt: 'Heroposterlg', showInGallery: false },
 { id: 189, category: 'banner', alt: 'Heropostermd', showInGallery: false },
 { id: 190, category: 'banner', alt: 'Heropostersm', showInGallery: false }
+,
+{ id: 191, category: 'estate', alt: 'Bhoomiputhrabg Lg', showInGallery: false },
+{ id: 192, category: 'estate', alt: 'Bhoomiputhrabg Md', showInGallery: false },
+{ id: 193, category: 'estate', alt: 'Bhoomiputhrabg Sm', showInGallery: false }
+,
+{ id: 194, category: 'banner', alt: 'Static Poster Lg', showInGallery: false },
+{ id: 195, category: 'banner', alt: 'Static Poster Md', showInGallery: false },
+{ id: 196, category: 'banner', alt: 'Static Poster Sm', showInGallery: false }
 
 ];
