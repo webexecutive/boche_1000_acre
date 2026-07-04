@@ -586,7 +586,7 @@ function Home() {
             <div className="order-1 md:order-2 flex flex-col items-center text-center gap-6">
               <div>
                 <h2 className="text-black">
-                  The Resto Toddy Pub
+                  Boche Toddy Pub
                 </h2>
                 <p className="text-gray-500 max-w-lg">
                   Savor authentic Kerala toddy shop flavors and traditional cuisine at our Wayanad resort, where great food, refreshing toddy, and the serene climate of Wayanad come together for a memorable dining experience.
