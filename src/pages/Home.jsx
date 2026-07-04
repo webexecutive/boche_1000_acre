@@ -67,6 +67,30 @@ function Home() {
     return "/videos/hero16x9/index.m3u8";
   };
 
+  const checkIsSlowConnection = () => {
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (!conn) return false;
+
+    if (conn.saveData) return true;
+
+    const { effectiveType, downlink, rtt } = conn;
+
+    if (['slow-2g', '2g', '3g'].includes(effectiveType)) return true;
+
+    // "Slow 4g" isn't a distinct effectiveType from the API — 4g is the
+    // ceiling bucket, so detect a weak 4g connection via downlink/rtt instead.
+    if (effectiveType === '4g' && (downlink < 1.5 || rtt > 400)) return true;
+
+    return false;
+  };
+
+  const getSlowConnectionBannerId = () => {
+    const width = window.innerWidth;
+    if (width <= 640) return 196;   // sm
+    if (width <= 1024) return 195;  // md
+    return 194;                     // lg
+  };
+
   const [videoSrc] = useState(getAnimationSrc);
   // animFading: true when animation is dissolving out
   const [animFading, setAnimFading] = useState(false);
@@ -94,6 +118,9 @@ function Home() {
   const [animationVideoReady, setAnimationVideoReady] = useState(false);
   const [estateBgId] = useState(getEstateBgId);
   const estateBgImage = getImageById(estateBgId);
+  const [isSlowConnection] = useState(checkIsSlowConnection);
+  const [slowConnBannerId] = useState(getSlowConnectionBannerId);
+  const slowConnBannerImage = getImageById(slowConnBannerId);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -106,7 +133,7 @@ function Home() {
 
 
 
-  const isCardVisible = isMobile ? (showCard && loopVisible) : showCard;
+  const isCardVisible = isMobile ? (showCard && (loopVisible || isSlowConnection)) : showCard;
 
   // Attach HLS to the loop video element (pre-fetches underneath from the start)
   const attachHls = useCallback((src, Hls) => {
@@ -159,6 +186,7 @@ function Home() {
 
   // Play animation video on mount
   useEffect(() => {
+    if (isSlowConnection) return;
     const video = animVideoRef.current;
     if (!video) return;
     video.src = videoSrc;
@@ -177,6 +205,7 @@ function Home() {
   // Pre-load HLS loop video underneath on mount (hls.js is code-split and
   // only downloaded once this effect actually runs)
   useEffect(() => {
+    if (isSlowConnection) return;
     let cancelled = false;
     let cleanupAttach = null;
 
@@ -197,6 +226,7 @@ function Home() {
 
   // Listen to animation ended
   useEffect(() => {
+    if (isSlowConnection) return;
     const video = animVideoRef.current;
     if (!video) return;
 
@@ -210,6 +240,7 @@ function Home() {
 
   // Coordinate the transition: only fade and transform when anim ends AND HLS has loaded
   useEffect(() => {
+    if (isSlowConnection) return;
     if (animEnded && hlsLoaded) {
       const loopVideo = loopVideoRef.current;
       if (loopVideo) {
@@ -310,47 +341,60 @@ function Home() {
         className="relative overflow-hidden"
         style={{ height: 'var(--welcome-h, 100dvh)', background: '#000' }}
       >
-        {/* Loop video — bottom layer, invisible until animation fully dissolves */}
-        <video
-          ref={loopVideoRef}
-          muted
-          playsInline
-          loop
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{
-            zIndex: 0,
-            opacity: loopVisible ? 1 : 0,
-            transition: loopVisible ? "opacity 1.2s ease-in-out" : "none",
-          }}
-        />
-
-        {!animGone && (
+        {isSlowConnection ? (
+          <CImage
+            src={slowConnBannerImage?.variants?.large}
+            blur={slowConnBannerImage?.variants?.blur}
+            alt=""
+            className="absolute inset-0 h-full w-full"
+            imgClassName="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        ) : (
           <>
-            {!animationVideoReady && (
-              <CImage
-                src={posterImage?.variants?.large}
-                blur={posterImage?.variants?.blur}
-                alt=""
-                className="absolute inset-0 h-full w-full"
-                imgClassName="absolute inset-0 h-full w-full object-cover object-center"
-              />
-            )}
-
+            {/* Loop video — bottom layer, invisible until animation fully dissolves */}
             <video
-              ref={animVideoRef}
+              ref={loopVideoRef}
               muted
               playsInline
-              className="absolute inset-0 h-full w-full object-cover object-center"
+              loop
+              className="absolute inset-0 h-full w-full object-cover"
               style={{
-                zIndex: 1,
-                opacity: animFading ? 0 : 1,
-                transition: animFading ? "opacity 1.2s ease-in-out" : "none",
-                pointerEvents: "none",
+                zIndex: 0,
+                opacity: loopVisible ? 1 : 0,
+                transition: loopVisible ? "opacity 1.2s ease-in-out" : "none",
               }}
-              onCanPlay={() => setAnimationVideoReady(true)}
             />
-          </>
-        )}
+
+            {!animGone && (
+              <>
+                {!animationVideoReady && (
+                  <CImage
+                    src={posterImage?.variants?.large}
+                    blur={posterImage?.variants?.blur}
+                    alt=""
+                    className="absolute inset-0 h-full w-full"
+                    imgClassName="absolute inset-0 h-full w-full object-cover object-center"
+                  />
+                )}
+
+                <video
+                  ref={animVideoRef}
+                  muted
+                  playsInline
+                  className="absolute inset-0 h-full w-full object-cover object-center"
+                  style={{
+                    zIndex: 1,
+                    opacity: animFading ? 0 : 1,
+                    transition: animFading ? "opacity 1.2s ease-in-out" : "none",
+                    pointerEvents: "none",
+                  }}
+                  onCanPlay={() => setAnimationVideoReady(true)}
+                />
+              </>
+            )}
+          </>)}
+
+
 
         {!dismissed && (
           <div
@@ -755,22 +799,22 @@ function Home() {
       </section>
 
       {/* Blog Section */}
-<section className="bg-[#F7FDE9] py-20">
-  <div className="max-w-7xl mx-auto px-4">
-    <LazyMount minHeight="500px">
-      <EmblaCarousel className="blogs-carousel" sectionTitle="Insights from 1000 Acres" sectionSubtitle="Our Stories & Updates">
-        {blogData.map((blog) => (
-          <div className="embla__slide" key={blog.id}>
-            <BlogCard {...blog} />
+      <section className="bg-[#F7FDE9] py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <LazyMount minHeight="500px">
+            <EmblaCarousel className="blogs-carousel" sectionTitle="Insights from 1000 Acres" sectionSubtitle="Our Stories & Updates">
+              {blogData.map((blog) => (
+                <div className="embla__slide" key={blog.id}>
+                  <BlogCard {...blog} />
+                </div>
+              ))}
+            </EmblaCarousel>
+          </LazyMount>
+          <div className="flex justify-center mt-8">
+            <Link to="/blog"><Button size="sm">Read All Stories</Button></Link>
           </div>
-        ))}
-      </EmblaCarousel>
-    </LazyMount>
-    <div className="flex justify-center mt-8">
-      <Link to="/blog"><Button size="sm">Read All Stories</Button></Link>
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* Gallery Section */}
       <section className="py-20 bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-sm.svg')] md:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-md.svg')] lg:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-lg.svg')] bg-cover bg-center bg-no-repeat">
@@ -806,20 +850,20 @@ function Home() {
         </div>
       </section>
 
-     {/* Testimonials section */}
-<section className="bg-[#F7FDE9] py-20">
-  <div className="max-w-7xl relative mx-auto px-4">
-    <LazyMount minHeight="450px">
-      <EmblaCarousel sectionTitle="Experiences Worth Sharing" sectionSubtitle="Hear from our guests">
-        {combinedReviews.map((review) => (
-          <div className="embla__slide" key={review.type === "video" ? `video-${review.id}` : `google-${review.id}`}>
-            <ReviewCard review={review} onPlay={setReelModal} />
-          </div>
-        ))}
-      </EmblaCarousel>
-    </LazyMount>
-  </div>
-</section>
+      {/* Testimonials section */}
+      <section className="bg-[#F7FDE9] py-20">
+        <div className="max-w-7xl relative mx-auto px-4">
+          <LazyMount minHeight="450px">
+            <EmblaCarousel sectionTitle="Experiences Worth Sharing" sectionSubtitle="Hear from our guests">
+              {combinedReviews.map((review) => (
+                <div className="embla__slide" key={review.type === "video" ? `video-${review.id}` : `google-${review.id}`}>
+                  <ReviewCard review={review} onPlay={setReelModal} />
+                </div>
+              ))}
+            </EmblaCarousel>
+          </LazyMount>
+        </div>
+      </section>
 
 
       {/* Map Section */}

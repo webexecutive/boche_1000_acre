@@ -24,6 +24,7 @@ const Booking = lazy(() => import('./pages/Booking.jsx'));
 const Boomiputhra = lazy(() => import('./pages/Boomiputhra.jsx'));
 const EventDetails = lazy(() => import('./pages/EventDetails.jsx'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyAndPolicy.jsx'));
+const TermsConditions=lazy(()=>import('./pages/TermsConditions.jsx'))
 const Blog = lazy(() => import('./pages/Blog.jsx'));
 const BlogArticle = lazy(() => import('./pages/BlogArticle.jsx'));
 
@@ -183,6 +184,15 @@ function App() {
             element={
               <Suspense fallback={<ContentSkeleton />}>
                 <PrivacyPolicy />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/terms"
+            element={
+              <Suspense fallback={<ContentSkeleton />}>
+                <TermsConditions />
               </Suspense>
             }
           />

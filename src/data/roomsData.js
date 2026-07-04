@@ -330,137 +330,136 @@ const rooms = [
     },
 
     {
-        id: "the-mountain-residence-room",
-        name: "The Mountain Residence Room",
+    id: "backpackers-room",
+    name: "Backpackers Room",
 
-        seo: {
-            title: "Mountain Residence Room in Wayanad | Couple Room at Tea Plantation Resort | boCHE 1000 Acres",
-            description: "Book a private room at The Mountain Residence, boCHE 1000 Acres — a comfortable couple stay in Wayanad Kerala inside a 1000-acre tea plantation resort. Modern amenities, scenic plantation views, and easy access to all estate adventure activities in Wayanad.",
-            keywords: "rooms in wayanad kerala, rooms at wayanad, resorts in wayanad kerala, best resorts in wayanad, stay in wayanad, couple stay wayanad, wayanad resort packages, resort stay in wayanad, wayanad resort booking, best resort in wayanad kerala",
-        },
-
-        basicInfo: {
-            rooms: 1,
-            maxGuests: 2,
-            pricePerNight: 5000,
-            currency: "INR",
-        },
-
-        checkTime: {
-            checkIn: "02:00 PM",
-            checkOut: "10:00 AM",
-        },
-
-        inclusions: [
-            "Includes Free Breakfast",
-            "Includes Camp Fire with Music (for 5 pax and above)",
-            "Includes Property Trekking",
-        ],
-
-        cancellationPolicy: [
-            {
-                refundPercent: 100,
-                daysBeforeCheckIn: 7,
-                label: "100% refund if cancelled 7 days before check-in.",
-            },
-            {
-                refundPercent: 50,
-                daysBeforeCheckIn: 2,
-                label: "50% refund if cancelled 2 days before check-in.",
-            },
-        ],
-
-        aboutStay: {
-            tagline: "Contemporary Comfort for Couples",
-            description:
-                "A cozy private room within The Mountain Residence at boCHE 1000 Acres, designed for couples or two guests seeking a comfortable stay amidst the tea plantation landscape of Wayanad. Modern comforts, scenic views, and direct access to all of the estate's adventure activities make it a smart choice for guests who want the full boCHE experience at an accessible price point.",
-            highlights: [
-                "Private room for 2 guests with attached bathroom",
-                "Scenic tea plantation views from the room",
-                "Located within The Mountain Residence Villa",
-                "Full access to all estate adventure activities",
-                "Comfortable and accessible stay option",
-            ],
-        },
-
-        amenities: {
-            basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup"],
-            roomAmenities: ["bathroom", "workDesk", "closet", "chair", "hotColdWater", "teaCoffee", "toiletries", "mineralWater"],
-            staffAndKeyServices: ["luggage"],
-            healthAndWellness: ["firstAid"],
-            sftyAndSecurity: ["cctv"],
-            commonArea: ["reception", "restaurant"],
-        },
-
-        images: [146, 147, 148, 149],
+    seo: {
+        title: "Backpackers Room in Wayanad | Budget Couple Stay at Tea Plantation Resort | boCHE 1000 Acres",
+        description: "Book a private room at Backpackers Bungalow, boCHE 1000 Acres — a comfortable budget-friendly couple stay in Wayanad Kerala inside a 1000-acre tea plantation resort. Modern amenities, scenic plantation views, and easy access to all estate adventure activities in Wayanad.",
+        keywords: "budget rooms in wayanad kerala, backpackers stay wayanad, resorts in wayanad kerala, best resorts in wayanad, stay in wayanad, couple stay wayanad, wayanad resort packages, resort stay in wayanad, wayanad resort booking, best resort in wayanad kerala",
     },
 
-    {
-        id: "the-mountain-residence-full-property",
-        name: "The Mountain Residence Full Property",
-
-        seo: {
-            title: "Mountain Residence Full Villa in Wayanad | Group & Family Resort | boCHE 1000 Acres",
-            description: "Book the full Mountain Residence villa at boCHE 1000 Acres — a 4-bedroom group stay in Wayanad Kerala with shared kitchen, living areas, and scenic tea plantation views. One of the best resorts in Wayanad for families, friends, and group travel.",
-            keywords: "best resorts in wayanad for friends, family stay in wayanad, resorts in wayanad kerala, best resorts in wayanad, rooms at wayanad, group stay wayanad, wayanad resort packages, resorts in wayanad with activities, stay in wayanad, best resort in wayanad kerala",
-        },
-
-        basicInfo: {
-            rooms: 4,
-            maxGuests: 8,
-            pricePerNight: 20000,
-            currency: "INR",
-        },
-
-        checkTime: {
-            checkIn: "02:00 PM",
-            checkOut: "10:00 AM",
-        },
-
-        inclusions: [
-            "Includes Free Breakfast",
-            "Includes Camp Fire with Music (for 5 pax and above)",
-            "Includes Property Trekking",
-        ],
-
-        cancellationPolicy: [
-            {
-                refundPercent: 100,
-                daysBeforeCheckIn: 7,
-                label: "100% refund if cancelled 7 days before check-in.",
-            },
-            {
-                refundPercent: 50,
-                daysBeforeCheckIn: 2,
-                label: "50% refund if cancelled 2 days before check-in.",
-            },
-        ],
-
-        aboutStay: {
-            tagline: "Contemporary Comfort for Groups",
-            description:
-                "Designed for families, friend groups, and group travellers, The Mountain Residence Full Property at boCHE 1000 Acres gives you an entire 4-bedroom villa inside the tea plantation estate. Four private rooms each with attached bathrooms, a fully equipped shared kitchen, spacious living areas, and direct access to all estate adventure activities in Wayanad make this one of the best group stays in Wayanad.",
-            highlights: [
-                "Entire 4-bedroom private villa — up to 8 guests",
-                "Fully equipped shared kitchen and living areas",
-                "Attached bathroom in every room",
-                "Scenic tea plantation views across the property",
-                "Ideal for families, friends, and group retreats",
-            ],
-        },
-
-        amenities: {
-            basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup"],
-            roomAmenities: ["bathroom", "workDesk", "closet", "chair", "hotColdWater", "teaCoffee", "toiletries", "mineralWater"],
-            staffAndKeyServices: ["luggage"],
-            healthAndWellness: ["firstAid"],
-            sftyAndSecurity: ["cctv"],
-            commonArea: ["reception", "restaurant"],
-        },
-
-        images: [141, 143, 144, 145, 146, 147, 148, 149, 150, 142],
+    basicInfo: {
+        rooms: 1,
+        maxGuests: 2,
+        pricePerNight: 5000,
+        currency: "INR",
     },
 
+    checkTime: {
+        checkIn: "02:00 PM",
+        checkOut: "10:00 AM",
+    },
+
+    inclusions: [
+        "Includes Free Breakfast",
+        "Includes Camp Fire with Music (for 5 pax and above)",
+        "Includes Property Trekking",
+    ],
+
+    cancellationPolicy: [
+        {
+            refundPercent: 100,
+            daysBeforeCheckIn: 7,
+            label: "100% refund if cancelled 7 days before check-in.",
+        },
+        {
+            refundPercent: 50,
+            daysBeforeCheckIn: 2,
+            label: "50% refund if cancelled 2 days before check-in.",
+        },
+    ],
+
+    aboutStay: {
+        tagline: "Budget-Friendly Comfort for Couples",
+        description:
+            "A cozy private room within Backpackers Bungalow at boCHE 1000 Acres, designed for couples or two guests seeking a comfortable, budget-friendly stay amidst the tea plantation landscape of Wayanad. Simple comforts, scenic views, and direct access to all of the estate's adventure activities make it a smart choice for backpackers and value-conscious travellers who want the full boCHE experience at an accessible price point.",
+        highlights: [
+            "Private room for 2 guests with attached bathroom",
+            "Scenic tea plantation views from the room",
+            "Located within Backpackers Bungalow",
+            "Full access to all estate adventure activities",
+            "Budget-friendly and accessible stay option",
+        ],
+    },
+
+    amenities: {
+        basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup"],
+        roomAmenities: ["bathroom", "workDesk", "closet", "chair", "hotColdWater", "teaCoffee", "toiletries", "mineralWater"],
+        staffAndKeyServices: ["luggage"],
+        healthAndWellness: ["firstAid"],
+        sftyAndSecurity: ["cctv"],
+        commonArea: ["reception", "restaurant"],
+    },
+
+    images: [146, 147, 148, 149],
+},
+
+{
+    id: "backpackers-bungalow-full-property",
+    name: "Backpackers Bungalow Full Property",
+
+    seo: {
+        title: "Backpackers Bungalow Full Villa in Wayanad | Group & Family Resort | boCHE 1000 Acres",
+        description: "Book the full Backpackers Bungalow villa at boCHE 1000 Acres — a 4-bedroom budget group stay in Wayanad Kerala with shared kitchen, living areas, and scenic tea plantation views. One of the best resorts in Wayanad for families, friends, and group travel.",
+        keywords: "best resorts in wayanad for friends, backpackers group stay wayanad, resorts in wayanad kerala, best resorts in wayanad, budget group stay wayanad, group stay wayanad, wayanad resort packages, resorts in wayanad with activities, stay in wayanad, best resort in wayanad kerala",
+    },
+
+    basicInfo: {
+        rooms: 4,
+        maxGuests: 8,
+        pricePerNight: 20000,
+        currency: "INR",
+    },
+
+    checkTime: {
+        checkIn: "02:00 PM",
+        checkOut: "10:00 AM",
+    },
+
+    inclusions: [
+        "Includes Free Breakfast",
+        "Includes Camp Fire with Music (for 5 pax and above)",
+        "Includes Property Trekking",
+    ],
+
+    cancellationPolicy: [
+        {
+            refundPercent: 100,
+            daysBeforeCheckIn: 7,
+            label: "100% refund if cancelled 7 days before check-in.",
+        },
+        {
+            refundPercent: 50,
+            daysBeforeCheckIn: 2,
+            label: "50% refund if cancelled 2 days before check-in.",
+        },
+    ],
+
+    aboutStay: {
+        tagline: "Budget-Friendly Comfort for Groups",
+        description:
+            "Designed for families, friend groups, and backpacker crews, Backpackers Bungalow Full Property at boCHE 1000 Acres gives you an entire 4-bedroom villa inside the tea plantation estate. Four private rooms each with attached bathrooms, a fully equipped shared kitchen, spacious living areas, and direct access to all estate adventure activities in Wayanad make this one of the best affordable group stays in Wayanad.",
+        highlights: [
+            "Entire 4-bedroom private villa — up to 8 guests",
+            "Fully equipped shared kitchen and living areas",
+            "Attached bathroom in every room",
+            "Scenic tea plantation views across the property",
+            "Ideal for families, friends, and backpacker groups",
+        ],
+    },
+
+    amenities: {
+        basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup"],
+        roomAmenities: ["bathroom", "workDesk", "closet", "chair", "hotColdWater", "teaCoffee", "toiletries", "mineralWater"],
+        staffAndKeyServices: ["luggage"],
+        healthAndWellness: ["firstAid"],
+        sftyAndSecurity: ["cctv"],
+        commonArea: ["reception", "restaurant"],
+    },
+
+    images: [141, 143, 144, 145, 146, 147, 148, 149, 150, 142],
+},
     {
         id: "agraharam",
         name: "Agraharam",
@@ -582,7 +581,7 @@ const rooms = [
         },
 
         amenities: {
-            basicFacilities: ["roomService", "housekeeping", "parking", "powerBackup"],
+            basicFacilities: ["housekeeping", "parking"],
             staffAndKeyServices: ["luggage"],
             healthAndWellness: ["firstAid"],
             sftyAndSecurity: ["cctv"],
