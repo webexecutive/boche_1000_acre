@@ -125,6 +125,8 @@ const RoomDetails = () => {
             resolvedCover: getImageById(r.images?.[0]),
         }));
 
+    const gstRate = room.basicInfo.pricePerNight <= 7500 ? 5 : 18;
+
     const renderRoomDetailsCard = () => (
         <div className="bg-[#f2faeb] rounded-4xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
             <h3 className="mb-6 text-3xl md:text-4xl font-serif text-gray-900">{room.name}</h3>
@@ -167,12 +169,19 @@ const RoomDetails = () => {
                 ))}
             </div>
             <div className="flex flex-col gap-6 -mx-2">
-                <div className="flex items-baseline gap-2 px-2">
-                    <span className="text-3xl sm:text-4xl text-gray-900">
-                        ₹ {room.basicInfo.pricePerNight} <span className="text-2xl font-light mx-1">/</span><span className="text-xl mr-1">-</span>
-                    </span>
-                    <span className="text-gray-800 font-medium">per night</span>
-                </div>
+                 <div className="flex items-baseline flex-wrap gap-2 px-2">
+        <span className="text-3xl sm:text-4xl font-semibold text-gray-900">
+            ₹ {room.basicInfo.pricePerNight.toLocaleString()}
+        </span>
+
+        <span className="text-lg text-gray-600 font-medium">
+            + {gstRate}% GST
+        </span>
+
+        <span className="text-gray-800 font-medium">
+            per night
+        </span>
+    </div>
                 <div className="flex justify-center px-2">
                     <Link to="/booking">
                         <Button variant="primary">Book Now</Button>
