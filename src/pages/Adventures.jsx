@@ -38,8 +38,8 @@ function Adventures() {
 
                 {/* Header */}
                 <div className="max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-10">
-                    <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-[#6a8f3a] mb-3">
-                        boCHE Adventures
+                    <p className="text-[11px] font-medium tracking-[0.25em] text-[#6a8f3a] mb-3">
+                        boCHE ADVENTURES
                     </p>
 
                     <h1 className="text-[#1e3209]  mb-4">

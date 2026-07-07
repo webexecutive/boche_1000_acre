@@ -14,7 +14,7 @@ const adventures = [
     {
         id: 2,
         title: "ATV Ride  (570cc)",
-        thumbnail: "/images/gallery/adventures/157/small.webp",
+        thumbnail: "/images/gallery/adventures/197/small.webp",
         videoLink: "https://www.youtube.com/embed/ROx3H15qtzI",
         description: "Gear up for an adrenaline-filled ride across rugged trails and natural terrain. The 570cc ATV Ride offers speed, excitement, and an unforgettable off-road adventure.",
         condition: "2 laps, 1pax",

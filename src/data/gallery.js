@@ -10,7 +10,7 @@ export const categories = [
 ];
 
 export const galleryMeta = {
-  lastId: 196
+  lastId: 197
 };
 
 export const gallery = [
@@ -167,5 +167,7 @@ export const gallery = [
 { id: 194, category: 'banner', alt: 'Static Poster Lg', showInGallery: false },
 { id: 195, category: 'banner', alt: 'Static Poster Md', showInGallery: false },
 { id: 196, category: 'banner', alt: 'Static Poster Sm', showInGallery: false }
+,
+{ id: 197, category: 'adventures', alt: 'Boche Riding Atv', showInGallery: true }
 
 ];

@@ -30,7 +30,7 @@ const events = [
 
     {
         id: 2,
-        title: "Boche Carnival",
+        title: "boCHE Carnival",
         startDate: "2024-12-23",
         endDate: "2025-01-04",
         startTime: "03:00 PM",

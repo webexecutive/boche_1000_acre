@@ -5,7 +5,7 @@ const TermsConditions = () => {
                 <h1 className="text-4xl font-bold mb-8">Terms & Conditions</h1>
 
                 <p className="mb-6">
-                    Welcome to <strong>Boche 1000 Acre</strong>. These Terms &
+                    Welcome to <strong>boCHE 1000 Acre</strong>. These Terms &
                     Conditions govern your access to and use of this website and
                     the services provided by us. By accessing or using this
                     website, you acknowledge that you have read, understood, and

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { MdDirections } from "react-icons/md";
 import Button from "../components/Button";
 import axios from "axios";
 import SEO from "../components/SEO";
@@ -49,10 +50,35 @@ function Contact() {
                         <h1 className="text-3xl md:text-4xl mb-4">
                             Get In Touch
                         </h1>
-                        <p className="text-gray-500 max-w-2xl mx-auto text-sm">
+                        <p className="text-gray-500 max-w-2xl mx-auto text-sm text-justify">
                             We'd love to hear from you whether you have questions, need support,
                             want to learn more about our services or for booking please contact us.
                         </p>
+                    </div>
+
+                    {/* Map Section */}
+                    <div className="relative w-full max-w-3xl mx-auto h-72 md:h-96 rounded-2xl overflow-hidden shadow-md mb-12">
+                        <iframe
+                            src="https://www.google.com/maps?q=11.530258170742771,76.12723070987565&z=15&output=embed"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0, display: "block" }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="boCHE 1000 Acre Location"
+                        />
+                        <a
+                            href="https://maps.app.goo.gl/eL9urRpNbi4rnPyw5"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="absolute top-4 right-4 z-10"
+                        >
+                            <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white border gap-1.5">
+                                <MdDirections className="h-4 w-4" />
+                                Get Direction
+                            </Button>
+                        </a>
                     </div>
 
                     {/* Info Section */}
@@ -72,14 +98,7 @@ function Contact() {
                                     Chulika Estate, Cottappadi P O,<br />
                                     Vythiri, Meppadi, Kerala 673577
                                 </p>
-                                <a
-                                    href="https://maps.app.goo.gl/eL9urRpNbi4rnPyw5"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-block"
-                                >
-                                    <Button size="sm">Get Direction</Button>
-                                </a>
+
                                 <div className="hidden md:block absolute top-0 right-0 h-full w-px bg-gray-300"></div>
                                 <div className="md:hidden absolute bottom-0 left-0 w-full h-px bg-gray-300"></div>
                             </div>

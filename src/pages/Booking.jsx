@@ -203,15 +203,33 @@ function Booking() {
             <div className="max-w-6xl mx-auto space-y-10">
 
                 {/* Banner */}
-                <div className="bg-[#dfe8cf] rounded-2xl shadow-md py-6 px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p className="text-lg font-medium">
-                        For booking call hello boCHE: +91 9961008008
-                    </p>
-                    <a href="tel:+919961008008" onClick={handleCallClick}>
-                        <Button size="sm">
-                            Call Now
-                        </Button>
-                    </a>
+                <div className="flex justify-center">
+                    <div className="bg-[#dfe8cf] rounded-2xl shadow-md py-6 px-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-7 w-full max-w-md sm:max-w-xl">
+
+                        
+                        <img
+                            src="/logos/hello-boche.webp"
+                            alt="Hello boCHE"
+                            className="h-24 sm:h-28 w-auto rounded-lg shrink-0"
+                        />
+
+                        <div className=" sm:flex flex-col items-center sm:items-start gap-2 text-center sm:text-left">
+                            <div>
+                                <p className="text-[11px] sm:text-xs uppercase tracking-wide text-[#5a6b4a] font-medium">
+                                    For booking call
+                                </p>
+                                <p className="text-base sm:text-lg font-medium text-[#1a1a1a]">
+                                    +91 9961008008
+                                </p>
+                            </div>
+                        </div>
+
+                        <a href="tel:+919961008008" onClick={handleCallClick} >
+                            <Button size="sm">
+                                Call Now
+                            </Button>
+                        </a>
+                    </div>
                 </div>
 
                 {/* Form Card */}

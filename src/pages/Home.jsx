@@ -22,6 +22,8 @@ import StayCard from "../components/StayCard";
 import SEO from "../components/SEO";
 import blogData from "../data/blogData";
 import BlogCard from "../components/BlogCard";
+import { MdDirections } from "react-icons/md";
+
 
 const loadGA = () => import('react-ga4').then(m => m.default);
 const MenuModal = lazy(() => import("../components/MenuModal"));
@@ -398,39 +400,50 @@ function Home() {
 
         {!dismissed && (
           <div
-            className="absolute bottom-24 right-4 z-10 sm:bottom-10 sm:right-10"
+            className="absolute bottom-20 right-3 z-10 sm:bottom-8 sm:right-6 md:bottom-10 md:right-8 lg:bottom-12 lg:right-10"
             style={{
               transform: isCardVisible ? "translateX(0)" : "translateX(120%)",
               opacity: isCardVisible ? 1 : 0,
               transition: "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease",
             }}
           >
-            <div className="bg-black/70 backdrop-blur-sm rounded-xl px-5 py-4 sm:px-6 sm:py-5 max-w-65 sm:max-w-xs shadow-2xl border border-white/10">
+            <div className="relative bg-black/70 backdrop-blur-sm rounded-xl px-4 pt-4 pb-4 sm:px-5 sm:pt-5 sm:pb-5 md:px-6 md:pt-6 md:pb-6 lg:px-7 lg:pt-7 lg:pb-7 w-56 sm:w-64 md:w-72 lg:w-80 shadow-2xl border border-white/10">
               <button
                 onClick={() => setDismissed(true)}
-                className="absolute top-2 right-3 text-white/50 hover:text-white text-lg leading-none transition-colors"
+                className="absolute top-2 right-3 text-white/50 hover:text-white text-lg leading-none transition-colors z-10"
                 aria-label="Dismiss"
               >
                 ×
               </button>
-              <h3 className="text-white text-xs font-semibold sm:text-lg uppercase tracking-widest mb-1">
+
+              <div className="flex justify-center mb-3 md:mb-4">
+                <img
+                  src="/logos/hello-boche.webp"
+                  alt="Hello boCHE"
+                  className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto rounded-lg"
+                />
+              </div>
+
+              <p className="text-white/60 text-[10px] sm:text-xs md:text-sm uppercase tracking-widest text-center mb-1">
                 For Booking Call
-              </h3>
-              <h3 className="text-white font-semibold text-base sm:text-lg leading-snug mb-1">
-                Hello Boche
-              </h3>
+              </p>
+
               <a
                 href="tel:+919961008008"
-                className="text-white/80 text-sm sm:text-base hover:text-white transition-colors"
+                className="block text-white text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-center hover:text-white/80 transition-colors mb-1"
               >
                 +91 99610 08008
               </a>
-              <Button size="sm" className="mt-4 w-full" onClick={handleCall}>
+
+              <Button size="sm" className="mt-3 w-full" onClick={handleCall}>
                 Call Now
               </Button>
             </div>
           </div>
         )}
+
+
+
 
         {/* Scroll hint — bottom center */}
         <div
@@ -447,11 +460,12 @@ function Home() {
           <FiChevronsDown className="text-white/60 animate-bounce" size={22} />
         </div>
 
-      </section>
+      </section >
 
       {/* Welcome Section */}
-      <section className="relative overflow-hidden md:h-180"
-        style={{ height: 'var(--welcome-h, 100dvh)' }}>
+      < section className="relative overflow-hidden md:h-180"
+        style={{ height: 'var(--welcome-h, 100dvh)' }
+        }>
 
         <div className="flex flex-col h-full md:hidden">
 
@@ -470,8 +484,8 @@ function Home() {
           </div>
           {/* Bottom: dark text panel */}
           <div className="bg-black px-6 py-8 flex flex-col justify-center">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-white/50 mb-1">
-              Welcome to boCHE 1000 Acre
+            <p className="text-[10px]  tracking-[0.25em] text-white/50 mb-1">
+              WELCOME TO boCHE 1000 ACRE
             </p>
             <p className="text-[10px] uppercase tracking-[0.25em] text-white/50 mb-5">
               Wayanad, Kerala
@@ -504,8 +518,8 @@ function Home() {
           <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/20 to-transparent" />
           <div className="relative h-full flex items-center">
             <div className="px-16 lg:px-24 max-w-xl text-left text-white">
-              <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-3">
-                Welcome to boCHE 1000 Acre — Wayanad, Kerala
+              <p className="text-xs  tracking-[0.3em] text-white/60 mb-3">
+                WELCOME TO boCHE 1000 ACRE — WAYANAD, KERALA
               </p>
               <h1 className="text-4xl lg:text-5xl text-balance mb-4 text-white">
                 A Resort in Wayanad Like No Other
@@ -518,16 +532,16 @@ function Home() {
           </div>
         </div>
 
-      </section>
+      </section >
 
       {/* Banner section */}
-      <section>
+      < section >
         <Suspense fallback={<div className="w-full aspect-16/6 bg-gray-100 animate-pulse" />}>
           <BannerCarousel />
         </Suspense>
-      </section>
+      </section >
       {/* Stay cards */}
-      <section className="bg-[#F7FDE9] py-20">
+      < section className="bg-[#F7FDE9] py-20" >
         <div className="max-w-7xl mx-auto px-4">
 
           {/* Section intro */}
@@ -570,10 +584,10 @@ function Home() {
             <Link to="/stays"><Button size="sm">View All Stays</Button></Link>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Restaurant Section */}
-      <section className="py-20 text-center overflow-hidden bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/restaurantbg-sm.svg')] md:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/restaurantbg-md.svg')] lg:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/restaurantbg-lg.svg')] bg-cover bg-center bg-no-repeat">
+      < section className="py-20 text-center overflow-hidden bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/restaurantbg-sm.svg')] md:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/restaurantbg-md.svg')] lg:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/restaurantbg-lg.svg')] bg-cover bg-center bg-no-repeat" >
         <div className="max-w-7xl relative mx-auto px-4">
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
             <div className="order-2 md:order-1 grid grid-cols-2 gap-2" style={{ gridTemplateRows: "repeat(3, 160px)" }}>
@@ -586,7 +600,7 @@ function Home() {
             <div className="order-1 md:order-2 flex flex-col items-center text-center gap-6">
               <div>
                 <h2 className="text-black">
-                  Boche Toddy Pub
+                  boCHE Toddy Pub
                 </h2>
                 <p className="text-gray-500 max-w-lg">
                   Savor authentic Kerala toddy shop flavors and traditional cuisine at our Wayanad resort, where great food, refreshing toddy, and the serene climate of Wayanad come together for a memorable dining experience.
@@ -602,10 +616,10 @@ function Home() {
           <img src={bocheWithFood} className="hidden xl:block absolute -bottom-20 -right-16 h-96" />
           <p className="absolute -bottom-20 left-2.5 bg-white text-sm text-gray-500">*Drinking alcohol is injurious to health.</p>
         </div>
-      </section>
+      </section >
 
       {/* Adventure section */}
-      <section className="bg-[#F7FDE9] py-20">
+      < section className="bg-[#F7FDE9] py-20" >
         <div className="max-w-7xl relative mx-auto px-4">
           <EmblaCarousel sectionTitle="Discover the Best Adventure Activities in Wayanad" sectionSubtitle="Adventure woven into nature's beauty">
             {adventures.map((adventure) => (
@@ -621,10 +635,10 @@ function Home() {
             <Link to="/adventures"><Button size="sm">Know More</Button></Link>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Campfire Section */}
-      <section className="relative overflow-hidden h-auto md:h-180">
+      < section className="relative overflow-hidden h-auto md:h-180" >
 
         <div className="flex flex-col h-full lg:hidden">
 
@@ -675,16 +689,16 @@ function Home() {
           </div>
         </div>
 
-      </section>
+      </section >
 
       {/* boChe Experience */}
-      <section className="bg-[#F7FDE9] py-16 md:py-24">
+      < section className="bg-[#F7FDE9] py-16 md:py-24" >
         <div className="max-w-7xl mx-auto px-4">
 
           {/* Text block */}
           <div className="max-w-4xl mx-auto text-center mb-12 md:mb-20">
-            <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-[#6a8f3a] mb-4">
-              The boCHE Experience
+            <p className="text-[11px] font-medium tracking-[0.25em] text-[#6a8f3a] mb-4">
+              THE boCHE EXPERIENCE
             </p>
 
             <h2 className="text-[#1e3209] mb-4">
@@ -755,10 +769,10 @@ function Home() {
           </div>
 
         </div>
-      </section>
+      </section >
 
       {/* Bhoomiputra section */}
-      <section className="relative overflow-hidden">
+      < section className="relative overflow-hidden" >
         <div className="absolute inset-0 w-full h-full">
           <CImage
             src={estateBgImage?.variants?.large}
@@ -796,10 +810,10 @@ function Home() {
             <Button size="sm" className="border-white border">Know More</Button>
           </Link>
         </div>
-      </section>
+      </section >
 
       {/* Blog Section */}
-      <section className="bg-[#F7FDE9] py-20">
+      < section className="bg-[#F7FDE9] py-20" >
         <div className="max-w-7xl mx-auto px-4">
           <LazyMount minHeight="500px">
             <EmblaCarousel className="blogs-carousel" sectionTitle="Insights from 1000 Acres" sectionSubtitle="Our Stories & Updates">
@@ -814,10 +828,10 @@ function Home() {
             <Link to="/blog"><Button size="sm">Read All Stories</Button></Link>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Gallery Section */}
-      <section className="py-20 bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-sm.svg')] md:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-md.svg')] lg:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-lg.svg')] bg-cover bg-center bg-no-repeat">
+      < section className="py-20 bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-sm.svg')] md:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-md.svg')] lg:bg-[linear-gradient(rgba(254,255,251,0.9),rgba(254,255,251,0.9)),url('/images/gallerybg-lg.svg')] bg-cover bg-center bg-no-repeat" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
             <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-[#6a8f3a] mb-4">
@@ -848,10 +862,10 @@ function Home() {
             }
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Testimonials section */}
-      <section className="bg-[#F7FDE9] py-20">
+      < section className="bg-[#F7FDE9] py-20" >
         <div className="max-w-7xl relative mx-auto px-4">
           <LazyMount minHeight="450px">
             <EmblaCarousel sectionTitle="Experiences Worth Sharing" sectionSubtitle="Hear from our guests">
@@ -863,11 +877,12 @@ function Home() {
             </EmblaCarousel>
           </LazyMount>
         </div>
-      </section>
+      </section >
+
 
 
       {/* Map Section */}
-      <section className="w-full h-112.5">
+      <section className="relative w-full h-112.5">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8414.148655069192!2d76.12723070987565!3d11.530258170742771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba613ab91efa5ab%3A0x3f76852d27db0cc9!2sBoche%201000%20Acre!5e1!3m2!1sen!2sin!4v1779511842065!5m2!1sen!2sin"
           width="100%"
@@ -876,12 +891,24 @@ function Home() {
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="Boche 1000 Acre Location"
+          title="boCHE 1000 Acre Location"
         />
-      </section>
+
+        <a
+          href="https://maps.app.goo.gl/eL9urRpNbi4rnPyw5"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute top-4 right-4 z-10"
+        >
+          <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white border gap-1.5">
+            <MdDirections className="h-4 w-4" />
+            Get Direction
+          </Button>
+        </a>
+      </section >
 
       {/* Newsletter */}
-      <section className="py-16 bg-white border-t border-gray-100">
+      < section className="py-16 bg-white border-t border-gray-100" >
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
             Stay Connected with boCHE 1000 Acres
@@ -934,32 +961,36 @@ function Home() {
             </Button>
           </form>
         </div>
-      </section>
+      </section >
 
       {/* Menu modal */}
-      {showMenu && (
-        <Suspense fallback={
-          <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center">
-            <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+      {
+        showMenu && (
+          <Suspense fallback={
+            <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center">
+              <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+            </div>
+          }>
+            <MenuModal onClose={() => setShowMenu(false)} />
+          </Suspense>
+        )
+      }
+      {
+        reelModal && (
+          <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center" onClick={() => setReelModal(null)}>
+            <button onClick={() => setReelModal(null)} className="absolute top-4 right-4 z-10 bg-black/60 text-white w-9 h-9 rounded-full flex items-center justify-center text-lg hover:bg-black transition">✕</button>
+            <div className="w-[90vw] sm:w-80 md:w-96 aspect-9/16 rounded-2xl overflow-hidden" onClick={(e) => e.stopPropagation()}>
+              <iframe
+                key={reelModal.id}
+                src={`${reelModal.videoLink}${reelModal.videoLink.includes('?') ? '&' : '?'}autoplay=1&controls=0`}
+                className="w-full h-full"
+                allow="autoplay; fullscreen"
+                allowFullScreen
+              />
+            </div>
           </div>
-        }>
-          <MenuModal onClose={() => setShowMenu(false)} />
-        </Suspense>
-      )}
-      {reelModal && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center" onClick={() => setReelModal(null)}>
-          <button onClick={() => setReelModal(null)} className="absolute top-4 right-4 z-10 bg-black/60 text-white w-9 h-9 rounded-full flex items-center justify-center text-lg hover:bg-black transition">✕</button>
-          <div className="w-[90vw] sm:w-80 md:w-96 aspect-9/16 rounded-2xl overflow-hidden" onClick={(e) => e.stopPropagation()}>
-            <iframe
-              key={reelModal.id}
-              src={`${reelModal.videoLink}${reelModal.videoLink.includes('?') ? '&' : '?'}autoplay=1&controls=0`}
-              className="w-full h-full"
-              allow="autoplay; fullscreen"
-              allowFullScreen
-            />
-          </div>
-        </div>
-      )}
+        )
+      }
     </>
   );
 }
