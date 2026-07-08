@@ -55,7 +55,7 @@ const adventures = [
     {
         id: 6,
         title: "ATV Ride  (200cc)",
-        thumbnail: "/images/gallery/adventures/173/small.webp",
+        thumbnail: "/images/gallery/adventures/197/small.webp",
         videoLink: "",
         description: "Gear up for an adrenaline-filled ride across rugged trails and natural terrain. The 200cc ATV Ride offers speed, excitement, and an unforgettable off-road adventure.",
         condition: "2laps, 1pax",
