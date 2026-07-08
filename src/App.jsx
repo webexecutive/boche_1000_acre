@@ -8,7 +8,7 @@ import DetailsSkeleton from './components/skeletons/DetailsSkeleton.jsx';
 import GridSkeleton from './components/skeletons/GridSkeleton.jsx';
 import ContentSkeleton from './components/skeletons/ContentSkeleton.jsx';
 import NotFound from './components/NotFound.jsx';
-import ReactGA from 'react-ga4';
+
 
 const Home = lazy(() => import('./pages/Home.jsx'));
 const Gallery = lazy(() => import('./pages/Gallery.jsx'));
@@ -24,7 +24,7 @@ const Booking = lazy(() => import('./pages/Booking.jsx'));
 const Boomiputhra = lazy(() => import('./pages/Boomiputhra.jsx'));
 const EventDetails = lazy(() => import('./pages/EventDetails.jsx'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyAndPolicy.jsx'));
-const TermsConditions=lazy(()=>import('./pages/TermsConditions.jsx'))
+const TermsConditions = lazy(() => import('./pages/TermsConditions.jsx'))
 const Blog = lazy(() => import('./pages/Blog.jsx'));
 const BlogArticle = lazy(() => import('./pages/BlogArticle.jsx'));
 
@@ -33,22 +33,11 @@ const RoomDetailsWithKey = () => {
   return <RoomDetails key={id} />;
 };
 
-function PageTracker() {
-  const location = useLocation();
-  useEffect(() => {
-    ReactGA.send({
-      hitType: 'pageview',
-      page: location.pathname + location.search,
-      title: document.title,
-    });
-  }, [location]);
-  return null;
-}
+
 
 function App() {
   return (
     <BrowserRouter>
-      <PageTracker />
       <ScrollToTop />
       <Routes>
         <Route element={<MainLayout />}>

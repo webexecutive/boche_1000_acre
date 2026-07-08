@@ -43,7 +43,7 @@ const adventures = [
 
     },
     {
-        id: 5,
+        id: 5,  
         title: "Jungle Safari",
         thumbnail: "images/gallery/adventures/172/small.webp",
         videoLink: "",

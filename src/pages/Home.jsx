@@ -25,7 +25,6 @@ import BlogCard from "../components/BlogCard";
 import { MdDirections } from "react-icons/md";
 
 
-const loadGA = () => import('react-ga4').then(m => m.default);
 const MenuModal = lazy(() => import("../components/MenuModal"));
 const BannerCarousel = lazy(() => import("../components/BannerCarousel"));
 const combinedReviews = [];
@@ -290,8 +289,6 @@ function Home() {
 
   const handleCall = async () => {
     window.location.href = "tel:+919961008008";
-    const ReactGA = await loadGA();
-    ReactGA.event({ category: 'Lead', action: 'call_click', label: 'Phone Number Click' });
   };
 
 
