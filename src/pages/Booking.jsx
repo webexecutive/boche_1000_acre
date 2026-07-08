@@ -225,7 +225,7 @@ function Booking() {
                         Enquiry Form
                     </h2>
 
-                    <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                    <form  id="enquiry-form" onSubmit={handleSubmit(onSubmit)} noValidate>
                         <div className="border border-gray-400 p-6 rounded-2xl md:p-10 grid md:grid-cols-2 gap-10">
 
 

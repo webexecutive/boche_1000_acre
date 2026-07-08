@@ -432,9 +432,11 @@ function Home() {
                 +91 99610 08008
               </a>
 
-              <Button size="sm" className="mt-3 w-full" onClick={handleCall}>
-                Call Now
-              </Button>
+              <a href="tel:+919961008008" className="mt-3 block w-full">
+                <Button size="sm" className="w-full">
+                  Call Now
+                </Button>
+              </a>
             </div>
           </div>
         )}
