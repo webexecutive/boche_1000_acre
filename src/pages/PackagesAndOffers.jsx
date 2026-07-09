@@ -9,7 +9,7 @@ function PackagesAndOffers() {
                 title="Wayanad Resort Packages & Offers | boCHE 1000 Acre"
                 description="Explore resort packages at boCHE 1000 Acre in Wayanad. Discover stay packages, family getaways, couple experiences, day outings, adventure activities, and exclusive offers within a breathtaking 1000-acre tea plantation."
                 keywords="wayanad resort packages, resort offers wayanad, couple package wayanad, family package wayanad, day outing wayanad, stay packages in wayanad, adventure resort packages wayanad, tea plantation resort wayanad, best stay packages in wayanad"
-                url="https://www.boche1000acre.in/packages-and-offers"
+                url="https://www.boche1000acre.com/packages-and-offers"
             />
 
             <div className="min-h-screen bg-[#F7FDE9] font-['DM_Sans']">

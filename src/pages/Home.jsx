@@ -287,9 +287,7 @@ function Home() {
 
   }, []);
 
-  const handleCall = async () => {
-    window.location.href = "tel:+919961008008";
-  };
+ 
 
 
   const handleSubscribe = async (e) => {
@@ -332,7 +330,7 @@ function Home() {
         title="boCHE 1000 Acres|Resorts in Wayanad Kerala | Luxury Stay & Adventure |"
         description="boCHE 1000 Acres is one of the best resorts in Wayanad Kerala — a luxury experiential retreat set within a sprawling 1000-acre tea plantation. Stay in a British Bungalow, Bubble Dome, Mud House, or XPod. Enjoy zipline, giant swing, ATV rides, sky cycling, authentic Kerala cuisine, and breathtaking plantation views. Book your Wayanad resort stay today."
         keywords="resorts in wayanad, resorts in wayanad kerala, best resorts in wayanad, luxury resorts in wayanad, best resort in wayanad kerala, stay in wayanad, rooms at wayanad, wayanad resort booking, wayanad resort packages, adventure activities in wayanad, wayanad adventure activities, zipline wayanad, wayanad zipline, bubble dome wayanad, british bungalow wayanad, mud house wayanad, xpod wayanad, ATV ride wayanad, sky cycling wayanad, tea plantation resort wayanad"
-        url="https://www.boche1000acre.in"
+        url="https://www.boche1000acre.com"
       />
 
       {/* Hero Section with Video Background */}

@@ -15,7 +15,7 @@ export const aboutData = [
         "Learn about boCHE 1000 Acres — a spectacular 1000-acre luxury resort in Wayanad Kerala owned by Boby Chemmanur International Group. One of the best resorts in Wayanad offering adventure, nature, and authentic Kerala hospitality in Meppadi.",
       keywords:
         "about boCHE 1000 acres, resorts in wayanad kerala, best resorts in wayanad, luxury resorts in wayanad, tea plantation resort wayanad, best resort in wayanad kerala, stay in wayanad, wayanad resort packages, adventure activities in wayanad, resorts in wayanad with activities",
-      url: "https://www.boche1000acre.in/about",
+      url: "https://www.boche1000acre.com/about",
     },
 
     content: `
@@ -53,7 +53,7 @@ boCHE 1000 Acre represents innovation, scale, and ambition, setting a new benchm
         "Discover the Boby Chemmanur International Group — the conglomerate behind boCHE 1000 Acres, one of the best resorts in Wayanad Kerala. From jewellery to tea plantations, NBFC, resorts, and entertainment, the group spans 56 countries and 19 crore customers.",
       keywords:
         "boby chemmanur international group, boCHE group companies, resorts in wayanad kerala, best resorts in wayanad, boCHE 1000 acres wayanad, tea plantation resort wayanad, boby chemmanur resort, boCHE toddy pub, boCHE tours travels",
-      url: "https://www.boche1000acre.in/about",
+      url: "https://www.boche1000acre.com/about",
     },
 
     content: `
@@ -104,7 +104,7 @@ We are preparing to list our company on the stock exchange in the coming years, 
         "Learn about Dr. Boby Chemmanur — founder of the Boby Chemmanur International Group and the visionary behind boCHE 1000 Acres, one of the best resorts in Wayanad Kerala. Philanthropist, record-breaker, and business leader.",
       keywords:
         "boby chemmanur, dr boby chemmanur, boCHE founder, resorts in wayanad kerala, best resorts in wayanad, boCHE 1000 acres wayanad, boby chemmanur international, chemmanur jewellers, boCHE philanthropist",
-      url: "https://www.boche1000acre.in/about",
+      url: "https://www.boche1000acre.com/about",
     },
 
     content: `

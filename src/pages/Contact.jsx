@@ -39,7 +39,7 @@ function Contact() {
                 title="Contact boCHE 1000 Acres | Resort Booking & Enquiries in Wayanad"
                 description="Get in touch with boCHE 1000 Acres, a luxury nature resort in Wayanad. Contact us for bookings, stay enquiries, events, adventure activities, and resort information."
                 keywords="contact boche 1000 acres, wayanad resort contact, resort booking wayanad, luxury resort kerala contact, boche wayanad phone number, wayanad stay enquiry, resort near meppadi"
-                url="https://www.boche1000acre.in/contact"
+                url="https://www.boche1000acre.com/contact"
             />
 
             <section className="py-20 md:py-24">

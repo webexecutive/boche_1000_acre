@@ -5,7 +5,7 @@ const PrivacyPolicy = () => {
                 <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
 
                 <p className="mb-6">
-                    This Privacy Policy describes how <strong>boCHE 1000 Acre</strong> (owned and operated by Boby Chemmanur International Group, hereinafter referred to as "boche1000acre.in", "we", "us", or "our") collects, uses, protects, and handles the personal information of visitors ("Guests" or "Visitors") of our business website. 
+                    This Privacy Policy describes how <strong>boCHE 1000 Acre</strong> (owned and operated by Boby Chemmanur International Group, hereinafter referred to as "boche1000acre.com", "we", "us", or "our") collects, uses, protects, and handles the personal information of visitors ("Guests" or "Visitors") of our business website. 
                 </p>
 
                 <p className="mb-6">

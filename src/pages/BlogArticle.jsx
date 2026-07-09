@@ -20,7 +20,7 @@ export default function BlogArticle() {
                 title={blog.seo.title}
                 description={blog.seo.description}
                 keywords={blog.seo.keywords}
-                url={`https://boche1000acre.in/blog/${blog.slug}`}
+                url={`https://boche1000acre.com/blog/${blog.slug}`}
                 type="article"
             />
 
