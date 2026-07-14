@@ -22,7 +22,7 @@ const EventCard = ({ event }) => {
 
     return (
         <Link 
-            to={`/events/${event.id}`} 
+            to={`/events/${event.slug}`} 
             className="flex flex-col gap-3 w-full max-w-[320px] group cursor-pointer"
         >
             <div className="overflow-hidden rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">

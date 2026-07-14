@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useParams, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useParams, useLocation, Navigate } from 'react-router-dom';
+import { aboutData } from './data/aboutData.js';
 import ScrollToTop from './services/navServices/ScrollToTop.jsx';
 import MainLayout from "./layout/MainLayout.jsx";
 
@@ -8,6 +9,7 @@ import DetailsSkeleton from './components/skeletons/DetailsSkeleton.jsx';
 import GridSkeleton from './components/skeletons/GridSkeleton.jsx';
 import ContentSkeleton from './components/skeletons/ContentSkeleton.jsx';
 import NotFound from './components/NotFound.jsx';
+
 
 
 const Home = lazy(() => import('./pages/Home.jsx'));
@@ -124,12 +126,16 @@ function App() {
           />
 
           <Route
-            path="/about"
+            path="/about/:slug"
             element={
               <Suspense fallback={<ContentSkeleton />}>
                 <About />
               </Suspense>
             }
+          />
+          <Route
+            path="/about"
+            element={<Navigate to={`/about/${aboutData[0].slug}`} replace />}
           />
 
           <Route
@@ -160,7 +166,7 @@ function App() {
           />
 
           <Route
-            path="/events/:id"
+            path="/events/:slug"
             element={
               <Suspense fallback={<ContentSkeleton />}>
                 <EventDetails />

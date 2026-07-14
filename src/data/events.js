@@ -1,6 +1,7 @@
 const events = [
     {
         id: 1,
+        slug: "youthful-wayanad",
         title: "Youthful Wayanad",
         startDate: "2024-11-30",
         endDate: "2024-12-01",
@@ -10,7 +11,6 @@ const events = [
 
         isTicketed: true,
 
-    
         pricing: {
             type: "fixed",   
             amount: 500
@@ -25,11 +25,18 @@ const events = [
 
         thumbnailId: 38,
         bannerId: 39,
-        imageIds: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+        imageIds: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37],
+
+        seo: {
+            title: "Youthful Wayanad | 1000 Bikers World Record | boCHE 1000 Acres",
+            description: "Relive Youthful Wayanad — a world-record 80km biker rally of 1,000 riders from boCHE 1000 Acres to Gundlupet, held by Royal Enfield Himalayan Club, featuring off-road adventures, a motor show, jungle safari, and live music at Wayanad's premier resort.",
+            keywords: "youthful wayanad, boche bike rally, wayanad biker event, royal enfield himalayan club wayanad, world record bike ride wayanad, events in wayanad, boche 1000 acres events, wayanad tourism events, resorts in wayanad kerala",
+        },
     },
 
     {
         id: 2,
+        slug: "boche-carnival",
         title: "boCHE Carnival",
         startDate: "2024-12-23",
         endDate: "2025-01-04",
@@ -40,21 +47,27 @@ const events = [
         isTicketed: true,
 
         pricing: {
-            type: "starting",   // base price / onwards
+            type: "starting",
             amount: 500
         },
 
         bookingLink: "https://www.google.com",
 
-        description: `The Wayanad Tourism Carnival, held from December 23 to January 4 at boCHE 1000 Acres in Meppadi, was a spectacular celebration of culture and community. Organized by the Kerala Vyapari Vyavasayi Ekopana Samithi, Wayanad Tourism, and the boCHE 1000 Acres Labour Welfare Committee, the carnival featured a massive Shopping Festival alongside a daily lineup of cultural events and entertainment that drew visitors from across Kerala and neighboring states. The excitement reached its peak on New Year’s Eve, where a massive crowd gathered for a historic double celebration. The night was headlined by electrifying musical performances from renowned artists Vedan and Gowry Lakshmi, setting an energetic tone for the countdown. In a breathtaking finale, boCHE ceremonially ignited a 65-foot Papaanji effigy with an arrow—a record-breaking structure recognized by the Universal Forum as the largest of the year. This symbolic burning of the Papaanji, combined with the grand carnival atmosphere, made it a landmark event for Wayanad’s holiday season.`,
+        description: `The Wayanad Tourism Carnival, held from December 23 to January 4 at boCHE 1000 Acres in Meppadi, was a spectacular celebration of culture and community. Organized by the Kerala Vyapari Vyavasayi Ekopana Samithi, Wayanad Tourism, and the boCHE 1000 Acres Labour Welfare Committee, the carnival featured a massive Shopping Festival alongside a daily lineup of cultural events and entertainment that drew visitors from across Kerala and neighboring states. The excitement reached its peak on New Year's Eve, where a massive crowd gathered for a historic double celebration. The night was headlined by electrifying musical performances from renowned artists Vedan and Gowry Lakshmi, setting an energetic tone for the countdown. In a breathtaking finale, boCHE ceremonially ignited a 65-foot Papaanji effigy with an arrow—a record-breaking structure recognized by the Universal Forum as the largest of the year. This symbolic burning of the Papaanji, combined with the grand carnival atmosphere, made it a landmark event for Wayanad's holiday season.`,
 
         eventOver: true,
 
-        debrief: `The Wayanad Tourism Carnival, held from December 23 to January 4 at boCHE 1000 Acres in Meppadi, was a spectacular celebration of culture and community. Organized by the Kerala Vyapari Vyavasayi Ekopana Samithi, Wayanad Tourism, and the boCHE 1000 Acres Labour Welfare Committee, the carnival featured a massive Shopping Festival alongside a daily lineup of cultural events and entertainment that drew visitors from across Kerala and neighboring states. The excitement reached its peak on New Year’s Eve, where a massive crowd gathered for a historic double celebration. The night was headlined by electrifying musical performances from renowned artists Vedan and Gowry Lakshmi, setting an energetic tone for the countdown. In a breathtaking finale, boCHE ceremonially ignited a 65-foot Papaanji effigy with an arrow—a record-breaking structure recognized by the Universal Forum as the largest of the year. This symbolic burning of the Papaanji, combined with the grand carnival atmosphere, made it a landmark event for Wayanad’s holiday season.`,
+        debrief: `The Wayanad Tourism Carnival, held from December 23 to January 4 at boCHE 1000 Acres in Meppadi, was a spectacular celebration of culture and community. Organized by the Kerala Vyapari Vyavasayi Ekopana Samithi, Wayanad Tourism, and the boCHE 1000 Acres Labour Welfare Committee, the carnival featured a massive Shopping Festival alongside a daily lineup of cultural events and entertainment that drew visitors from across Kerala and neighboring states. The excitement reached its peak on New Year's Eve, where a massive crowd gathered for a historic double celebration. The night was headlined by electrifying musical performances from renowned artists Vedan and Gowry Lakshmi, setting an energetic tone for the countdown. In a breathtaking finale, boCHE ceremonially ignited a 65-foot Papaanji effigy with an arrow—a record-breaking structure recognized by the Universal Forum as the largest of the year. This symbolic burning of the Papaanji, combined with the grand carnival atmosphere, made it a landmark event for Wayanad's holiday season.`,
 
         thumbnailId: 41,
         bannerId: 40,
-        imageIds: []
+        imageIds: [],
+
+        seo: {
+            title: "boCHE Carnival | Wayanad Tourism Festival | boCHE 1000 Acres",
+            description: "Discover boCHE Carnival — Wayanad's grand New Year celebration with a Shopping Festival, live performances by Vedan and Gowry Lakshmi, and a record-breaking 65-foot Papaanji burning, held at boCHE 1000 Acres, Meppadi.",
+            keywords: "boche carnival, wayanad new year event, wayanad tourism carnival, papaanji burning wayanad, new year celebration wayanad, events in wayanad, boche 1000 acres events, wayanad shopping festival, resorts in wayanad kerala",
+        },
     }
 ];
 

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { aboutData } from '../data/aboutData.js';
 import ReactMarkdown from 'react-markdown';
 import LogoCarousel from "../components/LogoCarousel";
@@ -6,13 +7,27 @@ import group from "../data/groupData";
 import SEO from "../components/SEO";
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState(aboutData[0].id);
+  const { slug } = useParams();
+  const navigate = useNavigate();
+
+  // Fall back to the first tab if no slug, or an unknown slug, is in the URL
+  const activeContent =
+    aboutData.find(tab => tab.slug === slug) || aboutData[0];
+
+  useEffect(() => {
+    // If someone hits /about with no slug (or a bad one), normalize the URL
+    if (!slug || !aboutData.some(tab => tab.slug === slug)) {
+      navigate(`/about/${aboutData[0].slug}`, { replace: true });
+    }
+  }, [slug, navigate]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  }, [activeTab]);
+  }, [activeContent.slug]);
 
-  const activeContent = aboutData.find(tab => tab.id === activeTab);
+  const goToTab = (tabSlug) => {
+    navigate(`/about/${tabSlug}`);
+  };
 
   return (
     <>
@@ -22,7 +37,7 @@ const About = () => {
         keywords={activeContent.seo.keywords}
         url={activeContent.seo.url}
       />
-      
+
       <div className="min-h-[calc(100vh-80px)] max-w-7xl mx-auto bg-[#F7FFE6] flex flex-col md:flex-row w-full font-['DM_Sans']">
 
         {/* Desktop Sidebar Navigation */}
@@ -31,8 +46,8 @@ const About = () => {
             {aboutData.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`w-full text-left py-6 px-8 lg:px-12 text-sm lg:text-base transition-colors duration-200 ${activeTab === tab.id
+                onClick={() => goToTab(tab.slug)}
+                className={`w-full text-left py-6 px-8 lg:px-12 text-sm lg:text-base transition-colors duration-200 ${activeContent.slug === tab.slug
                   ? 'bg-[#F7FFE6] text-gray-900 font-medium'
                   : 'text-gray-700 hover:bg-black/5 font-normal hover:text-gray-900'
                   }`}
@@ -46,8 +61,6 @@ const About = () => {
         {/* Main Content Area */}
         <div className="flex-1 w-full bg-[#F7FFE6] min-h-screen pt-16">
           <div className="max-w-7xl mx-auto w-full">
-
-
 
             {/* Hero Section */}
             <div className="w-full aspect-video md:aspect-21/9 max-h-120 bg-[#C8D4AA]/30 overflow-hidden relative">
@@ -66,8 +79,8 @@ const About = () => {
                 {aboutData.map((tab) => (
                   <button
                     key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium transition-all snap-center ${activeTab === tab.id
+                    onClick={() => goToTab(tab.slug)}
+                    className={`whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium transition-all snap-center ${activeContent.slug === tab.slug
                       ? 'bg-white text-gray-900 shadow-sm'
                       : 'text-gray-700 hover:bg-black/5'
                       }`}
