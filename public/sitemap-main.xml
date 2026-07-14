@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- ============================ -->
   <!-- Homepage -->
-  <!-- ============================ -->
   <url>
     <loc>https://boche1000acre.com/</loc>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
 
-  <!-- ============================ -->
   <!-- Core Conversion Pages -->
-  <!-- ============================ -->
   <url>
     <loc>https://boche1000acre.com/stays</loc>
     <priority>0.9</priority>
@@ -37,9 +33,7 @@
     <changefreq>weekly</changefreq>
   </url>
 
-  <!-- ============================ -->
   <!-- Stay Detail Pages -->
-  <!-- ============================ -->
   <url>
     <loc>https://boche1000acre.com/stays/british-bungalow</loc>
     <priority>0.8</priority>
@@ -94,9 +88,7 @@
     <changefreq>monthly</changefreq>
   </url>
 
-  <!-- ============================ -->
   <!-- Blog Posts -->
-  <!-- ============================ -->
   <url>
     <loc>https://boche1000acre.com/blog/art-of-tea-tasting</loc>
     <priority>0.8</priority>
@@ -133,9 +125,7 @@
     <changefreq>monthly</changefreq>
   </url>
 
-  <!-- ============================ -->
   <!-- Events -->
-  <!-- ============================ -->
   <url>
     <loc>https://boche1000acre.com/events</loc>
     <priority>0.8</priority>
@@ -154,9 +144,7 @@
     <changefreq>monthly</changefreq>
   </url>
 
-  <!-- ============================ -->
   <!-- Gallery & Booking -->
-  <!-- ============================ -->
   <url>
     <loc>https://boche1000acre.com/gallery</loc>
     <priority>0.7</priority>
@@ -169,9 +157,7 @@
     <changefreq>monthly</changefreq>
   </url>
 
-  <!-- ============================ -->
   <!-- About Pages -->
-  <!-- ============================ -->
   <url>
     <loc>https://boche1000acre.com/about/boche1000acre</loc>
     <priority>0.6</priority>
@@ -190,9 +176,7 @@
     <changefreq>monthly</changefreq>
   </url>
 
-  <!-- ============================ -->
   <!-- Secondary Pages -->
-  <!-- ============================ -->
   <url>
     <loc>https://boche1000acre.com/contact</loc>
     <priority>0.6</priority>
@@ -205,9 +189,7 @@
     <changefreq>monthly</changefreq>
   </url>
 
-  <!-- ============================ -->
   <!-- Legal -->
-  <!-- ============================ -->
   <url>
     <loc>https://boche1000acre.com/privacy</loc>
     <priority>0.3</priority>
