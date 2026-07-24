@@ -87,7 +87,7 @@ function Gallery() {
                 title="Gallery | boCHE 1000 Acres Resort in Wayanad Kerala"
                 description="Browse the gallery of boCHE 1000 Acres — one of the best resorts in Wayanad Kerala. Photos of unique stays, adventure activities, tea plantation estate, events, and authentic Kerala cuisine at our Wayanad resort."
                 keywords="boCHE 1000 acres gallery, resorts in wayanad kerala, best resorts in wayanad, luxury resorts in wayanad, tea plantation resort wayanad, adventure activities in wayanad, bubble dome wayanad, stay in wayanad, wayanad resort photos"
-                url="https://www.boche1000acre.com/gallery"
+                
             />
 
             <div className="max-w-7xl mx-auto px-4 md:px-8 pt-20 lg:pt-24 pb-20 space-y-8">

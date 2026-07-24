@@ -26,7 +26,7 @@ const Stays = () => {
                 title="Rooms & Unique Stays in Wayanad | boCHE 1000 Acre"
                 description="Discover unique stays in Wayanad at boCHE 1000 Acre."
                 keywords="rooms in wayanad, unique stays in wayanad"
-                url="https://www.boche1000acre.com/stays"
+                
             />
 
             <div className="min-h-screen bg-[#F7FDE9]">

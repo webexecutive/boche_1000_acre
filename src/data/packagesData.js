@@ -23,8 +23,13 @@ export const packages = [
         minGuests: 30,
         posterImg: "/images/packages/dayout-package.webp",
         posterBlurImg: "/images/packages/dayout-package-blur.webp",
-        cost:1999,
+        cost: 1999,
 
+        seo: {
+            title: "A Day Out Package | boCHE 1000 Acre Wayanad",
+            description: "Enjoy a full day at boCHE 1000 Acre — jungle safari, waterfalls, adventure park, and Kerala meals included. Starting at ₹1,999/- for groups of 30+.",
+            keywords: "day outing wayanad, day trip package wayanad, boche 1000 acre day out, group outing wayanad",
+        },
 
         includes: [
             "guestActivities",

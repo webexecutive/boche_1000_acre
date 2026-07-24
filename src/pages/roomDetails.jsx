@@ -198,7 +198,7 @@ const RoomDetails = () => {
                     title={room.seo.title}
                     description={room.seo.description}
                     keywords={room.seo.keywords}
-                    url={`https://www.boche1000acre.com/stays/${room.id}`}
+                    url={`https://boche1000acre.com/stays/${room.id}`}
                 />
             )}
 

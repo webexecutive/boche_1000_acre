@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /booking
-
 Sitemap: https://www.boche1000acre.com/sitemap.xml

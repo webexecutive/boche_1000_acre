@@ -16,7 +16,7 @@ const Events = () => {
                 title="Events in Wayanad | boCHE 1000 Acres"
                 description="Discover upcoming events, cultural gatherings, celebrations, and memorable experiences hosted at boCHE 1000 Acres in Wayanad."
                 keywords="events in wayanad, wayanad events, resort events wayanad, cultural events kerala, boche events"
-                url="https://www.boche1000acre.com/events"
+                
             />
 
             <div className="min-h-screen bg-[#F7FDE9] ">

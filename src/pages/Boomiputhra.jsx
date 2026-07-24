@@ -13,7 +13,7 @@ const Boomiputhra = () => {
                 title="Bhoomiputhra Tea & Coffee Plantations | 600 Acre Estate in Wayanad"
                 description="Discover Bhoomiputhra's 600-acre plantation estate in Wayanad, Kerala. Premium tea, coffee, spices, sustainable farming practices, and advanced tea manufacturing facilities."
                 keywords="Wayanad tea plantation, tea estate Wayanad, coffee plantation Wayanad, tea factory Wayanad, Kerala tea plantation, premium tea Kerala, spice plantation Wayanad, sustainable agriculture Kerala, Bhoomiputhra"
-                url="https://www.boche1000acre.com/boomiputhra"
+                
             />
 
             <div className="min-h-screen text-gray-800 font-sans">

@@ -155,7 +155,7 @@ const EventDetails = () => {
                     title={event.seo.title}
                     description={event.seo.description}
                     keywords={event.seo.keywords}
-                    url={`https://www.boche1000acre.com/events/${event.slug}`}
+                    url={`https://boche1000acre.com/events/${event.slug}`}
                 />
             )}
             <div className="min-h-screen bg-[#fafaf8] pt-20">

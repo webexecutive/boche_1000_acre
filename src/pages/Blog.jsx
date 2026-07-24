@@ -24,7 +24,7 @@ const Blog = () => {
                 title="Blog | Stories from the Heart of Nature | boCHE 1000 Acres"
                 description="Explore travel stories, nature guides, Kerala cuisine, adventure tips, and sustainability insights from boCHE 1000 Acres — a luxury resort in Wayanad, Kerala."
                 keywords="wayanad blog, things to do in wayanad, wayanad travel guide, kerala nature stories, boCHE 1000 acres blog, tea plantation wayanad, wayanad adventure, kerala cuisine"
-                url="https://www.boche1000acre.com/blog"
+                
             />
 
             <div className="min-h-screen  bg-[#F7FDE9] ">
