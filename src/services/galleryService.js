@@ -24,6 +24,7 @@ export function getImageById(id) {
 
   return {
     ...img,
+    title: img.title || img.alt,
     variants: {
       small: `${base}/small.webp`,
       medium: `${base}/medium.webp`,

@@ -23,7 +23,8 @@ export default function Footer() {
                     <div className="flex h-full md:col-span-4 xl:col-span-1 items-center justify-center">
                         <img
                             src={Logo}
-                            alt="Boche 1000 Acre"
+                            alt="Boche 1000 Acre Logo"
+                            title="boCHE 1000 Acre Logo"
                             className="h-7 w-auto"
                         />
                     </div>
@@ -108,6 +109,7 @@ export default function Footer() {
                         <img
                             src={GroupLogo}
                             alt="Boche Badge"
+                            title="boCHE Group Badge"
                             className="max-w-36  object-contain"
                         />
                     </div>

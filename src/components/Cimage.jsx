@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function CImage({
   src,
   alt = "",
+  title,
   blur,
   fallback = "/images/image-not-found-small.webp",
   className = "",
@@ -23,6 +24,8 @@ export default function CImage({
     "absolute inset-0 w-full h-full object-cover";
   const resolvedImgClass = imgClassName ?? defaultImgClass;
 
+  const resolvedTitle = title || alt || "";
+
   return (
     <div className={`relative overflow-hidden ${className}`}>
 
@@ -40,6 +43,7 @@ export default function CImage({
       <img
         src={imgSrc}
         alt={alt}
+        title={resolvedTitle}
         loading="lazy"
         onLoad={handleLoad}
         onError={handleError}

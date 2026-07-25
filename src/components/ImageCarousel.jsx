@@ -4,12 +4,13 @@ import { Thumb } from './ImageCarouselThumbsButton'
 import '../assets/styles/image-carousel.css'
 import CImage from "./Cimage";
 
-const SlideImage = ({ src, blur, alt }) => {
+const SlideImage = ({ src, blur, alt, title }) => {
     return (
         <CImage
             src={src}
             blur={blur}
             alt={alt}
+            title={title || alt}
             className="w-full aspect-3/2 rounded-2xl"
             imgClassName="absolute inset-0 w-full h-full object-contain rounded-2xl"
         />
@@ -57,9 +58,11 @@ const ImageCarousel = (props) => {
                     {safeImages.map((img, index) => {
                         // CORRECTED: read URLs from img.variants
                         const mainSrc = img.variants?.large || img.variants?.medium || img.variants?.small || "/images/image-not-found-small.webp";
+                        const altText = img.alt || `Slide ${index + 1}`;
+                        const titleText = img.title || img.alt || `Slide ${index + 1}`;
                         return (
                             <div className="embla__slide" key={index}>
-                                <SlideImage src={mainSrc} blur={img.variants?.blur} alt={`Slide ${index + 1}`} />
+                                <SlideImage src={mainSrc} blur={img.variants?.blur} alt={altText} title={titleText} />
                             </div>
                         )
                     })}
@@ -72,6 +75,8 @@ const ImageCarousel = (props) => {
                         {safeImages.map((img, index) => {
                             // CORRECTED: read URLs from img.variants
                             const thumbSrc = img.variants?.small || img.variants?.medium || "/images/image-not-found-small.webp";
+                            const altText = img.alt || `Thumbnail ${index + 1}`;
+                            const titleText = img.title || img.alt || `Thumbnail ${index + 1}`;
                             return (
                                 <Thumb
                                     key={index}
@@ -80,6 +85,8 @@ const ImageCarousel = (props) => {
                                     index={index}
                                     imgSrc={thumbSrc}
                                     blur={img.variants?.blur}
+                                    alt={altText}
+                                    title={titleText}
                                 />
                             )
                         })}

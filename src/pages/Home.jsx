@@ -287,7 +287,7 @@ function Home() {
 
   }, []);
 
- 
+
 
 
   const handleSubscribe = async (e) => {
@@ -327,10 +327,9 @@ function Home() {
   return (
     <>
       <SEO
-        title="boCHE 1000 Acres|Resorts in Wayanad Kerala | Luxury Stay & Adventure |"
-        description="boCHE 1000 Acres is one of the best resorts in Wayanad Kerala — a luxury experiential retreat set within a sprawling 1000-acre tea plantation. Stay in a British Bungalow, Bubble Dome, Mud House, or XPod. Enjoy zipline, giant swing, ATV rides, sky cycling, authentic Kerala cuisine, and breathtaking plantation views. Book your Wayanad resort stay today."
-        keywords="resorts in wayanad, resorts in wayanad kerala, best resorts in wayanad, luxury resorts in wayanad, best resort in wayanad kerala, stay in wayanad, rooms at wayanad, wayanad resort booking, wayanad resort packages, adventure activities in wayanad, wayanad adventure activities, zipline wayanad, wayanad zipline, bubble dome wayanad, british bungalow wayanad, mud house wayanad, xpod wayanad, ATV ride wayanad, sky cycling wayanad, tea plantation resort wayanad"
-        
+        title="boCHE 1000 Acres | Luxury Resort in Wayanad, Kerala"
+        description="boCHE 1000 Acres — a luxury resort in Wayanad Kerala offering unique stays, adventure activities, and authentic Kerala cuisine on a 1000-acre tea plantation."
+        keywords="resorts in wayanad, luxury resorts in wayanad, wayanad resort booking, bubble dome wayanad, adventure activities in wayanad, tea plantation resort wayanad"
       />
 
       {/* Hero Section with Video Background */}
@@ -342,7 +341,8 @@ function Home() {
           <CImage
             src={slowConnBannerImage?.variants?.large}
             blur={slowConnBannerImage?.variants?.blur}
-            alt=""
+            alt={slowConnBannerImage?.alt || "boCHE 1000 Acre Wayanad Resort"}
+            title={slowConnBannerImage?.title || slowConnBannerImage?.alt || "boCHE 1000 Acre Wayanad Resort"}
             className="absolute inset-0 h-full w-full"
             imgClassName="absolute inset-0 h-full w-full object-cover object-center"
           />
@@ -368,7 +368,8 @@ function Home() {
                   <CImage
                     src={posterImage?.variants?.large}
                     blur={posterImage?.variants?.blur}
-                    alt=""
+                    alt={posterImage?.alt || "boCHE 1000 Acre Hero Banner"}
+                    title={posterImage?.title || posterImage?.alt || "boCHE 1000 Acre Hero Banner"}
                     className="absolute inset-0 h-full w-full"
                     imgClassName="absolute inset-0 h-full w-full object-cover object-center"
                   />
@@ -415,6 +416,7 @@ function Home() {
                 <img
                   src="/logos/hello-boche.webp"
                   alt="Hello boCHE"
+                  title="Hello boCHE"
                   className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto rounded-lg"
                 />
               </div>
@@ -473,6 +475,7 @@ function Home() {
               src="/images/gallery/stays/174/large.webp"
               blur="/images/gallery/stays/174/blur.webp"
               alt="boCHE 1000 Acres resort in Wayanad Kerala"
+              title="boCHE 1000 Acres Resort in Wayanad"
               className="absolute inset-0 w-full h-full"
               imgClassName="absolute inset-0 w-full h-full object-cover object-center"
             />
@@ -487,9 +490,9 @@ function Home() {
             <p className="text-[10px] uppercase tracking-[0.25em] text-white/50 mb-5">
               Wayanad, Kerala
             </p>
-            <h1 className="text-4xl leading-tight text-white mb-4">
+            <h2 className="text-4xl leading-tight text-white mb-4">
               A Resort in Wayanad Like No Other
-            </h1>
+            </h2>
             <div className="w-8 h-px bg-white/40 mb-4" />
             <p className="text-sm text-white/70 leading-relaxed text-justify">
               Nestled in the heart of a sprawling tea plantation, boCHE 1000 Acres is a one-of-a-kind resort in Wayanad Kerala — where thrilling adventures, breathtaking plantation views, and the warmth of Kerala come together in one unforgettable stay.
@@ -501,13 +504,15 @@ function Home() {
         <div className="hidden md:block absolute inset-0">
           <img
             src="/images/gallery/stays/78/blur.webp"
-            alt=""
+            alt="boCHE 1000 Acres resort background blur"
+            title="boCHE 1000 Acres Resort Background"
             className="absolute inset-0 w-full h-full object-cover blur-sm scale-105"
             aria-hidden="true"
           />
           <img
             src="/images/gallery/stays/78/large.webp"
             alt="boCHE 1000 Acres resort in Wayanad Kerala"
+            title="boCHE 1000 Acres Resort in Wayanad"
             loading="lazy"
             className="absolute inset-0 w-full h-full object-cover object-center"
             onLoad={(e) => { e.target.previousSibling.style.opacity = 0; }}
@@ -567,7 +572,7 @@ function Home() {
                     image={cover?.variants?.small ?? "/images/image-not-found-small.webp"}
                     blur={cover?.variants?.blur ?? ""}
                     alt={cover?.alt ?? room.name}
-                    title={room.name}
+                    title={cover?.title ?? room.name}
                     tagline={room.aboutStay.tagline}
                     description={room.aboutStay.description}
                     id={room.id}
@@ -588,29 +593,29 @@ function Home() {
         <div className="max-w-7xl relative mx-auto px-4">
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
             <div className="order-2 md:order-1 grid grid-cols-2 gap-2" style={{ gridTemplateRows: "repeat(3, 160px)" }}>
-              <CImage className="row-span-2 rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(74)?.variants?.large} blur={getImageById(74)?.variants?.blur} alt="Toddy 2" />
-              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(154)?.variants?.small} blur={getImageById(154)?.variants?.blur} alt="Toddy 1" />
-              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(155)?.variants?.small} blur={getImageById(155)?.variants?.blur} alt="Toddy 3" />
-              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(156)?.variants?.small} blur={getImageById(156)?.variants?.blur} alt="Toddy 4" />
-              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(77)?.variants?.small} blur={getImageById(77)?.variants?.blur} alt="Toddy 5" />
+              <CImage className="row-span-2 rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(74)?.variants?.large} blur={getImageById(74)?.variants?.blur} alt={getImageById(74)?.alt || "Resto Toddy Pub Dining Hall"} title={getImageById(74)?.title || "Resto Toddy Pub Dining Hall"} />
+              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(154)?.variants?.small} blur={getImageById(154)?.variants?.blur} alt={getImageById(154)?.alt || "Outdoor Table Service at Toddy Pub"} title={getImageById(154)?.title || "Outdoor Table Service at Toddy Pub"} />
+              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(155)?.variants?.small} blur={getImageById(155)?.variants?.blur} alt={getImageById(155)?.alt || "Kerala Tapioca and Fish Curry Platter"} title={getImageById(155)?.title || "Kerala Tapioca and Fish Curry Platter"} />
+              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(156)?.variants?.small} blur={getImageById(156)?.variants?.blur} alt={getImageById(156)?.alt || "Authentic Kerala Outdoor Feast"} title={getImageById(156)?.title || "Authentic Kerala Outdoor Feast"} />
+              <CImage className="rounded-xl bg-[#c8b89a] w-full h-full" src={getImageById(77)?.variants?.small} blur={getImageById(77)?.variants?.blur} alt={getImageById(77)?.alt || "Spicy Seafood Dishes at Toddy Pub"} title={getImageById(77)?.title || "Spicy Seafood Dishes at Toddy Pub"} />
             </div>
             <div className="order-1 md:order-2 flex flex-col items-center text-center gap-6">
               <div>
                 <h2 className="text-black">
                   boCHE Toddy Pub
                 </h2>
-                <p className="text-gray-500 max-w-lg">
+                <p className="text-[#4a5c35] max-w-lg">
                   Savor authentic Kerala toddy shop flavors and traditional cuisine at our Wayanad resort, where great food, refreshing toddy, and the serene climate of Wayanad come together for a memorable dining experience.
                 </p>
               </div>
               <div className="flex items-center justify-center gap-6 flex-wrap">
-                <img src={toddyLogo} className="h-40 object-contain" />
-                <img src={bhojanamLogo} className="h-28 object-contain" />
+                <img src={toddyLogo} alt="boCHE Toddy Pub Logo" title="boCHE Toddy Pub Logo" className="h-40 object-contain" />
+                <img src={bhojanamLogo} alt="boCHE Bhojanam Logo" title="boCHE Bhojanam Logo" className="h-28 object-contain" />
               </div>
               <Button size="sm" onClick={() => setShowMenu(true)}>Explore the Menu</Button>
             </div>
           </div>
-          <img src={bocheWithFood} className="hidden xl:block absolute -bottom-20 -right-16 h-96" />
+          <img src={bocheWithFood} alt="boCHE Toddy Pub Dining Experience" title="boCHE Toddy Pub Dining Experience" className="hidden xl:block absolute -bottom-20 -right-16 h-96" />
           <p className="absolute -bottom-20 left-2.5 bg-white text-sm text-gray-500">*Drinking alcohol is injurious to health.</p>
         </div>
       </section >
@@ -645,6 +650,7 @@ function Home() {
               src="/images/gallery/events/170/large.webp"
               blur="/images/gallery/events/170/blur.webp"
               alt="Campfire evenings at boCHE 1000 Acre"
+              title="Campfire Evenings at boCHE 1000 Acre"
               className="w-full h-full"
               imgClassName="absolute inset-0 w-full h-full object-cover"
             />
@@ -669,6 +675,7 @@ function Home() {
             src="/images/gallery/events/168/large.webp"
             blur="/images/gallery/events/168/blur.webp"
             alt="Campfire evenings at boCHE 1000 Acre"
+            title="Campfire Evenings at boCHE 1000 Acre"
             className="w-full h-full"
             imgClassName="absolute inset-0 w-full h-full object-cover"
           />
@@ -774,7 +781,8 @@ function Home() {
           <CImage
             src={estateBgImage?.variants?.large}
             blur={estateBgImage?.variants?.blur}
-            alt=""
+            alt={estateBgImage?.alt || "Bhoomiputhra Tea Estate Background"}
+            title={estateBgImage?.title || estateBgImage?.alt || "Bhoomiputhra Tea Estate Background"}
             className="w-full h-full"
             imgClassName="absolute inset-0 w-full h-full object-cover object-center"
           />
@@ -788,6 +796,7 @@ function Home() {
                 className="lg:w-md object-contain"
                 src={bhoomiputraLogo}
                 alt="Bhoomiputhra Plantation Wayanad"
+                title="Bhoomiputhra Plantation Logo"
               />
               <p className="leading-relaxed text-justify">
                 Nestled in the mist-covered hills of Wayanad, Kerala, Bhoomiputhra Plantation spans over 600 acres of thriving tea, coffee, cardamom, vanilla, and pepper estates. As the heart of boCHE 1000 Acres, our tea plantation resort in Wayanad offers guests an immersive connection to nature, where scenic landscapes, sustainable farming practices, and authentic plantation experiences come together. Our modern tea factory processes up to 12,000 kg of green leaf daily, blending traditional craftsmanship with advanced technology to create premium teas renowned for their rich aroma and exceptional quality.
@@ -798,6 +807,7 @@ function Home() {
                 src={getImageById(166)?.variants?.large}
                 blur={getImageById(166)?.variants?.blur}
                 alt="Bhoomiputhra Tea Plantation and Tea Factory in Wayanad Kerala"
+                title={getImageById(166)?.title || "Bhoomiputhra Tea Plantation and Tea Factory"}
                 className="w-full aspect-4/3 rounded-xl"
                 imgClassName="absolute inset-0 w-full h-full object-cover rounded-xl"
               />

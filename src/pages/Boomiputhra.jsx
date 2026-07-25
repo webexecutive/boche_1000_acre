@@ -10,7 +10,7 @@ const Boomiputhra = () => {
     return (
         <>
             <SEO
-                title="Bhoomiputhra Tea & Coffee Plantations | 600 Acre Estate in Wayanad"
+                title="Bhoomiputhra Tea & Coffee Plantations in Wayanad"
                 description="Discover Bhoomiputhra's 600-acre plantation estate in Wayanad, Kerala. Premium tea, coffee, spices, sustainable farming practices, and advanced tea manufacturing facilities."
                 keywords="Wayanad tea plantation, tea estate Wayanad, coffee plantation Wayanad, tea factory Wayanad, Kerala tea plantation, premium tea Kerala, spice plantation Wayanad, sustainable agriculture Kerala, Bhoomiputhra"
                 
@@ -38,8 +38,8 @@ const Boomiputhra = () => {
                     />
                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-6 text-center z-10 pointer-events-none">
                         <div className="max-w-5xl opacity-0 animate-fade-in-up delay-200">
-                            <img src={bhoomiputhraLogo} alt="Bhoomiputhra Logo" className="mx-auto w-auto max-h-56 md:max-h-80 mb-6 drop-shadow-xl object-contain" />
-                            <p className="text-xl md:text-2xl text-white/95  max-w-3xl mx-auto drop-shadow-md tracking-wide">
+                            <img src={bhoomiputhraLogo} alt="Bhoomiputhra Logo" title="Bhoomiputhra Logo" className="mx-auto w-auto max-h-56 md:max-h-80 mb-6 drop-shadow-xl object-contain" />
+                            <p className="text-xl md:text-2xl text-white/95  pb-5 mx-auto drop-shadow-md tracking-wide">
                                 A 600-Acre Legacy of Premium Plantations & Excellence in South India
                             </p>
                         </div>
@@ -50,9 +50,9 @@ const Boomiputhra = () => {
                 <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
                     <div className="text-center max-w-4xl mx-auto mb-20">
                         <h2 className="text-sm font-bold text-[#3a5a1c] tracking-[0.3em] uppercase mb-6">Our Plantation</h2>
-                        <h3 className="text-4xl md:text-5xl lg:text-6xl text-gray-900 leading-tight">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl text-gray-900 leading-tight">
                             Nestled in the Pristine Highlands of South India
-                        </h3>
+                        </h1>
                         <p className="mt-8 text-xl text-gray-600 leading-relaxed ">
                             Our plantations are located at an average altitude of 3,280 – 3,850 feet above sea level, offering ideal agro-climatic conditions for premium-quality crops.
                         </p>

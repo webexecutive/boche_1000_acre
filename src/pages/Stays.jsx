@@ -24,7 +24,7 @@ const Stays = () => {
         <>
             <SEO
                 title="Rooms & Unique Stays in Wayanad | boCHE 1000 Acre"
-                description="Discover unique stays in Wayanad at boCHE 1000 Acre."
+                description="Discover unique stays in Wayanad at boCHE 1000 Acre — Bubble Domes, British Bungalows, Mud Houses, and more, set within a 1000-acre tea plantation resort."
                 keywords="rooms in wayanad, unique stays in wayanad"
                 
             />

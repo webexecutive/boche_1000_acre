@@ -103,7 +103,7 @@ const RoomDetails = () => {
     if (!room) {
         return (
             <div className="min-h-[50vh] flex flex-col items-center justify-center p-8">
-                <h1 className="text-3xl font-bold mb-4">Room not found</h1>
+                <h2 className="text-3xl font-bold mb-4">Room not found</h2>
                 <p className="text-gray-500 mb-6">We couldn't find the room you were looking for.</p>
                 <Link to="/"><Button variant="primary">Back to Home</Button></Link>
             </div>
@@ -127,69 +127,81 @@ const RoomDetails = () => {
 
     const gstRate = room.basicInfo.pricePerNight <= 7500 ? 5 : 18;
 
-    const renderRoomDetailsCard = () => (
-        <div className="bg-[#f2faeb] rounded-4xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
-            <h3 className="mb-6 text-3xl md:text-4xl font-serif text-gray-900">{room.name}</h3>
-            <div className="flex flex-wrap items-center gap-8 mb-6 text-gray-800 font-medium">
-                <div className="flex items-center gap-3">
-                    <MdOutlineMeetingRoom className="w-5 h-5 text-gray-700" />
-                    <span>{room.basicInfo.rooms} Rooms</span>
+    // headingLevel controls whether this instance renders as <h1> or <h2>.
+    // The card is rendered twice — once for mobile, once for desktop — because
+    // the two layouts differ (stacked vs sticky sidebar). Only ONE instance
+    // should ever use <h1>, so the page has exactly one true top-level heading
+    // in the DOM, even though both copies exist simultaneously (CSS just hides
+    // one based on screen width — both are still present for crawlers).
+    const renderRoomDetailsCard = ({ headingLevel = 'h2' } = {}) => {
+        const Heading = headingLevel;
+
+        return (
+            <div className="bg-[#f2faeb] rounded-4xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
+                <Heading className="mb-6 text-3xl md:text-4xl font-serif text-gray-900">
+                    {room.name}
+                </Heading>
+                <div className="flex flex-wrap items-center gap-8 mb-6 text-gray-800 font-medium">
+                    <div className="flex items-center gap-3">
+                        <MdOutlineMeetingRoom className="w-5 h-5 text-gray-700" />
+                        <span>{room.basicInfo.rooms} Rooms</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <MdOutlinePeople className="w-5 h-5 text-gray-700" />
+                        <span>{room.basicInfo.maxGuests} Guests</span>
+                    </div>
                 </div>
-                <div className="flex items-center gap-3">
-                    <MdOutlinePeople className="w-5 h-5 text-gray-700" />
-                    <span>{room.basicInfo.maxGuests} Guests</span>
+                <div className="grid grid-cols-1 sm:grid-cols-[1.1fr_1fr] gap-6 mb-6 text-sm sm:text-base text-gray-800">
+                    <div className="space-y-3">
+                        {room.inclusions.map((inclusion, idx) => (
+                            <div key={idx} className="flex items-start gap-3">
+                                <MdOutlineCheck className="w-5 h-5 mt-0.5 text-green-600 shrink-0" />
+                                <span>{inclusion}</span>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                            <MdOutlineLogin className="w-5 h-5 text-gray-700 shrink-0" />
+                            <span>Check in : {room.checkTime.checkIn}</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                            <MdOutlineLogout className="w-5 h-5 text-gray-700 shrink-0" />
+                            <span>Check Out : {room.checkTime.checkOut}</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-[1.1fr_1fr] gap-6 mb-6 text-sm sm:text-base text-gray-800">
-                <div className="space-y-3">
-                    {room.inclusions.map((inclusion, idx) => (
+                <div className="space-y-3 mb-8 text-sm sm:text-base text-gray-800">
+                    {room.cancellationPolicy && room.cancellationPolicy.map((policy, idx) => (
                         <div key={idx} className="flex items-start gap-3">
-                            <MdOutlineCheck className="w-5 h-5 mt-0.5 text-green-600 shrink-0" />
-                            <span>{inclusion}</span>
+                            <MdOutlineCurrencyRupee className="w-5 h-5 mt-0.5 text-gray-700 shrink-0" />
+                            <span>{policy.label}</span>
                         </div>
                     ))}
                 </div>
-                <div className="space-y-3">
-                    <div className="flex items-center gap-3">
-                        <MdOutlineLogin className="w-5 h-5 text-gray-700 shrink-0" />
-                        <span>Check in : {room.checkTime.checkIn}</span>
+                <div className="flex flex-col gap-6 -mx-2">
+                    <div className="flex items-baseline flex-wrap gap-2 px-2">
+                        <span className="text-3xl sm:text-4xl font-semibold text-gray-900">
+                            ₹ {room.basicInfo.pricePerNight.toLocaleString()}
+                        </span>
+
+                        <span className="text-lg text-gray-600 font-medium">
+                            + {gstRate}% GST
+                        </span>
+
+                        <span className="text-gray-800 font-medium">
+                            per night
+                        </span>
                     </div>
-                    <div className="flex items-center gap-3">
-                        <MdOutlineLogout className="w-5 h-5 text-gray-700 shrink-0" />
-                        <span>Check Out : {room.checkTime.checkOut}</span>
+                    <div className="flex justify-center px-2">
+                        <Link to="/booking">
+                            <Button variant="primary">Book Now</Button>
+                        </Link>
                     </div>
                 </div>
             </div>
-            <div className="space-y-3 mb-8 text-sm sm:text-base text-gray-800">
-                {room.cancellationPolicy && room.cancellationPolicy.map((policy, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                        <MdOutlineCurrencyRupee className="w-5 h-5 mt-0.5 text-gray-700 shrink-0" />
-                        <span>{policy.label}</span>
-                    </div>
-                ))}
-            </div>
-            <div className="flex flex-col gap-6 -mx-2">
-                 <div className="flex items-baseline flex-wrap gap-2 px-2">
-        <span className="text-3xl sm:text-4xl font-semibold text-gray-900">
-            ₹ {room.basicInfo.pricePerNight.toLocaleString()}
-        </span>
-
-        <span className="text-lg text-gray-600 font-medium">
-            + {gstRate}% GST
-        </span>
-
-        <span className="text-gray-800 font-medium">
-            per night
-        </span>
-    </div>
-                <div className="flex justify-center px-2">
-                    <Link to="/booking">
-                        <Button variant="primary">Book Now</Button>
-                    </Link>
-                </div>
-            </div>
-        </div>
-    );
+        );
+    };
 
     return (
         <>
@@ -217,8 +229,9 @@ const RoomDetails = () => {
                             )}
                         </div>
 
+                        {/* Mobile card carries the page's single <h1>, per mobile-first indexing */}
                         <div className="block lg:hidden w-full">
-                            {renderRoomDetailsCard()}
+                            {renderRoomDetailsCard({ headingLevel: 'h1' })}
                         </div>
 
                         <div className="bg-[#f2faeb] rounded-4xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e5efdb]">
@@ -262,6 +275,7 @@ const RoomDetails = () => {
 
                     </div>
 
+                    {/* Desktop card duplicates the same content for the sticky sidebar layout — must NOT repeat the h1 */}
                     <div className="hidden lg:block top-24 sticky flex-1 w-full">
                         {renderRoomDetailsCard()}
                     </div>

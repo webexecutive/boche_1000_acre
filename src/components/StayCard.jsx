@@ -19,7 +19,8 @@ export default function StayCard({
             <CImage
                 src={image}
                 blur={blur}
-                alt={alt}
+                alt={alt || title}
+                title={title || alt}
                 className="w-full h-52 shrink-0 object-cover"
             />
             

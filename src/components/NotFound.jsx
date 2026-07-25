@@ -11,6 +11,7 @@ const NotFound = () => {
       <img
         src="/images/404.webp"
         alt="Page Not Found"
+        title="Page Not Found"
         className="w-72 md:w-96 mb-8 drop-shadow-xl"
       />
 

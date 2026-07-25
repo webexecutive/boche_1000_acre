@@ -23,7 +23,8 @@ export default function RoomCard({
             <CImage
                 src={image}
                 blur={blur}
-               alt={alt}
+                alt={alt || title}
+                title={title || alt}
                 className="w-full h-56 shrink-0"
             />
 

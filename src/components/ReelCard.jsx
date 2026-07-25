@@ -72,6 +72,7 @@ export default function ReelCard({ title, thumbnail, videoLink, onPlay, isPrevie
                     src={thumbnail}
                     blur={getBlurSrc(thumbnail)}
                     alt={title}
+                    title={title}
                     className="w-full h-full"
                     imgClassName="absolute inset-0 w-full h-full object-cover"
                 />

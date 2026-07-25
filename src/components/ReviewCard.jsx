@@ -16,6 +16,7 @@ export default function ReviewCard({ review, onPlay }) {
         <img
           src={thumbnail}
           alt={review.title}
+          title={review.title}
           className="w-full h-full object-cover absolute inset-0"
         />
         <button

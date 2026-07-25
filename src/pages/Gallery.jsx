@@ -145,6 +145,7 @@ function Gallery() {
                                     <img
                                         src={item.variants.small}
                                         alt={item.alt}
+                                        title={item.title || item.alt}
                                         loading="lazy"
                                         onLoad={(e) => {
                                             const img = e.currentTarget;

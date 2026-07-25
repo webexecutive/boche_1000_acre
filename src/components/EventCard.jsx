@@ -29,7 +29,8 @@ const EventCard = ({ event }) => {
                 <CImage
                     src={imageSrc}
                     blur={imageBlur}
-                    alt={event?.title || 'Event image'}
+                    alt={imageItem?.alt || event?.title || 'Event image'}
+                    title={event?.title || imageItem?.title || 'Event image'}
                     className="w-full aspect-4/5 transition-transform duration-500 group-hover:scale-105"
                 />
             </div>

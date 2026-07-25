@@ -147,6 +147,7 @@ const LogoCarousel = ({ items = [], options }) => {
                 <img
                   src={item.logo}
                   alt={item.name}
+                  title={item.title || item.name}
                   className="groupLogoCarousel__slide__img"
                 />
               </a>

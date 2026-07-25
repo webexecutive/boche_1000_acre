@@ -7,7 +7,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Button from "@/components/Button";
 import { isValidPhoneNumber } from "libphonenumber-js";
-import axios from "axios";
+import axios from "axios";import SEO from "@/components/SEO";
 
 
 
@@ -124,540 +124,551 @@ function Booking() {
     );
 
     return (
-        <section className="py-24 px-4">
 
-            {showModal && (
-                <div
-                    className="fixed inset-0 z-50 flex items-center justify-center"
-                    style={{ backgroundColor: "rgba(0,0,0,0.45)" }}
-                >
+        <>
+            <SEO
+                title="Book Your Stay | boCHE 1000 Acres Wayanad"
+                description="Submit your enquiry to book a stay at boCHE 1000 Acres, Wayanad. Fill in your details and our team will get back to you shortly to confirm your reservation."
+                keywords="wayanad resort booking, boche 1000 acre booking, book resort wayanad, wayanad enquiry form"
+            />
+            <section className="py-24 px-4">
+
+                {showModal && (
                     <div
-                        className="bg-white rounded-2xl shadow-2xl px-10 py-10 flex flex-col items-center gap-5 max-w-sm w-full mx-4"
-                        style={{ animation: "fadeScaleIn 0.22s ease" }}
+                        className="fixed inset-0 z-50 flex items-center justify-center"
+                        style={{ backgroundColor: "rgba(0,0,0,0.45)" }}
                     >
-                        {/* Checkmark icon */}
                         <div
-                            className="flex items-center justify-center rounded-full"
-                            style={{
-                                width: 64,
-                                height: 64,
-                                background: "#dfe8cf",
-                            }}
+                            className="bg-white rounded-2xl shadow-2xl px-10 py-10 flex flex-col items-center gap-5 max-w-sm w-full mx-4"
+                            style={{ animation: "fadeScaleIn 0.22s ease" }}
                         >
-                            <svg
-                                width="32"
-                                height="32"
-                                viewBox="0 0 32 32"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
+                            {/* Checkmark icon */}
+                            <div
+                                className="flex items-center justify-center rounded-full"
+                                style={{
+                                    width: 64,
+                                    height: 64,
+                                    background: "#dfe8cf",
+                                }}
                             >
-                                <path
-                                    d="M6 16.5L12.5 23L26 9"
-                                    stroke="#4a7c59"
-                                    strokeWidth="2.8"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
+                                <svg
+                                    width="32"
+                                    height="32"
+                                    viewBox="0 0 32 32"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M6 16.5L12.5 23L26 9"
+                                        stroke="#4a7c59"
+                                        strokeWidth="2.8"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </svg>
+                            </div>
+
+                            <h3 className="text-xl font-semibold text-gray-800 text-center">
+                                Enquiry Submitted!
+                            </h3>
+                            <p className="text-gray-500 text-sm text-center leading-relaxed">
+                                Our executives will contact you shortly.
+                            </p>
+
+                            <a
+                                href="/"
+                                className="btn-primary"
+                                style={{ textDecoration: "none" }}
+                            >
+                                Go Back to Home
+                            </a>
                         </div>
 
-                        <h3 className="text-xl font-semibold text-gray-800 text-center">
-                            Enquiry Submitted!
-                        </h3>
-                        <p className="text-gray-500 text-sm text-center leading-relaxed">
-                            Our executives will contact you shortly.
-                        </p>
-
-                        <a
-                            href="/"
-                            className="btn-primary"
-                            style={{ textDecoration: "none" }}
-                        >
-                            Go Back to Home
-                        </a>
-                    </div>
-
-                    {/* Fade + scale keyframe injected inline */}
-                    <style>{`
+                        {/* Fade + scale keyframe injected inline */}
+                        <style>{`
                         @keyframes fadeScaleIn {
                             from { opacity: 0; transform: scale(0.92); }
                             to   { opacity: 1; transform: scale(1); }
                         }
                     `}</style>
-                </div>
-            )}
-
-            <div className="max-w-6xl mx-auto space-y-10">
-
-                {/* Banner */}
-                <div className="flex justify-center">
-                    <div className="bg-[#dfe8cf] rounded-2xl shadow-md py-6 px-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-7 w-full max-w-md sm:max-w-xl">
-
-
-                        <img
-                            src="/logos/hello-boche.webp"
-                            alt="Hello boCHE"
-                            className="h-24 sm:h-28 w-auto rounded-lg shrink-0"
-                        />
-
-                        <div className=" sm:flex flex-col items-center sm:items-start gap-2 text-center sm:text-left">
-                            <div>
-                                <p className="text-[11px] sm:text-xs uppercase tracking-wide text-[#5a6b4a] font-medium">
-                                    For booking call
-                                </p>
-                                <p className="text-base sm:text-lg font-medium text-[#1a1a1a]">
-                                    +91 9961008008
-                                </p>
-                            </div>
-                        </div>
-
-                        <a href="tel:+919961008008">
-                            <Button size="sm">
-                                Call Now
-                            </Button>
-                        </a>
                     </div>
-                </div>
+                )}
 
-                {/* Form Card */}
-                <div>
-                    <h2 className="text-center text-2xl md:text-3xl mb-8">
-                        Enquiry Form
-                    </h2>
+                <div className="max-w-6xl mx-auto space-y-10">
 
-                    <form  id="enquiry-form" onSubmit={handleSubmit(onSubmit)} noValidate>
-                        <div className="border border-gray-400 p-6 rounded-2xl md:p-10 grid md:grid-cols-2 gap-10">
+                    {/* Banner */}
+                    <div className="flex justify-center">
+                        <div className="bg-[#dfe8cf] rounded-2xl shadow-md py-6 px-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-7 w-full max-w-md sm:max-w-xl">
 
 
-                            <div className="space-y-5">
+                            <img
+                                src="/logos/hello-boche.webp"
+                                alt="Hello boCHE"
+                                title="Hello boCHE"
+                                className="h-24 sm:h-28 w-auto rounded-lg shrink-0"
+                            />
 
-                                {/* First / Second Name */}
-                                <div className="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="text-sm">First Name</label>
-                                        <Input
-                                            {...register("firstName", { required: "Required" })}
-                                            placeholder="John"
-                                            bg="white"
-                                            borderRadius="7px"
-                                        />
-                                        {errors.firstName && (
-                                            <p className="text-red-500 text-xs mt-1">
-                                                {errors.firstName.message}
-                                            </p>
-                                        )}
-                                    </div>
-                                    <div>
-                                        <label className="text-sm">Second Name</label>
-                                        <Input {...register("secondName")} placeholder="Doe" bg="white" borderRadius="7px" />
-                                    </div>
-                                </div>
-
-                                {/* Address Line 1 */}
+                            <div className=" sm:flex flex-col items-center sm:items-start gap-2 text-center sm:text-left">
                                 <div>
-                                    <label className="text-sm">Address Line 1</label>
-                                    <Input
-                                        {...register("address1", { required: "Required" })}
-                                        placeholder="123 Main Street"
-                                        bg="white"
-                                        borderRadius="7px"
-                                    />
-                                    {errors.address1 && (
-                                        <p className="text-red-500 text-xs mt-1">
-                                            {errors.address1.message}
-                                        </p>
-                                    )}
-                                </div>
-
-                                {/* Address Line 2 */}
-                                <div>
-                                    <label className="text-sm">Address Line 2</label>
-                                    <Input
-                                        {...register("address2")}
-                                        placeholder="Apt, Suite (optional)"
-                                        bg="white"
-                                        borderRadius="7px"
-                                    />
-                                </div>
-
-                                {/* City / State */}
-                                <div className="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="text-sm">City</label>
-                                        <Input
-                                            {...register("city", { required: "Required" })}
-                                            placeholder="Mumbai"
-                                            bg="white"
-                                            borderRadius="7px"
-                                        />
-                                        {errors.city && (
-                                            <p className="text-red-500 text-xs mt-1">
-                                                {errors.city.message}
-                                            </p>
-                                        )}
-                                    </div>
-                                    <div>
-                                        <label className="text-sm">State</label>
-                                        <Input
-                                            {...register("state", { required: "Required" })}
-                                            placeholder="Maharashtra"
-                                            bg="white"
-                                            borderRadius="7px"
-                                        />
-                                        {errors.state && (
-                                            <p className="text-red-500 text-xs mt-1">
-                                                {errors.state.message}
-                                            </p>
-                                        )}
-                                    </div>
-                                </div>
-
-                                {/* Pin Code */}
-                                <div>
-                                    <label className="text-sm">Pin Code</label>
-                                    <Input
-                                        {...register("pincode", {
-                                            required: "Required",
-                                            pattern: {
-                                                value: /^\d{6}$/,
-                                                message: "Must be 6 digits",
-                                            },
-                                        })}
-                                        placeholder="400001"
-                                        maxLength={6}
-                                        bg="white"
-                                        borderRadius="7px"
-                                    />
-                                    {errors.pincode && (
-                                        <p className="text-red-500 text-xs mt-1">
-                                            {errors.pincode.message}
-                                        </p>
-                                    )}
+                                    <p className="text-[11px] sm:text-xs uppercase tracking-wide text-[#5a6b4a] font-medium">
+                                        For booking call
+                                    </p>
+                                    <p className="text-base sm:text-lg font-medium text-[#1a1a1a]">
+                                        +91 9961008008
+                                    </p>
                                 </div>
                             </div>
 
+                            <a href="tel:+919961008008">
+                                <Button size="sm">
+                                    Call Now
+                                </Button>
+                            </a>
+                        </div>
+                    </div>
 
-                            <div className="space-y-5 relative">
-                                <div className="hidden md:block absolute -left-5 top-0 h-full w-px bg-gray-400" />
+                    {/* Form Card */}
+                    <div>
+                        <h1 className="text-center text-2xl md:text-3xl mb-8">
+                            Enquiry Form
+                        </h1>
 
-                                {/* Email */}
-                                <div>
-                                    <label className="text-sm">Email Address</label>
-                                    <Input
-                                        type="email"
-                                        {...register("email", {
-                                            required: "Email is required",
-                                            pattern: {
-                                                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                                message: "Invalid email address",
-                                            },
-                                        })}
-                                        placeholder="john@example.com"
-                                        bg="white"
-                                        borderRadius="7px"
-                                    />
-                                    {errors.email && (
-                                        <p className="text-red-500 text-xs mt-1">
-                                            {errors.email.message}
-                                        </p>
-                                    )}
-                                </div>
+                        <form id="enquiry-form" onSubmit={handleSubmit(onSubmit)} noValidate>
+                            <div className="border border-gray-400 p-6 rounded-2xl md:p-10 grid md:grid-cols-2 gap-10">
 
 
-                                <div>
-                                    <label className="text-sm">Phone Number</label>
-                                    <Controller
-                                        name="phone"
-                                        control={control}
-                                        rules={{
-                                            required: "Phone number is required",
-                                            validate: (value) =>
-                                                isValidPhoneNumber("+" + value) || "Invalid phone number",
-                                        }}
-                                        render={({ field: { onChange, value } }) => (
-                                            <PhoneInput
-                                                country="in"
-                                                value={value}
-                                                onChange={onChange}
-                                                inputStyle={{
-                                                    width: "100%",
-                                                    height: "40px",
-                                                    fontSize: "0.93rem",
-                                                    borderWidth: "1px",
-                                                    borderStyle: "solid",
-                                                    borderColor: errors.phone ? "#c0392b" : "#e4e4e7",
-                                                    borderRadius: "7px",
-                                                    backgroundColor: "white",
-                                                    paddingLeft: "48px",
-                                                }}
-                                                buttonStyle={{
-                                                    borderWidth: "1px",
-                                                    borderStyle: "solid",
-                                                    borderColor: errors.phone ? "#c0392b" : "#e4e4e7",
-                                                    borderRadius: "7px 0 0 7px",
-                                                    backgroundColor: "white",
-                                                }}
-                                                enableSearch
-                                                placeholder="Enter phone number"
+                                <div className="space-y-5">
+
+                                    {/* First / Second Name */}
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="text-sm">First Name</label>
+                                            <Input
+                                                {...register("firstName", { required: "Required" })}
+                                                placeholder="John"
+                                                bg="white"
+                                                borderRadius="7px"
                                             />
-                                        )}
-                                    />
-                                    {errors.phone && (
-                                        <p className="text-red-500 text-xs mt-1">
-                                            {errors.phone.message}
-                                        </p>
-                                    )}
-                                </div>
+                                            {errors.firstName && (
+                                                <p className="text-red-500 text-xs mt-1">
+                                                    {errors.firstName.message}
+                                                </p>
+                                            )}
+                                        </div>
+                                        <div>
+                                            <label className="text-sm">Second Name</label>
+                                            <Input {...register("secondName")} placeholder="Doe" bg="white" borderRadius="7px" />
+                                        </div>
+                                    </div>
 
-
-                                <div className="grid grid-cols-2 gap-4">
-                                    <NumberStepper
-                                        name="adults"
-                                        label="Number Of Adults"
-                                        min={1}
-                                        max={20}
-                                    />
-                                    <NumberStepper
-                                        name="children"
-                                        label="Number Of Children"
-                                        min={0}
-                                        max={10}
-                                    />
-                                </div>
-
-
-                                <div className="grid grid-cols-2 gap-4">
-                                    {/* Check-In */}
+                                    {/* Address Line 1 */}
                                     <div>
-                                        <label className="text-sm block mb-1">Check In</label>
-                                        <Controller
-                                            name="checkin"
-                                            control={control}
-                                            rules={{ required: "Check-in date is required" }}
-                                            render={({ field: { onChange, value } }) => {
-                                                const parsedVal = value ? safeParse(value) : null;
-                                                const pickerValue = parsedVal ? [parsedVal] : [];
-                                                return (
-                                                    <DatePicker.Root
-                                                        selectionMode="single"
-                                                        locale="en-GB"
-                                                        min={parseDate(today)}
-                                                        value={pickerValue}
-                                                        onValueChange={({ value }) => {
-                                                            const newCheckin = value?.[0] ? value[0].toString() : "";
-                                                            onChange(newCheckin);
-                                                            trigger("checkout");
-                                                        }}
-                                                    >
-                                                        <DatePicker.Control
-                                                            style={{
-                                                                display: "flex",
-                                                                alignItems: "center",
-                                                                gap: "8px",
-                                                                border: errors.checkin
-                                                                    ? "1px solid #c0392b"
-                                                                    : "1px solid #e4e4e7",
-                                                                borderRadius: "7px",
-                                                                padding: "4px 8px",
-                                                                background: "white",
-                                                                height: "40px",
-                                                            }}
-                                                        >
-                                                            <DatePicker.Input
-                                                                index={0}
-                                                                style={{
-                                                                    border: "none",
-                                                                    background: "transparent",
-                                                                    outline: "none",
-                                                                    fontSize: "0.9rem",
-                                                                    width: "100%",
-                                                                }}
-                                                                placeholder="Select date"
-                                                            />
-                                                            <DatePicker.IndicatorGroup
-                                                                style={{ marginLeft: "auto" }}
-                                                            >
-                                                                <DatePicker.Trigger
-                                                                    style={{
-                                                                        background: "transparent",
-                                                                        border: "none",
-                                                                        cursor: "pointer",
-                                                                        color: "#6b7a5e",
-                                                                        display: "flex",
-                                                                        alignItems: "center",
-                                                                    }}
-                                                                >
-                                                                    <LuCalendar size={18} />
-                                                                </DatePicker.Trigger>
-                                                            </DatePicker.IndicatorGroup>
-                                                        </DatePicker.Control>
-                                                        <Portal>
-                                                            <DatePicker.Positioner>
-                                                                <DatePicker.Content
-                                                                    style={{
-                                                                        background: "#fff",
-                                                                        borderRadius: "10px",
-                                                                        boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
-                                                                        zIndex: 1000,
-                                                                    }}
-                                                                >
-                                                                    <DatePicker.View view="day">
-                                                                        <DatePicker.Header />
-                                                                        <DatePicker.DayTable />
-                                                                    </DatePicker.View>
-                                                                    <DatePicker.View view="month">
-                                                                        <DatePicker.Header />
-                                                                        <DatePicker.MonthTable />
-                                                                    </DatePicker.View>
-                                                                    <DatePicker.View view="year">
-                                                                        <DatePicker.Header />
-                                                                        <DatePicker.YearTable />
-                                                                    </DatePicker.View>
-                                                                </DatePicker.Content>
-                                                            </DatePicker.Positioner>
-                                                        </Portal>
-                                                    </DatePicker.Root>
-                                                );
-                                            }}
+                                        <label className="text-sm">Address Line 1</label>
+                                        <Input
+                                            {...register("address1", { required: "Required" })}
+                                            placeholder="123 Main Street"
+                                            bg="white"
+                                            borderRadius="7px"
                                         />
-                                        {errors.checkin && (
+                                        {errors.address1 && (
                                             <p className="text-red-500 text-xs mt-1">
-                                                {errors.checkin.message}
+                                                {errors.address1.message}
                                             </p>
                                         )}
                                     </div>
 
-                                    {/* Check-Out */}
+                                    {/* Address Line 2 */}
                                     <div>
-                                        <label className="text-sm block mb-1">Check Out</label>
+                                        <label className="text-sm">Address Line 2</label>
+                                        <Input
+                                            {...register("address2")}
+                                            placeholder="Apt, Suite (optional)"
+                                            bg="white"
+                                            borderRadius="7px"
+                                        />
+                                    </div>
+
+                                    {/* City / State */}
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="text-sm">City</label>
+                                            <Input
+                                                {...register("city", { required: "Required" })}
+                                                placeholder="Mumbai"
+                                                bg="white"
+                                                borderRadius="7px"
+                                            />
+                                            {errors.city && (
+                                                <p className="text-red-500 text-xs mt-1">
+                                                    {errors.city.message}
+                                                </p>
+                                            )}
+                                        </div>
+                                        <div>
+                                            <label className="text-sm">State</label>
+                                            <Input
+                                                {...register("state", { required: "Required" })}
+                                                placeholder="Maharashtra"
+                                                bg="white"
+                                                borderRadius="7px"
+                                            />
+                                            {errors.state && (
+                                                <p className="text-red-500 text-xs mt-1">
+                                                    {errors.state.message}
+                                                </p>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* Pin Code */}
+                                    <div>
+                                        <label className="text-sm">Pin Code</label>
+                                        <Input
+                                            {...register("pincode", {
+                                                required: "Required",
+                                                pattern: {
+                                                    value: /^\d{6}$/,
+                                                    message: "Must be 6 digits",
+                                                },
+                                            })}
+                                            placeholder="400001"
+                                            maxLength={6}
+                                            bg="white"
+                                            borderRadius="7px"
+                                        />
+                                        {errors.pincode && (
+                                            <p className="text-red-500 text-xs mt-1">
+                                                {errors.pincode.message}
+                                            </p>
+                                        )}
+                                    </div>
+                                </div>
+
+
+                                <div className="space-y-5 relative">
+                                    <div className="hidden md:block absolute -left-5 top-0 h-full w-px bg-gray-400" />
+
+                                    {/* Email */}
+                                    <div>
+                                        <label className="text-sm">Email Address</label>
+                                        <Input
+                                            type="email"
+                                            {...register("email", {
+                                                required: "Email is required",
+                                                pattern: {
+                                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                                    message: "Invalid email address",
+                                                },
+                                            })}
+                                            placeholder="john@example.com"
+                                            bg="white"
+                                            borderRadius="7px"
+                                        />
+                                        {errors.email && (
+                                            <p className="text-red-500 text-xs mt-1">
+                                                {errors.email.message}
+                                            </p>
+                                        )}
+                                    </div>
+
+
+                                    <div>
+                                        <label className="text-sm">Phone Number</label>
                                         <Controller
-                                            name="checkout"
+                                            name="phone"
                                             control={control}
                                             rules={{
-                                                required: "Check-out date is required",
-                                                validate: (value) => {
-                                                    const checkinVal = watch("checkin");
-                                                    if (checkinVal && value && value <= checkinVal) {
-                                                        return "Check-out must be after check-in";
-                                                    }
-                                                    return true;
-                                                }
+                                                required: "Phone number is required",
+                                                validate: (value) =>
+                                                    isValidPhoneNumber("+" + value) || "Invalid phone number",
                                             }}
-                                            render={({ field: { onChange, value } }) => {
-                                                const parsedVal = value ? safeParse(value) : null;
-                                                const pickerValue = parsedVal ? [parsedVal] : [];
-                                                const checkinVal = watch("checkin");
-                                                const minSelectableDate = checkinVal ? safeParse(checkinVal) : parseDate(today);
-
-                                                return (
-                                                    <DatePicker.Root
-                                                        selectionMode="single"
-                                                        locale="en-GB"
-                                                        min={minSelectableDate || parseDate(today)}
-                                                        value={pickerValue}
-                                                        onValueChange={({ value }) => {
-                                                            onChange(value?.[0] ? value[0].toString() : "");
-                                                        }}
-                                                    >
-                                                        <DatePicker.Control
-                                                            style={{
-                                                                display: "flex",
-                                                                alignItems: "center",
-                                                                gap: "8px",
-                                                                border: errors.checkout
-                                                                    ? "1px solid #c0392b"
-                                                                    : "1px solid #e4e4e7",
-                                                                borderRadius: "7px",
-                                                                padding: "4px 8px",
-                                                                background: "white",
-                                                                height: "40px",
-                                                            }}
-                                                        >
-                                                            <DatePicker.Input
-                                                                index={0}
-                                                                style={{
-                                                                    border: "none",
-                                                                    background: "transparent",
-                                                                    outline: "none",
-                                                                    fontSize: "0.9rem",
-                                                                    width: "100%",
-                                                                }}
-                                                                placeholder="Select date"
-                                                            />
-                                                            <DatePicker.IndicatorGroup
-                                                                style={{ marginLeft: "auto" }}
-                                                            >
-                                                                <DatePicker.Trigger
-                                                                    style={{
-                                                                        background: "transparent",
-                                                                        border: "none",
-                                                                        cursor: "pointer",
-                                                                        color: "#6b7a5e",
-                                                                        display: "flex",
-                                                                        alignItems: "center",
-                                                                    }}
-                                                                >
-                                                                    <LuCalendar size={18} />
-                                                                </DatePicker.Trigger>
-                                                            </DatePicker.IndicatorGroup>
-                                                        </DatePicker.Control>
-                                                        <Portal>
-                                                            <DatePicker.Positioner>
-                                                                <DatePicker.Content
-                                                                    style={{
-                                                                        background: "#fff",
-                                                                        borderRadius: "10px",
-                                                                        boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
-                                                                        zIndex: 1000,
-                                                                    }}
-                                                                >
-                                                                    <DatePicker.View view="day">
-                                                                        <DatePicker.Header />
-                                                                        <DatePicker.DayTable />
-                                                                    </DatePicker.View>
-                                                                    <DatePicker.View view="month">
-                                                                        <DatePicker.Header />
-                                                                        <DatePicker.MonthTable />
-                                                                    </DatePicker.View>
-                                                                    <DatePicker.View view="year">
-                                                                        <DatePicker.Header />
-                                                                        <DatePicker.YearTable />
-                                                                    </DatePicker.View>
-                                                                </DatePicker.Content>
-                                                            </DatePicker.Positioner>
-                                                        </Portal>
-                                                    </DatePicker.Root>
-                                                );
-                                            }}
+                                            render={({ field: { onChange, value } }) => (
+                                                <PhoneInput
+                                                    country="in"
+                                                    value={value}
+                                                    onChange={onChange}
+                                                    inputStyle={{
+                                                        width: "100%",
+                                                        height: "40px",
+                                                        fontSize: "0.93rem",
+                                                        borderWidth: "1px",
+                                                        borderStyle: "solid",
+                                                        borderColor: errors.phone ? "#c0392b" : "#e4e4e7",
+                                                        borderRadius: "7px",
+                                                        backgroundColor: "white",
+                                                        paddingLeft: "48px",
+                                                    }}
+                                                    buttonStyle={{
+                                                        borderWidth: "1px",
+                                                        borderStyle: "solid",
+                                                        borderColor: errors.phone ? "#c0392b" : "#e4e4e7",
+                                                        borderRadius: "7px 0 0 7px",
+                                                        backgroundColor: "white",
+                                                    }}
+                                                    enableSearch
+                                                    placeholder="Enter phone number"
+                                                />
+                                            )}
                                         />
-                                        {errors.checkout && (
+                                        {errors.phone && (
                                             <p className="text-red-500 text-xs mt-1">
-                                                {errors.checkout.message}
+                                                {errors.phone.message}
                                             </p>
                                         )}
                                     </div>
+
+
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <NumberStepper
+                                            name="adults"
+                                            label="Number Of Adults"
+                                            min={1}
+                                            max={20}
+                                        />
+                                        <NumberStepper
+                                            name="children"
+                                            label="Number Of Children"
+                                            min={0}
+                                            max={10}
+                                        />
+                                    </div>
+
+
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {/* Check-In */}
+                                        <div>
+                                            <label className="text-sm block mb-1">Check In</label>
+                                            <Controller
+                                                name="checkin"
+                                                control={control}
+                                                rules={{ required: "Check-in date is required" }}
+                                                render={({ field: { onChange, value } }) => {
+                                                    const parsedVal = value ? safeParse(value) : null;
+                                                    const pickerValue = parsedVal ? [parsedVal] : [];
+                                                    return (
+                                                        <DatePicker.Root
+                                                            selectionMode="single"
+                                                            locale="en-GB"
+                                                            min={parseDate(today)}
+                                                            value={pickerValue}
+                                                            onValueChange={({ value }) => {
+                                                                const newCheckin = value?.[0] ? value[0].toString() : "";
+                                                                onChange(newCheckin);
+                                                                trigger("checkout");
+                                                            }}
+                                                        >
+                                                            <DatePicker.Control
+                                                                style={{
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    gap: "8px",
+                                                                    border: errors.checkin
+                                                                        ? "1px solid #c0392b"
+                                                                        : "1px solid #e4e4e7",
+                                                                    borderRadius: "7px",
+                                                                    padding: "4px 8px",
+                                                                    background: "white",
+                                                                    height: "40px",
+                                                                }}
+                                                            >
+                                                                <DatePicker.Input
+                                                                    index={0}
+                                                                    style={{
+                                                                        border: "none",
+                                                                        background: "transparent",
+                                                                        outline: "none",
+                                                                        fontSize: "0.9rem",
+                                                                        width: "100%",
+                                                                    }}
+                                                                    placeholder="Select date"
+                                                                />
+                                                                <DatePicker.IndicatorGroup
+                                                                    style={{ marginLeft: "auto" }}
+                                                                >
+                                                                    <DatePicker.Trigger
+                                                                        style={{
+                                                                            background: "transparent",
+                                                                            border: "none",
+                                                                            cursor: "pointer",
+                                                                            color: "#6b7a5e",
+                                                                            display: "flex",
+                                                                            alignItems: "center",
+                                                                        }}
+                                                                    >
+                                                                        <LuCalendar size={18} />
+                                                                    </DatePicker.Trigger>
+                                                                </DatePicker.IndicatorGroup>
+                                                            </DatePicker.Control>
+                                                            <Portal>
+                                                                <DatePicker.Positioner>
+                                                                    <DatePicker.Content
+                                                                        style={{
+                                                                            background: "#fff",
+                                                                            borderRadius: "10px",
+                                                                            boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
+                                                                            zIndex: 1000,
+                                                                        }}
+                                                                    >
+                                                                        <DatePicker.View view="day">
+                                                                            <DatePicker.Header />
+                                                                            <DatePicker.DayTable />
+                                                                        </DatePicker.View>
+                                                                        <DatePicker.View view="month">
+                                                                            <DatePicker.Header />
+                                                                            <DatePicker.MonthTable />
+                                                                        </DatePicker.View>
+                                                                        <DatePicker.View view="year">
+                                                                            <DatePicker.Header />
+                                                                            <DatePicker.YearTable />
+                                                                        </DatePicker.View>
+                                                                    </DatePicker.Content>
+                                                                </DatePicker.Positioner>
+                                                            </Portal>
+                                                        </DatePicker.Root>
+                                                    );
+                                                }}
+                                            />
+                                            {errors.checkin && (
+                                                <p className="text-red-500 text-xs mt-1">
+                                                    {errors.checkin.message}
+                                                </p>
+                                            )}
+                                        </div>
+
+                                        {/* Check-Out */}
+                                        <div>
+                                            <label className="text-sm block mb-1">Check Out</label>
+                                            <Controller
+                                                name="checkout"
+                                                control={control}
+                                                rules={{
+                                                    required: "Check-out date is required",
+                                                    validate: (value) => {
+                                                        const checkinVal = watch("checkin");
+                                                        if (checkinVal && value && value <= checkinVal) {
+                                                            return "Check-out must be after check-in";
+                                                        }
+                                                        return true;
+                                                    }
+                                                }}
+                                                render={({ field: { onChange, value } }) => {
+                                                    const parsedVal = value ? safeParse(value) : null;
+                                                    const pickerValue = parsedVal ? [parsedVal] : [];
+                                                    const checkinVal = watch("checkin");
+                                                    const minSelectableDate = checkinVal ? safeParse(checkinVal) : parseDate(today);
+
+                                                    return (
+                                                        <DatePicker.Root
+                                                            selectionMode="single"
+                                                            locale="en-GB"
+                                                            min={minSelectableDate || parseDate(today)}
+                                                            value={pickerValue}
+                                                            onValueChange={({ value }) => {
+                                                                onChange(value?.[0] ? value[0].toString() : "");
+                                                            }}
+                                                        >
+                                                            <DatePicker.Control
+                                                                style={{
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    gap: "8px",
+                                                                    border: errors.checkout
+                                                                        ? "1px solid #c0392b"
+                                                                        : "1px solid #e4e4e7",
+                                                                    borderRadius: "7px",
+                                                                    padding: "4px 8px",
+                                                                    background: "white",
+                                                                    height: "40px",
+                                                                }}
+                                                            >
+                                                                <DatePicker.Input
+                                                                    index={0}
+                                                                    style={{
+                                                                        border: "none",
+                                                                        background: "transparent",
+                                                                        outline: "none",
+                                                                        fontSize: "0.9rem",
+                                                                        width: "100%",
+                                                                    }}
+                                                                    placeholder="Select date"
+                                                                />
+                                                                <DatePicker.IndicatorGroup
+                                                                    style={{ marginLeft: "auto" }}
+                                                                >
+                                                                    <DatePicker.Trigger
+                                                                        style={{
+                                                                            background: "transparent",
+                                                                            border: "none",
+                                                                            cursor: "pointer",
+                                                                            color: "#6b7a5e",
+                                                                            display: "flex",
+                                                                            alignItems: "center",
+                                                                        }}
+                                                                    >
+                                                                        <LuCalendar size={18} />
+                                                                    </DatePicker.Trigger>
+                                                                </DatePicker.IndicatorGroup>
+                                                            </DatePicker.Control>
+                                                            <Portal>
+                                                                <DatePicker.Positioner>
+                                                                    <DatePicker.Content
+                                                                        style={{
+                                                                            background: "#fff",
+                                                                            borderRadius: "10px",
+                                                                            boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
+                                                                            zIndex: 1000,
+                                                                        }}
+                                                                    >
+                                                                        <DatePicker.View view="day">
+                                                                            <DatePicker.Header />
+                                                                            <DatePicker.DayTable />
+                                                                        </DatePicker.View>
+                                                                        <DatePicker.View view="month">
+                                                                            <DatePicker.Header />
+                                                                            <DatePicker.MonthTable />
+                                                                        </DatePicker.View>
+                                                                        <DatePicker.View view="year">
+                                                                            <DatePicker.Header />
+                                                                            <DatePicker.YearTable />
+                                                                        </DatePicker.View>
+                                                                    </DatePicker.Content>
+                                                                </DatePicker.Positioner>
+                                                            </Portal>
+                                                        </DatePicker.Root>
+                                                    );
+                                                }}
+                                            />
+                                            {errors.checkout && (
+                                                <p className="text-red-500 text-xs mt-1">
+                                                    {errors.checkout.message}
+                                                </p>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        {/* Submit */}
-                        <div className="flex justify-end items-center gap-4 mt-6">
-                            {submitError && (
-                                <p className="text-red-600 text-sm font-medium">{submitError}</p>
-                            )}
-                            <Button
-                                type="submit"
-                                loading={isSubmitting}
-                                loadingText="Submitting..."
-                                disabled={isSubmitting}
-                            >
-                                Submit Enquiry
-                            </Button>
-                        </div>
-                    </form>
+                            {/* Submit */}
+                            <div className="flex justify-end items-center gap-4 mt-6">
+                                {submitError && (
+                                    <p className="text-red-600 text-sm font-medium">{submitError}</p>
+                                )}
+                                <Button
+                                    type="submit"
+                                    loading={isSubmitting}
+                                    loadingText="Submitting..."
+                                    disabled={isSubmitting}
+                                >
+                                    Submit Enquiry
+                                </Button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+        </>
+
     );
 }
 

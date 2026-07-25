@@ -20,6 +20,8 @@ const BlogCard = ({
   const blur = cover?.variants?.blur ?? "";
   const alt = cover?.alt ?? title;
 
+  const imageTitle = cover?.title || title;
+
   if (featured) {
     return (
       <Link
@@ -30,6 +32,7 @@ const BlogCard = ({
           src={image}
           blur={blur}
           alt={alt}
+          title={imageTitle}
           className="w-full h-full transition-transform duration-700 group-hover:scale-105"
         />
 
@@ -83,6 +86,7 @@ const BlogCard = ({
         src={image}
         blur={blur}
         alt={alt}
+        title={imageTitle}
         className="w-full h-52 shrink-0"
       />
 

@@ -28,7 +28,7 @@ function Adventures() {
     return (
         <>
             <SEO
-                title="Adventure Activities in Wayanad | Zipline, ATV & Sky Cycling | boCHE 1000 Acre"
+                title="Adventure Activities in Wayanad | Zipline | boCHE 1000 Acre"
                 description="Experience thrilling adventure activities in Wayanad at boCHE 1000 Acre. Enjoy Zipline, Giant Swing, ATV Rides, Sky Cycling, and exciting outdoor experiences amidst a breathtaking 1000-acre tea plantation."
                 keywords="adventure activities in wayanad, zipline wayanad, ATV ride wayanad, sky cycling wayanad, giant swing wayanad, adventure resort wayanad, wayanad resorts with activities, outdoor activities in wayanad"
                

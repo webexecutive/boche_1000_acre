@@ -18,6 +18,7 @@ export default function PackageCard({ pkg }) {
                     src={pkg.posterImg}
                     blur={pkg.posterBlurImg}
                     alt={pkg.title}
+                    title={pkg.title}
                     className="w-full aspect-4/3 "
                 />
 

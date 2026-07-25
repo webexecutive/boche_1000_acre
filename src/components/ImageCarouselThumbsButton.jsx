@@ -1,7 +1,7 @@
 import CImage from './Cimage';
 
 export const Thumb = (props) => {
-  const { selected, index, onClick, imgSrc, blur } = props;
+  const { selected, index, onClick, imgSrc, blur, alt, title } = props;
 
   return (
     <div
@@ -19,7 +19,8 @@ export const Thumb = (props) => {
         <CImage
             src={imgSrc}
             blur={blur}
-            alt={`Thumbnail ${index + 1}`}
+            alt={alt || `Thumbnail ${index + 1}`}
+            title={title || alt || `Thumbnail ${index + 1}`}
             className="w-full h-full aspect-3/2 rounded-xl"
         />
       </button>

@@ -13,6 +13,7 @@ function GalleryThumbnail({ image, title, onClick, blur }) {
                     src={image}
                     blur={blur}
                     alt={title}
+                    title={title}
                     className="w-full h-full absolute inset-0 [&>img]:transition-transform [&>img]:duration-500 [&>img]:group-hover:scale-105"
                 />
 

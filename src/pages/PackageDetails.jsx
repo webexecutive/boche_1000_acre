@@ -62,7 +62,7 @@ const PackageDetails = () => {
                     <div className="flex-1 bg-[#f5faea] rounded-2xl px-6 py-7 sm:px-8 sm:py-8 flex flex-col justify-between gap-5">
 
                         {/* Title */}
-                        <h2 className="">{pkg.title}</h2>
+                        <h1 className="">{pkg.title}</h1>
 
                         {/* Meta row: guests | check-in ● check-out */}
                         <div className="flex flex-col sm:items-start gap-4 sm:gap-0 text-sm text-gray-800">

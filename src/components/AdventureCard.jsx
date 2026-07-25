@@ -17,6 +17,7 @@ export default function AdventureCard({ adventure, onPlay }) {
                 <CImage
                     src={adventure.thumbnail}
                     alt={adventure.title}
+                    title={adventure.title}
                     className="w-full h-56 sm:h-full object-cover"
                 />
 
@@ -33,9 +34,9 @@ export default function AdventureCard({ adventure, onPlay }) {
             <div className="flex flex-col justify-center gap-2 p-5 sm:p-6 flex-1 min-w-0">
 
                 {/* Title */}
-                <h3 className="text-gray-900 leading-tight">
+                <h2 className="text-gray-900 leading-tight">
                     {adventure.title}
-                </h3>
+                </h2>
 
                 {/* Description */}
                 <p className="text-sm text-gray-700 leading-relaxed text-justify">

@@ -68,6 +68,7 @@ const About = () => {
                 key={activeContent.id}
                 src={activeContent.heroImage}
                 alt={activeContent.navTitle}
+                title={activeContent.navTitle}
                 onLoad={(e) => { e.currentTarget.style.opacity = 1; }}
                 className="w-full h-full object-cover object-top opacity-0 transition-opacity duration-500"
               />
@@ -102,6 +103,7 @@ const About = () => {
                       p: ({ ...props }) => <p className="mb-5 leading-relaxed text-justify" {...props} />,
                       ul: ({ ...props }) => <ul className="list-disc pl-6 space-y-3 mt-3 mb-5" {...props} />,
                       li: ({ ...props }) => <li className="leading-relaxed" {...props} />,
+                      img: ({ alt, title, ...props }) => <img alt={alt || activeContent.navTitle} title={title || alt || activeContent.navTitle} {...props} />,
                     }}
                   >
                     {activeContent.content}

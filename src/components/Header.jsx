@@ -43,6 +43,7 @@ function Header() {
                     <img
                         src={Logo}
                         alt="Boche 1000 Acre Logo"
+                        title="boCHE 1000 Acre Logo"
                         className="h-6 lg:h-8 w-auto transition-all duration-300"
                     />
                 </Link>
@@ -118,6 +119,7 @@ function Header() {
                             <img
                                 src={Logo}
                                 alt="Boche 1000 Acre Logo"
+                                title="boCHE 1000 Acre Logo"
                                 className="h-6 w-auto"
                             />
                         </Link>
