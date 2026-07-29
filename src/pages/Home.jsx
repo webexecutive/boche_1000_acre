@@ -605,7 +605,7 @@ function Home() {
                   boCHE Toddy Pub
                 </h2>
                 <p className="text-[#4a5c35] max-w-lg">
-                  Savor authentic Kerala toddy shop flavors and traditional cuisine at our Wayanad resort, where great food, refreshing toddy, and the serene climate of Wayanad come together for a memorable dining experience.
+                  Savor authentic Kerala toddy shop flavors and traditional cuisine at our Wayanad resort, where great food, refreshing boCHE Paniyam, and the serene climate of Wayanad come together for a memorable dining experience.
                 </p>
               </div>
               <div className="flex items-center justify-center gap-6 flex-wrap">

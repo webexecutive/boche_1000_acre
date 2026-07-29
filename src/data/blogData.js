@@ -363,9 +363,9 @@ const blogData = [
     id: 5,
     slug: "kerala-culinary-heritage",
     category: "Cuisine",
-    title: "Pure. Honest. Toddy Sets the Rule: Dining at boCHE 1000 Acres",
+    title: "Pure. Honest. boCHE Paniyam Sets the Rule: Dining at boCHE 1000 Acres",
     excerpt:
-      "From Karimeen Pollichathu to Palkappa with beef, the boCHE Toddy Pub serves Kerala's most honest food — inside a tea plantation in Wayanad, where the rule is simple: toddy sets the standard.",
+      "From Karimeen Pollichathu to Palkappa with beef, the boCHE Toddy Pub serves Kerala's most honest food — inside a tea plantation in Wayanad.",
     date: "28 January 2025",
     coverImageId: 75,
  
