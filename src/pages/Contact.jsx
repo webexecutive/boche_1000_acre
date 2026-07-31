@@ -95,8 +95,9 @@ function Contact() {
                                     <h3 className="text-lg">Address</h3>
                                 </div>
                                 <p className="text-sm text-gray-500 leading-relaxed">
-                                    Chulika Estate, Cottappadi P O,<br />
-                                    Vythiri, Meppadi, Kerala 673577
+                                    boCHE 1000 Acre,<br />
+                                    boCHE Junction,<br />
+                                    Meppadi, Kerala 673577
                                 </p>
 
                                 <div className="hidden md:block absolute top-0 right-0 h-full w-px bg-gray-300"></div>
